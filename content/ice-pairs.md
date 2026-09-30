@@ -294,7 +294,7 @@ One keyword with a payoff state: the rest is Earth's stones and minions and Ice'
 
 - **Dusk N** (Debuff, hidden): N drops by 1 at the end of each of the bearer's turns, and at 0 it strikes **Midnight**. The Night player sees every count; the enemy sees none. Applying Dusk to someone who has it deepens it by 1 instead.
 - **Midnight** puts the bearer in **Frozen Sleep** for 1 turn: Asleep, damage doesn't wake them, and they count as Frostbitten, Chilled and Numb. Afterwards they have **First Light** for 2 turns and can't gain Dusk, so clocks can't chain into a lock.
-- **Dormant** (Buff): the bearer can't use skills and can't be targeted by enemies (ticking and triggered damage still land). They gain 10 Shield at the end of each of their turns, damage doesn't end it, and they wake with 1 Focus.
+- **Dormant** (Buff): the bearer can't use skills and can't be targeted by enemies (ticking and triggered damage still land). They gain 10 Shield at the end of each of their turns, damage doesn't end it, and they wake with 1 Focus. Some skills make an enemy Dormant, taking them out of the fight (and out of reach) for a while.
 
 The log still shows who used Evening Star on whom, so an attentive opponent can count clocks; cleansing and Immune stop them.
 
