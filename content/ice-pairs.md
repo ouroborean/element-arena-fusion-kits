@@ -18,7 +18,7 @@ Glacier is a tempo kit: Ice's lockdown aimed at cooldowns, and Water's cooldown 
 | Charge | Meltwater Rush | I · 2 | Meltwater | 15 damage to target enemy. If they're Chilled, the Chill melts off them and the user gains Meltwater for 2 turns. |
 | Riposte | Pressure Ridge | r · 3 | Meltwater | Invisible. For 1 turn, counters the first Harmful skill used on the user; they gain Meltwater for 1 turn per turn of that skill's cooldown (max 3). |
 | Rage | Spring Thaw | SI · 4 | Meltwater | For 3 turns, the user gains Immune and Meltwater; each time Meltwater brings one of their skills off cooldown, they gain 1 Might until it ends. |
-| Shot | Icefloe | A · 0 | Texture | 15 damage to target enemy and Chilled for 1 turn. If they were already Chilled, their Renew moves to a random ally of the user. |
+| Shot | Borrowed Hour | A · 2 | Unique | 15 damage to target enemy. Their skill with the longest cooldown left and the user's other skill with the longest cooldown left swap cooldowns. |
 | Snipe | Serac Spear | AIr · 2 | Icebound | Channeled, hidden target. On the following turn, 50 Piercing damage to target enemy. If they're Icebound, it lands at once instead, and their Icebound ends. |
 | Trap | Crevasse | IA · 4 | Icebound | Invisible. For 2 turns, if target enemy uses a Harmful skill, they're Icebound for 2 turns and that skill's cooldown is doubled. |
 | Maneuver | Under the Ice | I · 4 | Icebound | The user becomes Invulnerable for 1 turn, and every enemy with a skill on cooldown is Icebound for 1 turn. |
@@ -28,7 +28,7 @@ Glacier is a tempo kit: Ice's lockdown aimed at cooldowns, and Water's cooldown 
 | Consume | Stolen Thaw | r · 2 | Meltwater | 5 damage to target enemy, healing the user for it. If they're Icebound, it ends, and the user gains Meltwater for as long as it had left. |
 | Summon | Glacier Sprite | Ir · 2 | Icebound | Summons a Glacier Sprite (20 HP) for 3 turns. Meltdrip (r): target ally's longest cooldown drops by 1. Freezing Touch (I): 15 damage and Icebound for 1 turn. |
 | Channel | Glacial Advance | I · 3 | Icebound | Channeled. At the end of each of the user's turns, 10 damage to target enemy and Icebound for 1 turn; while it channels, the user's cooldowns don't tick either. |
-| Stab | Icepick | r · 0 | Texture | 10 damage to target enemy, or 20 if they have a Frost debuff; the user gains 1 Renew per Frost debuff on them. |
+| Stab | Hoarfrost Pick | r · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. For 2 turns, Frost debuffs land on them through Immune and can't be removed. |
 | Ravage | Crushing Ice | Ir · 1 | Icebound | 25 Piercing damage to target enemy. If they're Icebound, each of their skills on cooldown gains 1 more turn. |
 | Mislead | Thin Ice | I · 2 | Icebound | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and they're Icebound for 1 turn per turn of its cooldown (max 3). |
 | Stun | Pack Ice | I · 2 | Icebound | 15 damage to target enemy and a 1-turn Stun; they're Icebound for as long as they stay Stunned. |
@@ -36,8 +36,8 @@ Glacier is a tempo kit: Ice's lockdown aimed at cooldowns, and Water's cooldown 
 | Heal | Glacial Spring | W · 1 | Meltwater | Target ally heals 15 and gains Meltwater for 1 turn. |
 | Bless | Snowmelt | r · 2 | Meltwater | Target ally loses Icebound and Chilled, then gains Meltwater for 2 turns, +1 turn for each of those removed. |
 | Curse | Frozen in Time | IW · 3 | Icebound | Target enemy is Icebound for 2 turns, and their skill with the longest cooldown can't be used until it ends. |
-| Smite | Ring of Floes | I · 1 | Texture | 15 damage to target enemy and Chilled for 1 turn. For 2 turns, allies who damage them while they're Chilled gain 1 Renew. |
-| Prayer | Meltwater Hymn | Ir · 3 | Texture | All allies heal 20. Every Frost debuff on them melts: each is removed and becomes 2 Renew. |
+| Smite | Tidemark | I · 1 | Texture | 20 damage to target enemy. For 1 turn, each ally who damages them has their Renew heal once at once, without losing a stack. |
+| Prayer | Stillfrost Hymn | Ir · 3 | Texture | All allies heal 20 and gain 10 Shield. For 2 turns, Frostbitten enemies can't use Helpful skills either. |
 | Cleave | Calving | S · 1 | Icebound | 25 damage to target enemy and 15 to a random other enemy. If the first is Icebound, the second is Icebound for as long. |
 | Shout | Groaning Ice | I · 3 | Icebound | All enemies are Intimidated for 2 turns; any who use a skill before the user's next turn are Icebound for 1 turn. |
 | Withstand | Ice Shelf | I · 3 | Meltwater | The user gains 20 Shield for 2 turns, and Meltwater for as long as any of it remains. |
@@ -56,34 +56,34 @@ Lightning changes how much energy a player has; Aurora changes which colors they
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
 | Strike | Polar Jolt | r · 0 | Shimmer | 15 damage to target enemy, +5 per Charge the user has. Then 1 of that Charge is spent to give the user Shimmer until the end of their next turn. |
-| Smash | Northern Crash | SI · 2 | Texture | 25 damage to target enemy and 10 to their allies. The user gains 1 Charge for each Chilled enemy it hits. |
+| Smash | Hoarfrost Crash | SI · 2 | Texture | 25 damage to target enemy and 10 to their allies. Until the end of the user's next turn, Frost debuffs on everyone it hits can't wear off or be removed. |
 | Charge | Streak of Light | r · 2 | Shimmer | 15 damage to target enemy. The user has Shimmer for their next skill, which deals 10 more if it hits this enemy too. |
-| Riposte | Magnetic Veil | I · 3 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user. Its user is Chilled for 2 turns, and the user gains 3 Charge. |
+| Riposte | Magnetic Veil | I · 3 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user. Its user is Sapped twice, and their Sapped can't be removed for 3 turns. |
 | Rage | Polar Storm | SI · 4 | Dazzled | For 3 turns, the user gains Stormborn and 1 Might. Whenever their Charge reaches 3, every enemy is Dazzled for 1 turn. |
 | Shot | Glimmer | r · 0 | Dazzled | 10 damage to target enemy, and Dazzled for 2 turns. It deals 10 more if they were already Dazzled. |
 | Snipe | Polar Lance | AIr · 2 | Texture | Channeled, hidden target. On the following turn, 30 Piercing damage to target enemy, +10 for each energy their player spends before it lands. |
-| Trap | Snare of Lights | r · 2 | Texture | Invisible. For 2 turns, each time target enemy uses a skill, they're Sapped. When that brings them to 3 Sapped, they're also Chilled for 2 turns. |
+| Trap | Rime Snare | r · 2 | Texture | Invisible. For 3 turns, the first time a Frost debuff on target enemy would end or be removed, it lasts 2 more turns instead, and they take 15 Piercing damage. |
 | Maneuver | Vanishing Light | r · 2 | Shimmer | The user becomes Invulnerable for 1 turn. Their Sapped turns into as much Charge; if they're Chilled, it ends and they gain Shimmer for 2 turns. |
 | Companion | Aurora Fox | A · 1 | Dazzled | Summons an Aurora Fox (30 HP, Stormborn) permanently. Foxfire (r): 10 damage to target enemy, +5 per Charge the Fox has, and Dazzled for 1 turn. |
 | Bolt | Polar Bolt | Ir · 1 | Dazzled | 20 damage to target enemy, and Dazzled for 1 turn, +1 turn per Frost debuff they have. |
 | Blast | Borealis | Irr · 2 | Dazzled | 25 damage to all enemies. Chilled ones are Dazzled for 2 turns; the rest are Chilled for 1 turn. |
-| Consume | Drink the Light | r · 2 | Texture | 5 damage to target enemy. If they're Sapped or Chilled, their player loses 1 random energy and the user's player gains it. |
+| Consume | Drink the Light | r · 2 | Unique | 5 damage to target enemy. Their player loses 1 energy of the color they hold most, and the user's player gains it. |
 | Summon | Sky Wisps | I · 1 | Dazzled | Summons 2 Sky Wisps (10 HP) for 3 turns. Flicker (r): target enemy is Dazzled for 1 turn. |
 | Channel | Skyglow | rr · 3 | Shimmer | Channeled, up to 3 turns. Each turn, 5 damage to all enemies, and every ally has Shimmer. It ends early if the user takes direct damage. |
 | Stab | Shock Icicle | r · 0 | Dazzled | 10 damage to target enemy, or 25 if their player's energy can't pay for any of their skills. Either way, they're Dazzled for 1 turn. |
-| Ravage | Polar Rend | Ir · 1 | Texture | 25 Piercing damage to target enemy. If they're Chilled, it spends all the user's Charge for 10 more each; if not, the user gains 1 Charge. |
+| Ravage | Grounding Rend | Ir · 1 | Texture | 25 Piercing damage to target enemy. All the user's Charge pours into them: they're Sapped once for each Charge spent. |
 | Mislead | Ghost Lights | I · 2 | Dazzled | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and they're Dazzled for 1 turn, +1 per energy it cost. |
 | Stun | Lightshow | AI · 2 | Texture | 15 damage to target enemy. For 2 turns, their skills that share a color with the last skill they used are stunned. |
 | Dance | Dance of Lights | SI · 5 | Shimmer | For 3 turns, the user gains Shimmer. Each turn they use a skill that shares no color with their previous one, they gain 1 Swiftness and 1 Charge. |
-| Heal | Healing Glow | I · 1 | Texture | Target ally heals 15 and loses their Sapped and Frost debuffs, healing 10 more for each one removed. |
+| Heal | Glow of the Long Night | I · 1 | Texture | Target ally heals 15. At the start of the user's next turn, they heal 5 more for each Frost debuff on the enemy team (max 30). |
 | Bless | Shimmering Veil | I · 1 | Shimmer | Target ally gains Shimmer for 2 turns, and all of the user's Charge moves to them. |
 | Curse | Color Drain | r · 2 | Dazzled | Target enemy is Dazzled for 2 turns. Each time it changes one of their player's energies, they're also Sapped. |
 | Smite | Lodestar | S · 1 | Dazzled | 15 damage to target enemy and Dazzled for 1 turn. For 1 turn, each ally who damages them extends it by 1 turn. |
-| Prayer | Hymn of Lights | WI · 2 | Texture | All allies heal 15 and gain 10 Shield. Allies with Charge spend it for 10 more Shield each. |
+| Prayer | Polar Dawn | WI · 2 | Unique | All allies heal 15 and gain 10 Shield. Every skill on cooldown on the user's side comes 1 turn closer to ready. |
 | Cleave | Arc of Lights | I · 1 | Dazzled | 20 damage to target enemy. It arcs for 10 to the other enemy whose last skill cost the most, Dazzling them for 1 turn. |
 | Shout | Sky of One Color | Sr · 3 | Texture | All enemies are Chilled for 1 turn, and every energy their player holds turns into one random color. |
 | Withstand | Ice Cage | S · 3 | Shimmer | The user gains 25 Shield for 2 turns, and has Shimmer while any of it remains. |
-| Taunt | Polar Beacon | r · 3 | Texture | Taunts target enemy for 2 turns; they're Chilled while Taunted. Each skill they use on the user gives the user 1 Charge. |
+| Taunt | Polar Beacon | r · 3 | Texture | Taunts target enemy for 2 turns. While Taunted, each Sapped they gain counts as 2. |
 | Titan | Heavenlight Armor | Ir · 4 | Shimmer | For 3 turns, the user gains Shimmer and Immune, and 1 Armor for each color among their player's energies. |
 
 ## Winter — Ice + Wind
@@ -99,25 +99,25 @@ One keyword: Wind already has tools that punish the Immobile, and Winter's own s
 | Strike | Bitter Blow | S · 0 | Snowbound | 20 damage to target enemy. If they used a mobility skill since the user's last turn, they're Snowbound for 2 turns. |
 | Smash | Snowslide | Ar · 2 | Texture | The user Leaps. At the start of their next turn, if they're still Leaping, they land: 25 damage to target enemy and 15 to their allies. |
 | Charge | Ice Skate | nc · 1 | Snowbound | The user begins Rushing, and their next damaging skill also Snowbinds its targets for 1 turn. |
-| Riposte | Bitter Wind | r · 2 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user, dealing 15 Piercing damage to its user, or 30 if they're Immobile. |
+| Riposte | Shatterguard | r · 2 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user. Every Frost debuff on its user shatters: it ends, and they take 15 Piercing damage for each. |
 | Rage | Heart of Winter | A · 4 | Snowbound | For 3 turns, the user gains 1 Might and Immune, and any enemy who uses a mobility skill is Snowbound for 2 turns. |
 | Shot | Snowball | r · 0 | Snowbound | 10 damage to target enemy, +5 for each turn in a row the user has used Snowball. From the third in a row, they're also Snowbound for 1 turn. |
 | Snipe | Whiteout | Ar · 2 | Snowbound | Channeled. Every enemy is Snowbound until it lands. On the following turn, 30 Piercing damage to the enemy team. |
 | Trap | Snare of Frost | A · 3 | Snowbound | Invisible. For 3 turns, if target enemy uses a mobility skill, it's countered, and they take 15 Piercing damage and are Snowbound for 2 turns. |
 | Maneuver | Powder Leap | r · 3 | Snowbound | The user Leaps. Enemies who damaged them since their last turn are Snowbound for 1 turn. |
-| Companion | Winter Wolf | A · 1 | Texture | Summons a Winter Wolf (40 HP) permanently. Cold Jaws (S): 20 damage to target enemy; if they're Immobile, they're also Isolated for 1 turn. |
+| Companion | Winter Wolf | A · 1 | Texture | Summons a Winter Wolf (40 HP) permanently. Cold Jaws (S): 20 damage to target enemy. Hunting Howl (r): each ally who is Leaping or Rushing gains 1 Might for 2 turns. |
 | Bolt | Frostwind Bolt | I · 1 | Snowbound | 20 damage to target enemy. If they're Immobile, their non-Strategic skills are stunned for 1 turn; if not, they're Snowbound for 2 turns. |
 | Blast | Polar Gale | Ar · 2 | Snowbound | 20 damage to all enemies. If the user is Rushing or Leaping, they stop, and every enemy is Snowbound for 1 turn, or 2 if they were both. |
 | Consume | Steal Warmth | r · 2 | Snowbound | 5 damage to target enemy, and Snowbound for 1 turn. The user heals 10 and gains each mobility buff this strips from them. |
 | Summon | Snow Sprites | r · 3 | Snowbound | Summons 2 Snow Sprites (10 HP) for 3 turns. Flurry (nc): 5 Piercing damage; a target hit twice in one turn is Snowbound for 1 turn. |
 | Channel | Long Winter | AI · 3 | Snowbound | Channeled. 10 damage to all enemies for 2 turns, and a random one is Snowbound for 1 turn each turn. While it lasts, enemies' Frost debuffs don't wear off. |
 | Stab | Icicle Knife | r · 0 | Snowbound | 10 damage to target enemy, or 20 if they're Immobile. If the user is Rushing, the target is also Snowbound for 1 turn. |
-| Ravage | Glacial Thrust | A · 1 | Texture | 25 Piercing damage to target enemy, +15 if they're Frostbitten. Unless the user is Rushing or Frostborn, they're Stunned for 1 turn. |
-| Mislead | Windchill | I · 2 | Texture | Invisible. For 1 turn, counters target enemy's Harmful skills, or all their skills if they're Immobile. When it triggers, the user begins Rushing. |
+| Ravage | Frostbite Lunge | A · 1 | Texture | 25 Piercing damage to target enemy. The user is Frostbitten for 1 turn and gains Frostborn for 2. |
+| Mislead | Updraft Feint | I · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and the user Leaps. That Leap isn't spent by the user's next damaging skill. |
 | Stun | Squall | A · 2 | Texture | 15 damage to target enemy and a 1-turn Stun that Swiftness can't stop: they lose all their Swiftness instead, and it lasts 1 turn longer per stack lost. |
 | Dance | Snow Dance | AI · 5 | Snowbound | For 3 turns, the user gains 1 Might and 2 Swiftness, and begins Rushing. Whenever their Swiftness stops a Stun, the Stun's user is Snowbound for 2 turns. |
-| Heal | Brisk Air | A · 1 | Texture | Target ally heals 20. If they're Immobile, they begin Rushing; if not, they gain 2 Armor for 1 turn. |
-| Bless | Frost Wings | A · 2 | Texture | Target ally gains 1 Swiftness and Frostborn until the end of their next turn. Until then, Immobile enemies can't target them. |
+| Heal | Second Wind | A · 1 | Texture | Target ally heals 15. The next time they Leap or begin Rushing within 3 turns, they heal 20 more. |
+| Bless | Rime Mantle | A · 2 | Texture | Target ally gains Frostborn for 2 turns. While they're Frostborn, Frost debuffs they apply last 1 turn longer. |
 | Curse | Snowbind | A · 2 | Snowbound | Target enemy is Snowbound for 2 turns, and gains 1 Weakness for each mobility buff this strips from them. |
 | Smite | Frostfeather | Wr · 1 | Snowbound | 20 damage to target enemy. For 1 turn, allies who damage them gain 1 Swiftness; once two have, the target is Snowbound for 2 turns. |
 | Prayer | Winter's Verse | Wrr · 2 | Texture | All allies heal 15 and Leap. At the start of the user's next turn, each ally still Leaping heals 15 more. |
@@ -125,7 +125,7 @@ One keyword: Wind already has tools that punish the Immobile, and Winter's own s
 | Shout | Howling Winds | A · 2 | Snowbound | Enemies with a mobility skill or buff are Snowbound for 2 turns; Immobile enemies are Intimidated for 2 turns instead. |
 | Withstand | Snowpack | r · 3 | Snowbound | The user gains 25 Shield for 2 turns. Enemies who damage it are Snowbound for 1 turn. |
 | Taunt | Call of the Cold | r · 3 | Snowbound | Taunts target enemy for 2 turns. Each Harmful skill they use on the user leaves them Snowbound for 1 turn. |
-| Titan | Winter Djinn | SA · 4 | Texture | For 3 turns, the user gains Immune, and at the start of each of their turns, 10 Shield for each Immobile enemy. |
+| Titan | Dead of Winter | SA · 4 | Unique | For 3 turns, the user gains 2 Armor and Immune, and no unit in the battle can be healed, the user included. |
 
 ## Stasis — Ice + Poison
 
@@ -136,12 +136,12 @@ One keyword: Wind already has tools that punish the Immobile, and Winter's own s
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Venom Chill | W · 0 | Texture | 20 damage to target enemy and 1 Toxin. If they're Frostbitten, it deals 5 more for each Toxin they have. |
+| Strike | Ticking Venom | W · 0 | Texture | 20 damage to target enemy. Until the user's next turn, their Toxin also deals its damage each time they use a skill. |
 | Smash | Frozen Stomp | Sr · 2 | Thaw | 25 damage to target enemy, and they're Suspended for 1 turn. When they Thaw, each of their allies takes half the Thaw's damage. |
 | Charge | Freezing Lunge | S · 1 | Suspended | 10 damage to target enemy. Through the user's next turn, every enemy is Prey, and the user's next skill Suspends its targets for 1 turn. |
 | Riposte | Freeze Frame | W · 2 | Suspended | Invisible. For 1 turn, counters any Harmful skill used on the user; its user gains 2 Toxin and is Suspended for 1 turn, so the Toxin lands later as a Thaw. |
-| Rage | Cryo Stance | S · 3 | Texture | All Might in the battle turns into as much Weakness. On allies, it ends at the end of the turn; on enemies, it lasts 3 turns. |
-| Shot | Cryo Sting | r · 1 | Texture | 5 Piercing damage to target enemy and 1 Toxin, +1 for each Frost debuff they have. |
+| Rage | Stopped Clock | S · 4 | Unique | For 3 turns, the user gains 1 Might and Immune, and their skills don't go on cooldown. When it ends, each skill they used meanwhile goes on its full cooldown. |
+| Shot | Rime Needle | r · 1 | Texture | 10 Piercing damage to target enemy, and each Frost debuff on them lasts 1 turn longer. |
 | Snipe | Release | AIr · 2 | Thaw | Channeled. Target enemy is Suspended until it lands on the following turn: 30 Piercing damage, and then they Thaw. |
 | Trap | Cold Pit | W · 2 | Suspended | Invisible. For 3 turns, the first time target enemy is healed, they gain 2 Toxin and are Suspended for 1 turn, stalling their Renew. |
 | Maneuver | Cryosleep | W · 3 | Suspended | Unstunnable. The user becomes Invulnerable for 1 turn and is Suspended for 2: their Buffs hold, and their Debuffs wait. |
@@ -153,9 +153,9 @@ One keyword: Wind already has tools that punish the Immobile, and Winter's own s
 | Channel | Nine Winters | Wrr · 5 | Thaw | Channeled, up to 4 turns. Every enemy is Suspended while it lasts, and each turn a random enemy gains 1 Toxin. When it ends, they all Thaw. |
 | Stab | Icebite | r · 0 | Suspended | 5 Piercing damage to target enemy. If they're Prey, the user's player gains 1 random energy, and they're Suspended for 1 turn. |
 | Ravage | Cryo Rend | Ar · 1 | Suspended | 25 Piercing damage to target enemy, +15 if they're Stunned. A Stunned target is also Suspended for 1 turn, so the Stun can't wear off. |
-| Mislead | Frozen Needle | W · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and they gain 1 Toxin, 1 Weakness and 1 Vulnerable. These can't wear off while they're Prey. |
+| Mislead | Cold Shelter | W · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and the user is Frostborn for as long as that enemy has a Frost debuff (max 3 turns). |
 | Stun | Hold | W · 3 | Thaw | Target enemy is Stunned for 1 turn, or 2 if they're Prey. When the Stun ends, their Toxin deals its damage at once, doubled. |
-| Dance | Venomous Frost | A · 2 | Texture | All Shield on enemies turns into Toxin, 1 stack per 10 Shield. |
+| Dance | Serpent's Measure | AI · 4 | Texture | For 3 turns, the user gains 1 Might, 1 Swiftness and 1 Focus. Each enemy whose Toxin ticks meanwhile counts as Prey until the user's next turn. |
 | Heal | Cold Storage | W · 1 | Suspended | Target ally heals 25 and loses their Toxin, then is Suspended for 1 turn. |
 | Bless | Preserved Vigor | W · 2 | Suspended | Target ally gains 1 Might for each Buff they have, then is Suspended for 2 turns so their Buffs hold. |
 | Curse | Stilled Blood | r · 2 | Suspended | Target enemy gains 1 Toxin and 1 Confusion, and is Suspended for 1 turn for each Debuff they have (max 3). |
@@ -163,7 +163,7 @@ One keyword: Wind already has tools that punish the Immobile, and Winter's own s
 | Prayer | Hymn of Stillness | Wr · 2 | Texture | All allies heal 15 and lose their Toxin, gaining 10 Shield for each stack lost. |
 | Cleave | Frozen Lash | Sr · 1 | Suspended | 25 damage to target enemy and 10 to a random other enemy, who gains as much Toxin as the target has (max 3) and is Suspended for 1 turn. |
 | Shout | Crack the Ice | r · 1 | Thaw | Every Suspended enemy Thaws now. If none were Suspended, all enemies gain 1 Toxin instead. |
-| Withstand | Ice Coil | W · 2 | Texture | The user gains 1 Armor and 20 Shield for 2 turns. When the Shield expires, each 10 left gives a random enemy 1 Toxin. |
+| Withstand | Hold the Moment | r · 3 | Unique | The user gains 10 Shield for 1 turn. At the start of their next turn, they heal all the HP they lost since using this, up to 40. |
 | Taunt | Stilling Gaze | r · 3 | Suspended | Target enemy is Taunted and Suspended for 2 turns. Each Harmful skill they use on the user gives them 1 Toxin. |
 | Titan | Stasis Field | WI · 4 | Suspended | For 3 turns, the user gains 2 Armor and Immune. Enemies they damage gain 1 Toxin and stay Suspended until this ends. |
 
@@ -184,17 +184,17 @@ One keyword with a payoff state: the rest is Earth's stones and minions and Ice'
 | Rage | Call of the Saga | SW · 4 | Legend | The user gains 2 Legend and creates a Boulder, then Immune for 2 turns. |
 | Shot | Hurl the Stone | r · 0 | Legend | 15 damage to target enemy. Can instead target an allied Boulder to hurl it at a random enemy for its remaining HP. Mythic: it can hurl an enemy minion the same way. |
 | Snipe | Giant's Spear | Sr · 2 | Legend | Channeled, hidden target. 20 Piercing damage to target enemy, growing by 20 at the end of each of the user's turns. It lands at 60, or as soon as the user takes damage. |
-| Trap | Troll's Toll | W · 3 | Texture | Invisible. For 2 turns, the first Harmful skill target enemy uses strikes a new allied Boulder instead. If that destroys the Boulder, they're Chilled for 2 turns. |
+| Trap | Troll Bridge | W · 3 | Unique | Invisible. For 3 turns, whenever any enemy uses the same skill they used on their previous turn, they take 20 damage. |
 | Maneuver | Barrow | r · 4 | Legend | The user is Stunned and Invulnerable until the end of their next turn, and gains 1 more Legend. |
-| Companion | Mammoth | W · 1 | Texture | Summons a Mammoth (55 HP) permanently. Trample (r): 15 damage to all enemies. Tusk Toss (S): 20 damage, and a 1-turn Stun if the target is Chilled. |
+| Companion | Mammoth | W · 1 | Texture | Summons a Mammoth (55 HP) permanently; while it stands, Frost debuffs on enemies can't be removed. Trample (r): 15 damage to all enemies. |
 | Bolt | Frost Rune | Ir · 1 | Legend | 25 damage to target enemy; the user gains 1 more Legend if the target has a Frost debuff. Mythic: the target's Frost debuffs also spread to a random ally of theirs. |
 | Blast | Age of Ice | Irr · 2 | Legend | 25 damage to all enemies. Enemy minions it kills become allied Boulders. Mythic: every enemy minion it hits becomes one, dead or not. |
 | Consume | Offering to the Old Ones | W · 2 | Legend | Sacrifices all allied Boulders and Seedlings; the user gains 1 Legend and 10 Shield for each. |
-| Summon | Trollkin | W · 1 | Texture | Summons 2 Trolls (20 HP) for 3 turns; each regrows 5 HP at the end of your turns. Club (r): 10 damage and Chilled for 1 turn. |
+| Summon | Trollkin | W · 1 | Texture | Summons 2 Trolls (20 HP) for 3 turns. Club (r): 10 damage to target enemy. When a Troll dies or expires, it turns to stone: an allied Boulder with 20 HP. |
 | Channel | Awakening the Ancients | Ir · 3 | Texture | Channeled, 3 turns. The user creates a Boulder at the end of each of their turns. When it ends, every allied Boulder awakens as a Rime Giant with its HP (Frost Maul (nc): 15 damage). |
-| Stab | Runeblade | r · 0 | Texture | 10 damage to target enemy, or 20 if they have Shield or Armor. Frostbitten targets are also Shattered for 1 turn. |
+| Stab | Rimecut | r · 0 | Texture | 10 damage to target enemy, +5 for each turn left on their Frost debuffs (max 25 in all). |
 | Ravage | Giant-Slayer | Wr · 2 | Legend | 25 Piercing damage to target enemy, +20 if they have more HP than the user. If it kills, the user gains 1 more Legend. Mythic: the bonus always applies. |
-| Mislead | Riddle of the Deep | W · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and they're Stunned for 1 turn; if they don't, they're Frostbitten for 2 turns. |
+| Mislead | Frozen Riddle | W · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and its cooldown doesn't tick down while they have a Frost debuff. |
 | Stun | Turned to Stone | Wr · 4 | Legend | Target enemy is Stunned and gains 25 Shield for 3 turns; the Stun ends if the Shield breaks. Mythic: it doesn't. |
 | Dance | Cairn Builder | r · 0 | Legend | The user gains 10 Shield. If they already had Shield from Cairn Builder, they also create a Boulder that gives them 1 Legend when it's destroyed. |
 | Heal | Warm Stone | r · 1 | Texture | Target ally heals 15. If the user has a Boulder, it crumbles into them: they heal half its HP more and gain 1 Armor for 1 turn. |
@@ -218,18 +218,18 @@ One keyword with a payoff state: the rest is Earth's stones and minions and Ice'
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
 | Strike | Glintstrike | S · 0 | Refract | 20 damage to target enemy. Refract; if the refracted hit lands on a Frostbitten enemy, it's full strength. |
-| Smash | Lightfall | Wr · 2 | Texture | 20 damage to target enemy and 10 to their allies. Enemies it hits with a Frost debuff are Condemned for 1 turn, and the user heals 5 for each. |
+| Smash | Lightfall | Wr · 2 | Texture | 20 damage to target enemy and 10 to their allies. At the start of the user's next turn, the light falls again: 10 more to each of them who still has a Frost debuff. |
 | Charge | Converge | S · 2 | Lens | 15 damage, and the user gains Lens. |
 | Riposte | Spectrum Ward | W · 3 | Refract | Invisible. For 1 turn, counters the first Harmful skill used on the user, which Refracts instead: it hits a random ally of its user at half strength. |
 | Rage | Burning Glass | S · 4 | Lens | For 3 turns, the user is Anointed, and gains Lens each turn they damage the same enemy they damaged the turn before. |
 | Shot | Spectrum Shot | r · 0 | Refract | 15 damage to target enemy. Refract, once more for each Frost debuff they have. |
 | Snipe | Focal Point | Arr · 2 | Refract | Channeled, hidden target. On the following turn, 50 Piercing damage to target enemy. If it kills them, the damage left over Refracts to a random ally of theirs at full strength. |
-| Trap | Cold Decree | r · 2 | Texture | Invisible. For 3 turns, if target enemy uses a Helpful skill, they're Chilled for 2 turns and everyone it helped is Sanctified for 2 turns. |
-| Maneuver | Cloister of Ice | r · 2 | Texture | The user gains Immune for 1 turn, and for 2 turns can't be targeted by Frostbitten or Condemned enemies. |
+| Trap | Standing Decree | r · 2 | Texture | Invisible. For 3 turns, target enemy is Condemned; each time it triggers, it returns at the end of the user's next turn. |
+| Maneuver | Afterglow | r · 2 | Unique | The user becomes Invulnerable for 1 turn. At the start of their next turn, the last skill they used before this one repeats on the same targets, at no cost. |
 | Companion | Lumen Elk | SW · 4 | Lens | Summons a Lumen Elk (45 HP) permanently. Antler Glow (W): target ally gains Lens. Gore (r): 15 damage to target enemy, and Sanctified for 1 turn. |
 | Bolt | Chroma Bolt | I · 1 | Refract | 20 damage to target enemy. Refract. Each target also gets one of Sanctified, Condemned, Frostbitten or Numb at random for 1 turn, never the same one. |
-| Blast | Nova of Colors | IW · 1 | Texture | 25 Piercing damage to all enemies; those with no Buffs are also Condemned for 1 turn. |
-| Consume | Draw the Light | r · 2 | Texture | 5 damage to target enemy. The user heals 10 for each Frost debuff and Sanctify on them. |
+| Blast | Colorless Nova | IW · 2 | Unique | 25 Piercing damage to all enemies. Each of them loses the Buff with the most turns left. |
+| Consume | Harvest of Grace | r · 2 | Texture | 5 damage to target enemy. Every Sanctify on the enemy side ends, and the user heals 15 for each. |
 | Summon | Hovering Prism | I · 1 | Refract | Summons a Hovering Prism (10 HP) for 3 turns. While it stands, the user's single-target skills Refract. |
 | Channel | Dispersion | W · 3 | Refract | Channeled, 3 turns. At the end of each of the user's turns, 10 damage to target enemy and Sanctified for 1 turn; it Refracts to 1 more enemy each turn. |
 | Stab | Focused Needle | A · 0 | Lens | 10 damage to target enemy, or 20 if they're Condemned or Frostbitten. If it deals only 10, the user gains Lens. |
@@ -242,7 +242,7 @@ One keyword with a payoff state: the rest is Earth's stones and minions and Ice'
 | Curse | Split Verdict | S · 2 | Refract | Target enemy is Condemned until the end of the user's next turn. It Refracts as Sanctify: a random ally of theirs is Sanctified for as long. |
 | Smite | Glacial Rebuke | W · 1 | Lens | 20 damage to target enemy, and Sanctified for 1 turn. The first ally who damages them before then gains Lens. |
 | Prayer | Hymn of Colors | WI · 3 | Refract | Target ally heals 30 and gains 20 Shield. It Refracts to every other ally. |
-| Cleave | Split Beam | S · 1 | Texture | 20 damage to target enemy and 10 to a random other enemy. Each Frostbitten one it hits is Sanctified for 2 turns. |
+| Cleave | Split Beam | S · 1 | Texture | 20 damage to target enemy and 10 to a random other enemy. The first of them to use a skill afterward is Chilled for 2 turns. |
 | Shout | Harsh Light | W · 3 | Lens | Every ally gains Lens. Every Frostbitten or Sanctified enemy is Condemned for 1 turn. |
 | Withstand | Ice Aegis | r · 4 | Lens | The user gains 25 Shield for 2 turns. When it breaks, they gain Lens, and Immune for 1 turn if they're Anointed. |
 | Taunt | Frozen Gleam | S · 3 | Refract | Taunts target enemy until they use a new Harmful skill. Refract: a random ally of theirs is Taunted by the user too. |
@@ -270,19 +270,19 @@ One keyword with a payoff state: the rest is Earth's stones and minions and Ice'
 | Bolt | Deathfrost Bolt | Ir · 1 | Texture | 25 damage to target enemy. They lose all Swiftness and Focus, and are Horrified for 1 turn per stack lost (max 3). |
 | Blast | Soul Blizzard | SIr · 2 | Soulfrost | 25 damage to all enemies. Those it leaves below 50 HP are Soulfrosted for 2 turns. |
 | Consume | Soul Siphon | I · 2 | Soulfrost | 5 damage to target enemy, draining a Soul Fragment. If they're Soulfrosted, it ends, and the user drains 1 more per turn it had left. |
-| Summon | Skeletal Mage | I · 1 | Texture | Summons a Skeletal Mage (25 HP) for 3 turns. Rime Volley (r): 10 damage to each enemy without Buffs. Final Offering (nc): it dies, giving the user 1 Soul Fragment per turn it had left. |
+| Summon | Skeletal Mage | I · 1 | Texture | Summons a Skeletal Mage (25 HP) for 3 turns. While it stands, Frost debuffs on enemies don't count down. Bone Chill (r): 10 damage to target enemy. |
 | Channel | Drain Warmth | rr · 3 | Soulfrost | Channeled, 3 turns. Each turn, 10 damage to target enemy and Soulfrost for 1 turn; the user heals 10 for each Soul Fragment it has yielded so far. |
-| Stab | Grave-Cold Dagger | r · 0 | Texture | 10 damage to target enemy, or 25 if they're Numb or Horrified. If they're both, it's Piercing and the user heals 10. |
+| Stab | Rimebreak Dagger | r · 0 | Texture | 10 damage to target enemy, or 20 if they're at or below 60 HP. If the user is Frostborn, it ends, and this deals 15 more and is Piercing. |
 | Ravage | Doomfrost | AS · 2 | Texture | 25 Piercing damage to target enemy, +10 for each Frost debuff on them. Those debuffs end, and they're Horrified for 1 turn per debuff ended. |
 | Mislead | Nightmare of Ice | r · 3 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and they're Horrified for 2 turns. Meanwhile, the user is Invulnerable to Horrified enemies. |
 | Stun | Heart of Ice | AS · 3 | Soulfrost | 15 damage to target enemy and Soulfrost for 2 turns. The first time it yields a Soul Fragment, they're Stunned for 1 turn. |
-| Dance | Winter Revel | AI · 4 | Texture | For 3 turns, at the start of each of the user's turns, they gain 1 Swiftness per Horrified enemy and 1 Focus per Chilled one. |
+| Dance | Deathwaltz | AI · 4 | Unique | For 3 turns, the user gains 1 Swiftness and 1 Focus. Each time any unit or minion dies meanwhile, all the user's cooldowns reset. |
 | Heal | Feed the Vessel | W · 1 | Phylactery | Target ally heals 20. A minion, such as a Phylactery, heals 40 instead and gains 1 Armor for 2 turns. |
-| Bless | Cold Hunger | W · 2 | Texture | For 3 turns, target ally gains 1 Might, and heals for half the damage they deal to enemies without Buffs. |
+| Bless | Embalm | W · 2 | Unique | For 3 turns, target ally gains 1 Might, and their other Buffs don't count down. |
 | Curse | Touch of the Grave | r · 2 | Texture | For 2 turns, each Buff target enemy would gain is lost, and the user gains a Soul Fragment instead (max 3). |
 | Smite | Soul Rime | Sr · 1 | Soulfrost | 20 damage to target enemy and Soulfrost for 2 turns. Each time it yields a Soul Fragment, the ally who dealt that damage heals 10. |
-| Prayer | Dirge of Winter | Wrr · 2 | Texture | All allies heal 15 and gain 10 Shield, plus 10 more Shield for each Horrified enemy. |
-| Cleave | Cold Betrayal | S · 1 | Texture | 25 Piercing damage to target enemy and 15 to a random other enemy. Each ally of the user without Frostborn loses 10 HP; every ally gains a Soul Fragment. |
+| Prayer | Frostborn Litany | Wrr · 2 | Texture | All allies heal 20 and gain Frostborn for 1 turn. While it lasts, this Frostborn also makes them Invulnerable to Chilled and Numb enemies, not just Frostbitten ones. |
+| Cleave | Spreading Rime | S · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy, who also gains a copy of each Frost debuff on the target, with its duration. |
 | Shout | Frozen Shriek | S · 3 | Soulfrost | All enemies are Intimidated for 1 turn and Soulfrosted until the end of the user's next turn. |
 | Withstand | Hoarded Life | r · 3 | Phylactery | The user gains 25 Shield for 1 turn. When it ends, the damage it absorbed heals their Phylactery, or creates one with that much HP (at least 10). |
 | Taunt | Glacial Dread | S · 3 | Soulfrost | Taunts target enemy for 2 turns. Each time they damage the user, they're Soulfrosted for 1 turn. |
@@ -301,32 +301,32 @@ The log still shows who used Evening Star on whom, so an attentive opponent can 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
 | Strike | Gloaming Blow | S · 0 | Dusk | 20 damage, and the target's Dusk deepens by 1. 15 more against Frozen Sleep. |
-| Smash | Moonfall | Sr · 2 | Texture | 25 damage to target enemy and 15 to their allies; Blinded enemies hit are Chilled for 2 turns. |
+| Smash | Moonfall | Sr · 2 | Texture | 25 damage to target enemy and 15 to their allies. The user gains Frostborn for 1 turn, plus 1 turn for each enemy hit who has no Buffs. |
 | Charge | Silent Descent | A · 2 | Dusk | Stealthy. 15 damage and Dusk 3; if the user is Stealthed, they also gain 1 Focus. |
 | Riposte | Witching Hour | r · 3 | Dusk | Invisible. For 1 turn, counters the first Harmful skill used on the user; its user gains Dusk 2, or their Dusk deepens by 2. |
-| Rage | Polar Night | AI · 4 | Texture | For 3 turns, the user gains 1 Might and Stealth; while Stealthed, every enemy they damage is Chilled for 1 turn. |
+| Rage | Polar Night | AI · 4 | Texture | For 3 turns, the user gains 1 Might and Immune, and using skills doesn't end their Stealth. |
 | Shot | Evening Star | r · 0 | Dusk | 10 damage and Dusk 4, or deepens it by 1. The cheap, repeatable clock. |
 | Snipe | Last Light | Arr · 2 | Dusk | Channeled, hidden target. On the following turn, 40 damage, or 70 Piercing if the target is in Frozen Sleep. |
-| Trap | Black Ice | AI · 3 | Texture | Invisible, 3 turns. The first time target enemy uses a Harmful Strategic skill, it's countered and they're Chilled for 2 turns. |
+| Trap | Breaking Ice | AI · 3 | Unique | Invisible. For 3 turns, the first enemy to use a Harmful skill on target ally breaks through: they take 20 Piercing damage and are Stunned for 1 turn. |
 | Maneuver | Hibernate | r · 4 | Dormant | The user becomes Dormant for 2 turns. |
 | Companion | Snow Owl | A · 1 | Dusk | Summons a Snow Owl (25 HP) permanently. At the end of each of your turns, a random enemy without Dusk gains Dusk 4. Silent Talons (A): 15 damage, 30 against Frozen Sleep. |
-| Bolt | Umbral Lance | Ir · 1 | Texture | 20 damage to target enemy and Isolated for 1 turn. If they have a Frost debuff, they take 10 more and the Isolation lasts 2 turns. |
+| Bolt | Rime Lance | Ir · 1 | Texture | 20 damage to target enemy and Mark for 1 turn. Whoever spends the Mark also leaves them Frostbitten for 2 turns. |
 | Blast | Eventide | AIr · 3 | Dusk | 20 damage to all enemies, and each gains Dusk 3 or deepens it. |
 | Consume | Stolen Hours | r · 2 | Dusk | 10 damage, and the user heals 10. A target's Dusk is removed, and the user gains 10 Shield per turn it had left. |
-| Summon | Frost Wraith | Ir · 2 | Texture | Summons a Frost Wraith (20 HP) for 3 turns. Wail (r): Blinded and Chilled for 1 turn. Grave Chill (I): 15 damage; on a sleeper, it doesn't wake them, and Numbs for 2 turns. |
+| Summon | Call the Revenant | I · 1 | Unique | Summons a Rime Revenant (20 HP) for 3 turns. At the end of each of the user's turns, it deals 15 damage to the last enemy who damaged one of the user's allies. |
 | Channel | Winter Solstice | Ar · 3 | Dusk | Channeled. 10 damage to all enemies for 2 turns; while it channels, every enemy's Dusk deepens by 1 extra each turn. |
 | Stab | Rime Stiletto | r · 1 | Texture | 10 damage, or 25 if the target is Asleep, without waking them. Pays off Shadow's Sleep as well as Midnight. |
-| Ravage | Rimefang | Ar · 1 | Texture | 25 Piercing damage. Blinded targets are also Frostbitten for 2 turns; Chilled ones are also Blinded for 1 turn. |
+| Ravage | Nightfang | Ar · 1 | Texture | 25 Piercing damage to target enemy. If it leaves them below 30 HP, they fall Asleep. |
 | Mislead | False Dawn | I · 2 | Dusk | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and if they have Dusk, Midnight strikes now. |
 | Stun | Midnight Toll | AI · 3 | Dusk | If target enemy has Dusk, Midnight strikes now. Otherwise, 15 damage and Dusk 2. |
 | Dance | Moonlit Waltz | AI · 4 | Dusk | For 3 turns, the user's skills are Stealthy, and every enemy they damage has their Dusk deepened by 1. |
 | Heal | Winter Rest | W · 2 | Dormant | Target ally heals 15 and becomes Dormant for 1 turn: it pulls a dying ally out of the fight. |
 | Bless | Veil of Rime | Ar · 2 | Texture | Target ally gains Stealth. When it ends, they gain 10 Shield for each turn it lasted (max 30). |
 | Curse | Starless Sky | Ar · 2 | Dusk | Target enemy gains Dusk 4, or deepens it by 1. For 2 turns, each skill they use deepens it by 1 more. |
-| Smite | Frost Moon | Wr · 1 | Texture | Stealthy. 20 damage and Sanctify for 1 turn; used from Stealth, it also Chills for 2 turns. |
+| Smite | Hidden Moon | Wr · 1 | Texture | Stealthy. 20 damage to target enemy and Sanctify for 1 turn. For 1 turn, allies who damage them keep their Stealth. |
 | Prayer | Hibernal Vigil | Wrr · 4 | Dormant | All allies heal 15 and become Dormant for 1 turn: the whole team skips a turn to fortify. |
 | Cleave | Crescent Cleave | Sr · 1 | Dusk | 25 damage to the target, and 15 to the enemy closest to Midnight (random if none has Dusk). Only you know who that is. |
-| Shout | Wolf Moon | S · 3 | Texture | All enemies are Intimidated for 2 turns. Any with Swiftness lose it all and are Blinded for 2 turns. |
+| Shout | Hoarfrost Howl | S · 3 | Texture | All enemies are Intimidated for 2 turns. Meanwhile, each Frost debuff they gain lasts 1 turn longer. |
 | Withstand | Hoarfrost Mantle | r · 3 | Texture | 20 Shield for 2 turns; enemies who damage the user while it holds are Chilled for 1 turn. |
 | Taunt | Lantern Lure | r · 3 | Dusk | Creates a Lantern (10 HP); target enemy is Taunted by it for 1 turn. If they damage it, they gain Dusk 2. |
 | Titan | Sleeping Giant | SW · 4 | Dormant | The user becomes Dormant for 2 turns, gaining 20 Shield per turn instead of 10. When they wake, every enemy gains Dusk 2. |

@@ -27,16 +27,16 @@ One keyword: the rest is Water's Renew and Flow, and Lightning's Charge and Sapp
 | Consume | Ebb Siphon | r · 2 | Texture | 5 damage to target enemy, and the user heals 10 per stack of Sapped on them (max 30). |
 | Summon | Galvanic Elemental | I · 1 | Soaked | Summons a Galvanic Elemental (20 HP) for 3 turns. When it dies, every Soaked enemy takes 15 damage. Static Lash (nc, Uncounterable): 10 damage and Soaked for 1 turn. |
 | Channel | Electric Rain | rr · 3 | Soaked | Channeled, up to 4 turns. Each turn, a random enemy is Soaked for 2 turns, then a random Soaked enemy takes 10 damage, which conducts. |
-| Stab | Shock Knife | r · 0 | Texture | 10 damage to target enemy, or 25 if they have Renew or Charge; they lose 1 of each. |
-| Ravage | Drowning Shock | Ir · 1 | Texture | 25 Piercing damage to target enemy. If they're Stunned, they also gain 1 Sapped per turn of Stun left. |
+| Stab | Static Shiv | r · 0 | Texture | 10 damage to target enemy, or 20 if they're at or below 60 HP. For 1 turn, the user gains 1 Charge each time an enemy skill targets them. |
+| Ravage | Riptide Pike | Ir · 1 | Texture | 25 Piercing damage to target enemy. The user spends up to 3 Renew, and each one spent cuts their other cooldowns by 1. |
 | Mislead | Grounding | I · 2 | Soaked | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and every Soaked enemy gains 1 Sapped. |
 | Stun | Electric Undertow | I · 2 | Soaked | 15 damage to target enemy and a 1-turn Stun. Every other Soaked enemy has their non-Strategic skills stunned for 1 turn. |
 | Dance | River of Lightning | Ir · 5 | Texture | For 4 turns, the user gains Stormborn and 1 Swiftness; each Charge Stormborn gives them also brings 2 Renew. |
-| Heal | Restart | I · 1 | Texture | Target ally heals 20 and gains 2 Renew. Their Sapped is removed, and they heal 10 more per stack. |
+| Heal | Still Spring | I · 1 | Texture | Target ally heals 20 and gains 2 Renew. For 2 turns, their Renew heals without losing stacks. |
 | Bless | Overflow | r · 2 | Soaked | For 3 turns, target ally's single-target skills count as Current skills, so they conduct through Soaked enemies. |
 | Curse | Waterlogged | r · 2 | Soaked | Target enemy is Soaked for 2 turns and gains 1 Confusion; each time a conducted hit reaches them, they gain 1 more (max 3). |
 | Smite | Charged Ring | I · 1 | Soaked | 15 damage to target enemy and Soaked for 2 turns. For 2 turns, allies who damage them heal 5 per Soaked enemy. |
-| Prayer | Galvanic Hymn | Irr · 2 | Texture | All allies heal 15 and gain 2 Renew. For 2 turns, each time an ally gains Charge, they heal 10. |
+| Prayer | Swelling Current | Irr · 2 | Unique | All allies heal 10. The healing repeats at the start of each of the user's next 2 turns, 10 more each time (20, then 30), and stops once the user takes damage. |
 | Cleave | Arc Lash | I · 1 | Soaked | 25 damage to target enemy, and 15 to the Soaked enemy with the lowest HP (a random one if none is Soaked). Each is Soaked for 1 turn. |
 | Shout | Sounding Call | I · 2 | Soaked | All enemies are Soaked for 2 turns, and Intimidated for 1 turn per stack of Sapped they have (at least 1). |
 | Withstand | Bubble Cage | S · 3 | Texture | The user gains 25 Shield for 1 turn. When it ends, they gain 1 Charge per 10 Shield left. |
@@ -54,7 +54,7 @@ One keyword, defensive by design; Mist's offense is Water's Confusion and Renew 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
 | Strike | Veiled Strike | I · 0 | Fog | 20 damage to target enemy, and the user gains Fog for 1 turn. If Fog redirected a skill away from the user since their last turn, this deals 15 more. |
-| Smash | Spindrift | Ar · 2 | Texture | 20 damage to target enemy and 10 to their allies. Each enemy hit who is Immobile gains 1 Confusion for 2 turns. |
+| Smash | Gale Spindle | Ar · 2 | Texture | 20 damage to target enemy and 10 to their allies. The user spends all their Swiftness; each stack spent adds 10 to every hit. |
 | Charge | Mistwalk | nc · 1 | Fog | 15 damage to target enemy. The user gains 1 Focus, and their ally with the lowest HP gains Fog for 1 turn. |
 | Riposte | Fogbank | r · 3 | Fog | Invisible. For 1 turn, the user has Fog and counters the first Harmful skill used on them or on any Fogged ally. |
 | Rage | Riptide Fury | A · 4 | Texture | For 3 turns, the user begins Rushing and gains 1 Might; each turn they stay Rushing, they gain 2 Renew. |
@@ -63,25 +63,25 @@ One keyword, defensive by design; Mist's offense is Water's Confusion and Renew 
 | Trap | Choking Fog | A · 3 | Fog | Invisible, 3 turns. The first time target enemy uses a single-target Harmful skill, it hits a random unit on its target's side instead, and they gain 1 Confusion. |
 | Maneuver | Dissipate | r · 3 | Fog | The user becomes Invulnerable for 1 turn, and every ally gains Fog until the user's next turn. |
 | Companion | Mist Heron | A · 1 | Fog | Summons a Mist Heron (35 HP) permanently. It always has Fog. Spear Beak (r): 15 damage to target enemy, +10 if they're Immobile. |
-| Bolt | Pressure Bolt | I · 2 | Texture | 20 damage to target enemy. They lose 1 Swiftness, or gain 1 Confusion if they have none. |
-| Blast | Squall of Spray | Ar · 2 | Texture | 20 damage to all enemies. Each loses all Swiftness and Renew, and takes 5 more per stack lost. |
-| Consume | Wring Out | r · 2 | Texture | 5 damage to target enemy, healing the user for it. If they're Immobile, the user heals 15 more and begins Rushing. |
+| Bolt | Burst Spring | I · 2 | Texture | 20 damage to target enemy. Every ally's Renew heals once now, without losing a stack. |
+| Blast | Drowning Squall | Ar · 2 | Texture | 20 damage to all enemies. For 2 turns, each Confusion an enemy gains comes with 1 Intimidated for as long. |
+| Consume | Condensation | r · 2 | Unique | 5 damage to target enemy, healing the user for it. The user also heals as much as that enemy was healed since the user's last turn, up to 30. |
 | Summon | Will-o'-Mists | r · 3 | Fog | Summons 2 Will-o'-Mists (10 HP) for 3 turns; while any stands, every ally has Fog (and the Mists can be hit in their place). Pale Touch (nc): 5 Piercing damage. |
 | Channel | Rolling Fog | AI · 3 | Fog | Channeled. 10 damage to all enemies for 2 turns. All allies have Fog while it lasts, and enemies whose skills it redirects gain 1 Confusion. |
-| Stab | Hidden Knife | r · 0 | Texture | 10 damage to target enemy, or 20 if they're Confused; on 20, the user begins Rushing. |
+| Stab | Weakwater Knife | r · 0 | Texture | 10 damage to target enemy, or 20 if they're at or below 60 HP. The user takes 1 Weakness from them and gains it as 1 Might for 1 turn. |
 | Ravage | Undertow Thrust | A · 1 | Texture | 25 Piercing damage to target enemy, +5 per Renew the user has (max 20). Then the user loses all Renew and Leaps. |
 | Mislead | Lost in the Fog | I · 2 | Fog | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and each unit it targeted gains Fog for 2 turns. |
-| Stun | Disorient | r · 2 | Texture | 10 damage to target enemy, and stuns their Strategic skills for 1 turn, or all their skills if they're Confused. |
+| Stun | Buffeting Mist | r · 2 | Texture | 10 damage to target enemy and a 1-turn Stun. Any Swiftness they spend to ignore it goes to the user. |
 | Dance | Rain Dance | Ir · 5 | Fog | For 4 turns, the user has Fog, and each time it redirects a skill, they gain 1 Swiftness and 1 Focus. |
 | Heal | Morning Dew | A · 1 | Fog | Target ally heals 20. If they have Fog, it condenses now, giving them 4 Renew instead of 2. |
 | Bless | Cloak of Mist | r · 2 | Fog | For 3 turns, target ally gains 1 Renew, and has Fog whenever they're Rushing or Leaping. |
-| Curse | Heavy Air | A · 2 | Texture | Target enemy loses all mobility buffs and gains 1 Confusion for 2 turns, +1 per buff lost (max 3). |
-| Smite | Spray Ring | I · 1 | Texture | 20 damage to target enemy and 1 Confusion for 1 turn. For 1 turn, each ally who damages them begins Rushing. |
+| Curse | Heavy Air | A · 2 | Texture | Target enemy counts as Immobile for 2 turns, whatever skills or buffs they have, and gains 1 Weakness. |
+| Smite | Dewfall Ring | I · 1 | Texture | 20 damage to target enemy and Sanctify for 1 turn; it gives allies who damage them 3 Renew instead of healing 15. |
 | Prayer | Mercy of the Mist | Wrr · 2 | Fog | All allies heal 20 and gain Fog for 1 turn; this Fog condenses into 3 Renew instead of 2. |
-| Cleave | Whipping Spray | Ar · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. If the user is Leaping, the Leap isn't spent and both gain 1 Confusion. |
+| Cleave | Stolen Wind | Ar · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. Each loses 1 mobility buff, which the user gains. |
 | Shout | Foghorn | A · 2 | Fog | All enemies are Intimidated for 2 turns. For 1 turn, single-target skills they aim at the user hit a random ally of theirs instead. |
 | Withstand | Veil of Mist | r · 1 | Fog | The user gains 15 Shield for 1 turn. If they have Fog, it condenses now: 15 more Shield and its 2 Renew. |
-| Taunt | Siren Song | r · 3 | Texture | Taunts target enemy for 2 turns, and they gain 1 Confusion each time they damage the user. The user begins Rushing. |
+| Taunt | Voice in the Fog | r · 3 | Unique | Invisible. For 2 turns, target enemy's single-target Harmful skills hit the user instead, whoever they aim at. |
 | Titan | Marid Form | SA · 4 | Fog | For 3 turns, the user gains 2 Armor, Immune and Fog. When it ends, the Fog condenses into 6 Renew instead of 2. |
 
 ## Serum — Water + Poison
@@ -96,7 +96,7 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 | --- | --- | --- | --- | --- |
 | Strike | Hypodermic Strike | W · 0 | Dose | 20 damage to target enemy, +5 per Dose they have. Then they gain 2 Dose. |
 | Smash | Shattering Vial | Sr · 2 | Dose | 25 damage to target enemy and 15 to their allies. Each enemy hit who already has Dose gains 2 more; the rest gain 1. |
-| Charge | Adrenaline | S · 1 | Texture | 15 damage to target enemy. The user gains 1 Focus, or 2 Focus and 2 Renew if the target is Prey. |
+| Charge | Stim Rush | S · 1 | Texture | 15 damage to target enemy. The user gains 1 Focus, and the next skill they use has its cooldown cut by 1. |
 | Riposte | Reactive Serum | W · 2 | Dose | Invisible. For 1 turn, counters any Harmful skill used on the user; its user gains 3 Dose. |
 | Rage | Adrenal Surge | SI · 4 | Dose | Every enemy's Might turns into Dose, stack for stack. For 3 turns, the user gains Immune and 1 Might per stack converted (max 3). |
 | Shot | Syringe Dart | r · 1 | Dose | 10 Piercing damage to target enemy and 1 Dose, or 2 if they're Prey. |
@@ -109,7 +109,7 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 | Consume | Extraction | r · 2 | Dose | Removes all Dose from target unit: an enemy takes 10 Affliction per stack; an ally heals 10 per stack. |
 | Summon | Spriggan Nurse | W · 2 | Dose | Summons a Spriggan Nurse (15 HP) for 3 turns. Titrate (W): target ally gains 1 Dose; if they have 3, a random enemy gains 2 instead. |
 | Channel | Drip | rr · 3 | Dose | Channeled, up to 4 turns. Each turn, target enemy gains 1 Dose and takes 5 Affliction per Dose they have. It ends when they Overdose. |
-| Stab | Booster Needle | r · 0 | Texture | 10 Piercing damage to target enemy, +5 per Toxin and Renew on them (max +15). |
+| Stab | Microdose | r · 1 | Unique | 5 damage to target enemy now and at the start of each of their next 3 turns. Each dose is 15 instead while they're at or below 60 HP. |
 | Ravage | Toxic Injection | Ar · 1 | Dose | 25 Piercing damage to target enemy, Bypassing Invulnerable. Their Toxin turns into Dose, stack for stack. |
 | Mislead | Placebo | W · 2 | Dose | Invisible. For 1 turn, if target enemy uses a Helpful skill, it's countered, and each of its targets gains 2 Dose. |
 | Stun | Sedative | W · 3 | Dose | 15 damage to target enemy and a 1-turn Stun, +1 turn per 2 Dose they have (max 3 turns). |
@@ -117,7 +117,7 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 | Heal | Remedy | W · 1 | Dose | Target unit heals 25. An ally gains 1 Dose; an enemy gains 3. |
 | Bless | Booster Shot | W · 2 | Dose | For 3 turns, target ally gains 1 Swiftness, and each Debuff they'd gain becomes 1 Dose instead (max 2). |
 | Curse | Tainted Vial | r · 2 | Dose | Target enemy is Confused for 2 turns and gains 1 Dose per Debuff they have (max 3). |
-| Smite | Aftercare | Wr · 1 | Texture | 15 damage to target enemy and 1 Toxin. For 1 turn, allies who damage them gain 1 Renew per Toxin on them (max 3). |
+| Smite | Mercy Dose | Wr · 1 | Texture | 15 damage to target enemy and Sanctify for 1 turn. For 1 turn, an ally who damages them executes them if it leaves them below 15 HP. |
 | Prayer | Tonic Round | Wr · 2 | Dose | All allies heal 10 per Dose they have (at least 10) and lose 1 Dose. All enemies gain 1 Dose. |
 | Cleave | Lashing Spray | S · 2 | Dose | 25 damage to target enemy and 15 to a random other enemy, who gains as many Dose as the target has. |
 | Shout | Bad Batch | r · 1 | Dose | Every unit that has Dose gains 1 more, allies included. If no enemy has Dose, every enemy gains 1 instead. |
@@ -157,10 +157,10 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 | Heal | Healing Gel | r · 1 | Oozes | Target ally heals 25; any healing past their max HP becomes an Ooze with that much HP, if it's 10 or more. |
 | Bless | Fertile Silt | r · 2 | Texture | Target ally gains 2 Renew. For 3 turns, each time Renew heals them, they gain 1 Might (max 2). |
 | Curse | Gummed Up | r · 2 | Oozes | Target enemy gains 2 Confusion, which lasts until the user has no Oozes; if the user has none now, they create one. |
-| Smite | Silt Brand | W · 1 | Texture | 20 damage to target enemy. If they used a Helpful skill since the user's last turn, they're Isolated for 1 turn and this deals 10 more. |
+| Smite | Settling Silt | W · 1 | Texture | 20 damage to target enemy, and silt settles on them for 2 turns: Swiftness can't stop Stuns on them, and those Stuns can't be removed. |
 | Prayer | Gel Mantle | Wrr · 2 | Oozes | All allies heal 20 and gain 10 Shield. Every allied Ooze then melts into it: each adds 10 Shield to every ally, and dies. |
-| Cleave | Absorbing Sweep | Sr · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. For each Weakness either has, the user gains 1 Might for 2 turns. |
-| Shout | Mudslide | S · 3 | Texture | All enemies are Intimidated for 2 turns. Stunned ones are buried as well: Isolated for 2 turns, so their allies can't reach them. |
+| Cleave | Mudguard Sweep | Sr · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. Until the user's next turn, their Armor also reduces Piercing damage. |
+| Shout | Quagmire | S · 3 | Unique | All enemies are Intimidated for 2 turns. For as long, each of their skills costs at least 2 energy; cheaper ones gain random costs to make up the difference. |
 | Withstand | Gel Rampart | r · 3 | Oozes | The user gains 25 Shield for 2 turns. If an enemy breaks it, the pieces become an Ooze. |
 | Taunt | Sticky Bait | W · 3 | Oozes | The user creates an Ooze, and target enemy is Taunted by it for 2 turns. |
 | Titan | Gelatinous Giant | SW · 4 | Oozes | For 4 turns, the user Splits like an Ooze when damaged (the new Oozes are separate minions, max 4) and gains 1 Armor per allied Ooze. |
@@ -182,21 +182,21 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 | Shot | Holy Sprinkle | r · 0 | Unction | 15 damage to target enemy. If the user has Unction, they fling 1 stack with it: 10 more damage, and the target is Condemned. If not, they gain 1. |
 | Snipe | Lance of the Font | Arr · 2 | Texture | Channeled, hidden target. On the following turn, 30 damage to target enemy, +10 per Debuff on them; those Debuffs are washed away. |
 | Trap | Font Ward | A · 3 | Unction | Invisible. For 3 turns, whenever target enemy gives an ally of the user a Debuff, they take 15 damage and that ally gains 1 Unction. |
-| Maneuver | Immersion | I · 3 | Texture | The user becomes Invulnerable for 1 turn and loses all Debuffs; if they lost any, they're Anointed until the end of their next turn. |
+| Maneuver | Immersion | I · 3 | Texture | The user becomes Invulnerable for 1 turn. Every enemy who uses a Harmful skill during it is Condemned. |
 | Companion | Sacred Koi | A · 1 | Unction | Summons a Sacred Koi (35 HP) permanently; it gains 1 Might for good (max 3) whenever an ally's Unction removes a Debuff. Cleansing Kiss (r): target ally gains 1 Unction. Tail Slap (nc): 10 damage. |
 | Bolt | Vial of Holy Water | I · 1 | Unction | 20 damage to target enemy and Sanctify for 1 turn. If they were already Sanctified, it bursts instead: every ally heals 15 and gains 1 Unction. |
 | Blast | Flood of Grace | IW · 2 | Chrism | 20 damage to all enemies, +10 for each Anointed ally, the user included. |
 | Consume | Communion | r · 2 | Chrism | 10 damage to target enemy; the user and every Anointed ally heal for the damage dealt. |
-| Summon | Font Spirit | I · 1 | Texture | Summons a Font Spirit (20 HP) for 3 turns. Pour (nc): target ally heals 10. If the Spirit is killed, every ally is Anointed until the end of their next turn. |
+| Summon | Baptismal Font | I · 1 | Unique | Summons a Baptismal Font (25 HP) for 3 turns. Pour (nc): target ally heals 10. While it stands, no unit on either side can gain Debuffs. |
 | Channel | Consecrated Rain | rr · 3 | Unction | Channeled, up to 4 turns. Each turn, 5 damage to all enemies, and each loses a Buff; for each Buff washed away, a random ally gains 1 Unction. |
-| Stab | Blessed Shell | A · 0 | Texture | 10 damage to target enemy, or 25 if they have more Debuffs than the user. |
-| Ravage | Purging Flood | Wr · 1 | Texture | 20 Piercing damage to target enemy, +10 for each Buff it washes off them (up to 2). |
+| Stab | Brine Needle | A · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. Each Weakness on them lasts 1 turn longer. |
+| Ravage | Scouring Current | Wr · 1 | Texture | 25 Piercing damage to target enemy. For 2 turns, the user's Flow also lets their skills ignore Shield. |
 | Mislead | Turned to Grace | A · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and its targets heal the damage it would have dealt. |
 | Stun | Submission | r · 2 | Chrism | Target enemy is Stunned for 1 turn. While they are, Anointed allies deal 10 more damage to them. |
 | Dance | River of Grace | WW · 5 | Chrism | For 3 turns, the user gains Chrism and 2 Swiftness, and allies they Anoint through it gain Chrism too until the end of their next turn. |
 | Heal | Anointing Oil | W · 1 | Unction | Target ally heals 15 and gains 1 Unction, +1 for each Debuff they have. |
 | Bless | Holy Oil | r · 2 | Unction | For 2 turns, any Debuff target ally would gain becomes 1 Unction instead. |
-| Curse | Heretic's Dunking | S · 2 | Texture | Target enemy is Confused for 2 turns. If any of their Debuffs is removed before then, they're Condemned. |
+| Curse | Offertory | S · 2 | Unique | Target enemy is Confused for 2 turns. Each time Confusion raises the cost of a skill they use, the user's player gains 1 random energy per energy it added. |
 | Smite | Ring of Grace | I · 1 | Unction | 15 damage to target enemy. For 2 turns, each time an ally damages them, the ally with the most Debuffs gains 1 Unction. |
 | Prayer | Sin-Eater's Prayer | WS · 3 | Unction | All allies heal 20. The user then takes on every ally's Debuffs and gains 1 Unction for each. |
 | Cleave | Sweeping Grace | Sr · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. Any Sanctify or Condemned on the first flows onto the second. |
@@ -222,26 +222,26 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 | Shot | Blood Dart | r · 0 | Blood Price | Blood Price. 15 damage to target enemy and 1 Hemorrhage. If they were already bleeding, the user heals back the HP they paid. |
 | Snipe | Crimson Lance | Ir · 2 | Blood Price | Blood Price. Channeled, hidden target. On the following turn, 40 damage to target enemy, plus the damage the user took in between (max 30 more). |
 | Trap | Tainted Cure | A · 3 | Hemorrhage | Invisible. For 3 turns, the next healing target enemy receives becomes Hemorrhage instead: 1 stack per 10 HP it would have healed (max 5). |
-| Maneuver | Pale Step | A · 2 | Texture | Invisible. The user becomes Immortal for 1 turn, then gains 1 Renew for every 10 HP they lost during it. |
+| Maneuver | Pale Step | A · 2 | Texture | Invisible. The user becomes Immortal for 1 turn and drains a Soul Fragment from each enemy who damages them during it. |
 | Companion | Vampire Bat | S · 1 | Hemorrhage | Summons a Vampire Bat (30 HP) permanently. Bite (r): 10 damage and 1 Hemorrhage; the Bat heals the damage dealt. |
 | Bolt | Sanguine Bolt | Ir · 1 | Blood Price | Blood Price. 25 damage to target enemy, and the HP the user paid heals their lowest-HP ally, doubled. |
 | Blast | Red Rain | SIr · 2 | Hemorrhage | Blood Price. 25 damage to all enemies. The user spends all their Soul Fragments: each one gives every enemy 1 Hemorrhage. |
 | Consume | Transfusion | I · 2 | Hemorrhage | 5 damage to target enemy. If they have Hemorrhage, the user drinks it: it ends, and they heal 10 per stack. If not, the target gains 1 Hemorrhage. |
 | Summon | Blood Elemental | rr · 1 | Blood Price | Blood Price. Summons a Blood Elemental for 3 turns, with HP equal to what the user paid. Blood Lash (nc): 10 damage and 1 Hemorrhage. When it expires, the user heals its remaining HP. |
 | Channel | Exsanguinate | rr · 3 | Hemorrhage | Blood Price. Channeled, up to 3 turns. Each turn, target enemy gains 1 Hemorrhage, and the user heals for what their Hemorrhage deals. |
-| Stab | Vein Opener | r · 0 | Texture | 10 damage to target enemy. If the user has 3 or more Renew, they spend 3 to deal 15 more and drain a Soul Fragment from them. |
+| Stab | Bloodletter's Knife | r · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. The user's Renew heals them once now, without losing a stack. |
 | Ravage | Arterial Strike | AS · 2 | Hemorrhage | 30 Piercing damage to target enemy and 2 Hemorrhage. If they're healed before the user's next turn, the healer takes the Hemorrhage instead. |
 | Mislead | Red Herring | r · 3 | Blood Price | Blood Price. Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and they pay its cost again in blood: 10 HP per energy. |
-| Stun | Swoon | A · 2 | Texture | 15 damage to target enemy and a 1-turn Stun. If they're Horrified, the Stun lasts as long as the Horrify does. |
+| Stun | Swoon | A · 2 | Unique | 15 damage to target enemy, and they faint: Stunned until they're healed, up to 2 turns. |
 | Dance | Danse Sanguine | A · 3 | Hemorrhage | Target enemy gains 1 Hemorrhage. For 3 turns, each time the user damages a bleeding enemy, that Hemorrhage grows by 1 and the user gains 1 Swiftness (max 2). |
-| Heal | Give Blood | r · 0 | Blood Price | Blood Price. Target ally heals 30. |
+| Heal | Restitution | W · 1 | Unique | Target ally heals 20, and the enemy who damaged them most recently loses as much HP. |
 | Bless | Blooded Edge | W · 2 | Hemorrhage | For 3 turns, target ally gains 1 Might, and their direct hits give 1 Hemorrhage, once per target each turn. |
 | Curse | Hemophilia | r · 1 | Hemorrhage | Target enemy gains 2 Hemorrhage, which healing can't remove for 2 turns. |
 | Smite | Bloodmark | Sr · 1 | Hemorrhage | 20 damage to target enemy and 1 Hemorrhage. For 2 turns, allies who damage them heal 5 per Hemorrhage stack they have. |
 | Prayer | Blood Chant | Wrr · 2 | Blood Price | Blood Price. All allies heal 20. Until the user's next turn, their allies' random costs are paid with the user's HP instead, 10 each. |
-| Cleave | Leeching Sweep | Sr · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. The user heals for the damage dealt to any that have Weakness or Confusion. |
+| Cleave | Leeching Sweep | Sr · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. For 2 turns, the user's Lifesteal also heals them for their ticking and Affliction damage. |
 | Shout | Bloodcurdle | S · 3 | Hemorrhage | All enemies are Intimidated for 2 turns. Horrified ones also gain 2 Hemorrhage. |
-| Withstand | Blood Loan | r · 3 | Texture | The user drains 10 HP from each other ally and gains 20 Shield plus the total. At the end of the user's next turn, each of those allies gains 3 Renew. |
+| Withstand | Clotting Ward | r · 3 | Texture | The user gains 25 Shield for 1 turn. While it holds, their Renew also heals at the end of each enemy turn. |
 | Taunt | Scent of Blood | S · 3 | Hemorrhage | Taunts target enemy for 2 turns. Each time they damage the user, the user's Hemorrhage moves onto them; if the user has none, they gain 1 Hemorrhage. |
 | Titan | Crimson Colossus | Srr · 4 | Blood Price | Blood Price. For 3 turns, the user gains 2 Armor and Immortal, and all of their skills' random costs are paid in HP. |
 
@@ -256,7 +256,7 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 | --- | --- | --- | --- | --- |
 | Strike | Silvered Blade | I · 0 | Reflect | 20 damage to target enemy. If they're Blinded, their next single-target skill is Reflected back at them. |
 | Smash | Shattering Glass | Sr · 2 | Texture | 25 damage to target enemy and 15 to their allies. Any counter, Reflect or Trap on the enemies it hits shatters: it ends, and its owner takes 10 more. |
-| Charge | Stillwater Step | S · 3 | Texture | Stealthy. 15 damage to target enemy. If the user is Stealthed, their other cooldowns drop by 1. |
+| Charge | Stillwater Step | S · 3 | Texture | Stealthy. 15 damage to target enemy. For 2 turns, Helpful skills the user uses don't break their Stealth. |
 | Riposte | Looking Glass | A · 3 | Reflect | Invisible. For 1 turn, every Debuff aimed at the user is Reflected onto whoever sent it; the damage still lands. |
 | Rage | Quicksilver Fury | SA · 4 | Mimic | For 3 turns, the user gains 1 Might, and whenever an enemy uses a Helpful skill on themselves, the user Mimics it. |
 | Shot | Needle of Glass | r · 0 | Mimic | 10 damage to target enemy. If the last skill they used cost 1 energy or less, the user Mimics it too. |
@@ -264,23 +264,23 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 | Trap | False Reflection | r · 2 | Reflect | Invisible, 2 turns. The first Helpful skill target enemy uses is Reflected: its effects land on a random unit of yours instead. |
 | Maneuver | Through the Glass | r · 3 | Reflect | The user becomes Invulnerable for 1 turn, watching from the glass: the first single-target Harmful skill aimed at an ally in that time is Reflected. |
 | Companion | Doppelganger | A · 1 | Mimic | Summons a Doppelganger (30 HP) permanently. Mimicry (r): it uses a copy of the last skill its summoner used. |
-| Bolt | Glarebolt | Ar · 1 | Texture | 20 damage to target enemy and Blinded for 2 turns. If they were already Blinded, the glare also stuns their non-Strategic skills for 1 turn. |
+| Bolt | Glintbolt | Ar · 1 | Texture | 25 damage to target enemy and Marked for 1 turn. The ally who spends the Mark has their other cooldowns cut by 1. |
 | Blast | Dark Tide | Irr · 2 | Mimic | 20 damage to all enemies. The user then Mimics the last enemy skill that hit more than one of their allies. |
 | Consume | Still Pool | r · 2 | Mimic | 5 damage to target enemy, healing the user for it. If their last skill was Helpful, the user Mimics it. |
 | Summon | Mirror Shade | I · 1 | Reflect | Summons a Mirror Shade (20 HP) for 3 turns. Glass Shard (nc): 10 damage to target enemy. When it's killed, the skill that killed it is Reflected onto its user. |
 | Channel | Hall of Mirrors | Ar · 3 | Reflect | Channeled, up to 3 turns. Each turn, 10 damage to all enemies. While it channels, enemy single-target skills aimed at the user hit a random enemy instead. |
-| Stab | Silver Knife | r · 0 | Texture | 10 damage to target enemy, or 25 if they're Asleep; it doesn't wake them. |
+| Stab | Glass Shiv | r · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. Any Confusion on them shatters: it ends, and they take 10 Affliction per stack. |
 | Ravage | Foiled Ambush | Ar · 1 | Reflect | 25 Piercing damage to target enemy, doubled if one of their skills was countered or Reflected since the user's last turn. |
 | Mislead | Stolen Shape | I · 2 | Mimic | For 1 turn, if target enemy uses a Harmful skill, it's countered and the user Mimics it. |
-| Stun | Hypnotic Ripple | A · 2 | Texture | 10 damage to target enemy and Sleep. When they wake, they're groggy: 2 Confusion for 2 turns. |
+| Stun | Hypnotic Ripple | A · 2 | Texture | 10 damage to target enemy and Sleep. When they wake, the ripple spreads: a random ally of theirs falls Asleep. |
 | Dance | Dance of Reflections | A · 3 | Mimic | For 3 turns, the user gains 1 Swiftness at the start of each of their turns. Each time Swiftness stops a Stun, the user Mimics the skill that tried it. |
 | Heal | Mirrored Mending | r · 1 | Reflect | Target ally heals 20. The next Helpful skill an enemy uses to heal is Reflected, landing on that ally instead. |
 | Bless | Silvered Veil | r · 2 | Texture | Target ally gains Stealth, and Flow for 2 turns; while they have Flow, their skills are Stealthy. |
 | Curse | Maddening Glass | A · 2 | Texture | Target enemy is Blinded for 2 turns and gains 1 Confusion. Each time their Blind sends a skill astray, they gain 1 more Confusion. |
 | Smite | Brand in the Glass | A · 1 | Mimic | 15 damage to target enemy. For 2 turns, the first ally who damages them also Mimics the last skill they used. |
-| Prayer | Reflecting Pool | Wrr · 2 | Texture | All allies heal 20. Each ally already Stealthed gains 3 Renew; the rest gain Stealth. |
-| Cleave | Shard Pulse | Sr · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy; any Blinded one it hits also gains 2 Weakness for 1 turn. |
-| Shout | Echoing Howl | Sr · 3 | Texture | All enemies are Intimidated for 2 turns; those already Blinded or Asleep also take 15 Affliction. |
+| Prayer | Reflecting Pool | Wrr · 2 | Texture | All allies heal 20. For 2 turns, each ally who takes no damage in a turn gains Stealth at its end. |
+| Cleave | Rippling Shards | Sr · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. Each ally with Renew gives up 1 stack to add 5 to both hits. |
+| Shout | Inverted Echo | Sr · 3 | Unique | All enemies are Intimidated for 2 turns. Each enemy's cooldowns are mirrored: their ready skills go on cooldown for 1 turn, and those on cooldown become ready. |
 | Withstand | Silvered Guard | A · 3 | Mimic | The user gains 25 Shield for 2 turns. If an enemy breaks it, the user Mimics the skill that did. |
 | Taunt | Mocking Reflection | r · 2 | Mimic | Creates a Reflection (5 HP); target enemy is Taunted by it for 1 turn. When they damage it, the user Mimics that skill. |
 | Titan | Mirror of the Faceless | AW · 4 | Mimic | For 3 turns, the user wears target enemy's face: 2 Armor and copies of their Buffs, refreshed at the start of each of the user's turns. When it begins, the user Mimics that enemy's last skill. |

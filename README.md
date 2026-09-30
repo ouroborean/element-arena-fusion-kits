@@ -7,7 +7,7 @@ Live at **https://ouroborean.github.io/element-arena-fusion-kits/**. It's a comp
 ## What's where
 
 - **Overview:** the fusion matrix, a one-line summary of every kit, the rules all kits follow, the engine features they'd need, and open questions.
-- **Kit pages** (`#/kit/dragon`): a fusion's mechanics and its 30 skills. Click a skill to compare it with the base skill and its parents' versions. Links to a skill are shareable, for example `#/kit/night/stun`.
+- **Kit pages** (`#/kit/dragon`): a fusion's mechanics and its 30 skills. Click a skill to compare it with the base skill and its parents' versions. Links to a skill are shareable, for example `#/kit/night/stun`. Each skill's hook is one of the kit's core mechanics, Texture (new synergies for one parent's play style) or Unique (utility no other kit has).
 - **Compare skills** (`#/skill/strike`): one base skill across all 10 elements and all 55 fusions, filterable by element.
 - **Keywords** (`#/keywords`): every new term, grouped by fusion.
 - **Ratings** (`#/ratings`): give any skill 1 to 3 stars with the stars beside it (click the current star again to clear it). This page lists what you've rated, filters by star count, and exports or imports ratings.

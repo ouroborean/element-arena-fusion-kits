@@ -18,22 +18,22 @@ Holy with Unholy and Shadow; then Unholy with Shadow.
 | Rage | Fanaticism | S · 4 | Fervor | For 3 turns, the user gains 2 Might. Debuffs enemies would give them are prevented and give them 1 Fervor each instead. |
 | Shot | Penitent's Flail | r · 0 | Fervor | 15 damage to target enemy. The user spends 1 Fervor, if they have one, to heal 15. |
 | Snipe | Martyr's Spear | Arr · 2 | Martyr | Channeled, hidden target. On the following turn, 50 damage. If the user dies before it lands, it lands anyway, doubled. |
-| Trap | Inquisition | r · 2 | Texture | Target enemy is Condemned for 2 turns; when it triggers, they're also Horrified for 2 turns. |
+| Trap | Inquisition | r · 2 | Texture | Invisible. For 3 turns, target enemy has Trap 15, and each time their Condemned triggers, they're Condemned again for 1 turn. |
 | Maneuver | Hair Shirt | A · 2 | Fervor | Invisible. The user becomes Immortal for 1 turn. If they're brought to 5 HP meanwhile, they gain 3 Fervor. |
 | Companion | Flagellant | SW · 4 | Martyr | Summons a Flagellant (40 HP, 1 Fervor) permanently. Self-Scourge (nc): it takes 10 Affliction and gains 1 Fervor. Blood Whip (r): 10 damage, +5 per Fervor it has. |
 | Bolt | Heresy Bolt | Ir · 1 | Texture | 25 damage to target enemy and Sanctify for 1 turn; an ally who triggers the Sanctify also drains a Soul Fragment from them. |
 | Blast | Fervent Nova | SIr · 2 | Fervor | 25 Piercing damage to all enemies. If the user is at or below half HP, it strikes again at the start of their next turn. |
-| Consume | Communion of Souls | I · 2 | Texture | 5 damage to target enemy, healing the user 10 per Debuff on them. A Horrified target also loses a Soul Fragment to the user. |
+| Consume | Sin Eater | I · 2 | Unique | 5 damage to target enemy, healing the user for it. Then the user takes every Debuff their allies have onto themselves, for the turns each had left. |
 | Summon | Initiate | I · 1 | Martyr | Summons an Initiate (20 HP, 1 Fervor) for 3 turns. Take the Blow (nc): the next Harmful skill aimed at target ally hits the Initiate instead. |
 | Channel | Mortification | W · 3 | Fervor | Channeled, 3 turns. At the end of each of the user's turns, they take 10 Affliction, and a random enemy takes 10 damage per Fervor stack they have. |
 | Stab | Votive Dagger | A · 0 | Fervor | 10 damage to target enemy, or 25 if the user is at or below half HP. |
-| Ravage | Purge the Faithless | AS · 2 | Texture | 30 Piercing damage to target enemy. If they're Sanctified, the user heals the damage dealt. |
+| Ravage | Strip the Faithless | AS · 2 | Texture | 30 Piercing damage to target enemy. For 2 turns, each Horrified enemy loses a random Buff at the start of their turn. |
 | Mislead | Willing Martyrs | A · 2 | Martyr | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and each of its targets heals 10 per Fervor the user has. |
 | Stun | Do Penance | r · 1 | Fervor | Target enemy is Condemned for 2 turns. If the user has 3 or more Fervor, they're also Stunned for 1 turn. |
 | Dance | Ecstasy | A · 0 | Fervor | The user spends 1 Fervor for 1 Might, 1 Swiftness and 1 Focus until the end of their next turn. With none, they gain 1 Fervor and 1 Confusion for 1 turn. |
 | Heal | Give of Yourself | r · 0 | Fervor | The user takes 15 and gains 1 Fervor; target ally heals 20. |
 | Bless | Anoint the Suffering | W · 2 | Fervor | Target ally is Anointed until the end of their next turn, and gains 1 Fervor per Debuff on them, up to 3. |
-| Curse | Brand the Heretic | S · 2 | Texture | Target enemy is Condemned for 2 turns. If they're Horrified, it triggers twice. |
+| Curse | Communal Grace | S · 2 | Texture | Target enemy is Sanctified for 2 turns. Meanwhile, whenever any Sanctify on an enemy triggers, every ally of the damager heals 5 too. |
 | Smite | Contagious Zeal | Sr · 1 | Fervor | 20 damage to target enemy and Sanctify for 1 turn; the user gains 1 Fervor each time it triggers. |
 | Prayer | Fervent Chant | Wrr · 2 | Martyr | All allies heal 25. Any ally who dies before the user's next turn is a Martyr as if they had 3 Fervor. |
 | Cleave | Shared Suffering | S · 1 | Fervor | 25 damage to target enemy and 15 to a random other; then 1 of the user's Fervor passes to a random ally. |
@@ -60,9 +60,9 @@ One keyword: the Vigilante hides in Shadow's Stealth while denying it to the ene
 | Shot | Searchlight | r · 0 | Exposed | 10 damage to a random enemy, Stealthed ones included. If they had Stealth or an Invisible effect, they're Exposed for 2 turns. |
 | Snipe | From the Rooftops | Ar · 2 | Exposed | Channeled, hidden target. On the following turn, 40 damage to target enemy; if they gained Stealth or used an Invisible skill meanwhile, 20 more and Exposed for 2 turns. |
 | Trap | Sting Operation | r · 2 | Exposed | Invisible. For 2 turns, if target enemy uses a Stealthy or Invisible skill, it's countered and they're Exposed for 2 turns. |
-| Maneuver | Over the Rooftops | r · 3 | Texture | Stealthy. The user becomes Invulnerable for 1 turn; their next skill against a Condemned or Sanctified enemy is Stealthy too. |
+| Maneuver | Safe Passage | r · 4 | Unique | The user and target ally become Invulnerable for 1 turn. The user can't use Harmful skills on their next turn. |
 | Companion | Bloodhound | A · 1 | Exposed | Summons a Bloodhound (30 HP) permanently. Run Down (r): 10 Piercing damage. Scent (r): target enemy is Exposed for as long as the Bloodhound lives, until it uses Scent again. |
-| Bolt | Blind Justice | Ar · 1 | Texture | 20 damage to target enemy. A Blinded target is also Condemned for 2 turns; a Condemned one is also Blinded for 2 turns. |
+| Bolt | Deputize | Ar · 1 | Texture | 20 damage to target enemy and Marked for 1 turn. The ally who spends the Mark is Anointed until the end of their next turn. |
 | Blast | Floodlight | Irr · 2 | Exposed | 25 damage to all enemies. Those with Stealth, an Invisible effect or Invulnerable are Exposed for 2 turns first, and take 10 more. |
 | Consume | Interrogation | r · 2 | Texture | 5 damage to target enemy, healing the user for the damage dealt. Their Invisible effects are revealed and end, and the user heals 10 more for each. |
 | Summon | Informant | I · 1 | Exposed | Summons an Informant (15 HP) for 3 turns. Whoever damages it is Exposed for 2 turns. Tip Off (r): the user's next skill on target enemy is Stealthy. |
@@ -79,7 +79,7 @@ One keyword: the Vigilante hides in Shadow's Stealth while denying it to the ene
 | Prayer | Vigil of the Watch | Wrr · 2 | Exposed | All allies heal 20. Each enemy who damaged one of them since the user's last turn is Exposed for 2 turns. |
 | Cleave | Sweep the Streets | S · 1 | Exposed | 25 damage to target enemy and 15 to a random Exposed enemy, or to a random enemy if none is. |
 | Shout | Hue and Cry | Sr · 3 | Exposed | All enemies are Intimidated for 2 turns. Meanwhile, each time one uses a Harmful skill, they're Exposed for 1 turn. |
-| Withstand | Armored Coat | A · 1 | Texture | The user gains 25 Shield for 1 turn. If it breaks, its breaker is Condemned for 2 turns and the user gains Stealth. |
+| Withstand | Reinforced Trenchcoat | A · 2 | Unique | The user gains 25 Shield for 1 turn. While it holds, each Debuff an enemy would give them is prevented and costs 10 of the Shield instead. |
 | Taunt | Bait and Switch | r · 2 | Exposed | Taunts target enemy for 2 turns. The first time they damage the user, the Taunt ends: the user gains Stealth, and they're Exposed for 2 turns. |
 | Titan | Nightwarden | AW · 4 | Exposed | For 3 turns, the user gains 3 Armor and Immune, and every enemy who damages them is Exposed for 2 turns. |
 
@@ -97,13 +97,13 @@ One keyword: the Vigilante hides in Shadow's Stealth while denying it to the ene
 | --- | --- | --- | --- | --- |
 | Strike | Woeblade | S · 0 | Hexes | 20 damage to target enemy, who gains a Hex fitting their last skill for 2 turns: Pain if it dealt damage, Ruin if it gave a Buff, otherwise Silence. |
 | Smash | Crushing Malediction | SS · 3 | Hexes | 25 damage to target enemy and 15 to their allies. Each Hex on the target is copied to a random ally of theirs. |
-| Charge | Stalking Shadow | S · 2 | Texture | Stealthy. 15 damage to target enemy. A Blinded target also loses a Soul Fragment to the user. |
+| Charge | Somnambulant Rush | S · 2 | Texture | 15 damage to target enemy, without waking them. The user's next skill doesn't wake Sleeping enemies it damages either. |
 | Riposte | Hex Ward | A · 3 | Hexes | Invisible. For 1 turn, counters every Harmful skill used on the user by a Hexed enemy, and the first one from anyone else. |
 | Rage | Cursed Hunger | SA · 4 | Hexes | For 3 turns, the user gains Lifesteal, and 1 Might for each Hex on enemies, up to 3, counted each turn. |
 | Shot | Needle of Woe | r · 0 | Hexes | 5 Piercing damage to target enemy; each Hex on them lasts 1 turn longer. |
 | Snipe | Doom | AS · 2 | Hexes | Channeled, hidden target. On the following turn, 40 damage to target enemy; it consumes their Hexes for 15 more each, and those Hexes don't Linger. |
 | Trap | Cleanser's Snare | A · 3 | Hexes | Invisible. For 2 turns, if a Debuff is removed from target enemy, they're Stunned for 1 turn and gain Hex of Ruin for 3 turns. |
-| Maneuver | Fade to Black | r · 3 | Texture | Stealthy. The user becomes Ghosted for 1 turn and drains a Soul Fragment from each Blinded enemy. |
+| Maneuver | Familiar's Cover | r · 3 | Texture | The user becomes Invulnerable for 1 turn. For 2 turns, their Lifesteal also heals them for damage their minions deal. |
 | Companion | Black Cat | A · 1 | Hexes | Summons a Black Cat (25 HP) permanently. Scratch (r): 10 Piercing damage. Whoever damages the Cat gains a random Hex for 2 turns. |
 | Bolt | Malediction | Ir · 1 | Hexes | 25 damage to target enemy and Hex of Ruin for 2 turns; each Buff they already have counts as gained, for 10 Affliction each. |
 | Blast | Wave of Woe | Irr · 2 | Hexes | 25 damage to all enemies. Enemies with no Hex gain Hex of Pain for 1 turn. |
@@ -111,10 +111,10 @@ One keyword: the Vigilante hides in Shadow's Stealth while denying it to the ene
 | Summon | Hex Shade | I · 1 | Hexes | Summons a Hex Shade (15 HP) for 3 turns. Whisper (r): target enemy gains a copy of a random Hex from another enemy, with its duration. |
 | Channel | Litany of Curses | Ar · 3 | Hexes | Channeled, 3 turns. At the end of each of the user's turns, a random enemy gains a random Hex for 2 turns; if they already had it, 20 Affliction instead. |
 | Stab | Cursed Dagger | r · 0 | Hexes | 10 damage to target enemy, or 20 at or below 60 HP. If it kills them, each of their Hexes Lingers onto two allies instead of one. |
-| Ravage | Ruination | AS · 2 | Texture | 30 Piercing damage to target enemy. If they're Asleep, it doesn't wake them, and they're Horrified for 2 turns. |
+| Ravage | Rend the Wards | AS · 2 | Texture | The user spends up to 3 Soul Fragments, and target enemy loses 1 random Buff for each. Then 30 Piercing damage to them. |
 | Mislead | Tongue-Tied | r · 3 | Hexes | Invisible. For 1 turn, if target enemy uses a skill while Hexed, it's countered and their Hexes last 1 turn longer. The user becomes Untargetable for 1 turn. |
 | Stun | Evil Eye | A · 2 | Hexes | Target enemy is Stunned for 1 turn if they have 2 or more Hexes; otherwise they gain Hex of Silence for 2 turns. |
-| Dance | Spiteful Jig | A · 0 | Texture | 15 Piercing damage to target enemy. If they're Blinded, they're Horrified for 2 turns and the user gains 1 Swiftness. |
+| Dance | Envious Jig | A · 3 | Unique | The user gains 1 Swiftness. For 3 turns, whenever an enemy gains a Buff, the user gains a copy, and the enemy's lasts 1 turn less. |
 | Heal | Pass the Curse | r · 1 | Hexes | Target ally heals 20, and each Hex or other Debuff on them moves to a random enemy. |
 | Bless | Shroud of Malice | r · 2 | Hexes | Target ally gains Stealth. When it ends, a random enemy gains Hex of Pain for 2 turns. |
 | Curse | Bane | r · 2 | Hexes | Target enemy gains all three Hexes for 2 turns. |

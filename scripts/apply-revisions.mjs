@@ -28,7 +28,9 @@ if (!passFile || !changeFiles.length) {
 }
 
 const pass = JSON.parse(fs.readFileSync(passFile, 'utf8'));
-const PROBLEMS = ['mashup', 'upgrade', 'keyword-swap', 'near-copy', 'other'];
+const PROBLEMS = ['mashup', 'upgrade', 'keyword-swap', 'near-copy', 'bridge', 'formula', 'unique', 'other'];
+// Hooks every kit may use besides its own keywords.
+const SHARED_HOOKS = ['Texture', 'Unique'];
 const errors = [];
 const warnings = [];
 
@@ -99,7 +101,7 @@ for (const r of revised) {
   if (!PROBLEMS.includes(r.problem)) errors.push(`${where}: problem "${r.problem}" isn't one of ${PROBLEMS.join(', ')}`);
   if (/[|\n]/.test(`${r.skill}${r.effect}`)) errors.push(`${where}: a pipe or line break in the text`);
   if (!/[.!)]$/.test(r.effect?.trim() ?? '')) warnings.push(`${where}: effect doesn't end with a period`);
-  if (r.hook !== 'Texture' && !k.hooks.has(r.hook)) warnings.push(`${where}: new hook "${r.hook}" (kit has ${[...k.hooks].join(', ')})`);
+  if (!SHARED_HOOKS.includes(r.hook) && !k.hooks.has(r.hook)) warnings.push(`${where}: new hook "${r.hook}" (kit has ${[...k.hooks].join(', ')})`);
   const lower = r.skill?.toLowerCase();
   if (lower && lower !== row.skill.toLowerCase()) {
     const owner = nameOwners.get(lower);

@@ -207,6 +207,9 @@ const PROBLEMS = {
   upgrade: { label: 'Upgrade', long: "A parent's version, made stronger" },
   'keyword-swap': { label: 'Keyword swap', long: "A parent's version with the kit's keyword swapped in or tacked on" },
   'near-copy': { label: 'Near-copy', long: 'Nearly the same as a parent version or another skill in the kit' },
+  bridge: { label: 'Bridge', long: "A texture skill that only paid off with both parents' statuses in play" },
+  formula: { label: 'Formula', long: 'A texture skill built on the stock "effect, then if this status, that" pattern' },
+  unique: { label: 'Unique', long: "Rebuilt as one of the kit's Unique skills: utility no other kit has" },
   other: { label: 'Other', long: 'Reworked for another reason' },
 };
 const problemOf = (p) => PROBLEMS[p] ?? PROBLEMS.other;
@@ -241,18 +244,20 @@ function costCell(s) {
 function hookChip(k, hook) {
   return `<span class="hook ${k.hookClass[hook] ?? ''}">${esc(hook)}</span>`;
 }
-/** Each kit's core hooks get a color in order of appearance; Texture stays grey. */
+/** Hooks every kit may use besides its own keywords. */
+const SHARED_HOOKS = ['Texture', 'Unique'];
+/** Each kit's core hooks get a color in order of appearance; Texture stays grey and Unique is solid. */
 function hookClasses(k) {
-  const out = {};
+  const out = { Unique: 'h-unique' };
   let n = 0;
-  for (const h of k.hooks) if (h !== 'Texture') out[h] = `h${Math.min(++n, 4)}`;
+  for (const h of k.hooks) if (!SHARED_HOOKS.includes(h)) out[h] = `h${Math.min(++n, 4)}`;
   return out;
 }
 /** The kit's own terms (bold words in its mechanics, and its hooks), bolded where effects use them. */
 function keywordTerms(k) {
   const terms = new Set();
   for (const m of k.introHtml.matchAll(/<strong>(.+?)<\/strong>/g)) terms.add(m[1].replace(/\s*\(N\)$|\s+N$/, ''));
-  for (const h of k.hooks) if (h !== 'Texture') for (const t of h.split('/')) terms.add(t.trim());
+  for (const h of k.hooks) if (!SHARED_HOOKS.includes(h)) for (const t of h.split('/')) terms.add(t.trim());
   const list = [...terms].filter((t) => t.length > 2).sort((a, b) => b.length - a.length);
   if (!list.length) return null;
   return new RegExp(`\\b(${list.map((t) => esc(t).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`, 'g');

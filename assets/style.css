@@ -192,6 +192,7 @@ h1, h2, h3 { font-family: var(--font-display); text-transform: uppercase; letter
 .hook.h2 { --hc: var(--h2); }
 .hook.h3 { --hc: var(--h3); }
 .hook.h4 { --hc: var(--h4); }
+.hook.h-unique { --hc: var(--yellow); background: var(--yellow); color: #000; }
 b.kw { color: var(--text); font-weight: 700; }
 mark { background: var(--yellow); color: #000; padding: 0 1px; }
 
@@ -443,6 +444,9 @@ tr.hidden { display: none; }
 .problem-tag.p-mashup { border-color: var(--red); color: #ff5a6e; }
 .problem-tag.p-upgrade { border-color: var(--h3); color: var(--h3); }
 .problem-tag.p-keyword-swap { border-color: var(--h4); color: var(--h4); }
+.problem-tag.p-bridge { border-color: var(--h1); color: var(--h1); }
+.problem-tag.p-formula { border-color: var(--h2); color: var(--h2); }
+.problem-tag.p-unique { border-color: var(--yellow); background: var(--yellow); color: #000; }
 .change-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .change .side { padding: 10px 14px; }
 .change .side + .side { border-left: 2px solid var(--line); }

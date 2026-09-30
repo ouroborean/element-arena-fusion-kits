@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const contentDir = path.join(root, 'content');
+// Hooks every kit may use besides its own keywords, listed after the kit's own.
+const SHARED_HOOKS = ['Texture', 'Unique'];
 
 export const ELEMENTS = ['Fire', 'Ice', 'Water', 'Lightning', 'Wind', 'Poison', 'Earth', 'Holy', 'Unholy', 'Shadow'];
 const GROUPS = [
@@ -154,7 +156,8 @@ function parseKit(title, body, group) {
     taglineHtml: inline(tagline),
     introHtml: blocks(rest),
     keywords,
-    hooks: [...new Set(rows.map((r) => r.hook))],
+    // Core hooks in order of appearance, then the hooks every kit shares.
+    hooks: [...new Set(rows.map((r) => r.hook))].sort((x, y) => SHARED_HOOKS.indexOf(x) - SHARED_HOOKS.indexOf(y)),
     rows,
   };
 }
