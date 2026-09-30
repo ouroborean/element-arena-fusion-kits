@@ -198,7 +198,8 @@ const overviewSections = ov.sections
   .map((s) => ({ id: slugify(s.title), title: s.title, html: blocks(s.body) }));
 
 // Revision log (content/revisions.json, written by scripts/apply-revisions.mjs): each revised row carries its
-// earlier versions, newest first, and its version number is how many times it has been revised.
+// earlier versions, newest first, and its version number is how many times it has been revised. A minor pass (such as
+// a cost-color change) is logged but doesn't count as a new version, so ratings given before it still stand.
 const logPath = path.join(contentDir, 'revisions.json');
 const log = fs.existsSync(logPath) ? JSON.parse(fs.readFileSync(logPath, 'utf8')) : { passes: [] };
 const kitBySlug = new Map(kits.map((k) => [k.slug, k]));
@@ -210,10 +211,10 @@ const passes = log.passes.map((p) => {
       console.warn(`revisions.json: no ${c.kit} ${c.base}`);
       continue;
     }
-    (row.history ??= []).unshift({ pass: p.id, date: p.date, problem: c.problem, why: c.why, before: c.before });
+    (row.history ??= []).unshift({ pass: p.id, date: p.date, problem: c.problem, why: c.why, before: c.before, ...(p.minor ? { minor: true } : {}) });
     count++;
   }
-  return { id: p.id, date: p.date, title: p.title, summary: p.summary, count };
+  return { id: p.id, date: p.date, title: p.title, summary: p.summary, count, ...(p.minor ? { minor: true } : {}) };
 });
 
 const site = {

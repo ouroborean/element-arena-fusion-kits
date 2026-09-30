@@ -28,7 +28,7 @@ if (!passFile || !changeFiles.length) {
 }
 
 const pass = JSON.parse(fs.readFileSync(passFile, 'utf8'));
-const PROBLEMS = ['mashup', 'upgrade', 'keyword-swap', 'near-copy', 'bridge', 'formula', 'unique', 'rebalance', 'other'];
+const PROBLEMS = ['mashup', 'upgrade', 'keyword-swap', 'near-copy', 'bridge', 'formula', 'unique', 'rebalance', 'color', 'other'];
 // Hooks every kit may use besides its own keywords.
 const SHARED_HOOKS = ['Texture', 'Unique'];
 const errors = [];

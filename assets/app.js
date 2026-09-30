@@ -66,7 +66,8 @@ let storageOk = true;
 
 const ratingId = (kitSlug, base) => `${kitSlug}/${baseSlug(base)}`;
 const isStars = (v) => v === 1 || v === 2 || v === 3;
-const rowVersion = (r) => r?.history?.length ?? 0;
+/** How many times a row has been revised; minor passes (cost colors) don't count, so they don't make ratings stale. */
+const rowVersion = (r) => r?.history?.filter((h) => !h.minor).length ?? 0;
 function rowForId(id) {
   const [slug, base] = id.split('/');
   const k = kits.get(slug);
@@ -210,13 +211,14 @@ const PROBLEMS = {
   bridge: { label: 'Bridge', long: "A texture skill that only paid off with both parents' statuses in play" },
   formula: { label: 'Formula', long: 'A texture skill built on the stock "effect, then if this status, that" pattern' },
   unique: { label: 'Unique', long: "Rebuilt as one of the kit's Unique skills: utility no other kit has" },
+  color: { label: 'Cost color', long: "Its energy color changed to balance its class's color against its fusion's elements" },
   rebalance: { label: 'Rebalance', long: "Reworked to fit the kit's shape: 4 Unique, 8 Texture and 18 core skills split evenly between its mechanics" },
   other: { label: 'Other', long: 'Reworked for another reason' },
 };
 const problemOf = (p) => PROBLEMS[p] ?? PROBLEMS.other;
 
 function revTag(r) {
-  const h = r.history?.[0];
+  const h = r.history?.find((x) => !x.minor);
   if (!h) return '';
   return `<span class="rev-tag" title="${esc(`Revised ${h.date}. Was ${h.before.skill}: ${problemOf(h.problem).long.toLowerCase()}.`)}">Revised</span>`;
 }
@@ -532,7 +534,7 @@ function renderKit(k, base) {
   const next = site.kits[i + 1];
   const counts = {};
   for (const r of k.rows) counts[r.hook] = (counts[r.hook] ?? 0) + 1;
-  const revisedCount = k.rows.filter((r) => r.history).length;
+  const revisedCount = k.rows.filter((r) => rowVersion(r) > 0).length;
 
   main.innerHTML = `
     <article class="kit">
@@ -567,7 +569,7 @@ function renderKit(k, base) {
         <thead><tr><th>Base</th><th>Skill</th><th>Cost · CD</th><th>Hook</th><th>Effect</th></tr></thead>
         <tbody>${k.rows
           .map(
-            (r) => `<tr data-base="${baseSlug(r.base)}" data-hook="${esc(r.hook)}" data-revised="${!!r.history}" tabindex="0" aria-label="${esc(`${r.base}: ${r.skill}`)}">
+            (r) => `<tr data-base="${baseSlug(r.base)}" data-hook="${esc(r.hook)}" data-revised="${rowVersion(r) > 0}" tabindex="0" aria-label="${esc(`${r.base}: ${r.skill}`)}">
               <td class="c-base">${esc(r.base)}</td>
               <td class="c-skill"><strong>${esc(r.skill)}</strong>${revTag(r)}<div class="skill-stars">${starsHtml(ratingId(k.slug, r.base), r.skill)}</div></td>
               <td class="c-cost">${costCell(r)}</td>
