@@ -358,6 +358,55 @@ tr.hidden { display: none; }
 .result-list .r-top strong { font-size: 15px; }
 .result-list p { margin: 4px 0 0; color: #cfcfc8; font-size: 14px; }
 
+/* ---------------------------------------------------------------- ratings */
+.stars { display: inline-flex; gap: 0; vertical-align: middle; }
+.star {
+  display: grid; place-items: center; width: 24px; height: 24px; padding: 0;
+  border: 0; background: none; cursor: pointer;
+}
+.star svg { width: 18px; height: 18px; fill: transparent; stroke: var(--faint); stroke-width: 2; stroke-linejoin: miter; }
+.stars[data-value='1'] .star:nth-child(-n + 1) svg,
+.stars[data-value='2'] .star:nth-child(-n + 2) svg,
+.stars[data-value='3'] .star:nth-child(-n + 3) svg { fill: var(--yellow); stroke: #000; }
+@media (hover: hover) {
+  .star:hover svg { stroke: var(--text); }
+  .stars:has(.star:hover) .star svg { fill: transparent; stroke: var(--faint); }
+  .stars:has(.star:nth-child(1):hover) .star:nth-child(-n + 1) svg,
+  .stars:has(.star:nth-child(2):hover) .star:nth-child(-n + 2) svg,
+  .stars:has(.star:nth-child(3):hover) .star:nth-child(-n + 3) svg { fill: var(--yellow); stroke: #000; opacity: .8; }
+}
+.star:focus-visible { outline: 2px solid var(--yellow); outline-offset: -2px; }
+.skill-stars { margin: 3px 0 0 -3px; height: 24px; }
+.stars-ro { color: var(--yellow); font-size: 13px; letter-spacing: 1px; white-space: nowrap; }
+.stars-ro span { color: var(--line-2); }
+.side-group a .rated { margin-left: auto; min-width: 34px; text-align: right; color: var(--faint); font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.side-group a .rated.full { color: var(--yellow); }
+.topnav .count {
+  margin-left: 7px; padding: 1px 5px; min-width: 20px; text-align: center;
+  background: var(--yellow); color: #000; font-size: 11px; font-weight: 700; line-height: 1.4; font-variant-numeric: tabular-nums;
+}
+.topnav .count:empty { display: none; }
+.sec-title { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.rated-count { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-variant-numeric: tabular-nums; min-width: 110px; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.panel-rate { display: flex; align-items: center; gap: 10px; margin: -4px 0 12px; }
+.panel-rate .eyebrow { margin: 0; }
+.panel-rate .star { width: 30px; height: 30px; }
+.panel-rate .star svg { width: 24px; height: 24px; }
+.rating-stats div { min-width: 130px; }
+.rating-stats .stars-ro { font-size: 15px; }
+.ratings-tools { justify-content: space-between; }
+.chip.danger:hover { color: #fff; border-color: var(--red); background: var(--red-deep); }
+.chip .stars-ro { font-size: 14px; }
+.chip[aria-pressed='true'] .stars-ro { color: #000; }
+.chip[aria-pressed='true'] .stars-ro span { color: #9a9a9a; }
+.notice { min-height: 1.6em; margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+.warn { padding: 10px 14px; margin: 0 0 14px; background: var(--red-deep); border: 2px solid var(--red); color: #fff; max-width: 900px; }
+.rating-rows .c-rate { width: 90px; }
+.rating-rows .c-skill a { text-decoration: none; }
+.rating-rows .c-skill a:hover strong { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+.rating-rows .c-base { margin-top: 2px; }
+
 /* ---------------------------------------------------------------- narrower screens: the panel and sidebar become drawers */
 @media (max-width: 1279px) {
   .layout, .layout[data-mode='plain'] { grid-template-columns: var(--side) minmax(0, 1fr); }
@@ -395,6 +444,8 @@ tr.hidden { display: none; }
   .kit-rows tr { grid-template-areas: 'skill cost' 'base hook' 'effect effect'; }
   .fusion-rows tr { grid-template-areas: 'kit cost' 'skill hook' 'effect effect'; }
   .element-rows tr { grid-template-areas: 'el cost' 'skill skill' 'effect effect'; }
+  .rating-rows tr { grid-template-areas: 'skill rate' 'kit kit' 'effect effect'; }
+  .rows .c-rate { grid-area: rate; justify-self: end; width: auto; }
   .rows tr.hidden { display: none; }
   .rows tbody tr:last-child { border-bottom: 0; }
   .rows td { display: block; padding: 0; border: 0; min-width: 0; background: none !important; }

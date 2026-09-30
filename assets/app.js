@@ -4,6 +4,7 @@
 //   #/kit/<kit>[/<base>]   one kit, optionally with a skill selected
 //   #/skill/<base>         one base skill across all 10 elements and 55 fusions
 //   #/keywords             every new keyword, by kit
+//   #/ratings              the skills you've starred, with export and import
 //   #/search/<query>       search results
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -43,10 +44,127 @@ async function init() {
   }
   for (const g of site.groups) for (const slug of g.kits) groupOf.set(slug, g);
   for (const a of site.atAGlance) glance.set(a.kit, a);
+  loadRatings();
   buildSidebar();
   bindChrome();
+  bindRatings();
   window.addEventListener('hashchange', route);
   route();
+}
+
+// ---------------------------------------------------------------- ratings: 1 to 3 stars per skill, kept in this browser
+
+const RATINGS_KEY = 'fusion-kits:ratings:v1';
+const STAR_SVG =
+  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.9 6.6 7.2.6-5.5 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7-5.5-4.8 7.2-.6z"/></svg>';
+let ratings = {};
+let storageOk = true;
+
+const ratingId = (kitSlug, base) => `${kitSlug}/${baseSlug(base)}`;
+const isStars = (v) => v === 1 || v === 2 || v === 3;
+
+function loadRatings() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(RATINGS_KEY) ?? '{}');
+    ratings = {};
+    for (const [id, v] of Object.entries(saved ?? {})) if (isStars(v)) ratings[id] = v;
+    storageOk = true;
+  } catch {
+    ratings = {};
+    storageOk = false;
+  }
+}
+
+function saveRatings() {
+  try {
+    localStorage.setItem(RATINGS_KEY, JSON.stringify(ratings));
+    storageOk = true;
+  } catch {
+    storageOk = false;
+  }
+}
+
+/** Rated skills that still exist in the kits (ratings for renamed or removed ones are kept, not shown). */
+function ratedItems() {
+  const out = [];
+  for (const k of site.kits)
+    for (const r of k.rows) {
+      const id = ratingId(k.slug, r.base);
+      if (ratings[id]) out.push({ k, r, id, v: ratings[id] });
+    }
+  return out;
+}
+
+function kitRatedCount(k) {
+  let n = 0;
+  for (const r of k.rows) if (ratings[ratingId(k.slug, r.base)]) n++;
+  return n;
+}
+
+/** The three-star control shown beside a skill; every copy of one skill's control stays in sync. */
+function starsHtml(id, label) {
+  const v = ratings[id] ?? 0;
+  return `<span class="stars" role="group" aria-label="${esc(`Rate ${label}`)}" data-id="${esc(id)}" data-value="${v}">${[1, 2, 3]
+    .map(
+      (n) =>
+        `<button type="button" class="star" data-n="${n}" aria-pressed="${n === v}" aria-label="${n} ${n === 1 ? 'star' : 'stars'}" title="${starTitle(n, v)}">${STAR_SVG}</button>`,
+    )
+    .join('')}</span>`;
+}
+const starTitle = (n, v) => (n === v ? `${n} of 3 stars (click again to clear)` : `${n} of 3 stars`);
+
+function starsText(v) {
+  return `<span class="stars-ro" role="img" aria-label="Rated ${v} of 3">${'★'.repeat(v)}<span>${'★'.repeat(3 - v)}</span></span>`;
+}
+
+function setRating(id, v) {
+  if (isStars(v)) ratings[id] = v;
+  else delete ratings[id];
+  saveRatings();
+  refreshRatings();
+}
+
+function refreshRatings() {
+  for (const el of $$('.stars')) {
+    const v = ratings[el.dataset.id] ?? 0;
+    el.dataset.value = String(v);
+    for (const b of $$('.star', el)) {
+      const n = Number(b.dataset.n);
+      b.setAttribute('aria-pressed', String(n === v));
+      b.title = starTitle(n, v);
+    }
+  }
+  for (const el of $$('[data-rated-kit]')) {
+    const k = kits.get(el.dataset.ratedKit);
+    const n = kitRatedCount(k);
+    el.textContent = n ? `${n}/${k.rows.length}` : '';
+    el.classList.toggle('full', n === k.rows.length);
+  }
+  const total = ratedItems().length;
+  $('#navRated').textContent = total ? String(total) : '';
+  const kitCount = $('#kitRated');
+  if (kitCount) kitCount.textContent = `${kitRatedCount(kits.get(kitCount.dataset.kit))} / 30 rated`;
+  const summary = $('#ratingsSummary');
+  if (summary) summary.innerHTML = ratingsSummaryHtml();
+  $$('[data-storage-warning]').forEach((el) => (el.hidden = storageOk));
+  document.dispatchEvent(new CustomEvent('ratings-changed'));
+}
+
+function bindRatings() {
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('.stars .star');
+    if (!b) return;
+    const id = b.closest('.stars').dataset.id;
+    const n = Number(b.dataset.n);
+    setRating(id, ratings[id] === n ? 0 : n);
+  });
+  // Another tab of the site changed them.
+  window.addEventListener('storage', (e) => {
+    if (e.key !== RATINGS_KEY) return;
+    loadRatings();
+    refreshRatings();
+  });
+  refreshRatings();
 }
 
 // ---------------------------------------------------------------- small renderers
@@ -111,12 +229,13 @@ function buildSidebar() {
     <a class="side-link" href="#/" data-side="overview">Overview</a>
     <a class="side-link" href="#/skill/strike" data-side="skill">Compare skills</a>
     <a class="side-link" href="#/keywords" data-side="keywords">Keyword glossary</a>
+    <a class="side-link" href="#/ratings" data-side="ratings">Your ratings</a>
     ${site.groups
       .map(
         (g) => `<section class="side-group"><h2>${esc(g.title)}</h2><ul>${g.kits
           .map((slug) => {
             const k = kits.get(slug);
-            return `<li><a href="#/kit/${slug}" data-kit="${slug}">${swatch(k.parents)}<span>${esc(k.name)}</span></a></li>`;
+            return `<li><a href="#/kit/${slug}" data-kit="${slug}">${swatch(k.parents)}<span>${esc(k.name)}</span><span class="rated" data-rated-kit="${slug}" title="Skills you've rated"></span></a></li>`;
           })
           .join('')}</ul></section>`,
       )
@@ -203,6 +322,9 @@ function route() {
   } else if (page === 'keywords') {
     key = 'keywords';
     renderKeywords();
+  } else if (page === 'ratings') {
+    key = 'ratings';
+    renderRatings();
   } else if (page === 'search') {
     key = 'search';
     renderSearch(decodeURIComponent(raw.slice('search/'.length)));
@@ -359,13 +481,16 @@ function renderKit(k, base) {
       <section class="mechanics"><h2 class="sec">Core mechanics</h2><div class="prose">${k.introHtml}</div></section>
 
       <div class="sec-row">
-        <h2 class="sec">Skills</h2>
-        <div class="chips" id="hookChips" role="group" aria-label="Filter by hook">
-          ${k.hooks
-            .map(
-              (h) => `<button type="button" class="chip" data-value="${esc(h)}" aria-pressed="false">${esc(h)} <span class="n">${counts[h]}</span></button>`,
-            )
-            .join('')}
+        <div class="sec-title"><h2 class="sec">Skills</h2><span class="rated-count" id="kitRated" data-kit="${k.slug}"></span></div>
+        <div class="filters">
+          <div class="chips" id="hookChips" role="group" aria-label="Filter by hook">
+            ${k.hooks
+              .map(
+                (h) => `<button type="button" class="chip" data-value="${esc(h)}" aria-pressed="false">${esc(h)} <span class="n">${counts[h]}</span></button>`,
+              )
+              .join('')}
+          </div>
+          <button type="button" class="chip" id="unratedOnly" aria-pressed="false" title="Show only the skills you haven't rated yet">Unrated</button>
         </div>
       </div>
       <div class="table-wrap"><table class="rows kit-rows">
@@ -374,7 +499,7 @@ function renderKit(k, base) {
           .map(
             (r) => `<tr data-base="${baseSlug(r.base)}" data-hook="${esc(r.hook)}" tabindex="0" aria-label="${esc(`${r.base}: ${r.skill}`)}">
               <td class="c-base">${esc(r.base)}</td>
-              <td class="c-skill"><strong>${esc(r.skill)}</strong></td>
+              <td class="c-skill"><strong>${esc(r.skill)}</strong><div class="skill-stars">${starsHtml(ratingId(k.slug, r.base), r.skill)}</div></td>
               <td class="c-cost">${costCell(r)}</td>
               <td class="c-hook">${hookChip(k, r.hook)}</td>
               <td class="c-effect">${effectHtml(k, r.effect)}</td></tr>`,
@@ -388,10 +513,26 @@ function renderKit(k, base) {
       </nav>
     </article>`;
 
+  // Filters apply when toggled, not when a rating changes, so rating a skill never makes rows jump.
+  let hookFilter = null;
+  let unratedOnly = false;
+  const applyFilters = () => {
+    for (const tr of $$('.kit-rows tbody tr', main)) {
+      const rated = !!ratings[`${k.slug}/${tr.dataset.base}`];
+      tr.classList.toggle('hidden', (!!hookFilter && tr.dataset.hook !== hookFilter) || (unratedOnly && rated));
+    }
+  };
   bindElementChips($('#hookChips'), (hook) => {
-    for (const tr of $$('.kit-rows tbody tr', main)) tr.classList.toggle('hidden', !!hook && tr.dataset.hook !== hook);
+    hookFilter = hook;
+    applyFilters();
+  });
+  $('#unratedOnly').addEventListener('click', (e) => {
+    unratedOnly = !unratedOnly;
+    e.currentTarget.setAttribute('aria-pressed', String(unratedOnly));
+    applyFilters();
   });
   bindRows($('.kit-rows', main), (tr) => ({ kit: k, base: tr.dataset.base }), (sel) => `#/kit/${k.slug}/${sel.base}`);
+  refreshRatings();
 
   const row = base && rowOf(k, base);
   if (row) selectRow(k, row, true);
@@ -444,7 +585,7 @@ function renderSkill(slug) {
           )}" tabindex="0" aria-label="${esc(`${k.name}: ${r.skill}`)}">
             <td class="c-kit"><a href="#/kit/${k.slug}/${baseSlug(base)}">${esc(k.name)}</a>
               <div class="mini-parents">${swatch(k.parents)} ${esc(k.parents.join(' + '))}</div></td>
-            <td class="c-skill"><strong>${esc(r.skill)}</strong></td>
+            <td class="c-skill"><strong>${esc(r.skill)}</strong><div class="skill-stars">${starsHtml(ratingId(k.slug, r.base), r.skill)}</div></td>
             <td class="c-cost">${costCell(r)}</td>
             <td class="c-hook">${hookChip(k, r.hook)}</td>
             <td class="c-effect">${effectHtml(k, r.effect)}</td></tr>`;
@@ -486,15 +627,16 @@ function bindRows(table, pick, hashFor) {
     renderPanel(sel.kit, row);
     openPanelDrawer();
   };
+  // Links and the star buttons do their own thing; anywhere else on a row selects it.
   table.addEventListener('click', (e) => {
-    if (e.target.closest('a')) return;
+    if (e.target.closest('a, .stars')) return;
     const tr = e.target.closest('tbody tr');
     if (tr && !tr.classList.contains('static')) choose(tr);
   });
   table.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     const tr = e.target.closest('tbody tr');
-    if (!tr || e.target.closest('a')) return;
+    if (!tr || e.target.closest('a, .stars')) return;
     e.preventDefault();
     choose(tr);
   });
@@ -525,6 +667,7 @@ function renderPanel(k, r) {
       <button class="panel-close" type="button" aria-label="Close details">&times;</button>
       <p class="eyebrow"><a href="#/kit/${k.slug}">${esc(k.name)}</a> · ${esc(r.base)}</p>
       <h2 class="panel-title">${esc(r.skill)}</h2>
+      <div class="panel-rate"><span class="eyebrow">Your rating</span>${starsHtml(ratingId(k.slug, r.base), r.skill)}</div>
       <div class="panel-meta">${costCell(r)}${hookChip(k, r.hook)}${parentChips(k.parents)}</div>
       <p class="panel-effect">${effectHtml(k, r.effect)}</p>
       <h3 class="sec small">Base skill</h3>
@@ -582,6 +725,154 @@ function renderKeywords() {
   });
 }
 
+// ---------------------------------------------------------------- ratings page
+
+function ratingsSummaryHtml() {
+  const items = ratedItems();
+  const by = { 1: 0, 2: 0, 3: 0 };
+  for (const it of items) by[it.v]++;
+  const total = site.kits.reduce((n, k) => n + k.rows.length, 0);
+  const kitsDone = site.kits.filter((k) => kitRatedCount(k) === k.rows.length).length;
+  return `<div><b>${items.length}</b><span>of ${total.toLocaleString('en-US')} rated</span></div>
+    ${[3, 2, 1].map((v) => `<div><b>${by[v]}</b><span>${starsText(v)}</span></div>`).join('')}
+    <div><b>${kitsDone}</b><span>kits fully rated</span></div>`;
+}
+
+function renderRatings() {
+  setMode('plain');
+  markNav('ratings');
+  document.title = 'Ratings · Fusion Kits';
+  main.innerHTML = `
+    <header class="page-head">
+      <p class="eyebrow">Your review</p>
+      <h1>Ratings</h1>
+      <p class="lead">The stars you've given skills. They're saved in this browser only, so export them to keep a copy or to send them to someone. Importing a file adds its ratings to yours.</p>
+    </header>
+    <p class="warn" data-storage-warning${storageOk ? ' hidden' : ''}>This browser isn't letting the site save anything, so your ratings will be lost when you leave. Export them before you close the page.</p>
+    <div class="stats rating-stats" id="ratingsSummary">${ratingsSummaryHtml()}</div>
+    <div class="toolbar ratings-tools">
+      <div class="chips" id="starFilter" role="group" aria-label="Show only">${[3, 2, 1]
+        .map((v) => `<button type="button" class="chip" data-value="${v}" aria-pressed="false" aria-label="${v} ${v === 1 ? 'star' : 'stars'}">${starsText(v)}</button>`)
+        .join('')}</div>
+      <div class="chips">
+        <button type="button" class="chip" id="exportRatings">Export</button>
+        <button type="button" class="chip" id="importRatings">Import</button>
+        <input type="file" id="importFile" accept=".json,application/json" hidden>
+        <button type="button" class="chip danger" id="clearRatings">Clear all</button>
+      </div>
+    </div>
+    <p class="notice" id="ratingsNotice" role="status"></p>
+    <div id="ratingsList"></div>`;
+
+  let filter = null;
+  const notice = (text) => ($('#ratingsNotice').textContent = text);
+  // Rebuilt only on load, filter or import, so changing a rating here never reshuffles the list under you.
+  const renderList = () => {
+    const items = ratedItems()
+      .filter((it) => !filter || it.v === filter)
+      .sort((a, b) => b.v - a.v);
+    $('#ratingsList').innerHTML = items.length
+      ? `<div class="table-wrap"><table class="rows rating-rows">
+          <thead><tr><th>Rating</th><th>Skill</th><th>Fusion</th><th>Effect</th></tr></thead>
+          <tbody>${items
+            .map(
+              ({ k, r, id }) => `<tr class="static">
+                <td class="c-rate">${starsHtml(id, r.skill)}</td>
+                <td class="c-skill"><a href="#/kit/${k.slug}/${baseSlug(r.base)}"><strong>${esc(r.skill)}</strong></a><div class="c-base">${esc(r.base)}</div></td>
+                <td class="c-kit"><a href="#/kit/${k.slug}">${esc(k.name)}</a><div class="mini-parents">${swatch(k.parents)} ${esc(k.parents.join(' + '))}</div></td>
+                <td class="c-effect">${effectHtml(k, r.effect)}</td></tr>`,
+            )
+            .join('')}</tbody></table></div>`
+      : `<p class="empty">${filter ? `No skills rated ${filter} ${filter === 1 ? 'star' : 'stars'} yet.` : "You haven't rated any skills yet. Use the stars beside each skill on the kit pages."}</p>`;
+  };
+  renderList();
+
+  bindElementChips($('#starFilter'), (v) => {
+    filter = v ? Number(v) : null;
+    renderList();
+  });
+  $('#exportRatings').addEventListener('click', () => {
+    const n = exportRatings();
+    notice(n ? `Exported ${n} ratings.` : 'There are no ratings to export yet.');
+  });
+  $('#importRatings').addEventListener('click', () => $('#importFile').click());
+  $('#importFile').addEventListener('change', async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    try {
+      const { added, changed, skipped } = importRatings(JSON.parse(await file.text()));
+      renderList();
+      notice(`Imported ${added + changed} ratings: ${added} new, ${changed} changed${skipped ? `, ${skipped} skipped as invalid` : ''}.`);
+    } catch {
+      notice("That file isn't a ratings export.");
+    }
+  });
+  $('#clearRatings').addEventListener('click', () => {
+    const n = Object.keys(ratings).length;
+    if (!n || !confirm(`Clear all ${n} ratings? Export them first if you might want them back.`)) return;
+    ratings = {};
+    saveRatings();
+    refreshRatings();
+    renderList();
+    notice(`Cleared ${n} ratings.`);
+  });
+}
+
+/** Downloads every rating as JSON, with the fusion and skill names so the file reads on its own. */
+function exportRatings() {
+  const order = new Map(site.kits.map((k, i) => [k.slug, i]));
+  const list = Object.entries(ratings)
+    .map(([id, stars]) => {
+      const [slug, base] = id.split('/');
+      const k = kits.get(slug);
+      const r = k && rowOf(k, base);
+      return { id, stars, fusion: k?.name ?? null, base: r?.base ?? base, skill: r?.skill ?? null };
+    })
+    .sort((a, b) => (order.get(a.id.split('/')[0]) ?? 999) - (order.get(b.id.split('/')[0]) ?? 999) || site.bases.indexOf(a.base) - site.bases.indexOf(b.base));
+  if (!list.length) return 0;
+  const body = JSON.stringify({ app: 'fusion-kits', version: 1, exported: new Date().toISOString(), ratings: list }, null, 2);
+  const url = URL.createObjectURL(new Blob([body], { type: 'application/json' }));
+  const a = Object.assign(document.createElement('a'), { href: url, download: `fusion-kit-ratings-${new Date().toISOString().slice(0, 10)}.json` });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  return list.length;
+}
+
+/** Adds an export's ratings to the ones saved here; the file wins where both rate a skill. */
+function importRatings(data) {
+  const source = data?.ratings ?? data;
+  const entries = Array.isArray(source)
+    ? source.map((x) => [x?.id ?? `${x?.kit ?? slugify(String(x?.fusion ?? ''))}/${baseSlug(String(x?.base ?? ''))}`, x?.stars])
+    : Object.entries(source ?? {});
+  if (!entries.length) throw new Error('empty');
+  let added = 0;
+  let changed = 0;
+  let skipped = 0;
+  for (const [id, stars] of entries) {
+    if (!isStars(stars) || !/^[a-z0-9-]+\/[a-z]+$/.test(id)) {
+      skipped++;
+      continue;
+    }
+    if (!ratings[id]) added++;
+    else if (ratings[id] !== stars) changed++;
+    ratings[id] = stars;
+  }
+  if (!added && !changed && skipped === entries.length) throw new Error('nothing valid');
+  saveRatings();
+  refreshRatings();
+  return { added, changed, skipped };
+}
+
+const slugify = (s) =>
+  s
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
 // ---------------------------------------------------------------- search
 
 function renderSearch(query) {
@@ -633,7 +924,9 @@ function renderSearch(query) {
               .slice(0, LIMIT)
               .map(
                 ({ k, r }) => `<li><a href="#/kit/${k.slug}/${baseSlug(r.base)}"><div class="r-top"><strong>${mark(r.skill, query)}</strong>
-                  <span class="muted">${esc(k.name)} · ${esc(r.base)}</span>${costCell(r)}</div>
+                  <span class="muted">${esc(k.name)} · ${esc(r.base)}</span>${costCell(r)}${
+                    ratings[ratingId(k.slug, r.base)] ? starsText(ratings[ratingId(k.slug, r.base)]) : ''
+                  }</div>
                   <p>${mark(r.effect, query)}</p></a></li>`,
               )
               .join('')}</ul>${skillHits.length > LIMIT ? `<p class="muted">Showing the first ${LIMIT}; narrow the search to see more.</p>` : ''}`

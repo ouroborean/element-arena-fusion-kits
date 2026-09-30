@@ -10,7 +10,10 @@ Live at **https://ouroborean.github.io/element-arena-fusion-kits/**. It's a comp
 - **Kit pages** (`#/kit/dragon`): a fusion's mechanics and its 30 skills. Click a skill to compare it with the base skill and its parents' versions. Links to a skill are shareable, for example `#/kit/night/stun`.
 - **Compare skills** (`#/skill/strike`): one base skill across all 10 elements and all 55 fusions, filterable by element.
 - **Keywords** (`#/keywords`): every new term, grouped by fusion.
+- **Ratings** (`#/ratings`): give any skill 1 to 3 stars with the stars beside it (click the current star again to clear it). This page lists what you've rated, filters by star count, and exports or imports ratings.
 - **Search:** press `/` anywhere.
+
+Ratings are saved in the browser you rate in, so they survive reloads and restarts but don't follow you to another browser or device, and a site running from `localhost` keeps its own set. Export them to back them up or to send them to someone. Importing adds a file's ratings to yours, and the file's value wins where both rate the same skill.
 
 The site is public but asks search engines not to index it (`robots.txt` and a `noindex` tag), so it's only found through its link.
 
