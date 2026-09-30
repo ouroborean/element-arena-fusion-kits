@@ -16,8 +16,8 @@ One keyword: the colony it grows plugs straight into Earth's Seedling skills.
 | Smash | Puffball Stomp | Sr · 2 | Spores | 25 damage to target enemy. If they have Spores, they lose them, and each of their allies gains that many. |
 | Charge | Spore Trail | S · 2 | Spores | 10 damage and 1 Spore to target enemy. Through the user's next turn, each enemy their skills damage gains 1 Spore. |
 | Riposte | Bursting Cap | W · 2 | Spores | Invisible. For 1 turn, counters the first Harmful skill used on the user; its user gains 1 Spore per target the skill had. |
-| Rage | Fungal Bloom | SW · 4 | Spores | For 3 turns, the user is Immune and gains 1 Might per enemy with Spores, counted at the start of each of their turns. |
-| Shot | Spore Pod | r · 1 | Spores | 5 Piercing damage to target enemy, +5 per enemy with Spores; then the target gains 1 Spore. |
+| Rage | Amanita Frenzy | S · 4 | Unique | The user is Blinded for 3 turns, then gains 3 Might and Immune for as long: the frenzy hits very hard, but its single-target skills land on a random enemy. |
+| Shot | Fester Pod | r · 1 | Texture | 10 Piercing damage to target enemy. For 2 turns, every Debuff on them counts toward Prey, not only Toxin, Weakness, Vulnerable and Confusion. |
 | Snipe | Root Rot | Sr · 2 | Spores | Channeled, hidden target. In 2 turns, 50 damage to target enemy and 15 to each of their allies with Spores. |
 | Trap | Tainted Hands | W · 2 | Spores | Invisible, 3 turns. Each time target enemy uses a Helpful skill, they and every ally it affects gain 1 Spore. |
 | Maneuver | Spore Molt | r · 4 | Spores | The user becomes Invulnerable for 1 turn and sheds their Debuffs; each stack shed becomes 1 Spore on a random enemy. |
@@ -36,10 +36,10 @@ One keyword: the colony it grows plugs straight into Earth's Seedling skills.
 | Bless | Mycorrhizal Bond | W · 2 | Unique | For 3 turns, target ally gains 1 Might, and they and the user share Buffs: each Buff either of them gains is copied to the other. |
 | Curse | Infest | r · 2 | Spores | Target enemy gains 2 Spores and is Confused for 2 turns; each ally they pass a Spore to is Confused for 2 turns too. |
 | Smite | Cordyceps Brand | W · 1 | Unique | 20 damage to target enemy. For 2 turns, half of all healing they receive goes to a random ally of the user instead. |
-| Prayer | Song of the Forest Floor | Wrr · 2 | Spores | All allies heal 15, +5 for each enemy with Spores and each allied Mushroom. |
+| Prayer | Fruiting Psalm | Wr · 2 | Unique | All allies heal 30 and gain 2 Spores each. The colony grows in them: Mushrooms that sprout from the user's allies are the user's. |
 | Cleave | Spore Whirl | S · 1 | Spores | 20 damage to target enemy and 10 to the other enemy with the most Spores (random if tied), who gains 1 more. |
-| Shout | Sporulate | S · 3 | Spores | All enemies are Intimidated for 2 turns, with 1 extra stack per Spore they have. |
-| Withstand | Fungal Rampart | W · 3 | Spores | The user gains 25 Shield for 1 turn. Each enemy who damages them meanwhile gains 1 Spore. |
+| Shout | Carrion Bloom | S · 3 | Texture | All enemies are Intimidated for 2 turns. Meanwhile, the first time each of them becomes Prey, a Seedling sprouts for the user. |
+| Withstand | Humus Wall | W · 3 | Texture | The user gains 25 Shield for 1 turn. Each enemy hit it absorbs triggers Channel Growth for the user's Seedlings. |
 | Taunt | Stinkhorn | W · 3 | Spores | The user creates a Mushroom. Target enemy is Taunted by it for 2 turns and gains 1 Spore each time they damage it. |
 | Titan | Fungal Colossus | SW · 4 | Spores | For 3 turns, the user gains 2 Armor and Immune, and absorbs each Mushroom that sprouts: instead of the minion, they gain 1 Armor and heal 15. |
 
@@ -58,7 +58,7 @@ One keyword: the colony it grows plugs straight into Earth's Seedling skills.
 | Riposte | Acquired Tolerance | W · 3 | Inoculated | Invisible. For 1 turn, counters the first Harmful skill used on the user, and they become immune for 3 turns to each Debuff it would have applied. |
 | Rage | Immune Response | S · 4 | Purge | For 3 turns, the user gains 2 Might and their Debuffs have no effect. When it ends, they Purge all of them onto random enemies. |
 | Shot | Remedy Dart | r · 0 | Inoculated | 15 damage to target enemy, and the ally they damaged most recently is Inoculated. |
-| Snipe | Purifying Lance | Arr · 2 | Purge | Channeled, hidden target. On the following turn, 45 damage to target enemy. If it kills them, every ally Purges all their Debuffs onto random enemies. |
+| Snipe | Measured Dose | Arr · 2 | Unique | Channeled, hidden target; it can target an ally or an enemy. On the following turn, an enemy takes 50 damage, or an ally heals 40 and loses their Debuffs. |
 | Trap | Countervenom | r · 2 | Purge | Invisible, 3 turns. The first time target enemy gives one of the user's allies a Debuff, it's Purged at once, onto them. |
 | Maneuver | Quarantine | r · 3 | Texture | The user becomes Invulnerable for 1 turn. Every enemy who uses a Harmful skill meanwhile counts as Prey for 2 turns. |
 | Companion | Asclepian Serpent | SW · 4 | Purge | Summons an Asclepian Serpent (40 HP) permanently. Cure (W): Purges one Debuff from target ally. Serpent's Kiss (r): 5 Piercing damage and 1 Toxin. |
@@ -70,17 +70,17 @@ One keyword: the colony it grows plugs straight into Earth's Seedling skills.
 | Stab | Find the Wound | A · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. For 2 turns, being at or below 60 HP makes them Prey. |
 | Ravage | Tempered Blade | Wr · 1 | Inoculated | 25 Piercing damage to target enemy. If the user is Inoculated, they spend it for 15 more damage; if not, they become Inoculated. |
 | Mislead | False Symptom | W · 2 | Purge | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and each of its targets Purges 1 Debuff onto them. |
-| Stun | Anesthesia | W · 3 | Inoculated | 10 damage and a 1-turn Stun to target enemy. For 2 turns, the user's allies are immune to Stun. |
+| Stun | Twilight Sleep | A · 3 | Unique | Target enemy and the user fall Asleep for 2 turns. Neither can take damage meanwhile, so nothing wakes them early. |
 | Dance | Clean Bill of Health | AI · 4 | Unique | For 3 turns, the user gains 1 Might, 2 Swiftness and 1 Focus. At the end of each of their turns, if they have no Debuffs, their other cooldowns drop by 1. |
 | Heal | Antivenom | W · 1 | Inoculated | Target ally heals 25 and is Inoculated. If that stops a Debuff, its source takes 10 Affliction. |
 | Bless | Vaccinate | W · 2 | Inoculated | Target ally gains 1 Toxin. For 3 turns, they're immune to further Toxin and gain 1 Might and 1 Renew. |
-| Curse | Plague of Doubt | r · 2 | Purge | Target enemy is Confused for 2 turns. Meanwhile, each Debuff removed from the user's allies deals them 10 Affliction. |
-| Smite | Mark of the Healer | W · 1 | Purge | 20 damage to target enemy. For 1 turn, each ally who damages them Purges 1 of their own Debuffs onto them. |
+| Curse | Crisis of Conscience | r · 2 | Texture | Target enemy is Confused for 2 turns and Condemned. Until the Confusion ends, their Condemned doesn't end when it resolves, so every skill they use costs them another random Debuff. |
+| Smite | Theriac Brand | W · 1 | Texture | 20 damage to target enemy and Sanctify for 1 turn. Their poison sweetens it: the Sanctify heals 5 more per Toxin on them. |
 | Prayer | Healing Liturgy | WS · 3 | Inoculated | All allies heal 20 and gain 10 Shield. For 2 turns, when an enemy gives one of them a Debuff, every ally becomes immune to it for 3 turns. |
 | Cleave | Twin Fangs | S · 1 | Texture | 20 damage to target enemy and 10 to a random other enemy. If one of them is Condemned, the other is marked as Prey for 2 turns. |
 | Shout | Sterilize | W · 3 | Purge | Every ally loses 1 Debuff. All enemies are Intimidated for 2 turns, with 1 stack per Debuff removed. |
 | Withstand | Hardened Constitution | r · 3 | Purge | The user Purges all their Debuffs onto random enemies, then gains 20 Shield for 1 turn, +10 per Debuff Purged. |
-| Taunt | Bitter Pill | S · 3 | Inoculated | Target enemy is Taunted for 2 turns. The first Debuff they give the user is prevented, and the user is immune to all their Debuffs for 3 turns. |
+| Taunt | Turn the Other Cheek | S · 3 | Texture | Target enemy is Taunted for 2 turns. Each time they hit the user meanwhile, the user is Anointed until the end of their next turn. |
 | Titan | Living Cure | W · 3 | Inoculated | For 3 turns, the user gains 2 Armor and becomes Inoculated at the start of each of their turns. |
 
 ## Blight — Poison + Unholy
@@ -97,14 +97,14 @@ One keyword: the colony it grows plugs straight into Earth's Seedling skills.
 | Charge | Dread Lunge | S · 2 | Texture | 15 damage to target enemy. The user's next skill treats them as Horrified, whether they are or not. |
 | Riposte | Festering Spite | r · 3 | Withered | Invisible. For 1 turn, counters the first Harmful skill used on the user; its user gains 1 Withered per 10 damage it would have dealt. |
 | Rage | Rot Frenzy | S · 4 | Withered | The user gains 2 Withered. Then, for 3 turns, they gain 1 Might per Withered on them and are Immortal. |
-| Shot | Blightspit | r · 1 | Withered | 10 damage to target enemy, +5 per Withered they have. If they're Horrified, they gain 1 Withered first. |
+| Shot | Dread Spittle | r · 1 | Texture | 15 damage to target enemy. For 2 turns, they're Horrified whenever they have 2 or more Toxin. |
 | Snipe | Rotspear | Ar · 1 | Withered | Channeled, hidden target, Uncounterable. On the following turn, 25 Affliction damage to target enemy, +10 per Withered they have. |
 | Trap | Rotten Remedy | W · 2 | Withered | Invisible, 3 turns. The first time target enemy would be healed, they aren't, and they gain 1 Withered per 10 it would have healed. |
 | Maneuver | Seep Away | r · 3 | Texture | The user becomes Invulnerable for 1 turn. Until it ends, Toxin the user applied ticks at the end of every turn, not only theirs. |
 | Companion | Plague Rats | A · 1 | Withered | Summons a Plague Rat swarm (25 HP) permanently. Plague Bite (r): 5 Piercing damage and 1 Withered. Scurry (nc): 5 Piercing damage to each Withered enemy. |
 | Bolt | Plague Bolt | Ir · 1 | Withered | 20 damage and 1 Withered to target enemy, and Horrified for 1 turn. While Horrified, their Withered can't be cleansed. |
-| Blast | Rotstorm | SIr · 2 | Withered | 20 damage to all enemies, +5 to each for every Withered stack they have. |
-| Consume | Reap the Rot | I · 2 | Withered | 5 damage to target enemy, and the user heals 10 per Withered on them. At 3 or more Withered, the user also drains a Soul Fragment. |
+| Blast | Leveling Plague | II · 2 | Unique | 15 Affliction damage to the enemy with the least HP. Every other enemy takes Affliction damage equal to how much more HP they have than that enemy, up to 35. |
+| Consume | Drink the Plague | I · 2 | Texture | 5 damage to target enemy, healing the user for it. The user drinks their Toxin: it's removed, and the user gains 1 Soul Fragment per 3 stacks (max 2). |
 | Summon | Plague Imp | I · 1 | Withered | Summons a Plague Imp (25 HP) for 3 turns. Rotbolt (r): 10 Affliction damage and 1 Toxin. When the Imp dies or leaves, each enemy it damaged gains 1 Withered. |
 | Channel | Long Decay | rr · 3 | Withered | Channeled, 2 turns, +1 turn per Withered enemy. Each turn, 10 Affliction to all enemies. |
 | Stab | Rusted Knife | r · 0 | Withered | 10 damage to target enemy, or 20 if they're at or below 60 HP. Above 60 HP, they also gain 1 Withered. |
@@ -116,11 +116,11 @@ One keyword: the colony it grows plugs straight into Earth's Seedling skills.
 | Bless | Vulture's Blessing | W · 2 | Texture | For 3 turns, target ally gains 1 Might and executes any Prey their skills leave at 15 HP or less. |
 | Curse | Touch of Decay | r · 2 | Withered | Target enemy gains 1 Withered and 1 Confusion; the Confusion lasts until the Withered is cleansed. |
 | Smite | Mark of Decay | Sr · 1 | Texture | 20 damage to target enemy. For 1 turn, each ally who damages them makes their Toxin tick once, healing that ally for it. |
-| Prayer | Litany of Rot | Wrr · 2 | Withered | All allies heal 10, +5 for every Withered stack on the enemy team. |
+| Prayer | Communion of Rot | Wrr · 2 | Unique | Each enemy loses 15 HP. All allies heal twice the total lost, split evenly among them. |
 | Cleave | Scything Rot | S · 1 | Withered | 20 damage to target enemy and 10 to a random other enemy, who gains as much Withered as the first has (max 2). |
 | Shout | Plague Hymn | S · 3 | Unique | All enemies are Intimidated for 2 turns. Meanwhile, each Helpful skill they use deals 10 Affliction damage to each of its targets. |
 | Withstand | Bone Carapace | r · 3 | Texture | The user gains 20 Shield for 1 turn. Whoever breaks it has a Soul Fragment drained by the user. |
-| Taunt | Carrion Call | S · 3 | Withered | Target enemy is Taunted for 2 turns; each time they damage the user, they gain 1 Withered. |
+| Taunt | Carrion Stench | S · 4 | Unique | All enemies are Taunted by the user for 1 turn. Until the user's next turn, every hit on them deals 10 less, but they can't be healed. |
 | Titan | Plague Lord | SS · 4 | Withered | For 3 turns, the user gains 2 Armor and Immune, and 5 max HP per Withered stack on enemies, healing as it rises. |
 
 ## Assassin — Poison + Shadow
@@ -136,14 +136,14 @@ One keyword: like Night's clocks, the skill in playing against it is working out
 | Strike | Throatcut | S · 0 | Death Mark | 20 damage to target enemy. If this executes your Death Mark, a new one goes on a random enemy, hidden. |
 | Smash | Coordinated Strike | Sr · 2 | Texture | 20 damage to target enemy and 10 to their allies. Each enemy hit gains 1 Toxin per Stealthed ally of the user, and no one's Stealth is spent. |
 | Charge | Stalk | S · 2 | Death Mark | Stealthy. 15 damage to target enemy and your Death Mark for 2 turns; while the user stays Stealthed, the Mark doesn't count down. |
-| Riposte | Venom Riposte | A · 3 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user; all Toxin on its user ticks twice at once. |
+| Riposte | Garrote Wire | A · 3 | Unique | Invisible. For 1 turn, counters the first Harmful skill used on the user; its user is Stunned for 1 turn, or 2 if the countered skill has a cooldown of 3 or more. |
 | Rage | Open Contract | SA · 4 | Death Mark | Stealthy. For 3 turns, the user gains 1 Might and 1 Swiftness, and a random enemy gains your Death Mark. An execution meanwhile extends this by 2 turns. |
 | Shot | Blowdart | r · 0 | Texture | 10 Piercing damage to target enemy. For 2 turns, their Toxin, Weakness and Vulnerable can't be removed. |
 | Snipe | The Long Shot | Ar · 2 | Death Mark | Channeled, hidden target. On the following turn, 40 damage to target enemy. If they have your Death Mark, this executes at 40 HP; if not, they gain it. |
 | Trap | Tainted Well | A · 3 | Unique | Invisible. For 3 turns, all enemies take 5 Affliction damage whenever they use any skill. |
 | Maneuver | Covering Smoke | r · 3 | Texture | The user becomes Invulnerable for 1 turn. Meanwhile, Stealthed allies stay Stealthed whatever skills they use. |
 | Companion | Shadow Viper | A · 1 | Death Mark | Summons a Shadow Viper (25 HP) permanently. Venom Fang (r): 5 Piercing damage and 1 Toxin. Seek the Mark (rr): 15 Piercing damage to your Death Mark's bearer; if none has it, target enemy gains it. |
-| Bolt | Deepening Dark | Ar · 1 | Texture | 20 damage to target enemy, and every Blind and Isolation on the enemy team lasts 1 more turn. |
+| Bolt | Whispered Names | Ir · 1 | Unique | 20 damage to target enemy and Mark for 2 turns. Each time the Mark is spent, the name is passed on: a random other enemy is Marked for 1 turn, up to 3 times. |
 | Blast | Poison Smoke | Irr · 2 | Death Mark | 20 damage and 1 Toxin to all enemies. Then your Death Mark moves, hidden, to the enemy with the least HP. |
 | Consume | Fulfill the Contract | r · 2 | Death Mark | 5 damage to target enemy, healing the user for it. If this executes them through your Death Mark, the user heals 30 more and gains Stealth. |
 | Summon | Hired Blade | I · 1 | Death Mark | Summons a Hired Blade (20 HP) for 3 turns. Shank (r): 10 Affliction damage. Whoever kills the Blade gains your Death Mark. |
@@ -173,7 +173,7 @@ One keyword: like Night's clocks, the skill in playing against it is working out
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Hallowed Fist | S · 0 | Sanctum | 20 damage to target enemy. If they're Condemned, your Sanctum rises by 1. |
+| Strike | Toppled Idol | S · 0 | Texture | 20 damage to target enemy. If an allied Boulder stands, the one with the least HP topples onto them: it dies, and they take 15 more and are Condemned. |
 | Smash | Cracking Foundation | Sr · 2 | Texture | 25 damage to target enemy and 15 to their allies. Each allied Boulder loses 15 HP and adds 5 to every hit. |
 | Charge | Pilgrim's Stride | S · 2 | Texture | 15 damage to target enemy. If the user healed or shielded an ally since their last turn, they're Anointed until the end of their next turn. |
 | Riposte | Sheltering Stone | W · 3 | Sanctum | Invisible. For 1 turn, counters the first Harmful skill used on the user, or on any ally if your Sanctum is at 3; its user takes 10 Piercing damage. |
@@ -190,14 +190,14 @@ One keyword: like Night's clocks, the skill in playing against it is working out
 | Channel | Build the Sanctuary | Ir · 3 | Sanctum | Channeled, 3 turns. At the end of each of the user's turns, your Sanctum rises by 1; if it's already at 3, 10 damage to all enemies instead. |
 | Stab | Penitent's Awl | A · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. Their Condemned resolves now, as if they'd used a skill. |
 | Ravage | Ramstone Drill | Wr · 2 | Texture | 25 Piercing damage to target enemy, +5 per Armor the user has. Then the user loses 1 Armor. |
-| Mislead | Holy Snare | W · 2 | Sanctum | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and your Sanctum rises by 1 for each ally it targeted. |
+| Mislead | Right of Asylum | W · 2 | Unique | Invisible. For 1 turn, any enemy who uses a Harmful skill on an ally of the user who used no Harmful skill on their last turn is countered. |
 | Stun | Penance in Stone | Wr · 3 | Wardstone | Target enemy is Stunned for 1 turn, +1 turn for each allied Wardstone (up to 3 turns in all). |
-| Dance | Processional | A · 3 | Sanctum | For 3 turns, the user gains 1 Swiftness and 1 Focus, and each time they use a Helpful skill, your Sanctum rises by 1. |
+| Dance | Stately Measure | AI · 4 | Unique | For 4 turns, at the start of each of the user's turns, they gain 1 Might, 1 Armor and 1 Focus (max 3 each). It all ends if they use a mobility skill. |
 | Heal | Day of Rest | r · 1 | Unique | Target ally heals 20. If they use no Harmful skill on their next turn, they heal 30 more at its end. |
 | Bless | Stone Vow | W · 2 | Wardstone | For 3 turns, target ally gains 1 Might, and while an allied Wardstone stands, it takes half the damage they would. |
 | Curse | Excommunicate | S · 2 | Sanctum | Your Sanctum drops by 1. Target enemy is Isolated and Condemned for as long as your Sanctum stands, up to 3 turns. |
-| Smite | Temple Brand | W · 1 | Sanctum | 20 damage to target enemy and Sanctify for 1 turn; it heals 5 more per level of your Sanctum. |
-| Prayer | Hymn of Sanctuary | Wrr · 2 | Sanctum | All allies heal 20 and gain 10 Shield. If your Sanctum is down, it rises straight to level 2. |
+| Smite | Firstfruits Brand | W · 1 | Texture | 20 damage to target enemy and Sanctify for 1 turn. Each time that Sanctify heals someone, Channel Growth is triggered for the user's Seedlings. |
+| Prayer | Cornerstone Psalm | Wrr · 4 | Unique | All allies heal 15 and gain 10 max HP for the rest of the match. |
 | Cleave | Shieldbearer's Sweep | S · 1 | Texture | 20 damage to target enemy and 10 to a random other enemy. For 2 turns, Sanctify on either one gives its damager 15 Shield instead of healing. |
 | Shout | Call to the Faithful | S · 3 | Wardstone | Every allied Boulder is consecrated into a Wardstone, and all enemies are Intimidated for 2 turns. |
 | Withstand | Rampart of Faith | r · 3 | Wardstone | The user gains 20 Shield for 1 turn, +10 per allied Boulder and Wardstone; each of those loses 10 HP. |
@@ -214,7 +214,7 @@ One keyword: like Night's clocks, the skill in playing against it is working out
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
 | Strike | Gravedigger's Spade | W · 0 | Graves | 20 damage to target enemy. The user spends 1 Grave, if they have one, for 10 more; with none, they dig 1 Grave instead. |
-| Smash | Split the Earth | Sr · 2 | Graves | 25 damage to target enemy and 15 to their allies. Every enemy minion falls into the rift for 20 damage. |
+| Smash | Split the Earth | Sr · 2 | Texture | 25 damage to target enemy and 15 to their allies. If the user has a Boulder, one is ground into the blow, and the user drains a Soul Fragment from each enemy hit. |
 | Charge | Tomb Rush | S · 2 | Graves | 15 damage to target enemy. The user spends up to 2 Graves, and their next skill costs 1 less per Grave spent. |
 | Riposte | Grasping Hands | r · 3 | Raise | Invisible. For 1 turn, counters the first Harmful skill used on the user; a Skeleton claws up for the user, spending no Grave, and Taunts its user for 1 turn. |
 | Rage | Call the Dead | SW · 4 | Raise | Raise: spend up to 2 Graves for as many Skeletons. For 3 turns, the user is Immune and gains 1 Might whenever one of their minions dies. |
@@ -223,7 +223,7 @@ One keyword: like Night's clocks, the skill in playing against it is working out
 | Trap | Open Grave | W · 3 | Raise | Invisible. For 2 turns, if target enemy kills a unit or minion, they're Stunned for 1 turn and the fallen rises for the user as a Skeleton, spending no Grave. |
 | Maneuver | Bury Yourself | r · 3 | Graves | The user becomes Invulnerable for 1 turn. When it ends, they spend up to 2 Graves and rise with 15 Shield per Grave spent. |
 | Companion | Ghoul Gravedigger | W · 1 | Raise | Summons a Ghoul Gravedigger (40 HP) permanently. Gnaw (nc): 10 damage, and it heals 10. Unearth (r): spends 2 Graves to Raise a Skeleton; with fewer, it digs 1 Grave. |
-| Bolt | Deathbolt | Ir · 1 | Graves | 25 damage to target enemy. If a unit or minion died since the user's last turn, it's Piercing and they're Horrified for 2 turns. |
+| Bolt | Deathbolt | Ir · 1 | Texture | 20 damage to target enemy, +10 for each Soul Fragment the user spends, up to 3. If it kills them, the spent fragments return to the user, with 1 more. |
 | Blast | Uprising | Irr · 2 | Raise | Raise: spend up to 2 Graves for as many Skeletons, each bursting out under a random enemy for 15 damage. Then 20 damage to all enemies. |
 | Consume | Marrow Draught | r · 2 | Texture | Drains 10 HP from every minion on both sides; the user heals the total. Minions that die leave Graves as usual. |
 | Summon | Raise Skeletons | W · 1 | Raise | Raise: spend up to 2 Graves for as many Skeletons. With no Graves, the user digs 1 instead. |
@@ -235,11 +235,11 @@ One keyword: like Night's clocks, the skill in playing against it is working out
 | Dance | Graveside Vigil | r · 0 | Graves | The user gains 5 Shield per Grave, up to 25. If they already had Shield from this skill, they dig 1 Grave first. |
 | Heal | Feast of the Fallen | r · 1 | Graves | Spends 1 Grave: target ally heals 30. With no Grave to spend, they heal 10. |
 | Bless | Epitaph | r · 2 | Unique | Target ally gains 1 Might for 3 turns. If they die meanwhile, each of their allies gains a copy of every Buff they had, for its remaining duration. |
-| Curse | Tomb Curse | r · 2 | Graves | Target enemy is Confused for 2 turns, and gains 1 more Confusion for each unit or minion that dies meanwhile. |
-| Smite | Grave Marker | W · 1 | Graves | 20 damage to target enemy. For 1 turn, each ally who damages them heals 5 per Grave the user has. |
+| Curse | Bitter Soil | r · 2 | Texture | Target enemy is Confused for 2 turns. Meanwhile, each time Horrified stops them from gaining a Buff, a Seedling sprouts for the user. |
+| Smite | Grave Marker | W · 1 | Texture | 20 damage to target enemy. For 2 turns, each time they're healed, the user drains a Soul Fragment from them. |
 | Prayer | Requiem | Wrr · 2 | Graves | All allies heal 20 and gain 10 Shield, and heal 10 more for each unit or minion that died since the user's last turn. |
-| Cleave | Reaping Arc | S · 1 | Graves | 25 damage to target enemy and 15 to whichever other enemy or minion has the least HP. |
-| Shout | Toll for the Dead | S · 3 | Graves | All enemies are Intimidated for 2 turns, or 3 if the user has 3 or more Graves. |
+| Cleave | Reaper's Row | S · 1 | Unique | 20 damage to target enemy and 15 to a random other enemy. Then every minion on the field, on both sides, takes 15 damage. |
+| Shout | Tolling Bell | nc · 3 | Unique | All units on both sides except the user are Intimidated for 2 turns. |
 | Withstand | Wall of Bones | r · 3 | Raise | The user gains 25 Shield for 2 turns. When it breaks, a Skeleton rises from the bones for the user, spending no Grave. |
 | Taunt | Grudge Beyond the Grave | W · 3 | Raise | Taunts target enemy for 2 turns. If the user dies meanwhile, they rise as a Ghoul, spending no Grave, and the Taunt carries on to it. |
 | Titan | Lord of the Grave | SW · 4 | Texture | For 3 turns, the user gains 2 Armor and Immune, and allied minions are Immortal. |
@@ -274,13 +274,13 @@ One keyword, and a predictable one: both players can plan around the Full Moon.
 | Mislead | False Moonlight | W · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and the user creates a Boulder; the enemy is Isolated while it stands, for up to 3 turns. |
 | Stun | Lunacy | A · 2 | Lunar Cycle | 10 damage to target enemy, and Sleep. Full: damage doesn't wake them until the Full Moon ends. |
 | Dance | Dance of Phases | A · 1 | Lunar Cycle | For 2 turns, the user gains 1 Swiftness and the phase's gift: New, Stealth; Waxing, 2 Armor; Full, 2 Might; Waning, 2 Renew. |
-| Heal | Moonlit Rest | r · 1 | Lunar Cycle | Target ally heals 20. Waxing: they also gain 10 max HP until the next New Moon. |
+| Heal | Borrowed Moonlight | r · 1 | Unique | Target ally heals 40. 3 turns later, the moonlight wanes and they lose 20 HP, which can't kill them. |
 | Bless | Moonveil | r · 2 | Texture | Target ally gains Stealth; while Stealthed, they gain 1 permanent Armor at the end of each of their turns. |
 | Curse | Tidal Lock | A · 3 | Unique | For 3 turns, target enemy's skills are Stunned in alternation: non-Strategic ones on their first and third turns, Strategic ones on their second. |
-| Smite | Silver Brand | A · 1 | Lunar Cycle | 15 damage to target enemy and Sanctify for 2 turns. New: Stealthy, and it has no cooldown. |
+| Smite | Moonlight Covenant | Wr · 1 | Unique | 20 damage to target enemy. For 2 turns, every unit on both sides is Sanctified. |
 | Prayer | Lunar Hymn | Wrr · 2 | Lunar Cycle | All allies heal 20. New: they gain Stealth. Waxing: 2 Renew. Full: 1 Might for 2 turns. Waning: every enemy gains 1 Weakness. |
-| Cleave | Half-Moon Sweep | S · 1 | Lunar Cycle | 20 damage to target enemy and 10 to a random other. New: Stealthy. Full: 10 to every other enemy instead. |
+| Cleave | Crescent Lull | S · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. Neither hit wakes a Sleeping enemy; each Sleeper it hits sleeps 1 turn longer instead. |
 | Shout | Howl at the Moon | Sr · 3 | Lunar Cycle | All enemies are Intimidated for 2 turns. Full: every allied minion also attacks a random enemy for 10. |
-| Withstand | Moonstone Guard | A · 1 | Lunar Cycle | The user gains 1 Armor until the next Full Moon ends. Full: it's permanent instead. |
+| Withstand | Cairn Ward | r · 3 | Texture | The user gains 25 Shield for 1 turn. Whatever is left of it when it ends becomes a Boulder for the user, with that much HP. |
 | Taunt | Wandering Light | r · 2 | Unique | Taunts target enemy for 2 turns. Each time an ally of the user damages them, the Taunt passes to that ally. |
 | Titan | Face of the Moon | AW · 4 | Lunar Cycle | For 3 turns, the user gains 3 Armor and Immune, and the Lunar Cycle holds at its current phase. |

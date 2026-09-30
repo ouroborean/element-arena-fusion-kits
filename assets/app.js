@@ -210,6 +210,7 @@ const PROBLEMS = {
   bridge: { label: 'Bridge', long: "A texture skill that only paid off with both parents' statuses in play" },
   formula: { label: 'Formula', long: 'A texture skill built on the stock "effect, then if this status, that" pattern' },
   unique: { label: 'Unique', long: "Rebuilt as one of the kit's Unique skills: utility no other kit has" },
+  rebalance: { label: 'Rebalance', long: "Reworked to fit the kit's shape: 4 Unique, 8 Texture and 18 core skills split evenly between its mechanics" },
   other: { label: 'Other', long: 'Reworked for another reason' },
 };
 const problemOf = (p) => PROBLEMS[p] ?? PROBLEMS.other;

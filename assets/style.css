@@ -446,6 +446,7 @@ tr.hidden { display: none; }
 .problem-tag.p-keyword-swap { border-color: var(--h4); color: var(--h4); }
 .problem-tag.p-bridge { border-color: var(--h1); color: var(--h1); }
 .problem-tag.p-formula { border-color: var(--h2); color: var(--h2); }
+.problem-tag.p-rebalance { border-color: var(--h3); color: var(--h3); }
 .problem-tag.p-unique { border-color: var(--yellow); background: var(--yellow); color: #000; }
 .change-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .change .side { padding: 10px 14px; }

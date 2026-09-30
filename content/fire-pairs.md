@@ -13,9 +13,9 @@ Fire with Ice, Water, Lightning, Wind, Poison, Earth, Holy, Unholy and Shadow. F
 | --- | --- | --- | --- | --- |
 | Strike | Tempering Blow | S · 0 | Thermal Shock | 20 damage. The target is Ignited if they have a Frost debuff, otherwise Frostbitten for 1 turn. |
 | Smash | Worldbreaker | Sr · 2 | Thermal Shock | 25 damage to target enemy and 10 to their allies, then the target gains Frostfire. If that Thermal Shocks them, each of their allies with a Fire or Frost debuff is Shocked too. |
-| Charge | Coldsnap Dash | S · 2 | Thermal Shock | 15 damage to target enemy, who is Chilled through the user's next turn. The user gets 1 Focus for their next skill, which also Ignites its targets. |
+| Charge | Coldsnap Dash | S · 2 | Texture | 15 damage to target enemy, and the user gets 1 Focus for their next skill. If that skill hits a Chilled enemy, the cold cracks their Ignite: it ticks twice at once. |
 | Riposte | Twin Spines | I · 3 | Thermal Shock | Invisible. For 1 turn, counters any Harmful skill used on the user. Its user gains Frostfire and is Thermal Shocked the next time they use a skill. |
-| Rage | Ragnarok | SI · 4 | Thermal Shock | For 3 turns, the user gains 1 Might and Immune, and their damaging skills Ignite targets with a Frost debuff and Chill the rest for 1 turn. |
+| Rage | Ragnarok | SI · 4 | Unique | For 4 turns, the user swings between extremes: 3 Might on their first and third turns, and 3 Armor and Immune on their second and fourth. |
 | Shot | Sleetspark | r · 1 | Frostfire | 15 damage and Frostfire. If the target has no Buffs, they're also Numbed for 1 turn, Thermal Shocking them. |
 | Snipe | Comet of Ruin | AIr · 2 | Thermal Shock | Channeled, hidden target. On the following turn, 45 damage to target enemy. If they gain a Fire or Frost debuff first, it lands at once and Thermal Shocks them. |
 | Trap | Cracking Floe | A · 3 | Unique | Invisible. For 3 turns, the first time target enemy falls to 50 HP or less, the ice cracks under them: they take 20 Piercing damage and are Stunned for 1 turn. |
@@ -24,20 +24,20 @@ Fire with Ice, Water, Lightning, Wind, Poison, Earth, Holy, Unholy and Shadow. F
 | Bolt | Paradox Bolt | Ir · 1 | Thermal Shock | 20 damage and Frostfire. If the target was already Thermal Shocked this turn, the Frostfire Shocks them again. |
 | Blast | Fimbulfire | SI · 2 | Frostfire | 20 damage to all enemies. Each Ignite on them turns into Frostfire, Thermal Shocking its bearer. |
 | Consume | Equilibrium | r · 2 | Thermal Shock | 10 damage to target enemy, healing the user as much. If they have both a Fire and a Frost debuff (Frostfire counts), they're Thermal Shocked and the user heals 20 more. |
-| Summon | Fire and Ice Motes | S · 1 | Thermal Shock | Summons a Cinder Mote and a Frost Mote (10 HP each) for 2 turns. Each turn, the Cinder Mote Ignites a random enemy and the Frost Mote Chills that enemy for 1 turn. |
+| Summon | Twilight Jotunn | Sr · 2 | Unique | Summons a Twilight Jotunn (60 HP) for 3 turns. At the end of each of your turns, it deals 25 damage to a random enemy. While it stands, the user is Stunned; Swiftness can't stop it. |
 | Channel | Seasons' End | SI · 3 | Thermal Shock | Channeled. 10 damage to all enemies for 3 turns. Turn 1 Ignites them all; turn 2 Chills them all for 1 turn; turn 3 makes every Ignited enemy Explode. |
-| Stab | Twin Needle | r · 0 | Thermal Shock | 10 damage and Chilled for 1 turn. Against targets at or below 60 HP, they're also Ignited, Thermal Shocking them. |
+| Stab | Twin Needle | r · 0 | Frostfire | 10 damage and Frostfire to target enemy. Against targets at or below 60 HP, it's 20 damage, and their Frostfire ticks at once. |
 | Ravage | Twofold Ruin | Ar · 1 | Texture | 20 Affliction damage to target enemy, +10 for each Fire or Frost debuff they have. Then those debuffs are removed. |
 | Mislead | Shimmering Air | I · 2 | Frostfire | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and they gain Frostfire. A Helpful skill Scorches and Numbs them for 1 turn instead. |
-| Stun | Snapflare | S · 1 | Thermal Shock | 15 damage and Chilled for 1 turn. Shattered targets are also Stunned for 1 turn. |
+| Stun | Hoarfire Hold | AI · 3 | Frostfire | 15 damage to target enemy, who gains Frostfire and is Stunned for 1 turn. If the Frostfire is still on them when the Stun ends, it's consumed to Stun them 1 more turn. |
 | Dance | White Flame Waltz | AI · 4 | Texture | For 3 turns, the user gains 1 Swiftness and 1 Focus, and Explodes at the end of each of their turns in which they dealt damage. |
 | Heal | Frozen Remedy | W · 1 | Unique | Target ally heals 35 at the end of the enemy's next turn. If a hit would kill them before then, the heal lands first, at once. |
 | Bless | Tempered | S · 2 | Thermal Shock | For 3 turns, target ally gains 1 Might, and their direct damage deals 10 more to Shattered enemies. |
 | Curse | Heat Death | IW · 3 | Frostfire | Target enemy gains Frostfire, then 1 Confusion for 2 turns per Fire or Frost debuff they have, Frostfire included (max 3). |
-| Smite | Brand of Frost | W · 1 | Thermal Shock | 15 damage and Numb for 1 turn. For 1 turn, allies who damage the target Ignite them. |
+| Smite | Rimebrand | W · 1 | Texture | 15 damage to target enemy and Sanctify for 1 turn. For 2 turns, each Explosion that hits them also Frostbites them for 1 turn. |
 | Prayer | Fimbul Vigil | WI · 3 | Texture | All allies heal 20 and gain 10 Shield. For 2 turns, Chilled enemies' skills also cost 1 more random energy. |
 | Cleave | Split Horizon | S · 1 | Texture | 20 damage to target enemy and 15 to a random other enemy, who also gains copies of the target's Fire and Frost debuffs. |
-| Shout | The Last Call | r · 3 | Thermal Shock | All enemies are Scorched for 2 turns, Thermal Shocking each one with a Frost debuff. |
+| Shout | Long Night's Toll | r · 3 | Frostfire | All enemies are Intimidated for 2 turns, and a random one gains Frostfire. For as long, each enemy with Frostfire is Intimidated twice over. |
 | Withstand | Heart of the Glacier | r · 3 | Texture | The user gains 25 Shield for 2 turns, and is Frostborn while any of it remains. |
 | Taunt | Circle of Extremes | S · 3 | Thermal Shock | Taunts target enemy for 2 turns, and moves every Fire and Frost debuff on their allies onto them. |
 | Titan | Twilight Colossus | SS · 4 | Frostfire | For 3 turns, the user gains 3 Armor and Immune, and enemies who damage them gain Frostfire. |
@@ -51,9 +51,9 @@ Fire with Ice, Water, Lightning, Wind, Poison, Earth, Holy, Unholy and Shadow. F
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Crucible Strike | I · 0 | Transmute | 25 damage. The target's Renew is Transmuted into as much Weakness. |
-| Smash | Solve et Coagula | Srr · 2 | Transmute | 25 damage to target enemy and 15 to their allies. Each target's Shield is Transmuted into Vulnerable, 1 per 10 Shield. |
-| Charge | Reagent Rush | I · 2 | Catalyst | 15 damage; the target gains Catalyst, and the user 1 Focus for their next skill. |
+| Strike | Calcining Blow | I · 0 | Texture | 20 damage to target enemy. Their Ignite ticks at once, plus once more for each Buff they have (max 3 more). |
+| Smash | Kiln Crash | Sr · 2 | Texture | 25 damage to target enemy and 15 to their allies. For 2 turns, Scorched on any of them also halves the Shield they gain. |
+| Charge | Steam Rush | I · 2 | Texture | 15 damage to target enemy, and the user gets 1 Focus for their next skill. The user gains 1 Renew for each Ignited enemy (max 3). |
 | Riposte | Reactive Flask | r · 3 | Transmute | Invisible. For 1 turn, counters any Harmful skill used on the user: its user is Ignited, and the user's Debuffs are Transmuted into Renew. |
 | Rage | Magnum Opus | SI · 4 | Catalyst | For 3 turns, the user gains 2 Might, and gains Catalyst at the start of each of their turns. |
 | Shot | Vial Toss | r · 1 | Texture | 15 damage and Ignite to target enemy. For 2 turns, if that Ignite is removed from them, they Explode. |
@@ -63,12 +63,12 @@ Fire with Ice, Water, Lightning, Wind, Poison, Earth, Holy, Unholy and Shadow. F
 | Companion | Homunculus | A · 1 | Transmute | Summons a Homunculus (30 HP) permanently. At the end of each of your turns, one stack of Might, Armor, Focus or Renew on a random enemy is Transmuted, and a random ally gains that stack. |
 | Bolt | Quicksilver Bolt | I · 1 | Catalyst | 20 damage to target enemy. If they have Catalyst, the doubled hit also Transmutes one of their Buffs; if not, they gain Catalyst. |
 | Blast | Chain Reaction | II · 2 | Catalyst | 20 damage to all enemies. Each enemy with Catalyst Explodes. |
-| Consume | Essence Extraction | r · 2 | Transmute | 5 damage. Each Buff on the target is Transmuted into 5 Affliction damage, dealt now; the user heals as much. |
+| Consume | Essence Extraction | r · 2 | Unique | 5 damage to target enemy, healing the user for it. Then 10 of their max HP is distilled into the user: theirs drops by 10 and the user's rises by 10 for the rest of the match (up to 30 per enemy). |
 | Summon | Alembic | I · 1 | Catalyst | Summons an Alembic (15 HP) for 3 turns. Brew (nc): target unit, ally or enemy, gains Catalyst. |
 | Channel | Slow Distillation | rr · 3 | Texture | Channeled, up to 4 turns. Each turn, 5 damage to all enemies and 1 Renew to all allies. When it ends, allies' Renew boils off as 5 Affliction per stack to random enemies. |
 | Stab | Probing Lancet | r · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. It ignores counters and reflects; if it slips past one, the user gains Flow for 2 turns. |
-| Ravage | Aqua Regia | Ir · 1 | Transmute | 25 Piercing damage. The target's Armor is Transmuted into Vulnerable. |
-| Mislead | Inversion Circle | I · 2 | Transmute | Invisible. For 1 turn, if target enemy uses a Helpful skill, it's Transmuted: its healing lands on its targets as damage, and its Buffs as the matching Debuffs. |
+| Ravage | Boiling Point | Ir · 1 | Texture | 25 Piercing damage to target enemy. The user boils off all their Renew, and the target's Ignite ticks once per stack (max 4). |
+| Mislead | Inversion Circle | I · 2 | Unique | Invisible. For 1 turn, if target enemy uses a Helpful skill, it's Transmuted: its healing lands on its targets as damage, and its Buffs as the matching Debuffs. |
 | Stun | Flash Powder | S · 2 | Transmute | 15 damage and a 1-turn Stun that Swiftness can't stop: each Swiftness on the target is Transmuted into 1 Confusion instead. |
 | Dance | Quickening Draught | AI · 4 | Catalyst | The user gains Catalyst. At the start of their next turn, they gain 1 Might, 2 Swiftness and 1 Focus for 3 turns, doubled if the Catalyst is still unspent. |
 | Heal | Panacea | W · 1 | Transmute | Target ally heals 15; their Debuffs are Transmuted into 2 Renew each. |
@@ -80,7 +80,7 @@ Fire with Ice, Water, Lightning, Wind, Poison, Earth, Holy, Unholy and Shadow. F
 | Shout | Souring Vapors | I · 2 | Transmute | For 1 turn, every Buff an enemy gains is Transmuted on arrival. |
 | Withstand | Steam Barrier | r · 2 | Transmute | The user gains 25 Shield for 1 turn. When it ends, what's left of it is Transmuted into Renew, 1 per 5 Shield. |
 | Taunt | Lure Flask | S · 3 | Transmute | Taunts target enemy for 2 turns. Half the damage they deal the user is Transmuted into healing for the user instead. |
-| Titan | Philosopher's Stone | WW · 4 | Transmute | For 4 turns, the user gains 2 Armor and 2 Renew each turn, and every Debuff applied to them is Transmuted on arrival. |
+| Titan | The Great Work | SW · 4 | Unique | For the rest of the match, the user has 2 Armor and Immune, but can't gain any other Buff. |
 
 ## Plasma — Fire + Lightning
 
@@ -97,29 +97,29 @@ Fire with Ice, Water, Lightning, Wind, Poison, Earth, Holy, Unholy and Shadow. F
 | Riposte | Discharge Ward | I · 3 | Vent | Invisible. For 1 turn, counters the next Harmful skill used on the user. Vent: its user takes 10 Affliction per Heat and is Ignited. |
 | Rage | Critical Mass | Sr · 4 | Heat | For 3 turns, the user gains Stormborn and Flameborn and can't Melt Down; if they end it at 5 Heat, they Melt Down then. +2 Heat. |
 | Shot | Arc Spark | I · 0 | Texture | 15 damage and Ignite. Each time this Ignite ticks, the user gains 1 Charge. |
-| Snipe | Nova Lance | AS · 2 | Heat | Channeled, hidden target. On the following turn, 30 Piercing damage to target enemy, doubled if the user Melted Down in between. +2 Heat. |
-| Trap | Thermite Coil | r · 2 | Heat | Invisible. For 2 turns, each time target enemy uses a skill, they take 10 damage and are Sapped, and the user loses 1 Heat. |
+| Snipe | Coilgun | AS · 2 | Unique | Channeled, hidden target, up to 3 turns. When the channel ends, 30 Piercing damage to target enemy, +15 for each turn it was held. |
+| Trap | Thermite Seal | r · 2 | Texture | Invisible. For 3 turns, the first time target enemy is healed, they're Scorched for 2 turns before the heal lands, and they Explode. |
 | Maneuver | Heat Sink | r · 2 | Vent | The user becomes Invulnerable for 1 turn. Vent: 10 Shield per Heat. |
 | Companion | Ball Lightning | A · 1 | Heat | Summons a Ball Lightning (25 HP) permanently. Each turn, it deals 10 damage to a random enemy and gives you 1 Heat. Detonate (r): it dies, dealing 20 to all enemies and Sapping them. |
 | Bolt | Superheated Bolt | I · 1 | Heat | 20 damage and Ignite. This Ignite deals 5 more per Heat the user has when it's applied. +1 Heat. |
 | Blast | Overload Burst | Srr · 2 | Heat | 20 damage to all enemies. The user Melts Down at the end of this turn, whatever their Heat. |
 | Consume | Coolant Draw | r · 2 | Vent | 10 damage, and Saps. Vent: the user heals 10 per Heat. |
-| Summon | Sparks | I · 1 | Heat | Summons 2 Sparks (10 HP) for 2 turns. Each turn, each draws 1 Heat from you to deal 15 damage to a random enemy, or 5 if you have none. |
-| Channel | Containment | r · 2 | Heat | Channeled. The user has Stormborn while channeling (so each Charge also adds Heat), and their Meltdowns deal no damage to them. |
-| Stab | Hot Wire | r · 0 | Heat | 10 damage, or 20 against targets at or below 60 HP (80 HP while the user has 3 or more Heat). +1 Heat. |
+| Summon | Jumper Sparks | I · 1 | Texture | Summons 2 Jumper Sparks (10 HP) for 3 turns. At the end of each of your turns, each deals 10 damage to a random enemy and gives 1 Charge to the ally closest to 3 Charge. |
+| Channel | Arc Furnace | rr · 3 | Texture | Channeled, up to 3 turns. At the end of each, 10 damage to all enemies, and the user spends 1 Charge, if they have any, to make every enemy's Ignite tick at once. |
+| Stab | Hot Wire | r · 0 | Vent | 10 damage to target enemy, or 20 against targets at or below 60 HP. Vent: that threshold rises by 10 HP per Heat removed. |
 | Ravage | Plasma Cutter | Ir · 1 | Heat | 20 Piercing damage, +10 for each Charge the user spends on it. Each Charge spent becomes 1 Heat. |
 | Mislead | Heat Shimmer | Sr · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and they're Ignited. For 2 turns, that Ignite also ticks at the end of their own turns. |
-| Stun | Short Circuit | AI · 2 | Heat | 15 damage and stuns their non-Strategic skills for 1 turn. At 4 or more Heat, it hits every enemy. +1 Heat. |
+| Stun | Short Circuit | AI · 2 | Vent | 15 damage to target enemy and stuns their non-Strategic skills for 1 turn. Vent: for every 2 Heat removed, a random other enemy is stunned the same way. |
 | Dance | Star Core | SI · 5 | Heat | For 3 turns, the user gains 1 Might and Stormborn, and can't be Stunned while they have 3 or more Heat. |
 | Heal | Cauterizing Shock | I · 1 | Vent | Target ally heals 20. Vent: they gain 1 Charge per 2 Heat removed. |
 | Bless | Supercharge | W · 2 | Texture | Target ally's Charge fills to 3 at once, and they gain 1 Might for 3 turns. For those 3 turns, they can't gain Charge. |
 | Curse | Brownout | r · 2 | Texture | Target enemy is Sapped and Confused for 2 turns. While they're Confused, full Sapped isn't spent: they generate 1 less energy every turn it stays at 3. |
-| Smite | Kindling Brand | S · 1 | Heat | 15 damage. For 1 turn, each ally who damages the target draws 1 Heat from the user, dealing 10 more with it. |
+| Smite | Quench Brand | W · 1 | Vent | 20 damage to target enemy and Sanctify for 1 turn. Vent: the Sanctify heals 5 more per Heat removed. |
 | Prayer | Heat Exchange | WS · 2 | Heat | All allies heal 15 and gain 10 Shield. If the user Melts Down before their next turn, the Meltdown heals every ally 20 and doesn't hurt the user. |
 | Cleave | Breaker Arc | I · 1 | Unique | 20 damage to target enemy and 15 to a random other enemy. Any channel either of them holds is broken, and neither can start one until the user's next turn. |
-| Shout | Static Flare | Sr · 2 | Heat | All enemies are Sapped, and the user's Heat rises to 4. |
-| Withstand | Magnetic Bottle | S · 3 | Heat | The user gains 20 Shield plus 10 per Heat for 2 turns; their Heat can't rise while it holds. |
-| Taunt | Flare Beacon | r · 3 | Heat | Taunts target enemy for 2 turns. Each Harmful skill they use on the user gives the user 1 Heat and Saps them. |
+| Shout | Grid Collapse | S · 3 | Unique | All enemies are Intimidated for 2 turns, and every minion in the battle, on both sides, is Stunned for 2 turns. |
+| Withstand | Overcharged Barrier | S · 3 | Unique | The user gains 50 Shield for 1 turn. The surge costs them: their next skill costs 2 more energy. |
+| Taunt | Flare Beacon | r · 3 | Vent | Taunts target enemy for 1 turn. Vent: 1 more turn and 1 Sapped per 2 Heat removed. |
 | Titan | Reactor Core | Ir · 4 | Heat | For 3 turns, the user gains Immune and 1 Armor per Heat they have, checked each turn. |
 
 ## Mechanic — Fire + Wind
@@ -145,19 +145,19 @@ Fire with Ice, Water, Lightning, Wind, Poison, Earth, Holy, Unholy and Shadow. F
 | Blast | Pressure Cascade | Ar · 2 | Unique | 20 damage to all enemies, +10 for each ally of the user who used a damaging skill earlier this turn. |
 | Consume | Refuel | r · 2 | Texture | 10 damage to target enemy, healing the user as much. The user burns all their Swiftness as fuel: 10 more healing per stack. |
 | Summon | Turret Drop | r · 2 | Contraptions | Builds 2 Turrets for 3 turns. When one is destroyed, the other is Upgraded. |
-| Channel | Assembly Line | AI · 3 | Contraptions | Channeled, up to 3 turns. At the end of each, the user builds a Turret, or Upgrades one if they already have any. |
-| Stab | Drill Bit | r · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. Used while Leaping, it gets the Leap's 5 bonus damage without ending the Leap. |
+| Channel | Assembly Line | AI · 3 | Upgrade | Channeled, up to 3 turns. At the end of each, a random allied minion is Upgraded; if the user has none, they build a Turret instead. |
+| Stab | Drill Bit | nc · 1 | Unique | Usable while Stunned. 10 damage to target enemy, or 20 at or below 60 HP. |
 | Ravage | Chainsaw | A · 1 | Contraptions | 25 Piercing damage, doubled against minions. If it destroys one, the user builds a Turret from the wreck. |
 | Mislead | Dummy Bomb | I · 2 | Contraptions | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and a Dummy (Contraption, 15 HP) is built. When the Dummy is destroyed, it Explodes. |
 | Stun | Concussion Grenade | S · 1 | Texture | Lands at the start of the user's next turn: 15 damage and a 1-turn Stun to target enemy, unless they used a mobility skill in between. |
 | Dance | Autogyro | AI · 5 | Upgrade | For 3 turns, the user gains 1 Might and Ghosted and begins Rushing. At the end of each turn they're still Rushing, every allied minion is Upgraded. |
-| Heal | Repair Kit | A · 1 | Contraptions | Target ally heals 20, or target Contraption is Repaired for 20 and Upgraded. |
+| Heal | Repair Kit | A · 1 | Upgrade | Target ally heals 20. An allied minion is instead Upgraded twice; a Contraption is Repaired for 20 first. |
 | Bless | Tune-Up | A · 2 | Texture | For 3 turns, target ally gains 1 Might, and their damaging skills don't end their Leap; it ends only when they take damage. |
-| Curse | Sabotage | A · 2 | Texture | Target enemy is Ignited and Confused for 2 turns. While they're Confused, their Ignite can't be removed. |
-| Smite | Signal Flare | Wr · 1 | Contraptions | 20 damage. For 1 turn, allied minions attack the target instead of random enemies and deal 10 more to them. |
+| Curse | Sabotage | A · 2 | Unique | Target enemy is Confused for 2 turns. Meanwhile, each mobility skill they use backfires: it's countered and they're Stunned for 1 turn. |
+| Smite | Signal Flare | Wr · 1 | Upgrade | 20 damage to target enemy. For 1 turn, allied minions attack them instead of random enemies, and each one that damages them is Upgraded. |
 | Prayer | Field Workshop | Wrr · 2 | Contraptions | All allies heal 20. Each ally at or below half HP afterwards gets a Turret for 2 turns. |
 | Cleave | Red-Hot Blades | Ar · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. The user overheats: they're Ignited, and deal 5 more direct damage while they stay Ignited. |
-| Shout | Steam Whistle | A · 2 | Contraptions | All enemies are Intimidated for 2 turns, and allied minions attack twice at the end of this turn. |
+| Shout | Steam Whistle | A · 2 | Upgrade | All enemies are Intimidated for 2 turns. Every allied minion is Upgraded, and loses that level again after 2 turns. |
 | Withstand | Blast Shield | r · 3 | Contraptions | The user gains 25 Shield for 1 turn. When it ends, if 10 or more is left, the user builds a Turret for 2 turns from it. |
 | Taunt | Scarecrow Bot | r · 3 | Contraptions | Builds a Decoy (Contraption, 20 HP); target enemy is Taunted by it for 2 turns, or 3 if they're Immobile. |
 | Titan | Mech Suit | SA · 4 | Upgrade | For 3 turns, the user counts as a Contraption: 20 Shield, Immune, ignores Stuns, and can be Upgraded. Then they Leap. |
@@ -176,21 +176,21 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | Smash | Brimquake | Sr · 2 | Texture | 25 damage to target enemy and 15 to their allies. For 2 turns, Explosions deal 10 more to each enemy it hit. |
 | Charge | Choking Lunge | S · 1 | Texture | 10 damage to target enemy, and the user gets 1 Focus for their next skill. Until the user's next turn, Toxin on the target also ticks at the start of the target's turn. |
 | Riposte | Brimstone Hide | W · 2 | Sulfur | Invisible. For 1 turn, counters any Harmful skill used on the user. Its user gains 2 Sulfur; if they're Ignited, it Erupts at once and the user heals as much as it deals. |
-| Rage | Fire and Brimstone | S · 4 | Sulfur | For 3 turns, the user gains 1 Might and Immune, and every enemy who uses a Harmful skill gains 1 Sulfur. |
+| Rage | Scent of Cinders | S · 4 | Texture | For 3 turns, the user gains 1 Might and Immune, and every Ignited or Scorched enemy counts as Prey. |
 | Shot | Sulfur Sting | r · 1 | Sulfur | 5 Piercing damage and 1 Sulfur. If the target is Prey, their Sulfur Erupts. |
 | Snipe | Pitch Javelin | Ar · 1 | Sulfur | Channeled, hidden target, Uncounterable. On the following turn, 25 Affliction damage and 2 Sulfur, and the target's next Eruption is doubled. |
 | Trap | Brimstone Pit | W · 2 | Sulfur | Invisible. For 3 turns, each time target enemy uses a Strategic skill, they gain 1 Sulfur. The first damaging skill they use makes it all Erupt. |
 | Maneuver | Choking Pall | W · 2 | Unique | Unstunnable. The user becomes Invulnerable for 1 turn, and every other unit, ally or enemy, is Blinded for 1 turn. |
-| Companion | Brimstone Toad | A · 1 | Sulfur | Summons a Brimstone Toad (30 HP) permanently. At the end of each of your turns, it gives a random enemy 1 Sulfur, or Ignites them if they have 3 or more. |
-| Bolt | Sulfur Orb | I · 1 | Sulfur | 20 damage and 1 Sulfur. When the target's Sulfur next Erupts, each of their allies gains 1 Sulfur from it. |
-| Blast | Rain of Brimstone | Wr · 2 | Sulfur | 15 damage to all enemies. Those without Sulfur gain 1; those who already have it are Ignited. |
+| Companion | Belching Toad | A · 1 | Unique | Summons a Belching Toad (30 HP) permanently. At the end of each of your turns, it swallows the newest Debuff on a random ally and belches it onto a random enemy. |
+| Bolt | Acrid Orb | I · 1 | Texture | 20 damage to target enemy and Mark for 1 turn. Until the Mark is spent, they count as Prey. |
+| Blast | Burning Downpour | Wr · 2 | Texture | 15 damage to all enemies. Then each one's Ignite ticks once for every 2 Toxin they have (max 3). |
 | Consume | Consumed by Fire | W · 2 | Sulfur | Target enemy's Sulfur Erupts. Then, if they're below 15 HP (doubled for minions), they're executed. |
 | Summon | Stokers | S · 1 | Sulfur | Summons 2 Stokers (10 HP) for 2 turns. At the end of each of your turns, each Ignites the enemy with the most Sulfur. |
 | Channel | Hellmouth | Wrr · 8 | Sulfur | Channeled, up to 8 turns. Each turn, 5 Affliction to all enemies, and a random enemy gains 1 Sulfur. When it ends or is broken, every enemy's Sulfur Erupts. |
 | Stab | Strike the Match | r · 0 | Sulfur | 5 Piercing damage and Ignite. If this Ignite makes their Sulfur Erupt this turn, the user gains 1 random energy. |
 | Ravage | Caustic Flame | Ar · 1 | Texture | 20 Affliction damage, +10 per Toxin on the target. Then their Toxin is burned away. |
 | Mislead | Choking Fumes | W · 2 | Sulfur | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and they gain 1 Sulfur per energy it cost. |
-| Stun | Asphyxiate | W · 3 | Sulfur | Target enemy is Stunned for 1 turn. If their Sulfur Erupts while they're Stunned, the Stun lasts 1 more turn. |
+| Stun | Asphyxiate | W · 3 | Unique | Bypass. 10 damage to target enemy, who is Stunned for 1 turn. Swiftness, Immune and Unstunnable don't stop it. |
 | Dance | Sulfur Dance | S · 1 | Sulfur | The user gains Immune for 1 turn and Explodes; every enemy with Sulfur Erupts. |
 | Heal | Sulfur Tonic | W · 1 | Sulfur | Target ally heals 20, and their Toxin is drawn off: a random enemy gains that much Sulfur. |
 | Bless | Brimfire Crest | W · 2 | Texture | For 3 turns, target ally gains 1 Might and Flameborn, and their Flameborn heals them for all the Affliction damage they deal, not just their Ignites'. |
@@ -199,7 +199,7 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | Prayer | Hellsong | Wr · 2 | Sulfur | All allies heal 15 and gain Flameborn for 2 turns, which also heals them 10 for each Eruption their side causes. |
 | Cleave | Burning Tail | S · 1 | Sulfur | 20 damage to target enemy and 15 to a random other enemy, who gains as much Sulfur as the target has. |
 | Shout | Stench of Sulfur | r · 1 | Sulfur | All enemies gain 1 Sulfur, and for 2 turns, any Sulfur removed from them Erupts instead. |
-| Withstand | Ash Coil | W · 2 | Sulfur | The user gains 1 Armor and 20 Shield for 1 turn. Enemies who damage the Shield gain 1 Sulfur each time. |
+| Withstand | Cinder Mantle | r · 3 | Texture | The user gains 25 Shield for 1 turn. If an enemy breaks it, the user becomes Flameborn for 2 turns. |
 | Taunt | Lure of the Pit | r · 3 | Unique | Taunts target enemy for 2 turns. Whenever another enemy uses a Helpful skill meanwhile, the Taunt jumps to them. |
 | Titan | Pit Lord | SW · 4 | Sulfur | For 3 turns, the user gains 3 Armor and Immune, and each Debuff aimed at them gives its user 1 Sulfur instead. |
 
@@ -219,7 +219,7 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | Rage | Solar Maximum | SW · 4 | Corona | For 3 turns, the user is Immune, can hold up to 5 Corona and gains 1 each turn. When it ends, their Corona drops to 3. |
 | Shot | Noon Ray | r · 0 | Solar Flare | 15 damage to target enemy. If the user has no Corona, they gain 1; otherwise it Flares: 10 more per Corona. |
 | Snipe | Zenith Spear | Sr · 2 | Solar Flare | Channeled, hidden target. On the following turn, 45 damage to target enemy. Flare: when it lands, every ally heals 10 per Corona spent. |
-| Trap | Heatstroke | W · 3 | Corona | For 2 turns, each time target enemy uses a Harmful skill, they're Ignited and a random ally of yours gains 1 Corona. |
+| Trap | Sunlit Furrow | W · 3 | Texture | Invisible. For 3 turns, each time target enemy uses a Harmful skill, they take 10 damage and the user creates a Seedling (max 3). |
 | Maneuver | Horizon | r · 3 | Corona | The user becomes Invulnerable for 1 turn. At the start of their next turn they rise: they gain 1 Corona, and each enemy who used a Harmful skill meanwhile is Ignited. |
 | Companion | Sunflower | W · 1 | Corona | Summons a Sunflower (40 HP, counts as a Seedling) permanently; it always has 1 Corona. Scatter Seeds (r): the Sunflower loses 10 HP, and its creator creates a Seedling. |
 | Bolt | Ripening Vine | Ir · 1 | Texture | 20 damage to target enemy. Each allied Seedling ripens: it uses Channel Earth at no cost, then loses 5 HP. |
@@ -237,11 +237,11 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | Curse | Drought | r · 2 | Texture | Target enemy is Scorched for 2 turns; the healing the Scorch denies them goes to a random ally of the user instead. |
 | Smite | Pillar of Noon | W · 1 | Solar Flare | 20 damage to target enemy. Flare: for 1 turn per Corona spent, allies who damage them gain 1 Corona. |
 | Prayer | Hymn to the Sun | Wrr · 2 | Solar Flare | All allies heal 20. Flare: every ally gains 1 Corona per 2 Corona spent, rounded up. |
-| Cleave | Sunwheel | W · 1 | Corona | 15 damage to target enemy and a random other enemy. If both were already Ignited, the user gains 1 Corona; otherwise, the unlit one is Ignited. |
+| Cleave | Stubble Burn | S · 1 | Texture | 20 damage to target enemy and 15 to a random other enemy. Every allied Seedling is burned off: it dies, and both enemies are Ignited and burn once now per Seedling lost. |
 | Shout | Dawn Chorus | S · 3 | Corona | All enemies are Intimidated for 2 turns. Every allied minion gains 1 Corona, and it ticks once now. |
 | Withstand | Kiln Wall | r · 3 | Texture | The user gains 25 Shield for 2 turns. Damage it absorbs is baked into a random allied Boulder, which gains that much HP. |
-| Taunt | Burning Grudge | W · 3 | Corona | Permanently Taunts target enemy (only one at a time). Each time they damage the user, the user's Corona ticks once. |
-| Titan | Radiant Colossus | SW · 4 | Corona | For 3 turns, the user is Immune, their Corona stays at 3 and can't be spent, and each tick gives them 1 Armor. When it ends, they lose all Corona. |
+| Taunt | High Noon | r · 3 | Unique | Taunts target enemy for 2 turns. For as long, no other enemy can target the user. |
+| Titan | Red Giant | SW · 4 | Unique | For 3 turns, the user is Immune and swells: at the start of each of their turns, they gain 15 max HP and heal 15. When it ends, they lose that max HP, and every enemy takes as much damage. |
 
 ## Judgment — Fire + Holy
 
@@ -261,9 +261,9 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | Snipe | Final Verdict | Arr · 2 | Sentence | Channeled, hidden target. On the following turn, 40 damage to the enemy with the most Sin, or to target enemy if none has more, and Sentence: 15 Affliction per Sin. |
 | Trap | Bear Witness | r · 2 | Sin | Invisible. For 3 turns, target enemy is secretly Accused; the Sin they gain stays hidden from them until it's Sentenced. |
 | Maneuver | Sealed Cloister | r · 2 | Texture | The user becomes Invulnerable for 1 turn. Until their next turn, an enemy's Condemned triggers each time they use a skill instead of ending. |
-| Companion | Inquisition Hound | SW · 4 | Sin | Summons an Inquisition Hound (45 HP) permanently. Sniff Out (r): target enemy is Accused for 2 turns. Maul (S): 15 damage, +5 per Sin. |
+| Companion | Censer Bearer | A · 1 | Texture | Summons a Censer Bearer (30 HP) permanently. At the end of each of your turns, it relights one enemy whose Ignite ended or was removed since your last turn. Swing Censer (r): 10 damage to target enemy. |
 | Bolt | Fire of Rebuke | I · 1 | Sin | 20 damage to target enemy, and they're Accused for 2 turns. Ignites on them burn 5 more per Sin they have. |
-| Blast | Day of Judgment | IW · 2 | Sentence | 20 damage to all enemies, and Sentences each: 10 Affliction per Sin. |
+| Blast | Found Wanting | IW · 2 | Unique | 10 damage to all enemies, and each takes as much again as the damage they dealt since the user's last turn (max 40 more). |
 | Consume | Confession | r · 2 | Sentence | 5 damage. Sentence: the user heals 10 per Sin, and is Anointed if any was removed. |
 | Summon | Tribunal | I · 1 | Sin | Summons a Tribunal (20 HP) for 3 turns. Summons (r): target enemy is Accused for 2 turns. Condemn (W): target enemy with Sin is Condemned, then the Tribunal dies. |
 | Channel | Trial by Fire | W · 3 | Sin | Channeled. At the end of each of the user's turns, a random enemy without Sin is Accused and Ignited, and each enemy with Sin takes 10 damage per Sin. |
@@ -274,14 +274,14 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | Dance | Pillar of Fire | AW · 4 | Texture | For 3 turns, the user gains 1 Swiftness and 1 Focus, and each Explosion their side causes gives them 1 Might until it ends. |
 | Heal | Overflowing Grace | Wr · 3 | Texture | Target ally heals 40. If any of it is wasted past their max HP, they're Anointed until the end of their next turn. |
 | Bless | Judge's Mantle | r · 2 | Sentence | Target ally is Anointed until the end of their next turn, and their Harmful skills Sentence enemies with Sin: 5 Affliction per Sin. |
-| Curse | Arraignment | S · 2 | Sin | Target enemy is Accused for 2 turns, and each Sin they gain meanwhile also gives them 1 Confusion. |
-| Smite | Brand of Guilt | W · 1 | Sentence | 15 damage to target enemy. Sentence: they're Sanctified for 1 turn per Sin removed. |
+| Curse | Blind Justice | r · 2 | Unique | Every unit on both sides, the user included, is Blinded until the end of the user's next turn. |
+| Smite | Purging Brand | W · 1 | Texture | 20 damage to target enemy and Sanctify for 2 turns. Meanwhile, their Ignite's burns also trigger the Sanctify, healing whoever applied the Ignite. |
 | Prayer | Rule of Law | WS · 3 | Unique | All allies heal 20 and gain 10 Shield. For 1 turn, every enemy is Taunted by the ally with the most HP. |
 | Cleave | Twin Verdicts | S · 1 | Sin | 15 damage to target enemy and a random other enemy. The second one gains as much Sin as the target has. |
 | Shout | Call to Judgment | W · 3 | Sentence | Bypass. Sentences every enemy: 5 damage per Sin, and Condemned for 1 turn per Sin removed (max 3). |
 | Withstand | Stay of Execution | r · 3 | Unique | The user gains 20 Shield for 2 turns. The first hit meanwhile that would kill them is stayed: its damage lands at the end of their next turn instead. |
-| Taunt | Challenge the Guilty | S · 3 | Sin | Taunts target enemy for 1 turn per Sin they have (at least 1), and they're Accused while Taunted. |
-| Titan | High Inquisitor | Wr · 4 | Sin | For 3 turns, the user is Immune and all enemies are Accused; each Sin an enemy gains gives the user 1 Armor (max 3). |
+| Taunt | Heretic's Pyre | S · 3 | Texture | Taunts target enemy for 2 turns and Condemns them. Each time a Condemned triggers on them meanwhile, they're Ignited and it burns once at once. |
+| Titan | Living Reliquary | Wr · 4 | Texture | For 3 turns, the user gains 2 Armor and Immune, and every enemy who damages them is Sanctified for 1 turn. |
 
 ## Devil — Fire + Unholy
 
@@ -294,7 +294,7 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | --- | --- | --- | --- | --- |
 | Strike | Infernal Edge | S · 1 | Hellfire | 25 damage to target enemy. If they have Hellfire, it spreads to a random ally of theirs for 1 turn; if not, they gain it for 1 turn. |
 | Smash | Infernal Crush | SS · 3 | Hellfire | 40 damage to target enemy. For each Buff they have, a random ally of theirs gains Hellfire for 2 turns. |
-| Charge | Hasty Bargain | S · 2 | Contract | 15 damage. The user signs a Contract (2 turns): 2 Might now; price: 15 Affliction. |
+| Charge | Hellbent | nc · 2 | Unique | The user loses 15 HP. 25 damage to target enemy, and the user gains 2 Focus for their next skill. |
 | Riposte | Devil's Due | r · 3 | Hellfire | Invisible. For 1 turn, counters any Harmful skill used on the user; each countered user gains Hellfire for 1 turn, and the user gains 1 Soul Fragment per counter. |
 | Rage | Faustian Fury | Sr · 4 | Contract | The user signs a Contract (3 turns): 2 Might, Flameborn and Immortal now; price: 30 Affliction and Horrified for 2 turns. |
 | Shot | Infernal Coin | r · 1 | Hellfire | 15 damage to target enemy. An Ignite on them becomes Hellfire for 2 turns; if they already had Hellfire, the user gains 1 Soul Fragment. |
@@ -305,22 +305,22 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | Bolt | Hellbolt | Ir · 1 | Hellfire | 20 damage to target enemy and Hellfire for 2 turns. While it lasts, each Buff it blocks on them gives the user 1 Soul Fragment. |
 | Blast | Hellstorm | SIr · 2 | Hellfire | 20 damage to all enemies. The user spends all their Soul Fragments (max 3), and every enemy gains Hellfire for 1 turn per fragment spent. |
 | Consume | Collect | I · 2 | Contract | 5 damage. If the target has a Contract, it ends now and its price is collected, and the user gains 2 Soul Fragments. |
-| Summon | Lesser Devil | I · 1 | Contract | The user signs a Contract (3 turns): a Lesser Devil (25 HP) now; price: 15 Affliction. Prod (r): 10 Affliction damage and Hellfire for 1 turn. |
+| Summon | Imp Captain | I · 1 | Texture | Summons an Imp Captain (25 HP) for 3 turns. Ember Whip (r): 10 damage to target enemy. While it lives, the user's Soul Fragments also add their damage to every allied minion's hits, without being spent. |
 | Channel | Soulburn | rr · 3 | Hellfire | Channeled. Each turn, target enemy takes 10 damage and gains Hellfire for 1 turn; the user heals for all the damage they take that turn, burns included. |
-| Stab | Pitchfork | r · 0 | Contract | 10 damage to target enemy, or 20 if they have a Contract or 60 HP or less. A Contract on them has 1 turn cut from it. |
+| Stab | Toasting Fork | r · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. For 2 turns, the user heals for every Ignite burn on them, whoever lit it, as if Flameborn. |
 | Ravage | Hellraze | AS · 2 | Contract | 35 Piercing damage to target enemy. If they have Buffs, those become a Contract: they keep them for 1 turn, then pay 10 Affliction per Buff. |
-| Mislead | Devil's Offer | r · 3 | Contract | Invisible. For 1 turn, if target enemy uses a Strategic skill, it's countered and they receive a Contract (2 turns): 2 Might now; price: 30 Affliction. |
+| Mislead | Soul Snare | r · 3 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and the user drains a Soul Fragment from them for each Ignite and Scorch they carry. |
 | Stun | Binding Clause | AS · 3 | Contract | 10 damage to target enemy, and they're Stunned for 1 turn, or until their Contract expires if they have one (max 3 turns). |
 | Dance | Dance with the Devil | A · 2 | Texture | For 3 turns, the user gains 1 Swiftness and 1 Focus, and Ignites they apply burn at the end of every turn, not only theirs. |
-| Heal | Infernal Bargain | r · 1 | Contract | Target ally heals 30 and receives a Contract (2 turns); price: 15 Affliction and Horrified for 1 turn. |
+| Heal | Fair Trade | W · 3 | Unique | Target ally and the enemy with the most HP both have their HP set to the average of the two: the ally heals exactly what that enemy loses. |
 | Bless | Pact of Flame | W · 2 | Contract | Target ally receives a Contract (2 turns): Lifesteal now; price: 20 Affliction, minus the HP they stole meanwhile. |
-| Curse | Temptation | r · 1 | Contract | Target enemy receives a Contract (2 turns): 2 Focus now; price: 2 Confusion for 2 turns and 20 Affliction. |
+| Curse | Double or Nothing | r · 2 | Unique | A coin is flipped for target enemy: heads, each of their Debuffs doubles its stacks and turns left; tails, all their Debuffs are removed. |
 | Smite | Price on Their Head | Sr · 1 | Unique | 20 damage to target enemy. If they die within 2 turns, whoever killed them has their cooldowns reset, and the user's player gains 1 random energy. |
 | Prayer | Choir of the Pit | Wrr · 2 | Texture | All allies heal 20. For 2 turns, each Buff a Horrified enemy would gain goes to a random ally of the user instead. |
 | Cleave | Pyre Swing | S · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. Any enemy it kills Explodes. |
 | Shout | Infernal Shriek | S · 3 | Hellfire | All enemies are Intimidated for 2 turns; those with Hellfire are Intimidated twice, and the user gains 1 Soul Fragment for each. |
 | Withstand | Bargained Aegis | r · 3 | Contract | The user signs a Contract (2 turns): 40 Shield now; price: any Shield left is lost and dealt to them as Affliction. |
-| Taunt | Sinner's Lure | S · 3 | Contract | Target enemy receives a Contract (2 turns): 2 Might now, but they're Taunted by the user; price: 20 Affliction and Hellfire for 1 turn. |
+| Taunt | Dare the Damned | S · 3 | Texture | Taunts target enemy for 2 turns, and the user is Immortal until their next turn. Each hit that Immortal stops from killing them causes an Explosion. |
 | Titan | Archfiend | SS · 4 | Hellfire | For 3 turns, the user gains 2 Armor and Immune, and enemies who damage them gain Hellfire for 1 turn. |
 
 ## Ritual — Fire + Shadow
@@ -337,7 +337,7 @@ One keyword: the other half of Ritual is Fire's burns and Shadow's stealth, slee
 | Smash | Circle of Ash | Sr · 2 | Rite | 20 damage to target enemy and 10 to the others. Rite (3): every enemy is Ignited and Blinded for 2 turns. |
 | Charge | Candlestep | S · 2 | Texture | 15 damage to target enemy, and the user gains 1 Focus. Any Ignite on them is carried off: it ends, and the user's next damaging skill Ignites its targets. |
 | Riposte | Warding Candle | A · 3 | Rite | Invisible. For 1 turn, counters the first Harmful skill used on the user, and their Rite can't be broken until the end of their next turn. |
-| Rage | Rite of Fury | SA · 4 | Rite | For 3 turns, the user gains 1 Might and Immune. Rite (3): the Might and Immune last 3 turns longer. |
+| Rage | Bonfire Revel | S · 3 | Unique | For 3 turns, the user gains Immune, and every unit on both sides gains 2 Might. |
 | Shot | Severing Spark | r · 0 | Texture | 10 Piercing damage to target enemy. If no ally of theirs used a Helpful skill on them since the user's last turn, they're Isolated for 1 turn. |
 | Snipe | Far Invocation | Ar · 2 | Rite | Hidden target. Rite (2): 50 damage to target enemy, Bypassing Invulnerable, and they're Ignited. |
 | Trap | Chains of Smoke | r · 2 | Rite | Invisible. For 2 turns, each Harmful skill target enemy uses deals them 10 Affliction and advances the user's Rite by 1. |
@@ -356,9 +356,9 @@ One keyword: the other half of Ritual is Fire's burns and Shadow's stealth, slee
 | Heal | Rite of Mending | r · 1 | Rite | Target ally heals 15. Rite (2): all allies heal 25. |
 | Bless | Double Wick | r · 2 | Texture | For 2 turns, target ally gains 1 Might, and Ignites they apply can stack, up to 2. |
 | Curse | Rite of Blindness | A · 2 | Rite | Target enemy is Blinded for 2 turns. Rite (2): every enemy is Blinded for 2 turns and Scorched. |
-| Smite | Veilbrand | A · 1 | Texture | 15 damage to target enemy and Sanctify for 1 turn. The first ally who damages them before the user's next turn gains Stealth. |
+| Smite | Veilbrand | A · 1 | Texture | 15 damage to target enemy and Sanctify for 2 turns. For as long, skills that damage them while they're Ignited are Stealthy. |
 | Prayer | Vigil of Candles | Wrr · 2 | Rite | All allies heal 20. Rite (3): every ally who hasn't taken damage since it started heals 30 and gains Stealth. |
-| Cleave | Cinder Tether | S · 1 | Texture | 20 damage to target enemy and 15 to a random other enemy. Until the user's next turn, healing either of them receives is dealt to the other as damage instead. |
+| Cleave | Cinder Tether | S · 1 | Unique | 20 damage to target enemy and 15 to a random other enemy. Until the user's next turn, healing either of them receives is dealt to the other as damage instead. |
 | Shout | Invocation | Sr · 3 | Rite | All enemies are Intimidated for 2 turns. The user's Rite advances by 1 per enemy that's Blinded or Ignited. |
 | Withstand | Smokewall | A · 1 | Texture | The user gains 20 Shield, which lasts for as long as they stay Stealthed (at least 1 turn). |
 | Taunt | Effigy | r · 2 | Rite | Creates an Effigy (10 HP); target enemy is Taunted by it for 1 turn. If the Effigy is destroyed, the user's Rite completes at once. |
