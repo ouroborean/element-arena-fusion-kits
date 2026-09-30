@@ -368,6 +368,9 @@ tr.hidden { display: none; }
 .stars[data-value='1'] .star:nth-child(-n + 1) svg,
 .stars[data-value='2'] .star:nth-child(-n + 2) svg,
 .stars[data-value='3'] .star:nth-child(-n + 3) svg { fill: var(--yellow); stroke: #000; }
+.stars[data-stale='true'][data-value='1'] .star:nth-child(-n + 1) svg,
+.stars[data-stale='true'][data-value='2'] .star:nth-child(-n + 2) svg,
+.stars[data-stale='true'][data-value='3'] .star:nth-child(-n + 3) svg { fill: transparent; stroke: var(--yellow); stroke-dasharray: 3 2; }
 @media (hover: hover) {
   .star:hover svg { stroke: var(--text); }
   .stars:has(.star:hover) .star svg { fill: transparent; stroke: var(--faint); }
@@ -406,6 +409,50 @@ tr.hidden { display: none; }
 .rating-rows .c-skill a { text-decoration: none; }
 .rating-rows .c-skill a:hover strong { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
 .rating-rows .c-base { margin-top: 2px; }
+
+/* ---------------------------------------------------------------- revisions */
+.rev-tag {
+  display: inline-block; margin-left: 8px; padding: 0 5px; vertical-align: 2px;
+  border: 1px solid var(--yellow); color: var(--yellow);
+  font-size: 10px; font-weight: 700; letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; white-space: nowrap;
+}
+.stars-ro.stale { color: var(--muted); }
+.stale-note { margin-top: 3px; color: var(--yellow); font-size: 12px; white-space: normal; }
+.stale-stat b { color: var(--yellow); }
+.hero-sub a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.ref-card.was { border-left-color: var(--yellow); }
+.ref-card .why { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.ref-card .why b { color: var(--text); }
+.pass-date { color: var(--muted); font: 700 14px/1 var(--font-ui); letter-spacing: .08em; }
+.pass > .lead { margin-top: 0; }
+.change-list { display: grid; gap: 12px; margin-top: 18px; max-width: 1200px; }
+.change { background: var(--ink-2); border: 2px solid var(--line); box-shadow: var(--shadow); }
+.change[hidden] { display: none; }
+.change-head {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px;
+  padding: 8px 14px; background: var(--ink-3); border-bottom: 2px solid var(--line);
+}
+.change-head a { display: inline-flex; align-items: baseline; gap: 10px; text-decoration: none; }
+.change-head a strong { font: 800 19px/1.1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.change-head a:hover strong { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+.change-head .mini-parents { margin: 0; }
+.problem-tag {
+  margin-left: auto; padding: 1px 7px; border: 2px solid var(--line-2); color: var(--muted);
+  font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
+}
+.problem-tag.p-mashup { border-color: var(--red); color: #ff5a6e; }
+.problem-tag.p-upgrade { border-color: var(--h3); color: var(--h3); }
+.problem-tag.p-keyword-swap { border-color: var(--h4); color: var(--h4); }
+.change-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.change .side { padding: 10px 14px; }
+.change .side + .side { border-left: 2px solid var(--line); }
+.side-label { display: block; margin-bottom: 4px; color: var(--faint); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.change .side + .side .side-label { color: var(--yellow); }
+.side-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-height: 24px; }
+.side-head strong { font-size: 15px; }
+.change .side p { margin: 6px 0 0; color: #dcdcd6; font-size: 14px; }
+.change .side:first-child strong, .change .side:first-child p { color: var(--muted); }
+.change .why { margin: 0; padding: 8px 14px; border-top: 1px solid var(--line); color: #cfcfc8; font-size: 14px; }
 
 /* ---------------------------------------------------------------- narrower screens: the panel and sidebar become drawers */
 @media (max-width: 1279px) {
@@ -460,6 +507,9 @@ tr.hidden { display: none; }
   .rows tbody tr.sel { box-shadow: inset 4px 0 0 var(--red); background: var(--ink-3); }
   .glance td:nth-child(3), .glance td:nth-child(4) { min-width: 0; }
   .pager a { min-width: 0; flex: 1; }
+  .change-body { grid-template-columns: minmax(0, 1fr); }
+  .change .side + .side { border-left: 0; border-top: 1px solid var(--line); }
+  .problem-tag { margin-left: 0; }
   .sec { font-size: 22px; margin-top: 34px; }
 }
 @media (prefers-reduced-motion: reduce) {

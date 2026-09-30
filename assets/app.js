@@ -5,6 +5,7 @@
 //   #/skill/<base>         one base skill across all 10 elements and 55 fusions
 //   #/keywords             every new keyword, by kit
 //   #/ratings              the skills you've starred, with export and import
+//   #/changes              every revised skill, before and after
 //   #/search/<query>       search results
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -57,17 +58,37 @@ async function init() {
 const RATINGS_KEY = 'fusion-kits:ratings:v1';
 const STAR_SVG =
   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2l2.9 6.6 7.2.6-5.5 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7-5.5-4.8 7.2-.6z"/></svg>';
+// A rating is { s: stars, v: the skill's version when it was rated }. A skill's version counts its revisions, so a
+// rating given before the latest revision is stale: it's kept and shown, but marked, and doesn't count as rated.
+// Saves from before revisions existed hold just the stars, which means version 0.
 let ratings = {};
 let storageOk = true;
 
 const ratingId = (kitSlug, base) => `${kitSlug}/${baseSlug(base)}`;
 const isStars = (v) => v === 1 || v === 2 || v === 3;
+const rowVersion = (r) => r?.history?.length ?? 0;
+function rowForId(id) {
+  const [slug, base] = id.split('/');
+  const k = kits.get(slug);
+  return k && rowOf(k, base);
+}
+function normRating(x) {
+  if (isStars(x)) return { s: x, v: 0 };
+  if (x && isStars(x.s) && Number.isInteger(x.v) && x.v >= 0) return { s: x.s, v: x.v };
+  return null;
+}
+const isStale = (id) => !!ratings[id] && ratings[id].v < rowVersion(rowForId(id));
+/** Stars given to the skill as it reads now: 0 if it's unrated or was rated before its latest revision. */
+const currentStars = (id) => (ratings[id] && !isStale(id) ? ratings[id].s : 0);
 
 function loadRatings() {
   try {
     const saved = JSON.parse(localStorage.getItem(RATINGS_KEY) ?? '{}');
     ratings = {};
-    for (const [id, v] of Object.entries(saved ?? {})) if (isStars(v)) ratings[id] = v;
+    for (const [id, x] of Object.entries(saved ?? {})) {
+      const r = normRating(x);
+      if (r) ratings[id] = r;
+    }
     storageOk = true;
   } catch {
     ratings = {};
@@ -90,35 +111,43 @@ function ratedItems() {
   for (const k of site.kits)
     for (const r of k.rows) {
       const id = ratingId(k.slug, r.base);
-      if (ratings[id]) out.push({ k, r, id, v: ratings[id] });
+      if (ratings[id]) out.push({ k, r, id, v: ratings[id].s, stale: isStale(id) });
     }
   return out;
 }
 
 function kitRatedCount(k) {
   let n = 0;
-  for (const r of k.rows) if (ratings[ratingId(k.slug, r.base)]) n++;
+  for (const r of k.rows) if (currentStars(ratingId(k.slug, r.base))) n++;
   return n;
 }
 
 /** The three-star control shown beside a skill; every copy of one skill's control stays in sync. */
 function starsHtml(id, label) {
-  const v = ratings[id] ?? 0;
-  return `<span class="stars" role="group" aria-label="${esc(`Rate ${label}`)}" data-id="${esc(id)}" data-value="${v}">${[1, 2, 3]
+  const v = ratings[id]?.s ?? 0;
+  const stale = isStale(id);
+  return `<span class="stars" role="group" aria-label="${esc(`Rate ${label}`)}" data-id="${esc(id)}" data-value="${v}" data-stale="${stale}">${[1, 2, 3]
     .map(
       (n) =>
-        `<button type="button" class="star" data-n="${n}" aria-pressed="${n === v}" aria-label="${n} ${n === 1 ? 'star' : 'stars'}" title="${starTitle(n, v)}">${STAR_SVG}</button>`,
+        `<button type="button" class="star" data-n="${n}" aria-pressed="${n === v && !stale}" aria-label="${n} ${n === 1 ? 'star' : 'stars'}" title="${starTitle(n, v, stale)}">${STAR_SVG}</button>`,
     )
     .join('')}</span>`;
 }
-const starTitle = (n, v) => (n === v ? `${n} of 3 stars (click again to clear)` : `${n} of 3 stars`);
+const starTitle = (n, v, stale) =>
+  stale
+    ? `You gave the earlier version ${v} of 3 stars; click to rate this version ${n} of 3`
+    : n === v
+      ? `${n} of 3 stars (click again to clear)`
+      : `${n} of 3 stars`;
 
-function starsText(v) {
-  return `<span class="stars-ro" role="img" aria-label="Rated ${v} of 3">${'★'.repeat(v)}<span>${'★'.repeat(3 - v)}</span></span>`;
+function starsText(v, stale = false) {
+  return `<span class="stars-ro${stale ? ' stale' : ''}" role="img" aria-label="${stale ? `Rated ${v} of 3 before its revision` : `Rated ${v} of 3`}"${
+    stale ? ' title="Rated before this skill was revised"' : ''
+  }>${'★'.repeat(v)}<span>${'★'.repeat(3 - v)}</span></span>`;
 }
 
-function setRating(id, v) {
-  if (isStars(v)) ratings[id] = v;
+function setRating(id, stars) {
+  if (isStars(stars)) ratings[id] = { s: stars, v: rowVersion(rowForId(id)) };
   else delete ratings[id];
   saveRatings();
   refreshRatings();
@@ -126,12 +155,15 @@ function setRating(id, v) {
 
 function refreshRatings() {
   for (const el of $$('.stars')) {
-    const v = ratings[el.dataset.id] ?? 0;
+    const id = el.dataset.id;
+    const v = ratings[id]?.s ?? 0;
+    const stale = isStale(id);
     el.dataset.value = String(v);
+    el.dataset.stale = String(stale);
     for (const b of $$('.star', el)) {
       const n = Number(b.dataset.n);
-      b.setAttribute('aria-pressed', String(n === v));
-      b.title = starTitle(n, v);
+      b.setAttribute('aria-pressed', String(n === v && !stale));
+      b.title = starTitle(n, v, stale);
     }
   }
   for (const el of $$('[data-rated-kit]')) {
@@ -140,7 +172,7 @@ function refreshRatings() {
     el.textContent = n ? `${n}/${k.rows.length}` : '';
     el.classList.toggle('full', n === k.rows.length);
   }
-  const total = ratedItems().length;
+  const total = ratedItems().filter((it) => !it.stale).length;
   $('#navRated').textContent = total ? String(total) : '';
   const kitCount = $('#kitRated');
   if (kitCount) kitCount.textContent = `${kitRatedCount(kits.get(kitCount.dataset.kit))} / 30 rated`;
@@ -156,7 +188,8 @@ function bindRatings() {
     if (!b) return;
     const id = b.closest('.stars').dataset.id;
     const n = Number(b.dataset.n);
-    setRating(id, ratings[id] === n ? 0 : n);
+    // Clicking the current rating clears it; on a stale rating, any star rates the new version.
+    setRating(id, currentStars(id) === n ? 0 : n);
   });
   // Another tab of the site changed them.
   window.addEventListener('storage', (e) => {
@@ -165,6 +198,23 @@ function bindRatings() {
     refreshRatings();
   });
   refreshRatings();
+}
+
+// ---------------------------------------------------------------- revisions
+
+const PROBLEMS = {
+  mashup: { label: 'Mashup', long: "Both parents' versions stitched together" },
+  upgrade: { label: 'Upgrade', long: "A parent's version, made stronger" },
+  'keyword-swap': { label: 'Keyword swap', long: "A parent's version with the kit's keyword swapped in or tacked on" },
+  'near-copy': { label: 'Near-copy', long: 'Nearly the same as a parent version or another skill in the kit' },
+  other: { label: 'Other', long: 'Reworked for another reason' },
+};
+const problemOf = (p) => PROBLEMS[p] ?? PROBLEMS.other;
+
+function revTag(r) {
+  const h = r.history?.[0];
+  if (!h) return '';
+  return `<span class="rev-tag" title="${esc(`Revised ${h.date}. Was ${h.before.skill}: ${problemOf(h.problem).long.toLowerCase()}.`)}">Revised</span>`;
 }
 
 // ---------------------------------------------------------------- small renderers
@@ -230,6 +280,7 @@ function buildSidebar() {
     <a class="side-link" href="#/skill/strike" data-side="skill">Compare skills</a>
     <a class="side-link" href="#/keywords" data-side="keywords">Keyword glossary</a>
     <a class="side-link" href="#/ratings" data-side="ratings">Your ratings</a>
+    ${site.passes.length ? '<a class="side-link" href="#/changes" data-side="changes">Changes</a>' : ''}
     ${site.groups
       .map(
         (g) => `<section class="side-group"><h2>${esc(g.title)}</h2><ul>${g.kits
@@ -325,6 +376,9 @@ function route() {
   } else if (page === 'ratings') {
     key = 'ratings';
     renderRatings();
+  } else if (page === 'changes') {
+    key = 'changes';
+    renderChanges();
   } else if (page === 'search') {
     key = 'search';
     renderSearch(decodeURIComponent(raw.slice('search/'.length)));
@@ -353,7 +407,11 @@ function renderOverview() {
     <section class="hero">
       <p class="eyebrow">Element Arena · design</p>
       <h1>Fusion Spec Kits</h1>
-      <p class="hero-sub">First pass · ${esc(site.date)}</p>
+      <p class="hero-sub">First pass · ${esc(site.date)}${
+        site.passes.length
+          ? ` · <a href="#/changes">${esc(site.passes.at(-1).title)} · ${esc(site.passes.at(-1).date)} · ${site.passes.at(-1).count.toLocaleString('en-US')} skills revised</a>`
+          : ''
+      }</p>
       <p class="lead">${site.leadHtml}</p>
       <div class="stats">
         <div><b>${site.kits.length}</b><span>Fusions</span></div>
@@ -468,6 +526,7 @@ function renderKit(k, base) {
   const next = site.kits[i + 1];
   const counts = {};
   for (const r of k.rows) counts[r.hook] = (counts[r.hook] ?? 0) + 1;
+  const revisedCount = k.rows.filter((r) => r.history).length;
 
   main.innerHTML = `
     <article class="kit">
@@ -490,16 +549,21 @@ function renderKit(k, base) {
               )
               .join('')}
           </div>
-          <button type="button" class="chip" id="unratedOnly" aria-pressed="false" title="Show only the skills you haven't rated yet">Unrated</button>
+          ${
+            revisedCount
+              ? `<button type="button" class="chip" id="revisedOnly" aria-pressed="false" title="Show only the skills rewritten since the first pass">Revised <span class="n">${revisedCount}</span></button>`
+              : ''
+          }
+          <button type="button" class="chip" id="unratedOnly" aria-pressed="false" title="Show only the skills you haven't rated yet, or rated before they were revised">Unrated</button>
         </div>
       </div>
       <div class="table-wrap"><table class="rows kit-rows">
         <thead><tr><th>Base</th><th>Skill</th><th>Cost · CD</th><th>Hook</th><th>Effect</th></tr></thead>
         <tbody>${k.rows
           .map(
-            (r) => `<tr data-base="${baseSlug(r.base)}" data-hook="${esc(r.hook)}" tabindex="0" aria-label="${esc(`${r.base}: ${r.skill}`)}">
+            (r) => `<tr data-base="${baseSlug(r.base)}" data-hook="${esc(r.hook)}" data-revised="${!!r.history}" tabindex="0" aria-label="${esc(`${r.base}: ${r.skill}`)}">
               <td class="c-base">${esc(r.base)}</td>
-              <td class="c-skill"><strong>${esc(r.skill)}</strong><div class="skill-stars">${starsHtml(ratingId(k.slug, r.base), r.skill)}</div></td>
+              <td class="c-skill"><strong>${esc(r.skill)}</strong>${revTag(r)}<div class="skill-stars">${starsHtml(ratingId(k.slug, r.base), r.skill)}</div></td>
               <td class="c-cost">${costCell(r)}</td>
               <td class="c-hook">${hookChip(k, r.hook)}</td>
               <td class="c-effect">${effectHtml(k, r.effect)}</td></tr>`,
@@ -516,10 +580,14 @@ function renderKit(k, base) {
   // Filters apply when toggled, not when a rating changes, so rating a skill never makes rows jump.
   let hookFilter = null;
   let unratedOnly = false;
+  let revisedOnly = false;
   const applyFilters = () => {
     for (const tr of $$('.kit-rows tbody tr', main)) {
-      const rated = !!ratings[`${k.slug}/${tr.dataset.base}`];
-      tr.classList.toggle('hidden', (!!hookFilter && tr.dataset.hook !== hookFilter) || (unratedOnly && rated));
+      const rated = !!currentStars(`${k.slug}/${tr.dataset.base}`);
+      tr.classList.toggle(
+        'hidden',
+        (!!hookFilter && tr.dataset.hook !== hookFilter) || (unratedOnly && rated) || (revisedOnly && tr.dataset.revised !== 'true'),
+      );
     }
   };
   bindElementChips($('#hookChips'), (hook) => {
@@ -529,6 +597,11 @@ function renderKit(k, base) {
   $('#unratedOnly').addEventListener('click', (e) => {
     unratedOnly = !unratedOnly;
     e.currentTarget.setAttribute('aria-pressed', String(unratedOnly));
+    applyFilters();
+  });
+  $('#revisedOnly')?.addEventListener('click', (e) => {
+    revisedOnly = !revisedOnly;
+    e.currentTarget.setAttribute('aria-pressed', String(revisedOnly));
     applyFilters();
   });
   bindRows($('.kit-rows', main), (tr) => ({ kit: k, base: tr.dataset.base }), (sel) => `#/kit/${k.slug}/${sel.base}`);
@@ -585,7 +658,7 @@ function renderSkill(slug) {
           )}" tabindex="0" aria-label="${esc(`${k.name}: ${r.skill}`)}">
             <td class="c-kit"><a href="#/kit/${k.slug}/${baseSlug(base)}">${esc(k.name)}</a>
               <div class="mini-parents">${swatch(k.parents)} ${esc(k.parents.join(' + '))}</div></td>
-            <td class="c-skill"><strong>${esc(r.skill)}</strong><div class="skill-stars">${starsHtml(ratingId(k.slug, r.base), r.skill)}</div></td>
+            <td class="c-skill"><strong>${esc(r.skill)}</strong>${revTag(r)}<div class="skill-stars">${starsHtml(ratingId(k.slug, r.base), r.skill)}</div></td>
             <td class="c-cost">${costCell(r)}</td>
             <td class="c-hook">${hookChip(k, r.hook)}</td>
             <td class="c-effect">${effectHtml(k, r.effect)}</td></tr>`;
@@ -670,6 +743,16 @@ function renderPanel(k, r) {
       <div class="panel-rate"><span class="eyebrow">Your rating</span>${starsHtml(ratingId(k.slug, r.base), r.skill)}</div>
       <div class="panel-meta">${costCell(r)}${hookChip(k, r.hook)}${parentChips(k.parents)}</div>
       <p class="panel-effect">${effectHtml(k, r.effect)}</p>
+      ${(r.history ?? [])
+        .map(
+          (h) => `<h3 class="sec small">Before ${esc(h.date)}</h3>
+      <div class="ref-card was">
+        <div class="ref-head"><span class="el base">Was</span><strong>${esc(h.before.skill)}</strong>${costCell(h.before)}${hookChip(k, h.before.hook)}</div>
+        <p>${effectHtml(k, h.before.effect)}</p>
+        <p class="why"><b>${esc(problemOf(h.problem).label)}.</b> ${esc(h.why)}</p>
+      </div>`,
+        )
+        .join('')}
       <h3 class="sec small">Base skill</h3>
       ${card('Base', null, ref.base[r.base])}
       <h3 class="sec small">${parents.length === 1 ? 'Parent version' : "Parents' versions"}</h3>
@@ -729,13 +812,27 @@ function renderKeywords() {
 
 function ratingsSummaryHtml() {
   const items = ratedItems();
+  const current = items.filter((it) => !it.stale);
   const by = { 1: 0, 2: 0, 3: 0 };
-  for (const it of items) by[it.v]++;
+  for (const it of current) by[it.v]++;
+  const stale = items.length - current.length;
   const total = site.kits.reduce((n, k) => n + k.rows.length, 0);
   const kitsDone = site.kits.filter((k) => kitRatedCount(k) === k.rows.length).length;
-  return `<div><b>${items.length}</b><span>of ${total.toLocaleString('en-US')} rated</span></div>
+  return `<div><b>${current.length}</b><span>of ${total.toLocaleString('en-US')} rated</span></div>
     ${[3, 2, 1].map((v) => `<div><b>${by[v]}</b><span>${starsText(v)}</span></div>`).join('')}
+    ${stale ? `<div class="stale-stat"><b>${stale}</b><span>revised since rated</span></div>` : ''}
     <div><b>${kitsDone}</b><span>kits fully rated</span></div>`;
+}
+
+function staleNote(r, id) {
+  const was = ratedVersion(r, id)?.skill;
+  return was && was !== r.skill ? `You rated the earlier version, ${esc(was)}` : 'You rated it before its revision';
+}
+
+/** The version of a revised skill that a stale rating was given to. */
+function ratedVersion(r, id) {
+  const h = r.history ?? [];
+  return h[h.length - 1 - (ratings[id]?.v ?? 0)]?.before ?? null;
 }
 
 function renderRatings() {
@@ -746,14 +843,14 @@ function renderRatings() {
     <header class="page-head">
       <p class="eyebrow">Your review</p>
       <h1>Ratings</h1>
-      <p class="lead">The stars you've given skills. They're saved in this browser only, so export them to keep a copy or to send them to someone. Importing a file adds its ratings to yours.</p>
+      <p class="lead">The stars you've given skills. They're saved in this browser only, so export them to keep a copy or to send them to someone. Importing a file adds its ratings to yours. When a skill you rated is revised, your rating stays, marked as given to the earlier version, until you rate the new one.</p>
     </header>
     <p class="warn" data-storage-warning${storageOk ? ' hidden' : ''}>This browser isn't letting the site save anything, so your ratings will be lost when you leave. Export them before you close the page.</p>
     <div class="stats rating-stats" id="ratingsSummary">${ratingsSummaryHtml()}</div>
     <div class="toolbar ratings-tools">
       <div class="chips" id="starFilter" role="group" aria-label="Show only">${[3, 2, 1]
         .map((v) => `<button type="button" class="chip" data-value="${v}" aria-pressed="false" aria-label="${v} ${v === 1 ? 'star' : 'stars'}">${starsText(v)}</button>`)
-        .join('')}</div>
+        .join('')}<button type="button" class="chip" data-value="stale" aria-pressed="false" title="Skills revised after you rated them">Revised since rated</button></div>
       <div class="chips">
         <button type="button" class="chip" id="exportRatings">Export</button>
         <button type="button" class="chip" id="importRatings">Import</button>
@@ -769,26 +866,34 @@ function renderRatings() {
   // Rebuilt only on load, filter or import, so changing a rating here never reshuffles the list under you.
   const renderList = () => {
     const items = ratedItems()
-      .filter((it) => !filter || it.v === filter)
-      .sort((a, b) => b.v - a.v);
+      .filter((it) => !filter || (filter === 'stale' ? it.stale : !it.stale && it.v === filter))
+      .sort((a, b) => a.stale - b.stale || b.v - a.v);
     $('#ratingsList').innerHTML = items.length
       ? `<div class="table-wrap"><table class="rows rating-rows">
           <thead><tr><th>Rating</th><th>Skill</th><th>Fusion</th><th>Effect</th></tr></thead>
           <tbody>${items
             .map(
-              ({ k, r, id }) => `<tr class="static">
+              ({ k, r, id, stale }) => `<tr class="static">
                 <td class="c-rate">${starsHtml(id, r.skill)}</td>
-                <td class="c-skill"><a href="#/kit/${k.slug}/${baseSlug(r.base)}"><strong>${esc(r.skill)}</strong></a><div class="c-base">${esc(r.base)}</div></td>
+                <td class="c-skill"><a href="#/kit/${k.slug}/${baseSlug(r.base)}"><strong>${esc(r.skill)}</strong></a>${revTag(r)}<div class="c-base">${esc(r.base)}</div>${
+                  stale ? `<div class="stale-note">${staleNote(r, id)}</div>` : ''
+                }</td>
                 <td class="c-kit"><a href="#/kit/${k.slug}">${esc(k.name)}</a><div class="mini-parents">${swatch(k.parents)} ${esc(k.parents.join(' + '))}</div></td>
                 <td class="c-effect">${effectHtml(k, r.effect)}</td></tr>`,
             )
             .join('')}</tbody></table></div>`
-      : `<p class="empty">${filter ? `No skills rated ${filter} ${filter === 1 ? 'star' : 'stars'} yet.` : "You haven't rated any skills yet. Use the stars beside each skill on the kit pages."}</p>`;
+      : `<p class="empty">${
+          filter === 'stale'
+            ? 'None of the skills you rated have been revised since.'
+            : filter
+              ? `No skills rated ${filter} ${filter === 1 ? 'star' : 'stars'} yet.`
+              : "You haven't rated any skills yet. Use the stars beside each skill on the kit pages."
+        }</p>`;
   };
   renderList();
 
   bindElementChips($('#starFilter'), (v) => {
-    filter = v ? Number(v) : null;
+    filter = v === 'stale' ? 'stale' : v ? Number(v) : null;
     renderList();
   });
   $('#exportRatings').addEventListener('click', () => {
@@ -801,9 +906,13 @@ function renderRatings() {
     e.target.value = '';
     if (!file) return;
     try {
-      const { added, changed, skipped } = importRatings(JSON.parse(await file.text()));
+      const { added, changed, older, skipped } = importRatings(JSON.parse(await file.text()));
       renderList();
-      notice(`Imported ${added + changed} ratings: ${added} new, ${changed} changed${skipped ? `, ${skipped} skipped as invalid` : ''}.`);
+      notice(
+        `Imported ${added + changed} ratings: ${added} new, ${changed} changed${older ? `, ${older} skipped because yours rate a newer version` : ''}${
+          skipped ? `, ${skipped} skipped as invalid` : ''
+        }.`,
+      );
     } catch {
       notice("That file isn't a ratings export.");
     }
@@ -823,15 +932,24 @@ function renderRatings() {
 function exportRatings() {
   const order = new Map(site.kits.map((k, i) => [k.slug, i]));
   const list = Object.entries(ratings)
-    .map(([id, stars]) => {
+    .map(([id, x]) => {
       const [slug, base] = id.split('/');
       const k = kits.get(slug);
       const r = k && rowOf(k, base);
-      return { id, stars, fusion: k?.name ?? null, base: r?.base ?? base, skill: r?.skill ?? null };
+      const stale = isStale(id);
+      return {
+        id,
+        stars: x.s,
+        version: x.v,
+        fusion: k?.name ?? null,
+        base: r?.base ?? base,
+        skill: (stale ? ratedVersion(r, id)?.skill : r?.skill) ?? null,
+        ...(stale ? { revisedSince: true } : {}),
+      };
     })
     .sort((a, b) => (order.get(a.id.split('/')[0]) ?? 999) - (order.get(b.id.split('/')[0]) ?? 999) || site.bases.indexOf(a.base) - site.bases.indexOf(b.base));
   if (!list.length) return 0;
-  const body = JSON.stringify({ app: 'fusion-kits', version: 1, exported: new Date().toISOString(), ratings: list }, null, 2);
+  const body = JSON.stringify({ app: 'fusion-kits', version: 2, exported: new Date().toISOString(), ratings: list }, null, 2);
   const url = URL.createObjectURL(new Blob([body], { type: 'application/json' }));
   const a = Object.assign(document.createElement('a'), { href: url, download: `fusion-kit-ratings-${new Date().toISOString().slice(0, 10)}.json` });
   document.body.append(a);
@@ -841,29 +959,40 @@ function exportRatings() {
   return list.length;
 }
 
-/** Adds an export's ratings to the ones saved here; the file wins where both rate a skill. */
+/** Adds an export's ratings to the ones saved here. The file wins where both rate the same version of a skill;
+ *  where one rates a newer version than the other, the newer one wins. */
 function importRatings(data) {
   const source = data?.ratings ?? data;
   const entries = Array.isArray(source)
-    ? source.map((x) => [x?.id ?? `${x?.kit ?? slugify(String(x?.fusion ?? ''))}/${baseSlug(String(x?.base ?? ''))}`, x?.stars])
+    ? source.map((x) => [
+        x?.id ?? `${x?.kit ?? slugify(String(x?.fusion ?? ''))}/${baseSlug(String(x?.base ?? ''))}`,
+        { s: x?.stars, v: x?.version ?? 0 },
+      ])
     : Object.entries(source ?? {});
   if (!entries.length) throw new Error('empty');
   let added = 0;
   let changed = 0;
+  let older = 0;
   let skipped = 0;
-  for (const [id, stars] of entries) {
-    if (!isStars(stars) || !/^[a-z0-9-]+\/[a-z]+$/.test(id)) {
+  for (const [id, x] of entries) {
+    const r = normRating(x);
+    if (!r || !/^[a-z0-9-]+\/[a-z]+$/.test(id)) {
       skipped++;
       continue;
     }
-    if (!ratings[id]) added++;
-    else if (ratings[id] !== stars) changed++;
-    ratings[id] = stars;
+    const cur = ratings[id];
+    if (cur && cur.v > r.v) {
+      older++;
+      continue;
+    }
+    if (!cur) added++;
+    else if (cur.s !== r.s || cur.v !== r.v) changed++;
+    ratings[id] = r;
   }
-  if (!added && !changed && skipped === entries.length) throw new Error('nothing valid');
+  if (!added && !changed && !older && skipped === entries.length) throw new Error('nothing valid');
   saveRatings();
   refreshRatings();
-  return { added, changed, skipped };
+  return { added, changed, older, skipped };
 }
 
 const slugify = (s) =>
@@ -872,6 +1001,109 @@ const slugify = (s) =>
     .replace(/['’]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
+
+// ---------------------------------------------------------------- changes: every revised skill, before and after
+
+function renderChanges() {
+  setMode('plain');
+  markNav('changes');
+  document.title = 'Changes · Fusion Kits';
+  // One entry per revision of a row; the version after a revision is the next revision's "before", or the row as it is.
+  const byPass = new Map(site.passes.map((p) => [p.id, []]));
+  for (const k of site.kits)
+    for (const r of k.rows)
+      (r.history ?? []).forEach((h, i) => {
+        const after = i === 0 ? r : r.history[i - 1].before;
+        byPass.get(h.pass)?.push({ k, r, h, after });
+      });
+  const passes = [...site.passes].reverse();
+
+  main.innerHTML = `
+    <header class="page-head">
+      <p class="eyebrow">Revision log</p>
+      <h1>Changes</h1>
+      <p class="lead">Every skill rewritten since the first pass, with its earlier version and why it changed. Rate the new versions right here.</p>
+    </header>
+    ${
+      passes.length
+        ? `<div class="toolbar">
+      <input class="filter-input" id="chFilter" type="search" placeholder="Filter by fusion, skill or text" aria-label="Filter changes">
+      <div class="chips" id="chProblems" role="group" aria-label="Filter by problem">${Object.entries(PROBLEMS)
+        .map(([key, p]) => `<button type="button" class="chip" data-value="${key}" aria-pressed="false" title="${esc(p.long)}">${esc(p.label)}</button>`)
+        .join('')}</div>
+      <div class="chips" id="chEls" role="group" aria-label="Filter by parent element">${elementChips()}</div>
+    </div>`
+        : '<p class="empty">No skills have been revised yet.</p>'
+    }
+    ${passes
+      .map((p) => {
+        const list = byPass.get(p.id);
+        const by = {};
+        for (const c of list) by[c.h.problem] = (by[c.h.problem] ?? 0) + 1;
+        return `<section class="pass">
+          <h2 class="sec">${esc(p.title)} <span class="pass-date">${esc(p.date)}</span></h2>
+          <p class="lead">${esc(p.summary)}</p>
+          <div class="stats">
+            <div><b>${list.length.toLocaleString('en-US')}</b><span>skills revised</span></div>
+            ${Object.keys(PROBLEMS)
+              .filter((key) => by[key])
+              .map((key) => `<div title="${esc(PROBLEMS[key].long)}"><b>${by[key]}</b><span>${esc(PROBLEMS[key].label)}</span></div>`)
+              .join('')}
+          </div>
+          <div class="change-list">${list.map(changeHtml).join('')}</div>
+          <p class="empty" hidden>No change matches.</p>
+        </section>`;
+      })
+      .join('')}`;
+  if (!passes.length) return;
+
+  const filter = $('#chFilter');
+  let problem = null;
+  let el = null;
+  const apply = () => {
+    const q = filter.value.trim().toLowerCase();
+    for (const sec of $$('.pass', main)) {
+      let shown = 0;
+      for (const c of $$('.change', sec)) {
+        const ok =
+          (!q || c.dataset.text.includes(q)) && (!problem || c.dataset.problem === problem) && (!el || c.dataset.parents.split(' ').includes(el));
+        c.hidden = !ok;
+        if (ok) shown++;
+      }
+      $('.empty', sec).hidden = shown > 0;
+    }
+  };
+  filter.addEventListener('input', apply);
+  bindElementChips($('#chProblems'), (v) => {
+    problem = v;
+    apply();
+  });
+  bindElementChips($('#chEls'), (v) => {
+    el = v;
+    apply();
+  });
+}
+
+function changeHtml({ k, r, h, after }) {
+  const side = (label, s, extra = '') => `<div class="side">
+      <span class="side-label">${label}</span>
+      <div class="side-head"><strong>${esc(s.skill)}</strong>${costCell(s)}${hookChip(k, s.hook)}${extra}</div>
+      <p>${effectHtml(k, s.effect)}</p>
+    </div>`;
+  const text = `${k.name} ${k.parents.join(' ')} ${r.base} ${h.before.skill} ${after.skill} ${h.before.effect} ${after.effect} ${h.why}`.toLowerCase();
+  return `<article class="change" data-problem="${esc(h.problem)}" data-parents="${esc(k.parents.join(' '))}" data-text="${esc(text)}">
+    <header class="change-head">
+      <a href="#/kit/${k.slug}/${baseSlug(r.base)}"><strong>${esc(k.name)}</strong><span class="c-base">${esc(r.base)}</span></a>
+      <span class="mini-parents">${swatch(k.parents)} ${esc(k.parents.join(' + '))}</span>
+      <span class="problem-tag p-${esc(h.problem)}" title="${esc(problemOf(h.problem).long)}">${esc(problemOf(h.problem).label)}</span>
+    </header>
+    <div class="change-body">
+      ${side('Before', h.before)}
+      ${side('Now', after, after === r ? starsHtml(ratingId(k.slug, r.base), r.skill) : '')}
+    </div>
+    <p class="why">${esc(h.why)}</p>
+  </article>`;
+}
 
 // ---------------------------------------------------------------- search
 
@@ -924,8 +1156,10 @@ function renderSearch(query) {
               .slice(0, LIMIT)
               .map(
                 ({ k, r }) => `<li><a href="#/kit/${k.slug}/${baseSlug(r.base)}"><div class="r-top"><strong>${mark(r.skill, query)}</strong>
-                  <span class="muted">${esc(k.name)} · ${esc(r.base)}</span>${costCell(r)}${
-                    ratings[ratingId(k.slug, r.base)] ? starsText(ratings[ratingId(k.slug, r.base)]) : ''
+                  <span class="muted">${esc(k.name)} · ${esc(r.base)}</span>${costCell(r)}${revTag(r)}${
+                    ratings[ratingId(k.slug, r.base)]
+                      ? starsText(ratings[ratingId(k.slug, r.base)].s, isStale(ratingId(k.slug, r.base)))
+                      : ''
                   }</div>
                   <p>${mark(r.effect, query)}</p></a></li>`,
               )

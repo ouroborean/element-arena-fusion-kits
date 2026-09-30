@@ -8,7 +8,7 @@ Every one of the 55 fusions has a first-draft kit: one or two new core mechanics
 
 | Fusion | Parents | Core mechanic | Plays like |
 | --- | --- | --- | --- |
-| Dragon | Fire + Fire | **Dragonfire**: an Ignite that burns for 10 instead of 5. **Hoard**: +1 whenever the user's burns tick (max 6); every 2 Hoard is 1 Armor; Breath skills spend it for +10 damage each. | Grows hotter and harder, then spends it all on one breath |
+| Dragon | Fire + Fire | **Dragonfire**: an Ignite that burns for 10 instead of 5. **Hoard**: +1 whenever the user's burns tick (max 6); every 2 Hoard is 1 Armor; Breath skills spend it for +5 damage each. | Grows hotter and harder, then spends it all on one breath |
 | Crystal | Ice + Ice | **Brittle** (max 3, a Frost debuff): +5 direct damage taken per stack; at 3 the next direct hit Shatters for +20 and Shattered. **Diamond**: no single hit deals the bearer more than 15. | Shatter combos on offense, burst-proof allies on defense |
 | Ocean | Water + Water | **Crest and Trough**: each Ocean skill alternates between an attacking Crest form and a sustaining Trough form every time it's used. **Brimming**: Renew that would overheal becomes Shield. | A rhythm: plan which half of each skill lands when |
 | Thunder | Lightning + Lightning | **Resound**: Thunder damage echoes at half strength at the start of the user's next turn, and each echo grants 1 Charge. **Deafened**: the bearer's counters, reflects and Traps can't trigger. | Hits twice, and switches off the enemy's tricks |
@@ -69,7 +69,7 @@ Every one of the 55 fusions has a first-draft kit: one or two new core mechanics
 Every kit follows the same shape, so any two kits can be compared skill by skill.
 
 - **All 30 skills, same jobs.** Each kit rebuilds every base skill, and each keeps its base skill's job and targeting: Strike stays a cheap single hit, Heal still heals, Riposte is still a one-turn trick. A class keeps its role whichever of its skills gets fused.
-- **One step above the parents.** Two infusions are spent, so a fusion skill should beat both parents' versions of the same skill: about 5 to 10 more damage or one extra rider, at a similar cost.
+- **One step above the parents, sideways.** Two infusions are spent, so a fusion skill is worth about one step more than its parents' versions at a similar cost. That step buys something new: a mechanic neither parent's version of the skill has, from the fusion's keywords or from a parent's wider toolkit. A fusion skill is never a parent's version with bigger numbers or the kit's keyword swapped in, and never both parents' versions added together.
 - **Each skill works alone.** A character rarely has more than one or two fusion skills, so no fusion skill depends on another skill from its own kit. Each either sets up and pays off its own mechanic, or pays off its parents' statuses, which the character's native element and teammates usually supply.
 - **Signature and texture.** About two-thirds of each kit uses the core mechanic. The rest (Hook: Texture) cross-wire the parents, so one parent's status sets up or pays off the other's. Pure fusions have only one parent, so their texture skills push that element's own statuses further.
 - **Few new words.** Each kit adds at most two keywords (Night keeps a third, First Light). New statuses stack and expire like existing ones unless the kit says otherwise.
@@ -115,3 +115,10 @@ Already supported and used throughout: hidden effects, on-expire hooks, force-ex
 - **Hidden information.** Night's Dusk and Assassin's Death Mark hide debuffs from the enemy, on top of Shadow's invisible counters. Is that the right amount of hidden state?
 - **Minion cap.** Slime, Ninja, Grave, Life, Spore and Mechanic all make many minions, and the client shows 4 per side. Should the rules set a hard cap per side?
 - **Setup-only payoffs.** A few skills (Stasis's Thaw, Judgment's Sentences, Alchemy's Transmutes) do little without setup from teammates. Is that acceptable, or should every fusion skill have a baseline effect?
+
+## Revisions
+
+| Date | Pass | What changed |
+| --- | --- | --- |
+| 2026-09-30 | Evolution pass | 1,440 of the 1,650 skills rewritten, because each stitched both parents' versions together (443), put the kit's keyword in place of a parent's status or tacked it on (635), made a parent's version stronger (241), or nearly copied another skill (89); 32 more were renames or clarifications. Each now adds a mechanic neither parent's version of the skill has. The "One step above the parents" rule now says so, ten kits' keywords gained a clarifying sentence (Ocean, Evolution, Current, Mist, Serum, Moon, Assassin, Sanctuary, Angel, Ninja), and Dragon's Breath number in the table above now matches its kit. |
+

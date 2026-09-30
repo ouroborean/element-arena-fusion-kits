@@ -162,7 +162,7 @@ function parseKit(title, body, group) {
 const groups = [];
 const kits = [];
 for (const slug of GROUPS) {
-  const md = fs.readFileSync(path.join(contentDir, `${slug}.md`), 'utf8');
+  const md = fs.readFileSync(path.join(contentDir, `${slug}.md`), 'utf8').replace(/\r\n/g, '\n');
   const { pre, sections: secs } = sections(md);
   const title = pre.match(/^# (.+)$/m)[1].trim();
   const lead = pre.replace(/^# .+$/m, '').trim();
@@ -176,7 +176,7 @@ for (const slug of GROUPS) {
 }
 
 // Overview: lead, the at-a-glance table, and the doc's other sections.
-const ov = sections(fs.readFileSync(path.join(contentDir, 'overview.md'), 'utf8'));
+const ov = sections(fs.readFileSync(path.join(contentDir, 'overview.md'), 'utf8').replace(/\r\n/g, '\n'));
 const ovTitle = ov.pre.match(/^# (.+)$/m)[1].trim();
 const ovPre = ov.pre.replace(/^# .+$/m, '').trim().split('\n\n');
 const date = ovPre[0].trim();
@@ -194,6 +194,25 @@ const overviewSections = ov.sections
   .filter((s) => !['At a glance', 'The kits'].includes(s.title))
   .map((s) => ({ id: slugify(s.title), title: s.title, html: blocks(s.body) }));
 
+// Revision log (content/revisions.json, written by scripts/apply-revisions.mjs): each revised row carries its
+// earlier versions, newest first, and its version number is how many times it has been revised.
+const logPath = path.join(contentDir, 'revisions.json');
+const log = fs.existsSync(logPath) ? JSON.parse(fs.readFileSync(logPath, 'utf8')) : { passes: [] };
+const kitBySlug = new Map(kits.map((k) => [k.slug, k]));
+const passes = log.passes.map((p) => {
+  let count = 0;
+  for (const c of p.changes) {
+    const row = kitBySlug.get(c.kit)?.rows.find((r) => r.base === c.base);
+    if (!row) {
+      console.warn(`revisions.json: no ${c.kit} ${c.base}`);
+      continue;
+    }
+    (row.history ??= []).unshift({ pass: p.id, date: p.date, problem: c.problem, why: c.why, before: c.before });
+    count++;
+  }
+  return { id: p.id, date: p.date, title: p.title, summary: p.summary, count };
+});
+
 const site = {
   title: ovTitle,
   date,
@@ -205,8 +224,11 @@ const site = {
   kits,
   atAGlance,
   overviewSections,
+  passes,
 };
 
 fs.mkdirSync(path.join(root, 'data'), { recursive: true });
 fs.writeFileSync(path.join(root, 'data', 'site.json'), JSON.stringify(site));
-console.log(`data/site.json: ${groups.length} groups, ${kits.length} kits, ${kits.reduce((n, k) => n + k.rows.length, 0)} skills`);
+console.log(
+  `data/site.json: ${groups.length} groups, ${kits.length} kits, ${kits.reduce((n, k) => n + k.rows.length, 0)} skills, ${passes.reduce((n, p) => n + p.count, 0)} logged revisions`,
+);

@@ -12,36 +12,36 @@ One keyword: Faerie's other half is Poison's afflictions carried on Wind's speed
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Thorned Kiss | S · 0 | Charmed | 20 damage and 1 Toxin. If the user is Leaping, the target is also Charmed for 1 turn. |
-| Smash | Fairy Ring | Ar · 2 | Charmed | 20 damage to target enemy. If the user isn't Leaping, they Leap; if they are, every enemy takes 10 and is Charmed for 1 turn. |
-| Charge | Flit | nc · 1 | Texture | The user begins Rushing; through their next turn, every enemy is Prey. |
-| Riposte | Prank | r · 2 | Charmed | 5 Piercing damage and 1 Toxin to target enemy. If this skill is countered, the counterer is Charmed for 2 turns. |
-| Rage | Wild Hunt | A · 3 | Texture | All Might in the battle turns into Weakness, and the user begins Rushing. |
-| Shot | Pixie Dust | r · 1 | Charmed | 5 Piercing damage, and at random 1 Toxin, 1 Weakness, 1 Vulnerable, or Charmed for 1 turn. |
-| Snipe | Elfshot | Ar · 1 | Charmed | Channeled, hidden target, Uncounterable. On the following turn, 25 Affliction damage, and Charmed for 1 turn. |
-| Trap | Toadstool Circle | A · 3 | Charmed | For 2 turns, each time target enemy uses a skill, they gain 1 Toxin and are Isolated for 1 turn; the second time, they're also Charmed for 1 turn. |
-| Maneuver | Petal Step | W · 2 | Texture | Unstunnable. The user Leaps and gains 1 Focus. |
-| Companion | Pixie | A · 1 | Charmed | Summons a Pixie (25 HP) permanently; it Leaps at the start of each of your turns. Sting (r): 5 Piercing damage and 1 Toxin. Befuddle (A): target enemy is Charmed for 1 turn. |
-| Bolt | Wisp Bolt | I · 1 | Texture | 15 damage. If the target is Immobile or Prey, they gain 1 Vulnerable and their non-Strategic skills are stunned for 1 turn. |
-| Blast | Dust Storm | Ar · 2 | Charmed | 15 damage to all enemies, +10 if the user is Leaping; each gains 1 Vulnerable, and a random one is Charmed for 1 turn. |
-| Consume | Stolen Away | W · 2 | Texture | Executes target enemy below 15 HP (doubled for minions); otherwise they lose their mobility buffs. |
-| Summon | Sprite Swarm | W · 2 | Charmed | Summons 2 Sprites (10 HP) for 3 turns. Pinch (nc): 5 Piercing damage; if it's countered, the counterer is Charmed for 1 turn. |
-| Channel | Midsummer Revel | AI · 3 | Charmed | Channeled. 10 damage to all enemies for 2 turns, one more if the user is Leaping or Rushing when it ticks; each turn, a random enemy is Charmed for 1 turn. |
-| Stab | Thorn Needle | r · 0 | Texture | 5 Piercing damage, or 15 if the user is Rushing. Against Prey, you gain 1 random energy. |
-| Ravage | Wasp Dive | A · 1 | Texture | 25 Piercing damage, Bypassing Invulnerable; Prey or Invulnerable targets gain 2 Toxin. The user begins Rushing. |
-| Mislead | False Friend | W · 2 | Charmed | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered; they gain 1 Toxin and are Charmed for 2 turns. |
-| Stun | Sleep Dust | W · 3 | Texture | Target enemy is Stunned for 1 turn, or 2 if they're Prey or Immobile. |
-| Dance | Faerie Dance | A · 2 | Charmed | All Armor on enemies turns into Vulnerable; then a random enemy with Vulnerable is Charmed for 1 turn. |
-| Heal | Fairy Tonic | A · 1 | Texture | Target unit, ally or enemy, heals 20 and gains 2 Toxin; an ally above 60 HP afterwards begins Rushing. |
-| Bless | Fairy Wings | W · 2 | Texture | Target ally gains 2 Swiftness, and 1 Might for 3 turns. |
-| Curse | Enthrall | r · 2 | Charmed | Target enemy is Charmed for 2 turns and gains 1 Confusion. |
-| Smite | Fey Mark | Wr · 1 | Texture | 20 damage. For 1 turn, allies who damage the target Leap and give them 1 Vulnerable. |
-| Prayer | Fairy Song | Wr · 2 | Charmed | All allies gain 2 Renew and Leap; all enemies gain 1 Toxin, and a random one is Charmed for 1 turn. |
-| Cleave | Whirling Petals | Ar · 1 | Texture | 10 damage to all enemies; the cooldown resets if it hits Prey. Costs 1 less while the user is Leaping or Rushing. |
-| Shout | Fae Laughter | A · 2 | Charmed | Every ally gains 1 Swiftness; every enemy with 2 or more Toxin is Charmed for 1 turn. |
-| Withstand | Briar Veil | W · 2 | Texture | The user gains 10 Shield and 1 Armor, and 10 more Shield if they're Rushing. |
-| Taunt | Mesmerizing Glamour | r · 3 | Texture | Target enemy is Taunted and counts as Prey for 3 turns, or 4 if they're Immobile. |
-| Titan | Faerie Queen | W · 3 | Charmed | All Focus in the battle turns into Confusion; then every enemy with Confusion is Charmed for 1 turn. |
+| Strike | Thorned Kiss | S · 0 | Charmed | 20 damage to target enemy and 1 Toxin. If that makes them Prey, they're Charmed for 1 turn. |
+| Smash | Fairy Ring | Ar · 2 | Charmed | 20 damage to target enemy and 10 to their allies. Each one hit who has a mobility buff loses them all and is Charmed for 1 turn. |
+| Charge | Flit | nc · 1 | Texture | The user begins Rushing. For 2 turns, each enemy they damage also gains 1 Toxin. |
+| Riposte | Prank | r · 3 | Charmed | Invisible. For 1 turn, the first single-target Harmful skill used on the user hits a random ally of its user instead; then its user is Charmed for 1 turn. |
+| Rage | Wild Hunt | A · 4 | Texture | For 3 turns, the user is Immune and gains 1 Might for each enemy that is Prey or Immobile, rechecked at the start of each of their turns. |
+| Shot | Pixie Dust | r · 1 | Charmed | 10 damage to target enemy and 1 Confusion. If they already had Confusion, they're Charmed for 1 turn instead. |
+| Snipe | Elfshot | Ar · 2 | Texture | Channeled, hidden target, Uncounterable. On the following turn, 30 Affliction damage to target enemy; if another enemy has more Toxin by then, it veers to them instead. |
+| Trap | Toadstool Circle | A · 3 | Charmed | Invisible. For 2 turns, whenever target enemy uses a Helpful skill, they're Charmed for 1 turn first, so it picks its target at random; they also gain 1 Toxin. |
+| Maneuver | Petal Step | r · 3 | Texture | The user Leaps; their Leap's bonus damage is 5 per Toxin on the target it hits instead of 5. |
+| Companion | Pixie | A · 1 | Charmed | Summons a Pixie (25 HP) permanently; it's Untargetable while any enemy is Charmed. Befuddle (A): target enemy is Charmed for 1 turn, or 2 if they're Prey. |
+| Bolt | Wisp Bolt | I · 1 | Texture | 20 damage to target enemy and Marked for 1 turn. If they're Immobile, they also count as Prey for 2 turns. |
+| Blast | Dust Storm | Ar · 2 | Charmed | 15 damage to all enemies; each is Charmed for their next skill. |
+| Consume | Nectar Thief | W · 2 | Texture | Target enemy takes 5 Affliction damage per Toxin on them and loses it; the user heals that much. If the user is Rushing, the Toxin stays. |
+| Summon | Sprite Swarm | W · 2 | Charmed | Summons 2 Sprites (10 HP) for 3 turns; an enemy who damages a Sprite is Charmed for 1 turn. Pinch (nc): 5 Piercing damage. |
+| Channel | Midsummer Revel | AI · 3 | Charmed | Channeled. For 3 turns, at the end of each of the user's turns, a random enemy is Charmed for 1 turn, and every Charmed enemy takes 10 Affliction damage. |
+| Stab | Thorn Needle | r · 0 | Texture | 10 Piercing damage to target enemy, and their Toxin ticks once now, or twice if the user is Rushing. |
+| Ravage | Wasp Dive | A · 1 | Texture | 25 Piercing damage to target enemy. If they're Prey, the user Leaps; otherwise they gain 2 Toxin. |
+| Mislead | False Friend | I · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered; if they use a Helpful skill on an ally, it lands on the user instead. |
+| Stun | Sleep Dust | W · 3 | Charmed | 10 damage to target enemy, and they fall Asleep for 1 turn. When the Sleep ends, they're Charmed for 1 turn. |
+| Dance | Fey Reel | AI · 4 | Charmed | For 3 turns, the user gains 2 Might, 2 Swiftness and 1 Focus, and is Charmed. |
+| Heal | Fairy Tonic | A · 1 | Charmed | Target unit heals 20. An ally also loses all Toxin; an enemy is Charmed for 1 turn. |
+| Bless | Fairy Wings | A · 2 | Charmed | Target ally gains 2 Swiftness. For 3 turns, each Stun their Swiftness shrugs off Charms its source for 1 turn. |
+| Curse | Enthrall | r · 2 | Charmed | Target enemy is Charmed for 2 turns. Each ally of theirs they damage while Charmed is Charmed for 1 turn too. |
+| Smite | Fey Mark | Wr · 1 | Charmed | 20 damage to target enemy. Each ally of theirs who healed or buffed them since the user's last turn is Charmed for 1 turn. |
+| Prayer | Fairy Song | Wrr · 2 | Texture | All allies heal 20 and lose their Toxin; each stack removed goes to a random enemy. |
+| Cleave | Whirling Petals | Ar · 1 | Texture | 20 damage to target enemy and 10 to a random other enemy; each Prey it hits sends another 10 at a random enemy. |
+| Shout | Fae Laughter | A · 3 | Charmed | All enemies are Intimidated for 2 turns; the first of them to use a single-target skill is Charmed for 1 turn first, so it picks at random. |
+| Withstand | Briar Veil | W · 2 | Texture | The user gains 20 Shield for 1 turn; each enemy who damages it gains 1 Toxin, or 2 if the user is Rushing. |
+| Taunt | Fickle Heart | r · 3 | Texture | Target enemy is Taunted by a random ally of theirs for 1 turn, or 2 if they're Prey, so that ally is all they can target. |
+| Titan | Faerie Queen | SA · 4 | Charmed | For 3 turns, the user gains 2 Armor and Immune; each enemy who uses a single-target skill on them is Charmed for 1 turn afterwards. |
 
 ## Nomad — Wind + Earth
 
@@ -53,76 +53,76 @@ One keyword: the rest is Wind's movement and Earth's stones and camp.
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Wayfarer's Blow | S · 0 | Trek | 20 damage, +5 per Trek. |
-| Smash | Dune Crash | Ar · 2 | Trek | 20 damage to target enemy and 10 to their allies, +5 to each per Trek; the user Leaps. |
-| Charge | Break Camp | nc · 1 | Trek | The user begins Rushing; at 3 Trek, they also gain 1 Focus for their next skill. |
-| Riposte | Stone and Sand | r · 1 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user, dealing 10 Piercing damage to its user, who is Isolated for 1 turn. |
-| Rage | Wanderlust | A · 4 | Trek | Usable while Stunned. Removes the user's Debuffs; they're Immune for 2 turns, and Trek becomes 3. |
-| Shot | Sling Stone | r · 0 | Trek | 15 damage, +5 per Trek. Can instead launch an allied Boulder at a random enemy for its remaining HP. |
-| Snipe | Sandstorm | Ar · 2 | Trek | Channeled. On the following turn, 25 Piercing damage to the enemy team, or 40 at 3 Trek. |
-| Trap | Sinking Sands | A · 3 | Texture | For 2 turns, each time target enemy uses a skill, they take 10 Piercing damage, are Isolated for 1 turn, and can't gain mobility buffs. |
-| Maneuver | Dune Leap | r · 3 | Trek | The user Leaps and gains 1 Armor. Using this skill never resets Trek. |
-| Companion | Pack Camel | A · 1 | Trek | Summons a Pack Camel (50 HP) permanently. Kick (r): 15 damage. Carry (A): target ally Leaps and gains 1 Trek. |
-| Bolt | Grit Bolt | I · 1 | Texture | 20 damage. Immobile targets are Isolated and have their non-Strategic skills stunned for 1 turn. |
-| Blast | Dust Devil | Ar · 2 | Trek | 10 damage to all enemies, +10 if the user is Leaping, +10 if Rushing, and +5 per Trek. |
-| Consume | Oasis | W · 2 | Trek | Sacrifices all allied Seedlings and Boulders; target ally heals 15 per minion, and the user gains 1 Trek. |
-| Summon | Caravan Guards | W · 1 | Texture | Summons 2 Caravan Guards (20 HP) for 3 turns. Spear (r): 10 damage. |
-| Channel | The Long Road | Ir · 3 | Trek | Channeled, 4 turns. At the end of each of the user's turns, they gain 1 Trek (channeling doesn't reset it) and create a Boulder. |
-| Stab | Traveler's Knife | r · 0 | Trek | 10 damage, or 20 if the user is Rushing, +5 per Trek. |
-| Ravage | Scour | Wr · 2 | Texture | 25 Piercing damage, +20 if the user has 3 or more total Armor and Might; the user begins Rushing. |
-| Mislead | Mirage | I · 2 | Trek | For 1 turn, if target enemy uses a Harmful skill, it's countered and they're Marked; the user begins Rushing and gains 1 Trek. |
-| Stun | Grit in the Eyes | r · 2 | Texture | 10 damage, and stuns their Strategic skills for 1 turn; Immobile targets are fully Stunned. |
-| Dance | Endless Journey | AI · 5 | Trek | For 3 turns, the user gains 1 Might and Ghosted, begins Rushing, and their Trek can't reset. |
-| Heal | Waterskin | A · 1 | Trek | Target ally heals 15, +5 per Trek; above 60 HP afterwards, they begin Rushing. |
-| Bless | Road Blessing | nc · 0 | Texture | Target ally gains 1 Swiftness or 1 Armor, at random. |
-| Curse | Dust in the Wind | A · 2 | Texture | Target enemy loses all mobility buffs and gains 1 Weakness, plus 1 more per Might that target ally has. |
-| Smite | Waymarker | W · 1 | Trek | 20 damage. For 1 turn, allies who damage the target Leap, and the user gains 1 Trek. |
-| Prayer | Campfire Song | Wrr · 2 | Trek | All allies heal 20 and Leap; the user's Trek becomes 3. |
-| Cleave | Sweeping Sands | Ar · 1 | Trek | 10 damage to all enemies, +5 per Trek. Costs 1 less while the user is Leaping or Rushing. |
-| Shout | Call of the Caravan | A · 2 | Texture | Every unit in the battle gains 1 Swiftness, and allied Boulders gain 1 Armor. |
-| Withstand | Windbreak | r · 3 | Trek | The user gains 15 Shield, +15 if Rushing and +5 per Trek. |
-| Taunt | Challenge in the Sand | r · 3 | Texture | Taunts target enemy for 1 turn, or 3 if they're Immobile, and Isolates them for 1 turn. |
-| Titan | Colossus of the Dunes | SA · 4 | Trek | For 3 turns, the user gains 15 Shield, Immune, and 1 Armor per Trek (checked each turn); then they Leap. |
+| Strike | Wayfarer's Blow | S · 0 | Trek | 15 damage to target enemy. The user spends all their Trek for 10 more per Trek spent. |
+| Smash | Dune Crash | Ar · 2 | Trek | 20 damage to target enemy and 10 to their allies. At 3 Trek, each one hit is also buried: they lose their mobility buffs and are Isolated for 1 turn. |
+| Charge | Break Camp | nc · 1 | Trek | The user begins Rushing. If they have an allied Boulder or Seedling, they pack one up: it's removed, and they gain 2 Trek. |
+| Riposte | Stone and Sand | r · 2 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user; its user is Taunted for 1 turn by a Boulder the user creates. |
+| Rage | Wanderlust | A · 4 | Trek | For 3 turns, the user is Immune, and each time their Trek rises they gain 1 Might, which lasts until their Trek next resets. |
+| Shot | Sling Stone | r · 0 | Texture | 15 damage to target enemy. Against a Leaping target, it Bypasses and ends their Leap. |
+| Snipe | Haboob | Ar · 2 | Trek | Channeled. On the following turn, 25 Piercing damage to the enemy team; any enemy who repeated their last skill in the meantime takes 15 more. |
+| Trap | Sinking Sands | A · 3 | Trek | Invisible. For 3 turns, target enemy has Trap 15, which grows by 10 at the end of each of the user's turns in which their Trek rises. |
+| Maneuver | Dune Leap | r · 3 | Trek | The user Leaps. If their Trek is 0, it becomes 2. |
+| Companion | Pack Camel | A · 1 | Trek | Summons a Pack Camel (50 HP) permanently; while it stands, a turn in which the user uses no skill doesn't reset their Trek. Kick (r): 15 damage. |
+| Bolt | Grit Bolt | I · 1 | Texture | 20 damage to target enemy and Marked for 1 turn. If they have Armor or Shield, they're weighed down: they lose their mobility buffs and can't gain any for 1 turn. |
+| Blast | Dust Devil | Ar · 2 | Trek | 20 damage to all enemies; each one hit loses 1 mobility buff, and the user gains 1 Trek per buff removed. |
+| Consume | Oasis | W · 2 | Trek | 10 damage to target enemy; the user heals 10 per Trek, then loses 1 Trek. |
+| Summon | Caravan Guards | W · 1 | Texture | Summons 2 Caravan Guards (20 HP) for 3 turns; a Guard that dies leaves a Boulder. Spear (r): 10 damage. |
+| Channel | The Long Road | Ir · 3 | Trek | Channeled. 10 damage to all enemies at the end of each of the user's turns; it continues only while their Trek keeps rising, up to 4 turns. |
+| Stab | Traveler's Knife | r · 0 | Trek | 10 damage to target enemy, or 20 if they're at or below 60 HP. Using it twice in a row doesn't reset Trek. |
+| Ravage | Scour | Ar · 1 | Texture | 25 Piercing damage to target enemy. If they're Immobile, the sand scours them first: they lose all Armor and Shield. |
+| Mislead | Mirage | I · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and that skill's cooldown grows by 2. |
+| Stun | Grit in the Eyes | r · 2 | Texture | 10 damage to target enemy and a 1-turn Stun that Swiftness can't ignore; they lose all Swiftness. |
+| Dance | Endless Journey | AI · 4 | Trek | For 3 turns, the user's Trek can't reset; while it's at 3, their skills cost 1 less. |
+| Heal | Waterskin | A · 1 | Trek | Target ally heals 20, or 35 if they used a different skill than on their previous turn. |
+| Bless | Road Blessing | A · 2 | Texture | Target ally begins Rushing, and has 1 Might and 1 Armor for as long as their Rushing lasts. |
+| Curse | Dust in the Wind | A · 2 | Texture | Target enemy gains 1 Confusion; for 2 turns, they can't gain Armor, Shield or mobility buffs. |
+| Smite | Waymarker | W · 1 | Trek | 20 damage to target enemy. Until the user's Trek next resets, allies who damage them heal 10. |
+| Prayer | Campfire Song | Wrr · 2 | Trek | All allies heal 15 and gain 10 Shield. The user makes camp: their Trek resets, and allies heal 10 more per Trek it had. |
+| Cleave | Sweeping Sands | Ar · 1 | Trek | 20 damage to target enemy and 15 to a random other enemy. Costs 1 less while the user has no Trek. |
+| Shout | Call of the Caravan | A · 2 | Texture | All enemies are Intimidated for 2 turns, and the user creates a Boulder for each enemy that is Immobile. |
+| Withstand | Windbreak | r · 3 | Texture | The user gains 25 Shield for 1 turn; each enemy who damages it loses their mobility buffs. |
+| Taunt | Challenge in the Sand | r · 3 | Trek | Taunts target enemy for 2 turns; each time they damage the user during it, the user's Trek rises by 1. |
+| Titan | Colossus of the Dunes | SA · 4 | Trek | For 3 turns, the user gains 3 Armor and Immune and their Trek is frozen, but they're Immobile: they lose their mobility buffs and can't gain any. |
 
 ## Angel — Wind + Holy
 
 *Holy wings: a guardian that takes the blows meant for others and pulls the fallen back from the edge.*
 
 - **Guardian**: an ally **Guarded** by an Angel (a Buff) has the first Harmful skill aimed at them each turn redirected to that Angel, if the Angel can be targeted.
-- **Halo** (Buff): the first time the bearer would die, they heal to 25 HP instead, and the Halo is spent.
+- **Halo** (Buff): the first time the bearer would die, they heal to 25 HP instead, and the Halo is spent. It lasts until spent unless the skill gives it a duration.
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Wingstrike | S · 0 | Texture | 20 damage to target enemy, +10 if the user is Anointed. If the user is Leaping, 10 more and they heal 10. |
-| Smash | Heaven's Descent | Wr · 2 | Texture | 20 damage to target enemy and 10 to their allies; the user heals 5 per target hit. If they're Leaping, every enemy takes 10 more. |
-| Charge | Swoop | nc · 1 | Guardian | The user begins Rushing and Guards a random ally for 1 turn. |
-| Riposte | Intercession | W · 3 | Guardian | Invisible. For 1 turn, counters the first Harmful skill used on the user or on an ally they Guard. |
-| Rage | Unbroken Wings | A · 4 | Halo | Usable while Stunned. Removes the user's Debuffs; Immune for 2 turns, and a Halo. |
-| Shot | Quill of Light | r · 0 | Texture | 15 damage; if the user is Leaping, 5 more and they Leap again. Consumes the user's Anointed to heal them 15. |
-| Snipe | Descending Spear | Arr · 2 | Texture | Channeled, hidden target. On the following turn, 50 damage, or 65 if the user is Leaping when it lands. |
-| Trap | Watchful Eye | r · 2 | Texture | Target enemy is Condemned for 2 turns, and Isolated for 1 turn each time they use a skill. |
-| Maneuver | Take Flight | r · 2 | Halo | The user Leaps and gains Immune for 1 turn; if they're Anointed, a Halo too. |
+| Strike | Wingstrike | S · 0 | Guardian | 20 damage to target enemy. For 1 turn, the user Guards the ally that enemy last targeted. |
+| Smash | Heaven's Descent | Wr · 2 | Halo | 20 damage to target enemy and 10 to their allies. For each unit it kills, a random ally gains a Halo. |
+| Charge | Swoop | nc · 1 | Guardian | The user begins Rushing and Guards target ally for 1 turn; the first hit redirected this way deals them half damage. |
+| Riposte | Intercession | W · 3 | Guardian | Invisible. For 1 turn, the user Guards every ally and counters the first Harmful skill aimed at the user or redirected to them. |
+| Rage | Unbroken Wings | A · 4 | Halo | For 3 turns, the user gains 1 Might, Immune and a Halo. If the Halo saves them, they gain 2 Might and the Rage lasts 2 turns longer. |
+| Shot | Quill of Light | r · 0 | Texture | 15 damage to target enemy. If they're Sanctified, the user Leaps. |
+| Snipe | Descending Spear | Arr · 2 | Guardian | Channeled, hidden target. On the following turn, 40 damage to target enemy, +10 for each hit redirected to the user meanwhile; until it lands, the user Guards every ally. |
+| Trap | Watchful Eye | r · 2 | Halo | Invisible. For 2 turns, if target enemy would kill an ally of the user, that ally gains a Halo first, and the enemy is Condemned for 2 turns. |
+| Maneuver | Take Flight | r · 3 | Halo | The user Leaps. If they're below 40 HP, they also gain a Halo for 2 turns. |
 | Companion | Cherub | SW · 4 | Guardian | Summons a Cherub (35 HP) permanently. Shelter (W): the Cherub Guards target ally for 1 turn. Holy Arrow (r): 15 damage and Sanctify. |
-| Bolt | Beam from Above | I · 1 | Texture | 20 damage and Sanctify for 1 turn; Immobile targets also have their non-Strategic skills stunned for 1 turn. |
-| Blast | Radiant Wings | Ar · 2 | Texture | 15 Piercing damage to all enemies, +10 if the user is Leaping and +10 if Rushing. If they're Anointed, it strikes again next turn. |
-| Consume | Grace Received | r · 2 | Halo | 5 damage. If the target is Sanctified, a random ally gains a Halo. |
-| Summon | Heavenly Host | I · 1 | Guardian | Summons 2 Guardian Sprites (10 HP) for 3 turns; at the start of each of your turns, each Guards a random ally. |
-| Channel | Vigil | W · 3 | Guardian | Channeled. At the end of each of the user's turns, a random enemy without Sanctify takes 10 damage and is Sanctified; meanwhile the user Guards the ally with the least HP. |
-| Stab | Piercing Feather | A · 0 | Texture | 10 damage, +10 if the target is Condemned or Sanctified or the user is Rushing. |
-| Ravage | Plummet | A · 1 | Texture | 25 Piercing damage; targets above 75 HP are Condemned. The user begins Rushing. |
-| Mislead | Martyr's Wings | A · 2 | Guardian | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's redirected to the user, and its original targets are Anointed. |
-| Stun | Glorious Light | r · 1 | Texture | A Condemned target is Stunned for 1 turn; any other target has their Strategic skills stunned for 1 turn. |
-| Dance | Seventh Heaven | WW · 5 | Halo | For 3 turns, the user is Invulnerable, Immune and Ghosted; they also gain a Halo. |
-| Heal | Lay on Hands | Wr · 3 | Halo | Target ally heals 40 and gains a Halo. |
+| Bolt | Beam from Above | I · 1 | Guardian | 20 damage to target enemy and Marked for 1 turn. Until then, the first Harmful skill they aim at an ally is redirected to the user. |
+| Blast | Radiant Wings | Ar · 2 | Texture | 20 Piercing damage to all enemies, Bypassing Invulnerable; each one who was Leaping or Invulnerable loses it and is Condemned. |
+| Consume | Grace Received | r · 2 | Texture | 5 damage to target enemy, healing the user for it; the user also steals their Swiftness, healing 10 per stack. |
+| Summon | Heavenly Host | I · 1 | Halo | Summons 2 Lesser Angels (10 HP) for 3 turns. The first time an ally would die, a Lesser Angel dies in their place and they heal to 25. Soothe (r): target ally heals 10. |
+| Channel | Vigil | W · 3 | Guardian | Channeled. For 3 turns, the user Guards the ally with the least HP, and at the end of each of their turns, every enemy whose hit was redirected to them takes 15 damage. |
+| Stab | Piercing Feather | A · 0 | Texture | 10 damage to target enemy, or 20 if they used a mobility skill since the user's last turn. |
+| Ravage | Plummet | A · 1 | Texture | 25 Piercing damage to target enemy, +15 if they're Condemned. If the user is Anointed, they spend it to Leap afterwards. |
+| Mislead | Martyr's Wings | A · 2 | Halo | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's redirected to the user, who gains a Halo first. |
+| Stun | Glorious Light | r · 1 | Texture | 10 damage to target enemy and they're Condemned; if they're Immobile, they're also Stunned for 1 turn. |
+| Dance | Seventh Heaven | AI · 5 | Texture | For 4 turns, the user gains 1 Might and 2 Swiftness and begins Rushing; while they're Rushing, they're Anointed. |
+| Heal | Lay on Hands | Wr · 2 | Halo | Target ally heals 20 and gains a Halo for 2 turns; if it's unspent when it fades, they heal 20 more. |
 | Bless | Under My Wing | A · 2 | Guardian | The user Guards target ally for 2 turns; the ally gains 1 Swiftness. |
-| Curse | Fallen Grace | S · 2 | Texture | Target enemy loses their mobility buffs and is Condemned and Sanctified until the end of the user's next turn. |
-| Smite | Heavenly Mark | Wr · 1 | Texture | 20 damage. For 1 turn, allies who damage the target Leap; if the user is Anointed, the target is Sanctified for 2 turns. |
-| Prayer | Uplifting Hymn | Wrr · 2 | Halo | All allies heal 15 and Leap; the ally with the least HP gains a Halo. |
-| Cleave | Sweeping Wings | S · 1 | Guardian | 10 damage to target enemy and a random other enemy; the user Guards the ally with the least HP for 1 turn. |
-| Shout | Last Trumpet | A · 2 | Texture | Every ally gains 1 Swiftness; every Sanctified enemy is Condemned for 1 turn. |
-| Withstand | Spread Wings | r · 3 | Guardian | The user gains 20 Shield (35 if Rushing) and Guards every ally for 1 turn. |
-| Taunt | Radiant Challenge | S · 3 | Texture | Target enemy is Taunted for 1 turn (3 if they're Immobile) and Condemned. |
-| Titan | Archangel | SA · 4 | Guardian | For 3 turns, the user gains 15 Shield and Immune and Guards every ally; they also gain a Halo, then Leap. |
+| Curse | Fallen Grace | S · 2 | Texture | Target enemy loses their mobility buffs; for 2 turns, each mobility buff they would gain Condemns them instead. |
+| Smite | Heavenly Mark | Wr · 1 | Guardian | 20 damage to target enemy. For 1 turn, allies who damage them are Guarded by the user for 1 turn. |
+| Prayer | Uplifting Hymn | Wrr · 2 | Guardian | All allies heal 20; for 1 turn, the user Guards each ally still below 50 HP. |
+| Cleave | Sweeping Wings | S · 1 | Texture | 20 damage to target enemy and 15 to a random other enemy; for each Sanctified one hit, every ally gains 1 Swiftness. |
+| Shout | Last Trumpet | A · 3 | Halo | All enemies are Intimidated for 2 turns, and every ally below 30 HP gains a Halo for 1 turn. |
+| Withstand | Spread Wings | r · 3 | Guardian | The user gains 25 Shield and Guards every ally for 1 turn; any Shield left at the end of the turn is split among the allies. |
+| Taunt | Radiant Challenge | S · 3 | Halo | Taunts target enemy for 2 turns; the user has a Halo while the Taunt lasts. |
+| Titan | Archangel | SA · 4 | Guardian | For 3 turns, the user gains 2 Armor and Immune and Guards every ally; each hit redirected to them gives them 1 more Armor, up to 5. |
 
 ## Ghost — Wind + Unholy
 
@@ -133,74 +133,74 @@ One keyword: the rest is Wind's movement and Earth's stones and camp.
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Phantom Blade | S · 1 | Haunt | 25 damage. A Horrified target takes 10 more and is Haunted for 2 turns. |
-| Smash | Poltergeist Crash | Ar · 2 | Texture | 20 damage to target enemy. If the user isn't Leaping, they Leap; if they are, every enemy takes 10 and is Horrified for 1 turn. |
-| Charge | Walk Through Walls | nc · 1 | Spectral | The user begins Rushing and is Spectral for 1 turn. |
-| Riposte | Vengeful Spirit | r · 2 | Haunt | 5 Piercing damage to target enemy. If this skill is countered, the counterer is Haunted for 3 turns and Horrified for 2. |
-| Rage | Unfinished Business | A · 4 | Spectral | Usable while Stunned. Removes the user's Debuffs; for 2 turns, they're Immune, Spectral and Immortal. |
-| Shot | Ectoplasm | r · 1 | Texture | 10 damage, +5 per Soul Fragment the user has. If the user is Leaping, 5 more and they Leap again. |
-| Snipe | Banshee's Wail | Ar · 2 | Haunt | Channeled. On the following turn, 25 Piercing damage to the enemy team, and a random enemy is Haunted for 2 turns. |
-| Trap | Hangman's Noose | A · 3 | Haunt | For 2 turns, each time target enemy uses a skill, they take 10 Piercing damage and are Isolated for 1 turn; the first time, they're also Haunted for 2 turns. |
-| Maneuver | Fade | A · 2 | Spectral | Invisible. The user becomes Immortal and Spectral for 1 turn. |
+| Strike | Phantom Blade | S · 1 | Haunt | 25 damage to target enemy, and Haunted for 1 turn. A Haunt already on them ticks now and doesn't drift this turn. |
+| Smash | Poltergeist Crash | Ar · 2 | Haunt | 20 damage to target enemy and 10 to their allies, and the target is Haunted for 2 turns. If they already were, the Haunt splits: a second one lands on a random ally of theirs. |
+| Charge | Walk Through Walls | nc · 1 | Spectral | The user is Spectral until they next use a skill, and that skill Bypasses. |
+| Riposte | Vengeful Spirit | r · 2 | Spectral | Invisible. For 1 turn, the user is Spectral, and the first Normal damage that passes through them hits its source instead, as Affliction. |
+| Rage | Unfinished Business | A · 4 | Texture | Usable while Stunned. For 3 turns, the user is Immortal, and each Debuff they would gain becomes 1 Might instead. |
+| Shot | Ectoplasm | r · 1 | Texture | 10 damage to target enemy. If they have a mobility buff, it's gummed up: they lose it, and the user gains a Soul Fragment. |
+| Snipe | Grave Omen | Ar · 2 | Spectral | Channeled, hidden target. The user is Spectral until it lands; on the following turn, 35 Piercing damage to target enemy. |
+| Trap | Hangman's Noose | A · 3 | Haunt | Invisible. For 2 turns, the first time target enemy gains a Buff, it's removed, and they're Haunted for 3 turns. |
+| Maneuver | Fade | r · 3 | Spectral | The user becomes Spectral for 2 turns; it ends early if they deal damage. |
 | Companion | Poltergeist | S · 1 | Haunt | Summons a Poltergeist (30 HP, always Spectral) permanently. Rattle (S): 10 Affliction damage, and Haunted for 2 turns. |
-| Bolt | Spectral Bolt | I · 2 | Texture | 20 damage and Horrified for 2 turns; Immobile targets also have their non-Strategic skills stunned for 1 turn. |
-| Blast | Spirit Storm | SIr · 2 | Haunt | 20 damage to all enemies, +10 per Soul Fragment the user has; a random enemy is Haunted for 3 turns. |
-| Consume | Steal Breath | I · 2 | Texture | 5 damage, and drains a Soul Fragment; removes the target's mobility buffs, and the user gains 1 Swiftness per buff. |
-| Summon | Wraiths | r · 3 | Haunt | Summons 2 Wraiths (10 HP, always Spectral) for 3 turns. Moan (nc): target enemy is Haunted for 1 turn. |
-| Channel | Restless Dead | AI · 3 | Haunt | Channeled. 10 damage to all enemies for 2 turns, one more if the user is Leaping or Rushing when it ticks; each turn, a random enemy is Haunted for 2 turns. |
-| Stab | Ghost Knife | r · 0 | Spectral | 10 damage, or 20 if the user is Rushing or Spectral. |
-| Ravage | Rend the Living | AS · 2 | Texture | 35 Piercing damage; a target with Buffs is Horrified for 1 turn. The user begins Rushing. |
-| Mislead | Night Terror | r · 3 | Haunt | Invisible. For 1 turn, if target enemy uses a Strategic skill, it's countered and they're Haunted for 3 turns; the user becomes Untargetable for 1 turn. |
-| Stun | Frozen with Fear | r · 2 | Texture | 10 damage, and stuns their Strategic skills for 1 turn; Horrified targets are fully Stunned. |
-| Dance | Ghostly Waltz | A · 0 | Haunt | 15 Piercing damage; every Haunt and Horrify on enemies lasts 1 turn longer. The user gains 1 Confusion for 1 turn (stacking). |
-| Heal | Soul Transfer | r · 0 | Texture | Deals 15 damage to another ally; the user heals 20. |
-| Bless | Spirit Form | W · 2 | Spectral | Target ally is Spectral for 2 turns. |
-| Curse | Spirit Mark | r · 1 | Haunt | Target enemy is Horrified until the end of the turn, and Haunted for 2 turns. |
-| Smite | Spectral Mark | Sr · 1 | Texture | 20 damage. For 1 turn, allies who damage the target gain a Soul Fragment and Leap. |
-| Prayer | Dirge of Spirits | Wrr · 2 | Haunt | 20 damage to all enemies and 2 Weakness for 1 turn; a random enemy is Haunted for 2 turns. |
-| Cleave | Phantom Sweep | Ar · 1 | Texture | 10 damage to all enemies, 10 more to Horrified ones. Costs 1 less while the user is Leaping or Rushing. |
-| Shout | Keening | S · 3 | Haunt | 20 damage. If the user has a Soul Fragment, they spend it for 10 more damage and Haunt the target for 3 turns. |
-| Withstand | Ectoplasmic Shield | r · 3 | Spectral | The user gains 15 Shield (30 if Rushing) and is Spectral for 1 turn. |
-| Taunt | Beckoning Spirit | S · 3 | Haunt | Taunts target enemy for 2 turns and Haunts them (it drifts as usual). If they're Horrified, the user also gains Lifesteal for that time. |
-| Titan | Revenant | SA · 4 | Spectral | For 3 turns, the user is Spectral and Immune and gains 15 Shield; then they Leap. |
+| Bolt | Spectral Bolt | I · 1 | Texture | 20 damage to target enemy and Horrified for 2 turns; they lose their mobility buffs and, being Horrified, can't regain them. |
+| Blast | Spirit Storm | SIr · 2 | Haunt | 20 damage to all enemies; each one who is Horrified is also Haunted for 2 turns. |
+| Consume | Steal Breath | I · 2 | Haunt | 5 damage to target enemy, and they're Haunted for 2 turns; that Haunt's damage heals the user wherever it drifts. |
+| Summon | Wraiths | r · 3 | Haunt | Summons 2 Wraiths (10 HP) for 3 turns; when a Wraith dies, its killer is Haunted for 2 turns. Cold Grasp (nc): 5 Affliction damage. |
+| Channel | Restless Dead | AI · 3 | Haunt | Channeled. 10 damage to all enemies for 2 turns. A random enemy is Haunted for 3 turns, and each time that Haunt drifts, the user gains a Soul Fragment. |
+| Stab | Ghost Knife | r · 0 | Texture | 10 damage to target enemy. If they're Immobile, it's Affliction damage and drains a Soul Fragment. |
+| Ravage | Rend the Living | AS · 2 | Texture | 30 Piercing damage to target enemy; if the user is Leaping or Rushing, they heal for the damage dealt. |
+| Mislead | Night Terror | r · 3 | Haunt | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered; they're Horrified and Haunted for 2 turns, and this Haunt doesn't drift. |
+| Stun | Frozen with Fear | r · 2 | Haunt | Target enemy is Stunned for 1 turn and Haunted for 2 turns; the first ally of theirs it drifts to is Stunned for 1 turn too. |
+| Dance | Ghostly Waltz | AI · 4 | Spectral | For 3 turns, the user is Spectral and gains 1 Might and 2 Swiftness, but can't be healed. |
+| Heal | Soul Transfer | r · 1 | Texture | Target ally heals 15, +10 per Soul Fragment the user spends, up to 2; with 2 spent, the ally also Leaps. |
+| Bless | Spirit Form | W · 2 | Spectral | Target ally is Spectral for 2 turns; each Normal hit that passes through them gives the user a Soul Fragment. |
+| Curse | Spirit Mark | r · 1 | Haunt | Target enemy is Haunted for 3 turns; each ally it drifts to is Horrified for 1 turn as it arrives. |
+| Smite | Spectral Mark | Sr · 1 | Texture | 20 damage to target enemy. For 1 turn, allies who damage them steal one of their Buffs. |
+| Prayer | Dirge of Spirits | Wrr · 2 | Texture | All allies heal 20; each one who is Leaping or Rushing also gains a Soul Fragment. |
+| Cleave | Phantom Sweep | Ar · 1 | Texture | 20 damage to target enemy and 15 to a random other enemy; if either is Horrified, the user Leaps. |
+| Shout | Keening | S · 3 | Haunt | All enemies are Intimidated and Haunted for 1 turn. |
+| Withstand | Ectoplasmic Shield | r · 3 | Spectral | The user gains 20 Shield for 1 turn; when it breaks, they become Spectral for 1 turn. |
+| Taunt | Beckoning Spirit | S · 3 | Spectral | Taunts target enemy for 2 turns; while Taunted, their Normal damage can't hurt the user. |
+| Titan | Revenant | SA · 4 | Haunt | For 3 turns, the user gains 2 Armor and Immune. A random enemy is Haunted for 3 turns, and the user's Haunts deal 20 instead of 10 while it lasts. |
 
 ## Ninja — Wind + Shadow
 
 *Wind and shadow: too quick to see, and never alone.*
 
-- **Shadow Clones** (minions, 5 HP, no skills, max 3; they last until hit): each time the Ninja uses a Harmful skill on an enemy, every Clone also deals that target 5 Piercing (**Flurry**). The first single-target enemy skill aimed at the Ninja each turn hits a Clone instead, destroying it (**Substitution**).
+- **Shadow Clones** (minions, 5 HP, no skills, max 3; they last until hit): each time the Ninja uses a Harmful skill on an enemy, every Clone also deals that target 5 Piercing (**Flurry**). Multi-target skills Flurry each target they hit. The first single-target enemy skill aimed at the Ninja each turn hits a Clone instead, destroying it (**Substitution**).
 
 One keyword with two rules: the Clones are both the damage and the defense. The rest is Wind's speed and Shadow's stealth.
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
 | Strike | Twin Strike | S · 0 | Clones | 20 damage to target enemy; the user creates a Clone if they have none. |
-| Smash | Whirlwind of Blades | Ar · 2 | Clones | 20 damage to target enemy and 10 to the others, +5 to each per Clone. |
-| Charge | Blur | nc · 1 | Clones | The user begins Rushing and creates a Clone; their next skill is Stealthy. |
-| Riposte | Log Trick | A · 3 | Clones | Invisible. For 1 turn, counters the first Harmful skill used on the user; the user creates 2 Clones and gains 1 Focus. |
-| Rage | Shadow Army | SA · 4 | Clones | Stealthy. For 3 turns, the user gains 1 Might and 1 Swiftness, and creates a Clone at the start of each of their turns. |
-| Shot | Shuriken | r · 0 | Clones | 10 damage; if the user is Leaping, 5 more and they Leap again. |
-| Snipe | Kunai Rain | Ar · 2 | Clones | Channeled. On the following turn, 25 Piercing damage to the enemy team, +5 to each per Clone. |
-| Trap | Caltrops | A · 3 | Texture | For 2 turns, each time target enemy uses a skill, they take 10 Piercing damage and are Blinded for 1 turn. |
-| Maneuver | Vanishing Smoke | r · 3 | Clones | Stealthy. The user becomes Ghosted for 1 turn and creates 2 Clones. |
-| Companion | Ninken | A · 1 | Texture | Summons a Ninken (30 HP) permanently. Bite (r): 10 Piercing damage. Track (r): target enemy loses Stealth and can't regain it for 1 turn. |
-| Bolt | Blinding Kunai | Ar · 1 | Texture | 20 damage and Blinded for 2 turns; Immobile targets also have their non-Strategic skills stunned for 1 turn. |
-| Blast | Thousand Blades | Irr · 2 | Clones | 20 damage and 1 Confusion for 1 turn to all enemies, +5 to each per Clone. |
-| Consume | Steal Sight | r · 2 | Clones | 5 Affliction to all enemies; Blinded ones lose Blind and take 10 more. The user creates a Clone per Blind removed. |
+| Smash | Whirlwind of Blades | Ar · 2 | Clones | 20 damage to target enemy and 10 to the others. If the user has 3 Clones, they're thrown: each is destroyed and deals 10 to a random enemy; otherwise the user creates a Clone. |
+| Charge | Blur | nc · 1 | Clones | The user begins Rushing and creates a Clone; until their next turn, every single-target skill aimed at them hits a Clone instead, while Clones last. |
+| Riposte | Log Trick | A · 3 | Clones | Invisible. For 1 turn, counters the first Harmful skill used on the user; the user creates a Clone, then every Clone strikes its user for 10 Piercing. |
+| Rage | Shadow Army | SA · 4 | Clones | The user creates 2 Clones. For 3 turns, they're Immune and gain 1 Might whenever one of their Clones is destroyed. |
+| Shot | Shuriken | r · 0 | Clones | 10 damage to target enemy. The user creates a Clone if they have none, or if one Substituted for them since their last turn. |
+| Snipe | Kunai Rain | Ar · 2 | Clones | Channeled. The user creates Clones until they have 3; on the following turn, 25 Piercing damage to the enemy team, twice if all 3 are still standing. |
+| Trap | Caltrops | A · 3 | Texture | Invisible. For 2 turns, if target enemy uses a mobility skill or gains a mobility buff, they take 20 Piercing damage and fall Asleep. |
+| Maneuver | Vanishing Smoke | r · 3 | Clones | The user destroys a Clone, if they have one, to gain Stealth; otherwise they become Invulnerable for 1 turn and create a Clone. |
+| Companion | Ninken | A · 1 | Texture | Summons a Ninken (30 HP) permanently. Snap (r): 10 Piercing damage. Track (r): target enemy loses Stealth and can't regain it for 1 turn. |
+| Bolt | Blinding Kunai | Ar · 1 | Texture | 20 damage to target enemy and Blinded for 2 turns, during which they count as Immobile. |
+| Blast | Thousand Blades | Irr · 2 | Clones | 20 damage to all enemies. If the user has no Clones, they create 3 first. |
+| Consume | Steal Sight | r · 2 | Clones | 5 damage to target enemy, healing the user for it; then the user absorbs their Clones, healing 10 per Clone, or creates one if they have none. |
 | Summon | Shadow Doubles | r · 3 | Clones | The user creates 3 Clones. |
-| Channel | Blade Tornado | AI · 3 | Clones | Channeled. 10 damage to all enemies for 2 turns, one more if the user is Leaping or Rushing when it ticks; each Clone adds 5 to every hit. |
-| Stab | Silent Blade | r · 0 | Texture | 10 damage, or 25 if the user is Stealthed or Rushing or the target is Blinded. |
-| Ravage | Quickdraw | A · 1 | Texture | 20 Piercing damage, doubled if the user is Stealthed; the user begins Rushing. |
-| Mislead | Feint | I · 2 | Clones | For 1 turn, if target enemy uses a Harmful skill, it's countered; they're Isolated for 2 turns, and the user creates a Clone. |
-| Stun | Pressure Point | A · 2 | Texture | 10 damage, and Sleep; Immobile targets also have their Strategic skills stunned for 1 turn. |
-| Dance | Shadow Dance | A · 1 | Clones | The user gains Stealth. If they were already Stealthed, they gain Ghosted, Immune and 1 Focus for 2 turns, and create 2 Clones. |
-| Heal | Field Dressing | A · 1 | Texture | Target ally heals 20, or 30 if they're Stealthed; above 60 HP afterwards, they begin Rushing. |
-| Bless | Cloak of Shadows | r · 2 | Texture | Target ally gains Stealth and 2 Swiftness. |
-| Curse | Blinding Dust | A · 2 | Texture | Target enemy is Blinded for 3 turns and loses their mobility buffs. |
-| Smite | Shadow Mark | A · 1 | Texture | 10 damage and Sanctify for 2 turns. For 1 turn, allies who damage the target Leap. Used from Stealth, it has no cooldown. |
-| Prayer | Scatter | Wrr · 2 | Texture | All allies gain Stealth, heal 15, and Leap. |
-| Cleave | Shadow Whirl | S · 1 | Clones | Stealthy. 10 damage to all enemies, +5 to each per Clone. Costs 1 less while the user is Leaping or Rushing. |
-| Shout | Signal Smoke | A · 2 | Texture | Every ally gains 1 Swiftness; every enemy is Blinded for 1 turn. |
-| Withstand | Shadow Guard | A · 1 | Clones | The user gains 1 permanent Armor and creates a Clone; with 3 or more Armor, they also gain Stealth. |
-| Taunt | Decoy Clone | r · 2 | Clones | The user creates a Clone; target enemy is Taunted by it for 1 turn, or 3 if they're Immobile. |
-| Titan | Shadow Master | AW · 4 | Clones | For 3 turns, the user gains 1 Armor, all enemies are Isolated, and the user's Clones refill to 3 at the start of each of their turns. |
+| Channel | Blade Tornado | AI · 3 | Clones | Channeled. For 2 turns, the user creates a Clone at the start of each tick; then 10 damage to all enemies, and every Clone Flurries each of them. |
+| Stab | Silent Blade | r · 0 | Texture | 10 damage to target enemy, or 25 if the user is Stealthed. If the user is Rushing, it's Stealthy. |
+| Ravage | Quickdraw | A · 1 | Texture | 25 Piercing damage to target enemy. If the user was Leaping, they land in the shadows and gain Stealth. |
+| Mislead | Feint | I · 2 | Clones | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and the user creates Clones until they have 3. |
+| Stun | Pressure Point | A · 2 | Texture | 10 damage to target enemy, and they fall Asleep; if they're Immobile, damage can't wake them for 1 turn. |
+| Dance | Shadow Dance | A · 2 | Clones | The user gains Stealth, 2 Clones and 1 Might for 3 turns; meanwhile, a skill that would end their Stealth destroys a Clone instead. |
+| Heal | Field Dressing | A · 1 | Texture | Target ally heals 30 and falls Asleep; when they wake, they begin Rushing and gain 1 Swiftness. |
+| Bless | Cloak of Shadows | r · 2 | Clones | Target ally gains 1 Swiftness, and the user creates a Clone; for 2 turns, the user's Clones Substitute for that ally too. |
+| Curse | Blinding Dust | A · 2 | Texture | Target enemy is Blinded for 2 turns and loses a mobility buff each time they use a skill. |
+| Smite | Shadow Mark | A · 1 | Clones | 20 damage to target enemy. For 1 turn, each ally who damages them gives the user a Clone. |
+| Prayer | Scatter | Wrr · 2 | Texture | All allies heal 20; each ally with no mobility buff gains Stealth, and the rest Leap. |
+| Cleave | Shadow Whirl | S · 1 | Clones | Stealthy. The user creates a Clone if they have none; then 20 damage to target enemy and 15 to a random other enemy, and each Clone adds 10 to another random enemy. |
+| Shout | Signal Smoke | A · 2 | Clones | All enemies are Blinded for 1 turn; the user creates a Clone for each one who already was. |
+| Withstand | Shadow Guard | A · 1 | Clones | The user gains 20 Shield for 1 turn and creates a Clone; while the Shield lasts, a Clone that Substitutes for them spends the Shield instead of being destroyed. |
+| Taunt | Mocking Shadows | r · 2 | Clones | The user creates a Clone. Target enemy is Taunted for 2 turns, and each skill they use during it draws a Flurry from every Clone. |
+| Titan | Shadow Master | AW · 4 | Clones | For 3 turns, the user gains 2 Armor and Immune and creates a Clone at the start of each of their turns; their Clones Substitute for them against multi-target skills too. |
