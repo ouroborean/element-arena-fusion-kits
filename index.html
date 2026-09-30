@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Fusion Kits · Element Arena</title>
+  <meta name="description" content="First-pass kits for all 55 fusion elements: each one's core mechanics and all 30 of its skills.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M0 0h24l8 8v24H0z' fill='%23e8112d'/%3E%3Cpath d='M9 8h13v4h-8v4h7v4h-7v8H9z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Show the kit list" aria-controls="sidebar" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v3H3zm0 5.5h18v3H3zM3 16h18v3H3z"/></svg>
+    </button>
+    <a class="brand" href="#/">
+      <span class="brand-mark">Fusion Kits</span>
+      <span class="brand-sub">Element Arena · first pass</span>
+    </a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#/" data-nav="overview">Overview</a>
+      <a href="#/skill/strike" data-nav="skill">Compare skills</a>
+      <a href="#/keywords" data-nav="keywords">Keywords</a>
+    </nav>
+    <div class="search">
+      <label class="sr-only" for="search">Search skills, keywords and kits</label>
+      <input id="search" type="search" placeholder="Search skills, keywords, kits" autocomplete="off" spellcheck="false">
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+  </header>
+  <div class="layout" id="layout" data-mode="plain">
+    <nav class="sidebar" id="sidebar" aria-label="Kits"></nav>
+    <main class="main" id="main" tabindex="-1"><p class="loading">Loading the kits…</p></main>
+    <aside class="panel" id="panel" aria-label="Skill details"></aside>
+  </div>
+  <div class="scrim" id="scrim" hidden></div>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
