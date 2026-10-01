@@ -2967,7 +2967,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Strike",
           "problem": "keyword-swap",
           "why": "Was Righteous Blow's Anointed bonus with Accused added; now Anointed speeds the conviction instead of the hit.",
@@ -2987,7 +2987,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Smash",
           "problem": "near-copy",
           "why": "Was a second Sentence-everyone hit beside Day of Judgment; now the target's guilt spreads Accusation to their team.",
@@ -3007,7 +3007,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Charge",
           "problem": "keyword-swap",
           "why": "Was Zealous Rush with Accused added; now it convicts retroactively for what the target just did.",
@@ -3027,7 +3027,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Riposte",
           "problem": "keyword-swap",
           "why": "Was Blisterblade's Igniting counter plus 2 Sin; now it convicts a first offender or punishes a repeat one.",
@@ -3047,7 +3047,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Rage",
           "problem": "mashup",
           "why": "Was Divine Fury plus Blazing Fury; now the user's fury grows with the enemy team's guilt.",
@@ -3067,7 +3067,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Shot",
           "problem": "keyword-swap",
           "why": "Was Sunbeam with Accused added; now a harsher charge that also convicts healing and buffing.",
@@ -3087,7 +3087,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Snipe",
           "problem": "keyword-swap",
           "why": "Was Spear of Light with a Sentence added; now the verdict lands on whoever is guiltiest when it falls.",
@@ -3107,7 +3107,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Trap",
           "problem": "keyword-swap",
           "why": "Was Decree with Accused added; now a hidden Accusation, so the enemy can't play around their Sin.",
@@ -3127,7 +3127,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Maneuver",
           "problem": "mashup",
           "why": "Was Cloister plus Flameborn; now enemy Fire on the user is turned into Holy's Anointed.",
@@ -3147,7 +3147,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Bolt",
           "problem": "keyword-swap",
           "why": "Was Rebuke with Accused for Sanctify; now their guilt feeds any Fire burning them.",
@@ -3167,7 +3167,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Stab",
           "problem": "keyword-swap",
           "why": "Was Piercing Light with Sin added to its bonus; now Holy's Condemned sets off Fire's Ignite early.",
@@ -3187,7 +3187,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Ravage",
           "problem": "keyword-swap",
           "why": "Was Crusade with Accused for Condemned; now Sin is turned into lasting Fire statuses.",
@@ -3207,7 +3207,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Stun",
           "problem": "keyword-swap",
           "why": "Was Repentance with Sin as the trigger and a longer Stun; now the Sentence stretches their cooldowns instead.",
@@ -3227,7 +3227,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Dance",
           "problem": "keyword-swap",
           "why": "Was Angel's Grace with Flameborn for Ghosted; now a mobility buff whose Anointed is lit by Fire on the enemy.",
@@ -3247,7 +3247,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Bless",
           "problem": "mashup",
           "why": "Was Holy Favor plus Flameborn; now it hands an ally the power to Sentence.",
@@ -3267,7 +3267,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Curse",
           "problem": "keyword-swap",
           "why": "Was Mark of Heresy with Accused added; now every sin slows them, doing Curse's job through Sin.",
@@ -3287,7 +3287,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Smite",
           "problem": "keyword-swap",
           "why": "Was Karmic Marking with a Sentence added; now their Sin becomes turns of healing for whoever hits them.",
@@ -3307,7 +3307,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Prayer",
           "problem": "mashup",
           "why": "Was Saving Grace plus Flameborn; now Fire's Ignites on enemies, not Anointed, keep the litany going.",
@@ -3327,7 +3327,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Cleave",
           "problem": "keyword-swap",
           "why": "Was Blastwave with Accused added; now one enemy's guilt is copied onto a second.",
@@ -3347,7 +3347,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Withstand",
           "problem": "mashup",
           "why": "Was Shield of Faith plus Flameborn; now the Shield brands whoever breaks it.",
@@ -3367,7 +3367,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Taunt",
           "problem": "keyword-swap",
           "why": "Was Gleam with Accused for Condemned; now the Taunt lasts longer the guiltier the target is.",
@@ -3387,7 +3387,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Titan",
           "problem": "keyword-swap",
           "why": "Was Grand Crusader counting Sin instead of Sanctified; now a transformation that armors up as the enemy sins.",
@@ -29475,7 +29475,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Maneuver",
           "problem": "bridge",
           "why": "Turned the user's own Ignites into Anointed; now a rule bend for Holy players, making Condemned fire on every skill for a turn.",
@@ -29495,7 +29495,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Stab",
           "problem": "bridge",
           "why": "Paid off Condemned plus Ignite; now bends Fire's Ignite so it can't be cleansed and punishes healing.",
@@ -29515,7 +29515,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Dance",
           "problem": "bridge",
           "why": "Anointed the user while any enemy was Ignited; now turns Fire's Explosions into Might, a new payoff for Explode teams.",
@@ -29535,7 +29535,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Heal",
           "problem": "formula",
           "why": "Was a big cleanse with an Ignite-to-Flameborn rider; now overhealing becomes a new way for Holy players to Anoint.",
@@ -29555,7 +29555,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Prayer",
           "problem": "unique",
           "why": "Was Holy's Saving Grace with Ignite in place of Anointed; now the law protects the weak, forcing every enemy onto the sturdiest ally.",
@@ -29575,7 +29575,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Withstand",
           "problem": "unique",
           "why": "Was a Shield whose breaker was Ignited and Condemned; now it postpones a killing blow, buying a turn for healers to answer it.",
@@ -35843,7 +35843,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Companion",
           "problem": "rebalance",
           "why": "Was Inquisition Hound, a costly Sin minion; now an enabler that keeps Fire's Ignites burning through cleanses and expiry.",
@@ -35863,7 +35863,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Blast",
           "problem": "unique",
           "why": "Was Day of Judgment, a plain team-wide Sentence; now each enemy is weighed by their own last turn, so the aggressors take the blast and the idle barely feel it.",
@@ -35883,7 +35883,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Curse",
           "problem": "unique",
           "why": "Was Arraignment, Accused plus Confusion per Sin; now a cheap, symmetrical Blind that favours whichever team leans on area skills.",
@@ -35903,7 +35903,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Smite",
           "problem": "bridge",
           "why": "Was Brand of Guilt, a bland Sentence into Sanctify; now Fire's Ignite ticks cash in Holy's Sanctify for the burner.",
@@ -35923,7 +35923,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Taunt",
           "problem": "bridge",
           "why": "Was Challenge the Guilty, a Taunt that scaled with Sin; now Holy's Condemned lights Fire's Ignite each time it triggers.",
@@ -35943,7 +35943,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Titan",
           "problem": "rebalance",
           "why": "Was High Inquisitor, which Accused all enemies much as Righteous Fury does; now new Sanctify access for Holy teams, marking whoever strikes the user.",
@@ -42692,7 +42692,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Smash",
           "problem": "color",
           "why": "Cost Wr → Sr, to balance the Warrior block's colors against Fire and Holy.",
@@ -42712,7 +42712,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Riposte",
           "problem": "color",
           "why": "Cost W → A, to balance the Warrior block's colors against Fire and Holy.",
@@ -42732,7 +42732,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Companion",
           "problem": "color",
           "why": "Cost A → S, to balance the Hunter block's colors against Fire and Holy.",
@@ -42752,7 +42752,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Summon",
           "problem": "color",
           "why": "Cost I → S, to balance the Mage block's colors against Fire and Holy.",
@@ -42772,7 +42772,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Channel",
           "problem": "color",
           "why": "Cost W → A, to balance the Mage block's colors against Fire and Holy.",
@@ -42792,7 +42792,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Dance",
           "problem": "color",
           "why": "Cost AW → AS, to balance the Rogue block's colors against Fire and Holy.",
@@ -42812,7 +42812,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Prayer",
           "problem": "color",
           "why": "Cost WS → AS, to balance the Support block's colors against Fire and Holy.",
@@ -42832,7 +42832,7 @@
           }
         },
         {
-          "kit": "judgment",
+          "kit": "phoenix",
           "base": "Titan",
           "problem": "color",
           "why": "Cost Wr → Ar, to balance the Tank block's colors against Fire and Holy.",
@@ -49069,6 +49069,674 @@
             "cd": 1,
             "hook": "Clones",
             "effect": "20 damage to target enemy. For 1 turn, each ally who damages them gives the user a Clone."
+          }
+        }
+      ]
+    },
+    {
+      "id": "phoenix",
+      "date": "2026-10-01",
+      "title": "Phoenix redesign",
+      "summary": "Fire + Holy is now Phoenix, rebuilt around Kindle skills that burn an enemy or mend an ally and Rebirth, which turns a death into a turn in the Ashes. Judgment's retaliation effects moved to Vengeance.",
+      "changes": [
+        {
+          "kit": "phoenix",
+          "base": "Strike",
+          "problem": "redesign",
+          "why": "Judgment's Accusing Blow; now a Kindle strike that hits a foe or patches up a friend.",
+          "before": {
+            "skill": "Accusing Blow",
+            "cost": "S",
+            "cd": 0,
+            "hook": "Sin",
+            "effect": "20 damage to target enemy, and they're Accused for 2 turns. If the user is Anointed, the target also gains 1 Sin at once."
+          },
+          "after": {
+            "skill": "Firebrand Talon",
+            "cost": "S",
+            "cd": 0,
+            "hook": "Kindle",
+            "effect": "Kindle. 20 damage and Ignite to target enemy, or 20 healing and 2 Renew to target ally. Either way, the user gains 1 Might."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Smash",
+          "problem": "redesign",
+          "why": "Judgment's Collective Guilt; now a Smash that hurries fallen allies out of the Ashes.",
+          "before": {
+            "skill": "Collective Guilt",
+            "cost": "Sr",
+            "cd": 2,
+            "hook": "Sin",
+            "effect": "25 damage to target enemy and 10 to their allies. Their allies are Accused for 1 turn per Sin the target has (max 3)."
+          },
+          "after": {
+            "skill": "Wingbeat",
+            "cost": "Sr",
+            "cd": 2,
+            "hook": "Rebirth",
+            "effect": "25 damage to target enemy and 15 to their allies. The beat fans the user's side: each ally in Ashes rises at the end of this turn instead of their next."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Charge",
+          "problem": "redesign",
+          "why": "Judgment's Inquisitor's Charge; now a Kindle dive that sets up the next Kindle.",
+          "before": {
+            "skill": "Inquisitor's Charge",
+            "cost": "S",
+            "cd": 2,
+            "hook": "Sin",
+            "effect": "15 damage to target enemy, who's Accused for 2 turns and gains 1 Sin at once if they used a Harmful skill last turn. The user gains 1 Focus."
+          },
+          "after": {
+            "skill": "Rising Dive",
+            "cost": "S",
+            "cd": 2,
+            "hook": "Kindle",
+            "effect": "Kindle. 15 damage and Ignite to target enemy, or 15 healing and 2 Renew to target ally. The user gains 1 Focus for their next Kindle skill."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Riposte",
+          "problem": "redesign",
+          "why": "Judgment's Caught in the Act (its retaliation now lives in Vengeance); now a bridge where a burning attacker Anoints the user.",
+          "before": {
+            "skill": "Caught in the Act",
+            "cost": "A",
+            "cd": 3,
+            "hook": "Sentence",
+            "effect": "Invisible. For 1 turn, counters the first Harmful skill used on the user and Sentences its user: 10 Affliction per Sin. With no Sin, they gain 2 instead."
+          },
+          "after": {
+            "skill": "Searing Rebuttal",
+            "cost": "r",
+            "cd": 3,
+            "hook": "Texture",
+            "effect": "Invisible. For 1 turn, counters the first Harmful skill used on the user. If its user is Ignited, the Ignite burns once at once, and the user is Anointed until the end of their next turn."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Rage",
+          "problem": "redesign",
+          "why": "Judgment's Righteous Fury; now a Rage that survives its user's death and burns on.",
+          "before": {
+            "skill": "Righteous Fury",
+            "cost": "S",
+            "cd": 4,
+            "hook": "Sin",
+            "effect": "All enemies are Accused for 1 turn. For 3 turns, the user is Immune and gains 1 Might per Sin among enemies (max 3), rechecked each turn."
+          },
+          "after": {
+            "skill": "Pyreheart Fury",
+            "cost": "SA",
+            "cd": 4,
+            "hook": "Rebirth",
+            "effect": "For 3 turns, the user gains 2 Might, Immune and Rebirth. If they rise from Ashes meanwhile, the Rage starts over for 3 more turns."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Shot",
+          "problem": "redesign",
+          "why": "Judgment's Indictment; now a free shot that doubles as last-ditch insurance.",
+          "before": {
+            "skill": "Indictment",
+            "cost": "r",
+            "cd": 0,
+            "hook": "Sin",
+            "effect": "15 damage to target enemy, who's Accused for 2 turns; this time, their Helpful skills earn Sin too."
+          },
+          "after": {
+            "skill": "Ember Shot",
+            "cost": "r",
+            "cd": 0,
+            "hook": "Rebirth",
+            "effect": "15 damage to target enemy. If the user is at or below 30 HP, they gain Rebirth for 1 turn."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Snipe",
+          "problem": "redesign",
+          "why": "Judgment's Final Verdict; now a Snipe that keeps aiming through the user's death.",
+          "before": {
+            "skill": "Final Verdict",
+            "cost": "Arr",
+            "cd": 2,
+            "hook": "Sentence",
+            "effect": "Channeled, hidden target. On the following turn, 40 damage to the enemy with the most Sin, or to target enemy if none has more, and Sentence: 15 Affliction per Sin."
+          },
+          "after": {
+            "skill": "Sunfall Lance",
+            "cost": "Srr",
+            "cd": 2,
+            "hook": "Rebirth",
+            "effect": "Channeled, hidden target. On the following turn, 50 damage to target enemy. It still fires if the user is in Ashes when it lands, and then deals 25 more."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Trap",
+          "problem": "redesign",
+          "why": "Judgment's Bear Witness; now a trap that punishes whoever lands a killing blow.",
+          "before": {
+            "skill": "Bear Witness",
+            "cost": "r",
+            "cd": 2,
+            "hook": "Sin",
+            "effect": "Invisible. For 3 turns, target enemy is secretly Accused; the Sin they gain stays hidden from them until it's Sentenced."
+          },
+          "after": {
+            "skill": "Smoldering Nest",
+            "cost": "A",
+            "cd": 3,
+            "hook": "Rebirth",
+            "effect": "Invisible. For 3 turns, the first time target enemy kills a unit or sends one to Ashes, the nest flares: they take 25 damage and are Ignited."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Maneuver",
+          "problem": "redesign",
+          "why": "Judgment's Sealed Cloister; now a Holy expansion that rises above Condemnation.",
+          "before": {
+            "skill": "Sealed Cloister",
+            "cost": "r",
+            "cd": 2,
+            "hook": "Texture",
+            "effect": "The user becomes Invulnerable for 1 turn. Until their next turn, an enemy's Condemned triggers each time they use a skill instead of ending."
+          },
+          "after": {
+            "skill": "Anointed Ascent",
+            "cost": "r",
+            "cd": 3,
+            "hook": "Texture",
+            "effect": "The user becomes Invulnerable for 1 turn and is Anointed until the end of their next turn. If they were Condemned, it's purged, and they heal 15."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Companion",
+          "problem": "redesign",
+          "why": "Judgment's Censer Bearer; now a companion that reincarnates into something stronger.",
+          "before": {
+            "skill": "Censer Bearer",
+            "cost": "S",
+            "cd": 1,
+            "hook": "Texture",
+            "effect": "Summons a Censer Bearer (30 HP) permanently. At the end of each of your turns, it relights one enemy whose Ignite ended or was removed since your last turn. Swing Censer (r): 10 damage to target enemy."
+          },
+          "after": {
+            "skill": "Phoenix Chick",
+            "cost": "I",
+            "cd": 1,
+            "hook": "Rebirth",
+            "effect": "Summons a Phoenix Chick (15 HP) permanently. Peck (r): 10 damage and Ignite. The first time it dies, it rises at the end of your next turn as a Firebird (30 HP) whose Peck deals 20."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Bolt",
+          "problem": "redesign",
+          "why": "Judgment's Fire of Rebuke; now a Kindle bolt whose mending side also cleanses.",
+          "before": {
+            "skill": "Fire of Rebuke",
+            "cost": "I",
+            "cd": 1,
+            "hook": "Sin",
+            "effect": "20 damage to target enemy, and they're Accused for 2 turns. Ignites on them burn 5 more per Sin they have."
+          },
+          "after": {
+            "skill": "Flare of Mercy",
+            "cost": "Sr",
+            "cd": 1,
+            "hook": "Kindle",
+            "effect": "Kindle. 20 damage and Ignite to target enemy, or 20 healing and 2 Renew to target ally. An ally it mends also loses 1 Debuff."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Blast",
+          "problem": "redesign",
+          "why": "Judgment's Found Wanting moved to Vengeance; now a purging fire that strips both sides of what they don't want.",
+          "before": {
+            "skill": "Found Wanting",
+            "cost": "IW",
+            "cd": 2,
+            "hook": "Unique",
+            "effect": "10 damage to all enemies, and each takes as much again as the damage they dealt since the user's last turn (max 40 more)."
+          },
+          "after": {
+            "skill": "Cleansing Fire",
+            "cost": "IW",
+            "cd": 2,
+            "hook": "Unique",
+            "effect": "25 damage to all enemies, and they lose all their Buffs. Then every ally of the user, the user included, loses all their Debuffs."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Consume",
+          "problem": "redesign",
+          "why": "Judgment's Confession; now a Fire outlet that turns the enemy team's burns into healing.",
+          "before": {
+            "skill": "Confession",
+            "cost": "r",
+            "cd": 2,
+            "hook": "Sentence",
+            "effect": "5 damage. Sentence: the user heals 10 per Sin, and is Anointed if any was removed."
+          },
+          "after": {
+            "skill": "Draw the Flame",
+            "cost": "r",
+            "cd": 2,
+            "hook": "Texture",
+            "effect": "5 damage to target enemy, healing the user for it. Then every Ignite on enemies goes out, and the user's ally with the least HP heals 10 for each one."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Summon",
+          "problem": "redesign",
+          "why": "Judgment's Tribunal; now a minion that burns or mends wherever it's sent.",
+          "before": {
+            "skill": "Tribunal",
+            "cost": "S",
+            "cd": 1,
+            "hook": "Sin",
+            "effect": "Summons a Tribunal (20 HP) for 3 turns. Summons (r): target enemy is Accused for 2 turns. Condemn (W): target enemy with Sin is Condemned, then the Tribunal dies."
+          },
+          "after": {
+            "skill": "Ember Spirit",
+            "cost": "I",
+            "cd": 1,
+            "hook": "Kindle",
+            "effect": "Summons an Ember Spirit (20 HP) for 3 turns. Waver (r): Kindle, 15 damage and Ignite to target enemy, or 15 healing and 2 Renew to target ally."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Channel",
+          "problem": "redesign",
+          "why": "Judgment's Trial by Fire; now a channel that burns one side and warms the other.",
+          "before": {
+            "skill": "Trial by Fire",
+            "cost": "A",
+            "cd": 3,
+            "hook": "Sin",
+            "effect": "Channeled. At the end of each of the user's turns, a random enemy without Sin is Accused and Ignited, and each enemy with Sin takes 10 damage per Sin."
+          },
+          "after": {
+            "skill": "Eternal Pyre",
+            "cost": "rr",
+            "cd": 3,
+            "hook": "Kindle",
+            "effect": "Channeled, up to 3 turns. At the end of each of the user's turns, the pyre Kindles everyone: 10 damage and Ignite to each enemy, and 10 healing and 2 Renew to each ally."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Stab",
+          "problem": "redesign",
+          "why": "Judgment's Cautery Needle; now a Kindle Stab that finishes foes or triages friends.",
+          "before": {
+            "skill": "Cautery Needle",
+            "cost": "A",
+            "cd": 0,
+            "hook": "Texture",
+            "effect": "10 damage to target enemy, or 20 at or below 60 HP. For 2 turns, their Ignite can't be removed, and it burns once more whenever they're healed."
+          },
+          "after": {
+            "skill": "Ember Needle",
+            "cost": "r",
+            "cd": 0,
+            "hook": "Kindle",
+            "effect": "Kindle. 10 damage and Ignite to target enemy, or 20 if they're at or below 60 HP. On an ally, it's 10 healing and 2 Renew, or 20 at or below 60 HP."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Ravage",
+          "problem": "redesign",
+          "why": "Judgment's Crusader's Fire; now a Kindle Ravage that punishes a Stunned foe or frees a Stunned friend.",
+          "before": {
+            "skill": "Crusader's Fire",
+            "cost": "Wr",
+            "cd": 1,
+            "hook": "Sentence",
+            "effect": "20 Piercing damage to target enemy. Sentence: they're Ignited and Scorched for 1 turn per Sin removed."
+          },
+          "after": {
+            "skill": "Pyre Talon",
+            "cost": "Ar",
+            "cd": 1,
+            "hook": "Kindle",
+            "effect": "Kindle. 25 Piercing damage and Ignite to target enemy, 15 more if they're Stunned. On an ally, it's 25 healing and 2 Renew, and it ends their Stun."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Mislead",
+          "problem": "redesign",
+          "why": "Judgment's Entrapment; now a Fire expansion that cashes in an Ignite all at once.",
+          "before": {
+            "skill": "Entrapment",
+            "cost": "A",
+            "cd": 2,
+            "hook": "Sin",
+            "effect": "Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and they gain 3 Sin."
+          },
+          "after": {
+            "skill": "Flaring Feint",
+            "cost": "S",
+            "cd": 2,
+            "hook": "Texture",
+            "effect": "Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and their Ignite flares: it burns three times at once."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Stun",
+          "problem": "redesign",
+          "why": "Judgment's Kneel; now a Holy expansion that ties a Stun to Condemnation.",
+          "before": {
+            "skill": "Kneel",
+            "cost": "r",
+            "cd": 1,
+            "hook": "Sentence",
+            "effect": "Target enemy with Sin is Stunned for 1 turn. Sentence: they're Intimidated for 2 turns, 1 stack per Sin removed."
+          },
+          "after": {
+            "skill": "Blinding Plumage",
+            "cost": "A",
+            "cd": 2,
+            "hook": "Texture",
+            "effect": "15 damage to target enemy and a 1-turn Stun. If they're Condemned, the Stun lasts until their Condemnation triggers, up to 3 turns."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Dance",
+          "problem": "redesign",
+          "why": "Judgment's Pillar of Fire; now a Dance that makes every burn mend as well.",
+          "before": {
+            "skill": "Pillar of Fire",
+            "cost": "AS",
+            "cd": 4,
+            "hook": "Texture",
+            "effect": "For 3 turns, the user gains 1 Swiftness and 1 Focus, and each Explosion their side causes gives them 1 Might until it ends."
+          },
+          "after": {
+            "skill": "Dance of Embers",
+            "cost": "AW",
+            "cd": 5,
+            "hook": "Kindle",
+            "effect": "For 4 turns, the user gains 1 Might, 2 Swiftness and 1 Focus. Meanwhile, each Kindle skill they use on an enemy also heals the user's ally with the least HP for half its damage."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Heal",
+          "problem": "redesign",
+          "why": "Judgment's Overflowing Grace; now a Heal paid for in the user's own life, at double the rate.",
+          "before": {
+            "skill": "Overflowing Grace",
+            "cost": "Wr",
+            "cd": 3,
+            "hook": "Texture",
+            "effect": "Target ally heals 40. If any of it is wasted past their max HP, they're Anointed until the end of their next turn."
+          },
+          "after": {
+            "skill": "Sacrificial Flame",
+            "cost": "W",
+            "cd": 1,
+            "hook": "Unique",
+            "effect": "The user burns up to 30 of their own HP, never below 1. Target ally heals twice what was burned."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Bless",
+          "problem": "redesign",
+          "why": "Judgment's Judge's Mantle; now insurance that pays out either way.",
+          "before": {
+            "skill": "Judge's Mantle",
+            "cost": "r",
+            "cd": 2,
+            "hook": "Sentence",
+            "effect": "Target ally is Anointed until the end of their next turn, and their Harmful skills Sentence enemies with Sin: 5 Affliction per Sin."
+          },
+          "after": {
+            "skill": "Phoenix Blessing",
+            "cost": "r",
+            "cd": 2,
+            "hook": "Rebirth",
+            "effect": "For 3 turns, target ally gains 1 Might and Rebirth. If the Rebirth goes unused, it burns off when this ends: they heal 25."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Curse",
+          "problem": "redesign",
+          "why": "Judgment's Blind Justice; now a Holy expansion that makes Condemnation's Debuffs linger.",
+          "before": {
+            "skill": "Blind Justice",
+            "cost": "r",
+            "cd": 2,
+            "hook": "Unique",
+            "effect": "Every unit on both sides, the user included, is Blinded until the end of the user's next turn."
+          },
+          "after": {
+            "skill": "Cinders of Doubt",
+            "cost": "r",
+            "cd": 2,
+            "hook": "Texture",
+            "effect": "Target enemy is Confused for 2 turns and Condemned. While the Condemnation lasts, each Debuff it gives them lasts 1 turn longer."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Smite",
+          "problem": "redesign",
+          "why": "Judgment's Purging Brand; now a bridge where Holy healing stokes a Fire burn.",
+          "before": {
+            "skill": "Purging Brand",
+            "cost": "W",
+            "cd": 1,
+            "hook": "Texture",
+            "effect": "20 damage to target enemy and Sanctify for 2 turns. Meanwhile, their Ignite's burns also trigger the Sanctify, healing whoever applied the Ignite."
+          },
+          "after": {
+            "skill": "Sanctified Pyre",
+            "cost": "Sr",
+            "cd": 1,
+            "hook": "Texture",
+            "effect": "20 damage to target enemy and Sanctify for 2 turns. Each time the Sanctify heals someone, the target's Ignite burns once."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Prayer",
+          "problem": "redesign",
+          "why": "Judgment's Rule of Law; now a true resurrection, once in a long while.",
+          "before": {
+            "skill": "Rule of Law",
+            "cost": "AS",
+            "cd": 3,
+            "hook": "Unique",
+            "effect": "All allies heal 20 and gain 10 Shield. For 1 turn, every enemy is Taunted by the ally with the most HP."
+          },
+          "after": {
+            "skill": "Second Dawn",
+            "cost": "Wrr",
+            "cd": 5,
+            "hook": "Unique",
+            "effect": "Every fallen ally of the user returns with 20 HP and no Buffs or Debuffs. Then all allies heal 15."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Cleave",
+          "problem": "redesign",
+          "why": "Judgment's Twin Verdicts; now a Fire expansion that feeds on the burns it fans.",
+          "before": {
+            "skill": "Twin Verdicts",
+            "cost": "S",
+            "cd": 1,
+            "hook": "Sin",
+            "effect": "15 damage to target enemy and a random other enemy. The second one gains as much Sin as the target has."
+          },
+          "after": {
+            "skill": "Fanned Flames",
+            "cost": "S",
+            "cd": 1,
+            "hook": "Texture",
+            "effect": "25 damage to target enemy and 15 to a random other enemy. Each one's Ignite burns once at once, and the user heals as much as those burns deal."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Shout",
+          "problem": "redesign",
+          "why": "Judgment's Call to Judgment; now a rallying cry for the ones who came back.",
+          "before": {
+            "skill": "Call to Judgment",
+            "cost": "W",
+            "cd": 3,
+            "hook": "Sentence",
+            "effect": "Bypass. Sentences every enemy: 5 damage per Sin, and Condemned for 1 turn per Sin removed (max 3)."
+          },
+          "after": {
+            "skill": "Phoenix Cry",
+            "cost": "W",
+            "cd": 3,
+            "hook": "Rebirth",
+            "effect": "All enemies are Intimidated for 2 turns. Each ally of the user who is in Ashes or has risen this battle gains 1 Might and 1 Swiftness for 2 turns."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Withstand",
+          "problem": "redesign",
+          "why": "Judgment's Stay of Execution; now a cocoon whose unbroken Shield becomes team healing.",
+          "before": {
+            "skill": "Stay of Execution",
+            "cost": "r",
+            "cd": 3,
+            "hook": "Unique",
+            "effect": "The user gains 20 Shield for 2 turns. The first hit meanwhile that would kill them is stayed: its damage lands at the end of their next turn instead."
+          },
+          "after": {
+            "skill": "Cocoon of Flame",
+            "cost": "A",
+            "cd": 3,
+            "hook": "Unique",
+            "effect": "The user gains 40 Shield and can't act on their next turn. When the cocoon opens, the user and every ally heal as much as the Shield has left."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Taunt",
+          "problem": "redesign",
+          "why": "Judgment's Heretic's Pyre; now a Taunt that fuels the user's Kindle skills.",
+          "before": {
+            "skill": "Heretic's Pyre",
+            "cost": "S",
+            "cd": 3,
+            "hook": "Texture",
+            "effect": "Taunts target enemy for 2 turns and Condemns them. Each time a Condemned triggers on them meanwhile, they're Ignited and it burns once at once."
+          },
+          "after": {
+            "skill": "Blazing Challenge",
+            "cost": "r",
+            "cd": 3,
+            "hook": "Kindle",
+            "effect": "Taunts target enemy for 2 turns. Each time they hit the user meanwhile, the user's next Kindle skill costs 1 less."
+          }
+        },
+        {
+          "kit": "phoenix",
+          "base": "Titan",
+          "problem": "redesign",
+          "why": "Judgment's Living Reliquary (its retaliation now lives in Vengeance); now a Titan that comes back from the dead in full form.",
+          "before": {
+            "skill": "Living Reliquary",
+            "cost": "Ar",
+            "cd": 4,
+            "hook": "Texture",
+            "effect": "For 3 turns, the user gains 2 Armor and Immune, and every enemy who damages them is Sanctified for 1 turn."
+          },
+          "after": {
+            "skill": "Undying Phoenix",
+            "cost": "SW",
+            "cd": 4,
+            "hook": "Rebirth",
+            "effect": "For 3 turns, the user gains 2 Armor, Immune and Rebirth. If they rise from Ashes meanwhile, they rise with 40 HP instead of 25, and the Titan starts over."
+          }
+        },
+        {
+          "kit": "vengeance",
+          "base": "Blast",
+          "problem": "other",
+          "why": "Was Primed Nova, a Charge trick; Judgment's retaliation Unique moves here, since Vengeance is the kit that hits back.",
+          "before": {
+            "skill": "Primed Nova",
+            "cost": "IS",
+            "cd": 2,
+            "hook": "Texture",
+            "effect": "25 Piercing damage to all enemies. The user's Charge triggers at 2 instead of 3 until the end of their next turn."
+          },
+          "after": {
+            "skill": "Found Wanting",
+            "cost": "IW",
+            "cd": 2,
+            "hook": "Unique",
+            "effect": "10 damage to all enemies, and each takes as much again as the damage they dealt since the user's last turn (max 40 more)."
+          }
+        },
+        {
+          "kit": "vengeance",
+          "base": "Stab",
+          "problem": "other",
+          "why": "Was Final Judgment, a generic execute Unique; now a Lightning expansion, making room for Found Wanting.",
+          "before": {
+            "skill": "Final Judgment",
+            "cost": "r",
+            "cd": 0,
+            "hook": "Unique",
+            "effect": "Executes target enemy at or below 25 HP. If they're above that, it deals 10 damage and the user loses 20 HP."
+          },
+          "after": {
+            "skill": "Grounded Point",
+            "cost": "r",
+            "cd": 0,
+            "hook": "Texture",
+            "effect": "10 damage to target enemy, or 20 at or below 60 HP. If the user's Charge is full, it isn't spent next turn: it stays full for one more turn."
+          }
+        },
+        {
+          "kit": "vengeance",
+          "base": "Titan",
+          "problem": "other",
+          "why": "Was Armor per Wrath; now takes Judgment's Living Reliquary retaliation, rewarding allies who strike back at the user's attackers.",
+          "before": {
+            "skill": "Avenger",
+            "cost": "Ar",
+            "cd": 4,
+            "hook": "Vow",
+            "effect": "For 3 turns, the user gains 2 Armor, Immune and a Vow; each Wrath the Vow gives them also gives them 1 Armor until it ends."
+          },
+          "after": {
+            "skill": "Avenger",
+            "cost": "Ar",
+            "cd": 4,
+            "hook": "Vow",
+            "effect": "For 3 turns, the user gains 2 Armor, Immune and a Vow. Every enemy who damages them meanwhile is Sanctified for 1 turn, so allies who answer heal 15."
           }
         }
       ]

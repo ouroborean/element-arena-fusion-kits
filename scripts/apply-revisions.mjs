@@ -28,7 +28,7 @@ if (!passFile || !changeFiles.length) {
 }
 
 const pass = JSON.parse(fs.readFileSync(passFile, 'utf8'));
-const PROBLEMS = ['mashup', 'upgrade', 'keyword-swap', 'near-copy', 'bridge', 'formula', 'unique', 'rebalance', 'color', 'other'];
+const PROBLEMS = ['mashup', 'upgrade', 'keyword-swap', 'near-copy', 'bridge', 'formula', 'unique', 'rebalance', 'color', 'redesign', 'other'];
 // Hooks every kit may use besides its own keywords.
 const SHARED_HOOKS = ['Texture', 'Unique'];
 const errors = [];
@@ -82,6 +82,12 @@ for (const name of kitsJudged) {
 }
 
 const newNames = new Map();
+// Names this batch renames away from their rows are free to reuse elsewhere (a skill moving to another kit).
+const freed = new Set();
+for (const r of revised) {
+  const row = kits.get(r.kit)?.rows.get(r.base);
+  if (row && r.skill && row.skill.toLowerCase() !== r.skill.toLowerCase()) freed.add(row.skill.toLowerCase());
+}
 for (const r of revised) {
   const where = `${r.kit} ${r.base} (${r.from})`;
   const k = kits.get(r.kit);
@@ -105,7 +111,7 @@ for (const r of revised) {
   const lower = r.skill?.toLowerCase();
   if (lower && lower !== row.skill.toLowerCase()) {
     const owner = nameOwners.get(lower);
-    if (owner && owner !== `${r.kit} ${r.base}`) errors.push(`${where}: name "${r.skill}" is already ${owner}`);
+    if (owner && owner !== `${r.kit} ${r.base}` && !freed.has(lower)) errors.push(`${where}: name "${r.skill}" is already ${owner}`);
     if (newNames.has(lower)) errors.push(`${where}: name "${r.skill}" is also new for ${newNames.get(lower)}`);
     newNames.set(lower, `${r.kit} ${r.base}`);
   }

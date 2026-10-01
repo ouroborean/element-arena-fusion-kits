@@ -82,13 +82,19 @@ const isStale = (id) => !!ratings[id] && ratings[id].v < rowVersion(rowForId(id)
 /** Stars given to the skill as it reads now: 0 if it's unrated or was rated before its latest revision. */
 const currentStars = (id) => (ratings[id] && !isStale(id) ? ratings[id].s : 0);
 
+/** Kits that were renamed: old links and saved ratings follow them to the new slug. */
+const KIT_RENAMES = { judgment: 'phoenix' };
+const renamedId = (id) => {
+  const [slug, base] = id.split('/');
+  return KIT_RENAMES[slug] ? `${KIT_RENAMES[slug]}/${base}` : id;
+};
 function loadRatings() {
   try {
     const saved = JSON.parse(localStorage.getItem(RATINGS_KEY) ?? '{}');
     ratings = {};
     for (const [id, x] of Object.entries(saved ?? {})) {
       const r = normRating(x);
-      if (r) ratings[id] = r;
+      if (r) ratings[renamedId(id)] = r;
     }
     storageOk = true;
   } catch {
@@ -212,6 +218,7 @@ const PROBLEMS = {
   formula: { label: 'Formula', long: 'A texture skill built on the stock "effect, then if this status, that" pattern' },
   unique: { label: 'Unique', long: "Rebuilt as one of the kit's Unique skills: utility no other kit has" },
   color: { label: 'Cost color', long: "Its energy color changed to balance its class's color against its fusion's elements" },
+  redesign: { label: 'Redesign', long: "Rebuilt as part of its fusion's new design" },
   rebalance: { label: 'Rebalance', long: "Reworked to fit the kit's shape: 4 Unique, 8 Texture and 18 core skills split evenly between its mechanics" },
   other: { label: 'Other', long: 'Reworked for another reason' },
 };
@@ -370,6 +377,10 @@ function markNav(page, kit) {
 function route() {
   const raw = location.hash.replace(/^#\/?/, '');
   const [page = '', a, b] = raw.split('/');
+  if (page === 'kit' && KIT_RENAMES[a]) {
+    location.replace(`#/kit/${KIT_RENAMES[a]}${b ? `/${b}` : ''}`);
+    return;
+  }
   closeDrawers();
   let key;
   if (page === 'kit' && kits.has(a)) {

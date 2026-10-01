@@ -243,45 +243,45 @@ One keyword: Fire's Ignite and Explode are the fuse.
 | Taunt | High Noon | r · 3 | Unique | Taunts target enemy for 2 turns. For as long, no other enemy can target the user. |
 | Titan | Red Giant | WW · 4 | Unique | For 3 turns, the user is Immune and swells: at the start of each of their turns, they gain 15 max HP and heal 15. When it ends, they lose that max HP, and every enemy takes as much damage. |
 
-## Judgment — Fire + Holy
+## Phoenix — Fire + Holy
 
-*Holy fire that waits for a verdict: the enemy's own actions convict them.*
+*A holy flame that burns its foes, mends its friends, and rises from its own ashes.*
 
-- **Sin** (Debuff, max 5): an **Accused** enemy (a Debuff with a duration) gains 1 Sin each time they use a Harmful skill. Sin stays after Accused ends, until it's Sentenced or cleansed.
-- **Sentence**: a Sentence skill removes all Sin from its target for the effect it lists per Sin.
+- **Kindle** (skill property): a Kindle skill can target an enemy or an ally. On an enemy it burns, dealing the damage it lists and its Ignite. On an ally it mends instead: each point of damage becomes a point of healing, and each Ignite becomes 2 Renew.
+- **Rebirth** (Buff): when the bearer would die, they burn to **Ashes** instead: until the start of their next turn they're Untargetable, can't act and can't lose HP. Then they rise with 25 HP, and Rebirth ends.
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Accusing Blow | S · 0 | Sin | 20 damage to target enemy, and they're Accused for 2 turns. If the user is Anointed, the target also gains 1 Sin at once. |
-| Smash | Collective Guilt | Sr · 2 | Sin | 25 damage to target enemy and 10 to their allies. Their allies are Accused for 1 turn per Sin the target has (max 3). |
-| Charge | Inquisitor's Charge | S · 2 | Sin | 15 damage to target enemy, who's Accused for 2 turns and gains 1 Sin at once if they used a Harmful skill last turn. The user gains 1 Focus. |
-| Riposte | Caught in the Act | A · 3 | Sentence | Invisible. For 1 turn, counters the first Harmful skill used on the user and Sentences its user: 10 Affliction per Sin. With no Sin, they gain 2 instead. |
-| Rage | Righteous Fury | S · 4 | Sin | All enemies are Accused for 1 turn. For 3 turns, the user is Immune and gains 1 Might per Sin among enemies (max 3), rechecked each turn. |
-| Shot | Indictment | r · 0 | Sin | 15 damage to target enemy, who's Accused for 2 turns; this time, their Helpful skills earn Sin too. |
-| Snipe | Final Verdict | Arr · 2 | Sentence | Channeled, hidden target. On the following turn, 40 damage to the enemy with the most Sin, or to target enemy if none has more, and Sentence: 15 Affliction per Sin. |
-| Trap | Bear Witness | r · 2 | Sin | Invisible. For 3 turns, target enemy is secretly Accused; the Sin they gain stays hidden from them until it's Sentenced. |
-| Maneuver | Sealed Cloister | r · 2 | Texture | The user becomes Invulnerable for 1 turn. Until their next turn, an enemy's Condemned triggers each time they use a skill instead of ending. |
-| Companion | Censer Bearer | S · 1 | Texture | Summons a Censer Bearer (30 HP) permanently. At the end of each of your turns, it relights one enemy whose Ignite ended or was removed since your last turn. Swing Censer (r): 10 damage to target enemy. |
-| Bolt | Fire of Rebuke | I · 1 | Sin | 20 damage to target enemy, and they're Accused for 2 turns. Ignites on them burn 5 more per Sin they have. |
-| Blast | Found Wanting | IW · 2 | Unique | 10 damage to all enemies, and each takes as much again as the damage they dealt since the user's last turn (max 40 more). |
-| Consume | Confession | r · 2 | Sentence | 5 damage. Sentence: the user heals 10 per Sin, and is Anointed if any was removed. |
-| Summon | Tribunal | S · 1 | Sin | Summons a Tribunal (20 HP) for 3 turns. Summons (r): target enemy is Accused for 2 turns. Condemn (W): target enemy with Sin is Condemned, then the Tribunal dies. |
-| Channel | Trial by Fire | A · 3 | Sin | Channeled. At the end of each of the user's turns, a random enemy without Sin is Accused and Ignited, and each enemy with Sin takes 10 damage per Sin. |
-| Stab | Cautery Needle | A · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. For 2 turns, their Ignite can't be removed, and it burns once more whenever they're healed. |
-| Ravage | Crusader's Fire | Wr · 1 | Sentence | 20 Piercing damage to target enemy. Sentence: they're Ignited and Scorched for 1 turn per Sin removed. |
-| Mislead | Entrapment | A · 2 | Sin | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and they gain 3 Sin. |
-| Stun | Kneel | r · 1 | Sentence | Target enemy with Sin is Stunned for 1 turn. Sentence: they're Intimidated for 2 turns, 1 stack per Sin removed. |
-| Dance | Pillar of Fire | AS · 4 | Texture | For 3 turns, the user gains 1 Swiftness and 1 Focus, and each Explosion their side causes gives them 1 Might until it ends. |
-| Heal | Overflowing Grace | Wr · 3 | Texture | Target ally heals 40. If any of it is wasted past their max HP, they're Anointed until the end of their next turn. |
-| Bless | Judge's Mantle | r · 2 | Sentence | Target ally is Anointed until the end of their next turn, and their Harmful skills Sentence enemies with Sin: 5 Affliction per Sin. |
-| Curse | Blind Justice | r · 2 | Unique | Every unit on both sides, the user included, is Blinded until the end of the user's next turn. |
-| Smite | Purging Brand | W · 1 | Texture | 20 damage to target enemy and Sanctify for 2 turns. Meanwhile, their Ignite's burns also trigger the Sanctify, healing whoever applied the Ignite. |
-| Prayer | Rule of Law | AS · 3 | Unique | All allies heal 20 and gain 10 Shield. For 1 turn, every enemy is Taunted by the ally with the most HP. |
-| Cleave | Twin Verdicts | S · 1 | Sin | 15 damage to target enemy and a random other enemy. The second one gains as much Sin as the target has. |
-| Shout | Call to Judgment | W · 3 | Sentence | Bypass. Sentences every enemy: 5 damage per Sin, and Condemned for 1 turn per Sin removed (max 3). |
-| Withstand | Stay of Execution | r · 3 | Unique | The user gains 20 Shield for 2 turns. The first hit meanwhile that would kill them is stayed: its damage lands at the end of their next turn instead. |
-| Taunt | Heretic's Pyre | S · 3 | Texture | Taunts target enemy for 2 turns and Condemns them. Each time a Condemned triggers on them meanwhile, they're Ignited and it burns once at once. |
-| Titan | Living Reliquary | Ar · 4 | Texture | For 3 turns, the user gains 2 Armor and Immune, and every enemy who damages them is Sanctified for 1 turn. |
+| Strike | Firebrand Talon | S · 0 | Kindle | Kindle. 20 damage and Ignite to target enemy, or 20 healing and 2 Renew to target ally. Either way, the user gains 1 Might. |
+| Smash | Wingbeat | Sr · 2 | Rebirth | 25 damage to target enemy and 15 to their allies. The beat fans the user's side: each ally in Ashes rises at the end of this turn instead of their next. |
+| Charge | Rising Dive | S · 2 | Kindle | Kindle. 15 damage and Ignite to target enemy, or 15 healing and 2 Renew to target ally. The user gains 1 Focus for their next Kindle skill. |
+| Riposte | Searing Rebuttal | r · 3 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user. If its user is Ignited, the Ignite burns once at once, and the user is Anointed until the end of their next turn. |
+| Rage | Pyreheart Fury | SA · 4 | Rebirth | For 3 turns, the user gains 2 Might, Immune and Rebirth. If they rise from Ashes meanwhile, the Rage starts over for 3 more turns. |
+| Shot | Ember Shot | r · 0 | Rebirth | 15 damage to target enemy. If the user is at or below 30 HP, they gain Rebirth for 1 turn. |
+| Snipe | Sunfall Lance | Srr · 2 | Rebirth | Channeled, hidden target. On the following turn, 50 damage to target enemy. It still fires if the user is in Ashes when it lands, and then deals 25 more. |
+| Trap | Smoldering Nest | A · 3 | Rebirth | Invisible. For 3 turns, the first time target enemy kills a unit or sends one to Ashes, the nest flares: they take 25 damage and are Ignited. |
+| Maneuver | Anointed Ascent | r · 3 | Texture | The user becomes Invulnerable for 1 turn and is Anointed until the end of their next turn. If they were Condemned, it's purged, and they heal 15. |
+| Companion | Phoenix Chick | I · 1 | Rebirth | Summons a Phoenix Chick (15 HP) permanently. Peck (r): 10 damage and Ignite. The first time it dies, it rises at the end of your next turn as a Firebird (30 HP) whose Peck deals 20. |
+| Bolt | Flare of Mercy | Sr · 1 | Kindle | Kindle. 20 damage and Ignite to target enemy, or 20 healing and 2 Renew to target ally. An ally it mends also loses 1 Debuff. |
+| Blast | Cleansing Fire | IW · 2 | Unique | 25 damage to all enemies, and they lose all their Buffs. Then every ally of the user, the user included, loses all their Debuffs. |
+| Consume | Draw the Flame | r · 2 | Texture | 5 damage to target enemy, healing the user for it. Then every Ignite on enemies goes out, and the user's ally with the least HP heals 10 for each one. |
+| Summon | Ember Spirit | I · 1 | Kindle | Summons an Ember Spirit (20 HP) for 3 turns. Waver (r): Kindle, 15 damage and Ignite to target enemy, or 15 healing and 2 Renew to target ally. |
+| Channel | Eternal Pyre | rr · 3 | Kindle | Channeled, up to 3 turns. At the end of each of the user's turns, the pyre Kindles everyone: 10 damage and Ignite to each enemy, and 10 healing and 2 Renew to each ally. |
+| Stab | Ember Needle | r · 0 | Kindle | Kindle. 10 damage and Ignite to target enemy, or 20 if they're at or below 60 HP. On an ally, it's 10 healing and 2 Renew, or 20 at or below 60 HP. |
+| Ravage | Pyre Talon | Ar · 1 | Kindle | Kindle. 25 Piercing damage and Ignite to target enemy, 15 more if they're Stunned. On an ally, it's 25 healing and 2 Renew, and it ends their Stun. |
+| Mislead | Flaring Feint | S · 2 | Texture | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered and their Ignite flares: it burns three times at once. |
+| Stun | Blinding Plumage | A · 2 | Texture | 15 damage to target enemy and a 1-turn Stun. If they're Condemned, the Stun lasts until their Condemnation triggers, up to 3 turns. |
+| Dance | Dance of Embers | AW · 5 | Kindle | For 4 turns, the user gains 1 Might, 2 Swiftness and 1 Focus. Meanwhile, each Kindle skill they use on an enemy also heals the user's ally with the least HP for half its damage. |
+| Heal | Sacrificial Flame | W · 1 | Unique | The user burns up to 30 of their own HP, never below 1. Target ally heals twice what was burned. |
+| Bless | Phoenix Blessing | r · 2 | Rebirth | For 3 turns, target ally gains 1 Might and Rebirth. If the Rebirth goes unused, it burns off when this ends: they heal 25. |
+| Curse | Cinders of Doubt | r · 2 | Texture | Target enemy is Confused for 2 turns and Condemned. While the Condemnation lasts, each Debuff it gives them lasts 1 turn longer. |
+| Smite | Sanctified Pyre | Sr · 1 | Texture | 20 damage to target enemy and Sanctify for 2 turns. Each time the Sanctify heals someone, the target's Ignite burns once. |
+| Prayer | Second Dawn | Wrr · 5 | Unique | Every fallen ally of the user returns with 20 HP and no Buffs or Debuffs. Then all allies heal 15. |
+| Cleave | Fanned Flames | S · 1 | Texture | 25 damage to target enemy and 15 to a random other enemy. Each one's Ignite burns once at once, and the user heals as much as those burns deal. |
+| Shout | Phoenix Cry | W · 3 | Rebirth | All enemies are Intimidated for 2 turns. Each ally of the user who is in Ashes or has risen this battle gains 1 Might and 1 Swiftness for 2 turns. |
+| Withstand | Cocoon of Flame | A · 3 | Unique | The user gains 40 Shield and can't act on their next turn. When the cocoon opens, the user and every ally heal as much as the Shield has left. |
+| Taunt | Blazing Challenge | r · 3 | Kindle | Taunts target enemy for 2 turns. Each time they hit the user meanwhile, the user's next Kindle skill costs 1 less. |
+| Titan | Undying Phoenix | SW · 4 | Rebirth | For 3 turns, the user gains 2 Armor, Immune and Rebirth. If they rise from Ashes meanwhile, they rise with 40 HP instead of 25, and the Titan starts over. |
 
 ## Devil — Fire + Unholy
 

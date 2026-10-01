@@ -143,11 +143,11 @@ One keyword: a cheap Storm skill used every turn keeps the storm alive on its ow
 | Maneuver | Vigilant Step | r · 2 | Wrath | The user becomes Invulnerable for 1 turn, and gains 1 Wrath each time an enemy damages one of their allies meanwhile. |
 | Companion | Storm Griffin | SI · 4 | Vow | Summons a Storm Griffin (45 HP) permanently, under a Vow that never ends. Righteous Strike (W): 15 damage and Sanctify. |
 | Bolt | Rebuking Bolt | I · 1 | Wrath | 20 damage to target enemy, and Marked for 1 turn. If Wrath adds to it, their non-Strategic skills are also stunned for 1 turn. |
-| Blast | Primed Nova | IS · 2 | Texture | 25 Piercing damage to all enemies. The user's Charge triggers at 2 instead of 3 until the end of their next turn. |
+| Blast | Found Wanting | IW · 2 | Unique | 10 damage to all enemies, and each takes as much again as the damage they dealt since the user's last turn (max 40 more). |
 | Consume | Siphon Grace | r · 2 | Wrath | 5 damage to target enemy, and the user heals 10. Their Wrath is spent on healing instead of damage: 15 more per stack. |
 | Summon | Herald of Vengeance | A · 1 | Vow | Summons a Herald (20 HP) for 3 turns with a Vow; when it dies or expires, the user gains its Wrath. Denounce (r): 10 damage to target enemy. |
 | Channel | Vigil of Wrath | rr · 3 | Vow | Channeled, up to 3 turns. The user has a Vow while channeling, and at the end of each of their turns deals 5 damage to all enemies, with Wrath adding. |
-| Stab | Final Judgment | r · 0 | Unique | Executes target enemy at or below 25 HP. If they're above that, it deals 10 damage and the user loses 20 HP. |
+| Stab | Grounded Point | r · 0 | Texture | 10 damage to target enemy, or 20 at or below 60 HP. If the user's Charge is full, it isn't spent next turn: it stays full for one more turn. |
 | Ravage | Clemency | Ar · 2 | Unique | 45 Piercing damage to target enemy. If they use no Harmful skill on their next turn, they heal 25. |
 | Mislead | Swift Reprisal | A · 2 | Wrath | Invisible. For 1 turn, if target enemy uses a Harmful skill, it's countered, and the user deals them 15 damage at once, with Wrath adding. |
 | Stun | Chastening Shock | AI · 2 | Texture | 15 damage to target enemy, and Condemned. When the Condemnation triggers, they're also Stunned for 1 turn. |
@@ -161,7 +161,7 @@ One keyword: a cheap Storm skill used every turn keeps the storm alive on its ow
 | Shout | Call for Vengeance | W · 3 | Vow | Every ally takes a Vow for 2 turns; each enemy who gives one of them Wrath is Intimidated for 1 turn. |
 | Withstand | Shield of Retribution | S · 3 | Wrath | The user gains 25 Shield for 1 turn. If it breaks, they gain 3 Wrath. |
 | Taunt | Come and Face Me | r · 3 | Vow | Taunts target enemy for 2 turns, and the user has a Vow for as long; each hit from that enemy gives 2 Wrath. |
-| Titan | Avenger | Ar · 4 | Vow | For 3 turns, the user gains 2 Armor, Immune and a Vow; each Wrath the Vow gives them also gives them 1 Armor until it ends. |
+| Titan | Avenger | Ar · 4 | Vow | For 3 turns, the user gains 2 Armor, Immune and a Vow. Every enemy who damages them meanwhile is Sanctified for 1 turn, so allies who answer heal 15. |
 
 ## Reanimation — Lightning + Unholy
 
