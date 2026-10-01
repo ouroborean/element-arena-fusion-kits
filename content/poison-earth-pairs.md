@@ -58,7 +58,7 @@ One keyword: the colony it grows plugs straight into Earth's Seedling skills.
 | Riposte | Acquired Tolerance | W · 3 | Inoculated | Invisible. For 1 turn, counters the first Harmful skill used on the user, and they become immune for 3 turns to each Debuff it would have applied. |
 | Rage | Immune Response | A · 4 | Purge | For 3 turns, the user gains 2 Might and their Debuffs have no effect. When it ends, they Purge all of them onto random enemies. |
 | Shot | Remedy Dart | r · 0 | Inoculated | 15 damage to target enemy, and the ally they damaged most recently is Inoculated. |
-| Snipe | Measured Dose | Arr · 2 | Unique | Channeled, hidden target; it can target an ally or an enemy. On the following turn, an enemy takes 50 damage, or an ally heals 40 and loses their Debuffs. |
+| Snipe | Long Diagnosis | Arr · 3 | Unique | Channeled, hidden target, 3 turns. When it lands, 20 damage to target enemy, plus 15 for each Debuff they gained while it was channeling (max 60 more). |
 | Trap | Countervenom | r · 2 | Purge | Invisible, 3 turns. The first time target enemy gives one of the user's allies a Debuff, it's Purged at once, onto them. |
 | Maneuver | Quarantine | r · 3 | Texture | The user becomes Invulnerable for 1 turn. Every enemy who uses a Harmful skill meanwhile counts as Prey for 2 turns. |
 | Companion | Asclepian Serpent | IW · 4 | Purge | Summons an Asclepian Serpent (40 HP) permanently. Cure (W): Purges one Debuff from target ally. Serpent's Kiss (r): 5 Piercing damage and 1 Toxin. |

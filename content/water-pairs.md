@@ -174,7 +174,7 @@ One keyword: every Serum skill is a question of how many Doses, and on whom.
 
 | Base | Skill | Cost · CD | Hook | Effect |
 | --- | --- | --- | --- | --- |
-| Strike | Aspersion | S · 0 | Unique | Targets any unit. An enemy takes 20 damage; an ally instead heals 20 and loses 1 Debuff. |
+| Strike | Wave of Blessing | S · 1 | Unique | 20 damage to target enemy. Instead of the user alone, every ally of the user gains 1 Might for 1 turn. |
 | Smash | Cascade of Grace | Ar · 2 | Texture | 25 damage to target enemy and 10 to their allies. If the user is Anointed, they spend it to cut their other cooldowns by 1 per enemy hit (max 2). |
 | Charge | Pilgrim's Rush | I · 2 | Chrism | 15 damage to target enemy. Until the user's next turn, they have Chrism, and each ally they Anoint through it also gets 1 Focus for their next skill. |
 | Riposte | Calm Waters | r · 3 | Texture | Invisible. For 1 turn, counters the first Harmful skill used on the user or on any Anointed ally, and whoever it protected gains Flow for 2 turns. |

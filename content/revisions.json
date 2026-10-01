@@ -49740,6 +49740,54 @@
           }
         }
       ]
+    },
+    {
+      "id": "overlap",
+      "date": "2026-10-01",
+      "title": "Unique overlap fixes",
+      "summary": "Two Unique skills that damaged an enemy or healed an ally, now Phoenix's whole Kindle mechanic, were given new angles.",
+      "changes": [
+        {
+          "kit": "antidote",
+          "base": "Snipe",
+          "problem": "near-copy",
+          "why": "Measured Dose burned an enemy or healed an ally, which is now Phoenix's whole Kindle mechanic; now a slow diagnosis that pays off every Debuff the target picks up meanwhile.",
+          "before": {
+            "skill": "Measured Dose",
+            "cost": "Arr",
+            "cd": 2,
+            "hook": "Unique",
+            "effect": "Channeled, hidden target; it can target an ally or an enemy. On the following turn, an enemy takes 50 damage, or an ally heals 40 and loses their Debuffs."
+          },
+          "after": {
+            "skill": "Long Diagnosis",
+            "cost": "Arr",
+            "cd": 3,
+            "hook": "Unique",
+            "effect": "Channeled, hidden target, 3 turns. When it lands, 20 damage to target enemy, plus 15 for each Debuff they gained while it was channeling (max 60 more)."
+          }
+        },
+        {
+          "kit": "anointment",
+          "base": "Strike",
+          "problem": "near-copy",
+          "why": "Aspersion damaged an enemy or healed an ally, which is now Phoenix's Kindle; now a Strike that shares its Might with the whole team.",
+          "before": {
+            "skill": "Aspersion",
+            "cost": "S",
+            "cd": 0,
+            "hook": "Unique",
+            "effect": "Targets any unit. An enemy takes 20 damage; an ally instead heals 20 and loses 1 Debuff."
+          },
+          "after": {
+            "skill": "Wave of Blessing",
+            "cost": "S",
+            "cd": 1,
+            "hook": "Unique",
+            "effect": "20 damage to target enemy. Instead of the user alone, every ally of the user gains 1 Might for 1 turn."
+          }
+        }
+      ]
     }
   ]
 }
