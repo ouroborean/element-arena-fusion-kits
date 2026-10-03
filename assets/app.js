@@ -1176,6 +1176,11 @@ async function renderSetup() {
       <div><b>${count(fus)}</b><span>of ${totalOf(fus).toLocaleString('en-US')} fusion</span></div>
       <div title="${esc(SHARE.core.long)}"><b>${all.filter((x) => x.share === 'core').length}</b><span>core: most value needs it</span></div>
     </div>
+    ${
+      deps.redesign
+        ? `<p class="muted dep-note">After the ${esc(deps.date)} redesign pass: ${deps.redesign.rewritten} skills were rewritten to reach their value on their own (${deps.redesign.before} → ${all.length} dependent). No element or fusion has more than 10, and every one left still works on its own, with the setup as a bonus.</p>`
+        : ''
+    }
 
     <div class="sec-row"><h2 class="sec">By element</h2>
       <div class="chips" id="depSort" role="group" aria-label="Order">

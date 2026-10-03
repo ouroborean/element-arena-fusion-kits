@@ -238,6 +238,7 @@ tr.hidden { display: none; }
 .empty { padding: 18px; color: var(--muted); }
 
 /* ---------------------------------------------------------------- setup-dependent skills */
+.dep-note { max-width: 820px; margin: 16px 0 0; }
 .dep-table td { vertical-align: middle; }
 .dep-table tbody tr { cursor: pointer; }
 .dep-table .faint { color: var(--faint); }
