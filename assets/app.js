@@ -6,6 +6,7 @@
 //   #/keywords             every new keyword, by kit
 //   #/ratings              the skills you've starred, with export and import
 //   #/changes              every revised skill, before and after
+//   #/setup                skills that need another skill's setup to reach their full value
 //   #/search/<query>       search results
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -296,6 +297,7 @@ function buildSidebar() {
     <a class="side-link" href="#/keywords" data-side="keywords">Keyword glossary</a>
     <a class="side-link" href="#/ratings" data-side="ratings">Your ratings</a>
     ${site.passes.length ? '<a class="side-link" href="#/changes" data-side="changes">Changes</a>' : ''}
+    <a class="side-link" href="#/setup" data-side="setup">Setup-dependent skills</a>
     ${site.groups
       .map(
         (g) => `<section class="side-group"><h2>${esc(g.title)}</h2><ul>${g.kits
@@ -398,6 +400,9 @@ function route() {
   } else if (page === 'changes') {
     key = 'changes';
     renderChanges();
+  } else if (page === 'setup') {
+    key = 'setup';
+    renderSetup();
   } else if (page === 'search') {
     key = 'search';
     renderSearch(decodeURIComponent(raw.slice('search/'.length)));
@@ -1122,6 +1127,173 @@ function changeHtml({ k, r, h, after }) {
     </div>
     <p class="why">${esc(h.why)}</p>
   </article>`;
+}
+
+// ---------------------------------------------------------------- setup: skills that can't reach their value alone
+
+let deps;
+const SHARE = {
+  core: { label: 'Core', long: 'Most or all of its value needs the setup' },
+  bonus: { label: 'Bonus', long: 'Solid on its own; the setup adds a bonus or scaling' },
+};
+
+async function renderSetup() {
+  setMode('plain');
+  markNav('setup');
+  document.title = 'Setup-dependent skills · Fusion Kits';
+  if (!deps) {
+    main.innerHTML = '<p class="loading">Loading…</p>';
+    try {
+      deps = await fetch('data/dependencies.json').then((x) => x.json());
+    } catch (err) {
+      main.innerHTML = `<p class="warn">Couldn't load the review: ${esc(err.message)}</p>`;
+      return;
+    }
+    if (!location.hash.startsWith('#/setup')) return;
+  }
+  const byEl = new Map(deps.elements.map((e) => [e.element, e]));
+  const fusionNames = new Set(site.kits.map((k) => k.name));
+  const all = deps.elements.flatMap((e) => e.skills);
+  const base = deps.elements.filter((e) => !fusionNames.has(e.element));
+  const fus = deps.elements.filter((e) => fusionNames.has(e.element));
+  const count = (list) => list.reduce((n, e) => n + e.skills.length, 0);
+  const totalOf = (list) => list.reduce((n, e) => n + e.total, 0);
+  const sections = [
+    { title: 'Base elements', rows: base },
+    ...site.groups.map((g) => ({ title: g.title, rows: g.kits.map((slug) => byEl.get(kits.get(slug).name)).filter(Boolean) })),
+  ];
+  const max = Math.max(...deps.elements.map((e) => e.skills.length));
+
+  main.innerHTML = `
+    <header class="page-head">
+      <p class="eyebrow">Design check · ${esc(deps.date)}</p>
+      <h1>Setup-dependent skills</h1>
+      <p class="lead">Skills that can't reach their full value on their own: some of what they do (a bonus, a scaling term, or the whole effect) only happens when something they don't provide themselves is already in place, such as a status on the target, a state on the user, an allied minion or a kit resource. Things the skill sets up itself (even over repeat uses), low-HP thresholds, a fusion's built-in passive, and anything the opponent controls don't count. Reviewed by hand against the skills as implemented in the game.</p>
+    </header>
+    <div class="stats">
+      <div><b>${all.length}</b><span>of ${totalOf(deps.elements).toLocaleString('en-US')} skills</span></div>
+      <div><b>${count(base)}</b><span>of ${totalOf(base)} base</span></div>
+      <div><b>${count(fus)}</b><span>of ${totalOf(fus).toLocaleString('en-US')} fusion</span></div>
+      <div title="${esc(SHARE.core.long)}"><b>${all.filter((x) => x.share === 'core').length}</b><span>core: most value needs it</span></div>
+    </div>
+
+    <div class="sec-row"><h2 class="sec">By element</h2>
+      <div class="chips" id="depSort" role="group" aria-label="Order">
+        <button type="button" class="chip" data-value="kit" aria-pressed="true">Kit order</button>
+        <button type="button" class="chip" data-value="most" aria-pressed="false">Most dependent</button>
+      </div>
+    </div>
+    <div class="table-wrap"><table class="rows dep-table">
+      <thead><tr><th>Element</th><th>Dependent of 30</th><th title="${esc(SHARE.core.long)}">Core</th><th title="${esc(SHARE.bonus.long)}">Bonus</th><th>Most common needs</th></tr></thead>
+      <tbody id="depRows">${sections.flatMap((sec) => sec.rows.map((e) => depRowHtml(e, max))).join('')}</tbody>
+    </table></div>
+
+    <div class="sec-row"><h2 class="sec">Every dependent skill</h2></div>
+    <div class="toolbar">
+      <input class="filter-input" id="depFilter" type="search" placeholder="Filter by element, skill or need" aria-label="Filter skills">
+      <div class="chips" id="depShare" role="group" aria-label="Filter by how much depends on setup">${Object.entries(SHARE)
+        .map(([k, v]) => `<button type="button" class="chip" data-value="${k}" aria-pressed="false" title="${esc(v.long)}">${esc(v.label)}</button>`)
+        .join('')}</div>
+      <div class="chips" id="depEls" role="group" aria-label="Filter by parent element">${elementChips()}</div>
+    </div>
+    ${sections
+      .map((sec) => `<section class="dep-sec"><h3 class="sec small">${esc(sec.title)}</h3>${sec.rows.map(depBlockHtml).join('')}</section>`)
+      .join('')}
+    <p class="empty" id="depEmpty" hidden>No skill matches.</p>`;
+
+  const rows = $('#depRows');
+  const order = [...rows.children];
+  bindElementChips($('#depSort'), (v) => {
+    const sorted = v === 'most' ? [...order].sort((a, b) => b.dataset.n - a.dataset.n || b.dataset.core - a.dataset.core) : order;
+    rows.replaceChildren(...sorted);
+    if (!v) $('#depSort .chip').setAttribute('aria-pressed', 'true');
+  });
+  rows.addEventListener('click', (e) => {
+    const tr = e.target.closest('tr');
+    const block = tr && $(`.dep-block[data-el="${CSS.escape(tr.dataset.el)}"]`, main);
+    if (block) block.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+  for (const t of $$('.dep-skills', main)) {
+    t.addEventListener('click', (e) => {
+      const tr = e.target.closest('tr[data-href]');
+      if (tr && !e.target.closest('a')) location.hash = tr.dataset.href;
+    });
+  }
+
+  const filter = $('#depFilter');
+  let share = null;
+  let el = null;
+  const apply = () => {
+    const q = filter.value.trim().toLowerCase();
+    let shown = 0;
+    for (const block of $$('.dep-block', main)) {
+      const parentOk = !el || block.dataset.parents.split(' ').includes(el);
+      const nameHit = !!q && block.dataset.el.toLowerCase().includes(q);
+      let n = 0;
+      for (const tr of $$('tbody tr', block)) {
+        const ok = parentOk && (!share || tr.dataset.share === share) && (!q || nameHit || tr.dataset.text.includes(q));
+        tr.hidden = !ok;
+        if (ok) n++;
+      }
+      block.hidden = n === 0 && (!!q || !!share || !parentOk);
+      shown += n;
+    }
+    for (const sec of $$('.dep-sec', main)) sec.hidden = $$('.dep-block', sec).every((b) => b.hidden);
+    $('#depEmpty').hidden = shown > 0 || !(q || share || el);
+  };
+  filter.addEventListener('input', apply);
+  bindElementChips($('#depShare'), (v) => {
+    share = v;
+    apply();
+  });
+  bindElementChips($('#depEls'), (v) => {
+    el = v;
+    apply();
+  });
+}
+
+const depLabel = (e) => (e.element === 'None' ? 'Uninfused' : e.element);
+function depSwatch(e) {
+  if (e.parents.length === 2) return swatch(e.parents);
+  if (e.parents.length === 1) return swatch([e.parents[0], e.parents[0]]);
+  return '<span class="sw" aria-hidden="true"><i style="background:var(--line-2)"></i><i style="background:var(--line-2)"></i></span>';
+}
+function depBarFill(e) {
+  if (!e.parents.length) return 'var(--muted)';
+  const [a, b = a] = e.parents;
+  return `linear-gradient(90deg, ${elVar(a)} 0 50%, ${elVar(b)} 50% 100%)`;
+}
+function depRowHtml(e, max) {
+  const core = e.skills.filter((x) => x.share === 'core').length;
+  const needs = new Map();
+  for (const x of e.skills) for (const k of x.keywords ?? []) needs.set(k, (needs.get(k) ?? 0) + 1);
+  const top = [...needs].sort((a, b) => b[1] - a[1]).slice(0, 3);
+  return `<tr data-el="${esc(e.element)}" data-n="${e.skills.length}" data-core="${core}">
+    <td class="c-kit"><div class="mini-parents">${depSwatch(e)} <b>${esc(depLabel(e))}</b></div></td>
+    <td class="dep-bar-cell"><span class="dep-bar"><i style="width:${max ? (e.skills.length / max) * 100 : 0}%;background:${depBarFill(e)}"></i></span><b class="dep-n">${e.skills.length}</b></td>
+    <td class="dep-num">${core}</td><td class="dep-num">${e.skills.length - core}</td>
+    <td class="muted">${top.map(([k, n]) => `${esc(k)}${n > 1 ? ` <span class="faint">×${n}</span>` : ''}`).join(', ') || '—'}</td>
+  </tr>`;
+}
+function depBlockHtml(e) {
+  const kit = site.kits.find((k) => k.name === e.element);
+  const href = (x) => (kit ? `#/kit/${kit.slug}/${baseSlug(x.base)}` : `#/skill/${baseSlug(x.base)}`);
+  return `<section class="dep-block" data-el="${esc(e.element)}" data-parents="${esc(e.parents.join(' '))}">
+    <h4 class="dep-head">${depSwatch(e)} ${kit ? `<a href="#/kit/${kit.slug}">${esc(depLabel(e))}</a>` : esc(depLabel(e))} <span class="dep-count">${e.skills.length} of ${e.total}</span></h4>
+    ${
+      e.skills.length
+        ? `<div class="table-wrap"><table class="rows dep-skills"><thead><tr><th>Skill</th><th>Needs</th><th>Share</th><th>Effect (as implemented)</th></tr></thead><tbody>${e.skills
+            .map(
+              (x) => `<tr data-href="${href(x)}" data-share="${x.share}" data-text="${esc(`${x.base} ${x.name} ${x.needs} ${x.description}`.toLowerCase())}">
+          <td class="c-skill"><span class="c-base">${esc(x.base)}</span><br><a href="${href(x)}">${esc(x.name)}</a></td>
+          <td class="dep-needs">${esc(x.needs)}</td>
+          <td><span class="dep-share dep-${x.share}" title="${esc(SHARE[x.share]?.long ?? '')}">${esc(SHARE[x.share]?.label ?? x.share)}</span></td>
+          <td class="c-effect">${esc(x.description)}</td></tr>`,
+            )
+            .join('')}</tbody></table></div>`
+        : '<p class="empty">Every skill reaches its value on its own.</p>'
+    }
+  </section>`;
 }
 
 // ---------------------------------------------------------------- search

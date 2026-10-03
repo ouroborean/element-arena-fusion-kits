@@ -12,6 +12,7 @@ Live at **https://ouroborean.github.io/element-arena-fusion-kits/**. It's a comp
 - **Keywords** (`#/keywords`): every new term, grouped by fusion.
 - **Ratings** (`#/ratings`): give any skill 1 to 3 stars with the stars beside it (click the current star again to clear it). This page lists what you've rated, filters by star count, and exports or imports ratings.
 - **Changes** (`#/changes`): every skill rewritten since the first pass, with its earlier version and why it changed. It filters by kind of problem and by element, and you can rate the new versions there. Revised skills also carry a Revised tag on the kit pages, which can filter to them, and the details panel shows each one's earlier version.
+- **Setup** (`#/setup`): skills that can't reach their full value on their own, because part of what they do needs a status, state, minion or resource from another skill. Counted by hand against the game's implemented skills (`data/dependencies.json`), with a per-element table and every dependent skill, what it needs, and whether that's a bonus or most of its value.
 - **Search:** press `/` anywhere.
 
 Ratings are saved in the browser you rate in, so they survive reloads and restarts but don't follow you to another browser or device, and a site running from `localhost` keeps its own set. Export them to back them up or to send them to someone. Importing adds a file's ratings to yours; where both rate the same skill, the file wins, unless yours rates a newer version.

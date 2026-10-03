@@ -237,6 +237,27 @@ tr.hidden { display: none; }
 .mini-parents { display: flex; align-items: center; gap: 6px; margin-top: 3px; color: var(--muted); font-size: 12px; white-space: nowrap; }
 .empty { padding: 18px; color: var(--muted); }
 
+/* ---------------------------------------------------------------- setup-dependent skills */
+.dep-table td { vertical-align: middle; }
+.dep-table tbody tr { cursor: pointer; }
+.dep-table .faint { color: var(--faint); }
+.dep-bar-cell { min-width: 220px; white-space: nowrap; }
+.dep-bar { display: inline-block; vertical-align: middle; width: calc(100% - 44px); max-width: 260px; height: 12px; background: var(--ink-3); border: 1px solid var(--line-2); }
+.dep-bar i { display: block; height: 100%; }
+.dep-n { display: inline-block; width: 36px; margin-left: 8px; font: 800 18px/1 var(--font-display); }
+.dep-num { font: 800 17px/1 var(--font-display); }
+.dep-sec { margin-top: 26px; }
+.dep-block { margin: 0 0 22px; max-width: 1200px; }
+.dep-head { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font: 800 20px/1.1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.dep-head a { text-decoration: none; }
+.dep-head a:hover { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+.dep-count { color: var(--muted); font: 700 12px/1 var(--font-ui); letter-spacing: .1em; }
+.dep-needs { min-width: 170px; font-weight: 600; }
+.dep-share { display: inline-block; padding: 3px 7px; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; border: 2px solid var(--line-2); white-space: nowrap; }
+.dep-core { background: var(--red-deep); border-color: var(--red); color: #fff; }
+.dep-bonus { color: var(--muted); }
+.dep-skills tr[hidden] { display: none; }
+
 /* ---------------------------------------------------------------- overview */
 .hero { max-width: 980px; }
 .hero h1 { margin: 0; font-size: clamp(44px, 6vw, 76px); font-weight: 900; letter-spacing: .02em; }
