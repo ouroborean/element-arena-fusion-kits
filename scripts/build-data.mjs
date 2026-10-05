@@ -4,6 +4,7 @@
 //
 //   data/site.json       the 55 fusion kits: keywords, passives and all 30 skills of each
 //   data/reference.json  the 30 base skills and their ten single-element versions
+//   data/statuses.json   the core and single-element statuses, and the rules terms from the game's glossary
 //
 // Usage: node scripts/build-data.mjs [path to the Custom Arena repo]   (default: ../Custom Arena)
 import fs from 'node:fs';
@@ -81,6 +82,11 @@ const readYaml = (...parts) => {
 };
 const flat = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
 const skillEntry = (s) => ({ name: s.name, cost: String(s.cost ?? ''), cd: s.cooldown ?? 0, description: flat(s.description) });
+/** A base or single-element skill, which must have a name and an effect. */
+function checkedSkill(where, s) {
+  if (!s?.name || !flat(s?.description)) fail(`${where}: no name or description`);
+  return skillEntry(s ?? {});
+}
 
 const baseDoc = readYaml('base', 'skills.yaml');
 // [id, archetype] for the 30 base skills, Strike to Titan.
@@ -89,7 +95,7 @@ if (archetypes.length !== 30) fail(`base/skills.yaml: ${archetypes.length} base 
 
 // Reference: each base skill and its ten single-element versions.
 const base = {};
-for (const [id, a] of archetypes) base[a] = skillEntry(baseDoc[id]);
+for (const [id, a] of archetypes) base[a] = checkedSkill(`base/skills.yaml: ${id}`, baseDoc[id]);
 const byElement = {};
 for (const el of ELEMENTS) {
   const lower = el.toLowerCase();
@@ -97,8 +103,93 @@ for (const el of ELEMENTS) {
   byElement[el] = {};
   for (const [id, a] of archetypes) {
     const s = doc[`${id}.${lower}`];
-    if (s) byElement[el][a] = skillEntry(s);
+    if (s) byElement[el][a] = checkedSkill(`${lower}/skills.${lower}.yaml: ${id}.${lower}`, s);
     else fail(`${lower}/skills.${lower}.yaml: no ${id}.${lower}`);
+  }
+}
+
+// ---------------------------------------------------------------- statuses and rules terms
+
+// The core statuses (base/statuses.yaml), each element's own (<element>/statuses.<element>.yaml; an element
+// may have none) and the rules terms from the game's glossary (base/glossary.yaml). A glossary entry has its
+// own text, or names a status whose description is the text; its `forms` are the words in skill text that
+// mean it, which the site links to the entry. Entries tagged with an element are listed with that element.
+const KINDS = ['Buff', 'Debuff', 'Neutral'];
+const slugOf = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+function statusesOf(file, doc) {
+  const out = new Map();
+  for (const [id, s] of Object.entries(doc)) {
+    const text = flat(s?.description);
+    if (!s?.name || !text) fail(`${file}: status ${id} has no name or description`);
+    else if (!KINDS.includes(s.kind)) fail(`${file}: status ${id} has kind "${s.kind}", expected ${KINDS.join(', ')}`);
+    else out.set(id, { name: s.name, kind: s.kind, text });
+  }
+  return out;
+}
+
+const coreDoc = readYaml('base', 'statuses.yaml');
+if (!coreDoc || !Object.keys(coreDoc).length) fail('base/statuses.yaml: missing or empty');
+const coreStatuses = statusesOf('base/statuses.yaml', coreDoc ?? {});
+const elementStatuses = {};
+for (const el of ELEMENTS) {
+  const lower = el.toLowerCase();
+  elementStatuses[el] = statusesOf(`${lower}/statuses.${lower}.yaml`, readYaml(lower, `statuses.${lower}.yaml`) ?? {});
+}
+
+const glossary = readYaml('base', 'glossary.yaml');
+if (!glossary || !Object.keys(glossary).length) fail('base/glossary.yaml: missing or empty');
+const rulesTerms = [];
+const elementTerms = Object.fromEntries(ELEMENTS.map((el) => [el, []]));
+// status id -> glossary entry naming it (its forms, and any text of its own)
+const glossaryOf = { core: new Map(), ...Object.fromEntries(ELEMENTS.map((el) => [el, new Map()])) };
+for (const [id, g] of Object.entries(glossary ?? {})) {
+  const where = `base/glossary.yaml: ${id}`;
+  if (g.element && !ELEMENTS.includes(g.element)) {
+    fail(`${where} has element ${g.element}, which isn't one of the ten`);
+    continue;
+  }
+  if (g.status) {
+    const statuses = g.element ? elementStatuses[g.element] : coreStatuses;
+    const s = statuses.get(g.status);
+    if (!s) {
+      fail(`${where} names status ${g.status}, which ${g.element ? `${g.element.toLowerCase()}/statuses.${g.element.toLowerCase()}.yaml` : 'base/statuses.yaml'} doesn't have`);
+      continue;
+    }
+    glossaryOf[g.element ?? 'core'].set(g.status, g);
+    continue;
+  }
+  const text = flat(g.text);
+  if (!g.name || !text) {
+    fail(`${where} has no name or text`);
+    continue;
+  }
+  (g.element ? elementTerms[g.element] : rulesTerms).push({ name: g.name, text, forms: g.forms ?? [g.name] });
+}
+
+/** Every status in a file, as players read it: a glossary entry's own text replaces the status's description. */
+const statusList = (statuses, entries) =>
+  [...statuses].map(([id, s]) => {
+    const g = entries.get(id);
+    return { name: s.name, kind: s.kind, text: g?.text ? flat(g.text) : s.text, forms: g ? (g.forms ?? [s.name]) : [] };
+  });
+const statusData = {
+  core: statusList(coreStatuses, glossaryOf.core),
+  elements: ELEMENTS.map((el) => ({ element: el, statuses: statusList(elementStatuses[el], glossaryOf[el]), terms: elementTerms[el] })),
+  rules: rulesTerms,
+};
+for (const g of statusData.elements) if (!g.statuses.length && !g.terms.length) fail(`${g.element}: no statuses and no glossary terms`);
+// Each entry gets its own link (#/statuses/<slug>), and each form in skill text means exactly one entry.
+const allEntries = [...statusData.core, ...statusData.elements.flatMap((g) => [...g.statuses, ...g.terms]), ...statusData.rules];
+const slugs = new Set(['core', 'rules', ...ELEMENTS.map((el) => el.toLowerCase())]);
+const formOwner = new Map();
+for (const e of allEntries) {
+  e.slug = slugOf(e.name);
+  if (slugs.has(e.slug)) fail(`statuses: two entries (or an entry and a section) would both link as #/statuses/${e.slug}`);
+  slugs.add(e.slug);
+  for (const f of e.forms) {
+    if (formOwner.has(f)) fail(`base/glossary.yaml: "${f}" means both ${formOwner.get(f)} and ${e.name}`);
+    formOwner.set(f, e.name);
   }
 }
 
@@ -239,9 +330,15 @@ const site = {
 fs.mkdirSync(path.join(root, 'data'), { recursive: true });
 fs.writeFileSync(path.join(root, 'data', 'site.json'), JSON.stringify(site));
 fs.writeFileSync(path.join(root, 'data', 'reference.json'), JSON.stringify({ base, byElement }));
+fs.writeFileSync(path.join(root, 'data', 'statuses.json'), JSON.stringify(statusData));
 const count = (f) => kits.reduce((n, k) => n + f(k), 0);
 console.log(
   `data/site.json: ${kits.length} kits, ${count((k) => k.rows.length)} skills, ${count((k) => k.keywords.length)} keywords, ` +
     `${count((k) => k.passives.length + k.keywords.filter((x) => x.passive).length)} passives, from ${game}`,
 );
 console.log(`data/reference.json: ${archetypes.length} base skills and their ${ELEMENTS.length} single-element versions`);
+console.log(
+  `data/statuses.json: ${statusData.core.length} core statuses, ` +
+    `${statusData.elements.reduce((n, g) => n + g.statuses.length, 0)} element statuses, ` +
+    `${statusData.elements.reduce((n, g) => n + g.terms.length, 0)} element terms, ${statusData.rules.length} rules terms`,
+);

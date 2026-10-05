@@ -1,10 +1,12 @@
-// Fusion Kits: a dependency-free player reference for the 55 fusion kits (data/site.json) and the game's
-// base and single-element skills (data/reference.json), both built from the game by scripts/build-data.mjs.
-// Hash routes keep every view linkable:
+// Fusion Kits: a dependency-free player reference for the 55 fusion kits (data/site.json), the game's
+// base and single-element skills (data/reference.json) and its statuses and rules terms (data/statuses.json),
+// all built from the game by scripts/build-data.mjs. Hash routes keep every view linkable:
 //   #/                     overview: how fusions work, the fusion matrix, every kit at a glance
 //   #/kit/<kit>[/<base>]   one kit, optionally with a skill selected
+//   #/base[/<element>]     the 30 base skills, or one element's versions of them
 //   #/skill/<base>         one base skill across all 10 elements and 55 fusions
 //   #/keywords             every fusion keyword, by kit
+//   #/statuses[/<entry>]   core and element statuses and rules terms, optionally scrolled to one
 //   #/search/<query>       search results
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -17,6 +19,12 @@ const elVar = (el) => `var(--el-${el.toLowerCase()})`;
 
 let site;
 let ref;
+let st;
+/** Every status and rules term (with its group label), and the entry each form in skill text means. */
+let terms = [];
+const termByForm = new Map();
+let termAlt = '';
+let plainRe;
 const kits = new Map();
 const groupOf = new Map();
 let lastPage = '';
@@ -31,12 +39,15 @@ init().catch((err) => {
 });
 
 async function init() {
-  const [s, r] = await Promise.all([
+  const [s, r, t] = await Promise.all([
     fetch('data/site.json').then((x) => x.json()),
     fetch('data/reference.json').then((x) => x.json()),
+    fetch('data/statuses.json').then((x) => x.json()),
   ]);
   site = s;
   ref = r;
+  st = t;
+  indexTerms();
   for (const k of site.kits) {
     kits.set(k.slug, k);
     k.terms = keywordTerms(k);
@@ -71,15 +82,55 @@ function pips(cost) {
 function costCell(s) {
   return `${pips(s.cost)}<span class="cd" title="Cooldown">${esc(s.cd)}</span>`;
 }
-/** The kit's keywords, in the exact forms the game recognizes, bolded wherever its text uses them. */
+const byLength = (a, b) => b.length - a.length;
+function indexTerms() {
+  terms = [
+    ...st.core.map((e) => ({ ...e, group: 'Core status' })),
+    ...st.elements.flatMap((g) => [
+      ...g.statuses.map((e) => ({ ...e, group: `${g.element} status`, element: g.element })),
+      ...g.terms.map((e) => ({ ...e, group: `${g.element} term`, element: g.element })),
+    ]),
+    ...st.rules.map((e) => ({ ...e, group: 'Rules term' })),
+  ];
+  for (const e of terms) for (const f of e.forms) termByForm.set(esc(f), e);
+  // As in the game's tooltips, a form followed by "skill"/"skills" ("your Charge skills") names a skill, not the term.
+  termAlt = [...termByForm.keys()].sort(byLength).map((f) => `${reEsc(f)}(?!\\s+skills?\\b)`).join('|');
+  plainRe = new RegExp(`\\b(?:((?!))|(${termAlt}))\\b`, 'g');
+}
+/** The kit's keywords (bolded) and the game's statuses and rules terms (linked), in the exact forms the game recognizes. */
 function keywordTerms(k) {
-  const forms = [...new Set(k.keywords.flatMap((x) => x.forms))].sort((a, b) => b.length - a.length);
-  if (!forms.length) return null;
-  return new RegExp(`\\b(${forms.map((t) => reEsc(esc(t))).join('|')})\\b`, 'g');
+  const forms = [...new Set(k.keywords.flatMap((x) => x.forms))].sort(byLength);
+  const kit = forms.length ? forms.map((t) => reEsc(esc(t))).join('|') : '(?!)';
+  return new RegExp(`\\b(?:(${kit})|(${termAlt}))\\b`, 'g');
+}
+function termLink(form, e) {
+  return `<a class="term" href="#/statuses/${e.slug}" title="${esc(`${e.name}: ${e.text}`)}">${form}</a>`;
+}
+/** Text with the kit's keywords bolded and the game's terms linked (except `self`, on its own definition). */
+function richText(text, k, self) {
+  return esc(text).replace(k ? k.terms : plainRe, (m, kw, form) => {
+    if (kw) return `<b class="kw">${kw}</b>`;
+    const e = termByForm.get(form);
+    return e && e.slug !== self ? termLink(form, e) : m;
+  });
 }
 function effectHtml(k, text) {
-  const html = esc(text);
-  return k.terms ? html.replace(k.terms, '<b class="kw">$1</b>') : html;
+  return richText(text, k);
+}
+/** The game's terms a text uses (not counting the kit's own keywords), in order of first use. */
+function termsIn(text, k) {
+  const out = [];
+  for (const m of esc(text).matchAll(k ? k.terms : plainRe)) {
+    const e = m[2] && termByForm.get(m[2]);
+    if (e && !out.includes(e)) out.push(e);
+  }
+  return out;
+}
+/** A status or rules term as a definition: name, kind, rule. */
+function termHtml(e, anchored) {
+  return `<div class="kwdef"${anchored ? ` id="st-${e.slug}" data-text="${esc(`${e.name} ${e.text}`.toLowerCase())}"` : ''}><div class="kw-head"><strong>${esc(e.name)}</strong>${
+    e.kind ? `<span class="kind kind-${esc(e.kind.toLowerCase())}">${esc(e.kind)}</span>` : ''
+  }</div><p>${richText(e.text, null, e.slug)}</p></div>`;
 }
 function kindTag(kw) {
   return `${kw.kind ? `<span class="kind kind-${esc(kw.kind.toLowerCase())}">${esc(kw.kind)}</span>` : ''}${
@@ -110,8 +161,10 @@ const keywordNames = (k) => k.keywords.map((x) => x.term).join(', ');
 function buildSidebar() {
   $('#sidebar').innerHTML = `
     <a class="side-link" href="#/" data-side="overview">Overview</a>
+    <a class="side-link" href="#/base" data-side="base">Base skills</a>
     <a class="side-link" href="#/skill/strike" data-side="skill">Compare skills</a>
     <a class="side-link" href="#/keywords" data-side="keywords">Keyword glossary</a>
+    <a class="side-link" href="#/statuses" data-side="statuses">Statuses &amp; terms</a>
     ${site.groups
       .map(
         (g) => `<section class="side-group"><h2>${esc(g.title)}</h2><ul>${g.kits
@@ -198,12 +251,18 @@ function route() {
   if (page === 'kit' && kits.has(a)) {
     key = `kit/${a}`;
     renderKit(kits.get(a), b);
+  } else if (page === 'base') {
+    key = 'base';
+    renderBase(a, b);
   } else if (page === 'skill') {
     key = `skill/${a}`;
     renderSkill(a);
   } else if (page === 'keywords') {
     key = 'keywords';
     renderKeywords();
+  } else if (page === 'statuses') {
+    key = 'statuses';
+    renderStatuses(a, lastPage === 'statuses');
   } else if (page === 'search') {
     key = 'search';
     renderSearch(decodeURIComponent(raw.slice('search/'.length)));
@@ -432,7 +491,7 @@ function renderSkill(slug) {
     <header class="page-head">
       <p class="eyebrow">Base skill</p>
       <h1>${esc(base)}</h1>
-      <div class="base-card">${costCell(b)}<p>${esc(b.description)}</p></div>
+      <div class="base-card">${costCell(b)}<p>${richText(b.description)}</p></div>
     </header>
 
     <h2 class="sec">Single-element versions</h2>
@@ -442,7 +501,7 @@ function renderSkill(slug) {
         .map((el) => {
           const s = ref.byElement[el][base];
           return `<tr class="static"><td class="c-el">${elChip(el)}</td><td class="c-skill"><strong>${esc(s.name)}</strong></td>
-            <td class="c-cost">${costCell(s)}</td><td class="c-effect">${esc(s.description)}</td></tr>`;
+            <td class="c-cost">${costCell(s)}</td><td class="c-effect">${richText(s.description)}</td></tr>`;
         })
         .join('')}</tbody>
     </table></div>
@@ -536,9 +595,10 @@ function renderPanel(k, r) {
   const card = (el, s) => `
     <div class="ref-card"${el ? ` style="--c:${elVar(el)}"` : ''}>
       <div class="ref-head">${el ? elChip(el) : '<span class="el base">Base</span>'}<strong>${esc(s.name)}</strong>${costCell(s)}</div>
-      <p>${esc(s.description)}</p>
+      <p>${richText(s.description)}</p>
     </div>`;
   const used = k.keywords.filter((kw) => kw.re.test(r.effect));
+  const rules = termsIn(r.effect, k);
   panel.innerHTML = `
     <div class="panel-inner">
       <button class="panel-close" type="button" aria-label="Close details">&times;</button>
@@ -547,6 +607,7 @@ function renderPanel(k, r) {
       <div class="panel-meta">${costCell(r)}${parentChips(k.parents)}</div>
       <p class="panel-effect">${effectHtml(k, r.effect)}</p>
       ${used.length ? `<h3 class="sec small">${used.length === 1 ? 'Keyword' : 'Keywords'}</h3><div class="panel-kw">${used.map((kw) => keywordHtml(k, kw)).join('')}</div>` : ''}
+      ${rules.length ? `<h3 class="sec small">${rules.length === 1 ? 'Status or term' : 'Statuses and terms'}</h3><div class="panel-kw">${rules.map((e) => termHtml(e)).join('')}</div>` : ''}
       <h3 class="sec small">Base skill</h3>
       ${card(null, ref.base[r.base])}
       <h3 class="sec small">${parents.length === 1 ? 'Parent version' : "Parents' versions"}</h3>
@@ -603,6 +664,118 @@ function renderKeywords() {
   });
 }
 
+// ---------------------------------------------------------------- base skills, uninfused or one element's versions
+
+function renderBase(slug, skill) {
+  const el = site.elements.find((x) => x.toLowerCase() === slug) ?? null;
+  setMode('plain');
+  markNav('base');
+  document.title = `${el ? `${el} skills` : 'Base skills'} · Fusion Kits`;
+  const tab = (href, on, label, dot) =>
+    `<a class="chip" href="${href}"${on ? ' aria-current="page"' : ''}>${dot ? `<span class="dot" style="--c:${elVar(dot)}"></span>` : ''}${label}</a>`;
+  const compare = (a) => `<a href="#/skill/${baseSlug(a)}" title="Compare ${esc(a)} across every element and fusion">`;
+
+  main.innerHTML = `
+    <header class="page-head">
+      <p class="eyebrow">Base game</p>
+      <h1>Base skills</h1>
+      <p class="lead">The 30 skills every kit is built from. With no infusion a skill is the base version below; one infusion makes it that element's version, and two make it a fusion's. Open any skill to compare it across all ${site.elements.length} elements and ${site.kits.length} fusions.</p>
+    </header>
+    <nav class="chips tabs" aria-label="Infusion">${tab('#/base', !el, 'No infusion')}${site.elements
+      .map((x) => tab(`#/base/${x.toLowerCase()}`, x === el, esc(x), x))
+      .join('')}</nav>
+    ${
+      el
+        ? `<p class="tab-note" style="--c:${elVar(el)}"><span>Every base skill with one ${esc(el)} infusion.</span><a href="#/statuses/${el.toLowerCase()}">${esc(el)} statuses</a></p>`
+        : ''
+    }
+    <div class="table-wrap"><table class="rows base-rows${el ? '' : ' uninfused'}">
+      <thead><tr>${el ? '<th>Base</th>' : ''}<th>Skill</th><th>Cost · CD</th><th>Effect</th></tr></thead>
+      <tbody>${site.bases
+        .map((a) => {
+          const s = el ? ref.byElement[el][a] : ref.base[a];
+          return `<tr class="static" id="base-${baseSlug(a)}">${
+            el ? `<td class="c-base">${compare(a)}${esc(a)}</a></td><td class="c-skill"><strong>${esc(s.name)}</strong></td>` : `<td class="c-skill">${compare(a)}<strong>${esc(s.name)}</strong></a></td>`
+          }<td class="c-cost">${costCell(s)}</td><td class="c-effect">${richText(s.description)}</td></tr>`;
+        })
+        .join('')}</tbody>
+    </table></div>`;
+  const row = skill && document.getElementById(`base-${skill}`);
+  if (row) {
+    row.classList.add('sel');
+    requestAnimationFrame(() => row.scrollIntoView({ block: 'center' }));
+  }
+}
+
+// ---------------------------------------------------------------- statuses and rules terms
+
+function renderStatuses(slug, sameView) {
+  setMode('plain');
+  markNav('statuses');
+  document.title = 'Statuses & terms · Fusion Kits';
+  // Following a link from one entry to another just moves to it.
+  if (!(sameView && $('.st-page', main))) {
+    const count = st.core.length + st.elements.reduce((n, g) => n + g.statuses.length, 0);
+    main.innerHTML = `
+      <div class="st-page">
+      <header class="page-head">
+        <p class="eyebrow">Base game</p>
+        <h1>Statuses &amp; terms</h1>
+        <p class="lead">All ${count} statuses, worded as the game has them: the core statuses any skill can give, then each element's own, then the rules terms skill text uses. Underlined words in skill text link here. Each fusion's own keywords are on the <a href="#/keywords">Keywords</a> page.</p>
+      </header>
+      <nav class="chips tabs" aria-label="Jump to">
+        <a class="chip" href="#/statuses/core">Core</a>
+        ${st.elements.map((g) => `<a class="chip" href="#/statuses/${g.element.toLowerCase()}"><span class="dot" style="--c:${elVar(g.element)}"></span>${esc(g.element)}</a>`).join('')}
+        <a class="chip" href="#/statuses/rules">Rules terms</a>
+      </nav>
+      <div class="toolbar"><input class="filter-input" id="stFilter" type="search" placeholder="Filter statuses and terms" aria-label="Filter statuses and terms"></div>
+
+      <section class="st-group" id="st-core"><h2 class="sec">Core statuses</h2>
+        <div class="kw-box">${st.core.map((e) => termHtml(e, true)).join('')}</div></section>
+
+      <h2 class="sec st-group-head">Element statuses</h2>
+      <div class="kw-list">${st.elements
+        .map(
+          (g) => `<section class="kw-kit st-group st-el" id="st-${g.element.toLowerCase()}" style="--c:${elVar(g.element)}">
+            <h2><span class="el-h" style="--c:${elVar(g.element)}">${esc(g.element)}</span><a class="muted" href="#/base/${g.element.toLowerCase()}">${esc(g.element)} skills</a></h2>
+            ${g.statuses.map((e) => termHtml(e, true)).join('')}
+            ${g.terms.length ? `${g.statuses.length ? '<p class="kw-note">Terms</p>' : ''}${g.terms.map((e) => termHtml(e, true)).join('')}` : ''}
+          </section>`,
+        )
+        .join('')}</div>
+
+      <section class="st-group" id="st-rules"><h2 class="sec">Rules terms</h2>
+        <div class="kw-box">${st.rules.map((e) => termHtml(e, true)).join('')}</div></section>
+      <p class="empty" id="stEmpty" hidden>Nothing matches.</p>
+      </div>`;
+
+    const filter = $('#stFilter');
+    filter.addEventListener('input', () => {
+      const q = filter.value.trim().toLowerCase();
+      let shown = 0;
+      for (const d of $$('.kwdef[data-text]', main)) {
+        d.hidden = !!q && !d.dataset.text.includes(q);
+        if (!d.hidden) shown++;
+      }
+      for (const g of $$('.st-group', main)) g.hidden = !$$('.kwdef[data-text]', g).some((d) => !d.hidden);
+      $('.st-group-head', main).hidden = !$$('.st-el', main).some((g) => !g.hidden);
+      $('#stEmpty').hidden = shown > 0;
+    });
+  }
+
+  for (const d of $$('.kwdef.target', main)) d.classList.remove('target');
+  const target = slug && document.getElementById(`st-${slug}`);
+  if (!target) return;
+  const filter = $('#stFilter');
+  if (filter.value && (target.hidden || target.closest('[hidden]'))) {
+    filter.value = '';
+    filter.dispatchEvent(new Event('input'));
+  }
+  if (target.classList.contains('kwdef')) target.classList.add('target');
+  // After the router's scroll reset.
+  requestAnimationFrame(() => target.scrollIntoView({ block: target.classList.contains('kwdef') ? 'center' : 'start' }));
+}
+
 // ---------------------------------------------------------------- search
 
 function renderSearch(query) {
@@ -613,7 +786,7 @@ function renderSearch(query) {
   if (document.activeElement !== input) input.value = query;
   const q = query.trim().toLowerCase();
   if (!q) {
-    main.innerHTML = '<p class="muted">Type to search skills, keywords and kits.</p>';
+    main.innerHTML = '<p class="muted">Type to search skills, keywords, statuses and kits.</p>';
     return;
   }
   const hit = (s) => s.toLowerCase().includes(q);
@@ -623,13 +796,24 @@ function renderSearch(query) {
     for (const x of k.keywords) if (hit(x.term) || hit(x.text)) kwHits.push({ k, term: x.term, text: x.text });
     for (const p of k.passives) if (hit(p.name) || hit(p.text)) kwHits.push({ k, term: p.name, text: p.text });
   }
+  const termHits = terms.filter((e) => hit(e.name) || hit(e.text));
+  const baseHits = [];
+  for (const a of site.bases) {
+    const b = ref.base[a];
+    if (hit(b.name) || hit(b.description)) baseHits.push({ a, s: b, label: 'Base skill', href: `#/skill/${baseSlug(a)}` });
+  }
+  for (const el of site.elements)
+    for (const a of site.bases) {
+      const s = ref.byElement[el][a];
+      if (hit(s.name) || hit(s.description)) baseHits.push({ a, s, label: `${el} · ${a}`, href: `#/base/${el.toLowerCase()}/${baseSlug(a)}` });
+    }
   const skillHits = [];
   for (const k of site.kits) for (const r of k.rows) if (hit(r.skill) || hit(r.effect)) skillHits.push({ k, r });
   const LIMIT = 150;
 
   main.innerHTML = `
     <header class="page-head"><p class="eyebrow">Search</p><h1>“${esc(query)}”</h1>
-      <p class="muted">${kitHits.length} kits · ${kwHits.length} keywords · ${skillHits.length} skills</p></header>
+      <p class="muted">${kitHits.length} kits · ${kwHits.length} keywords · ${termHits.length} statuses and terms · ${baseHits.length} base and element skills · ${skillHits.length} fusion skills</p></header>
     <div class="results">
       ${
         kitHits.length
@@ -652,8 +836,32 @@ function renderSearch(query) {
           : ''
       }
       ${
+        termHits.length
+          ? `<h2 class="sec small">Statuses and terms</h2><ul class="result-list">${termHits
+              .map(
+                (e) => `<li><a href="#/statuses/${e.slug}"><div class="r-top"><strong>${mark(e.name, query)}</strong><span class="muted">${esc(e.group)}</span>${
+                  e.kind ? `<span class="kind kind-${esc(e.kind.toLowerCase())}">${esc(e.kind)}</span>` : ''
+                }</div>
+                  <p>${mark(e.text, query)}</p></a></li>`,
+              )
+              .join('')}</ul>`
+          : ''
+      }
+      ${
+        baseHits.length
+          ? `<h2 class="sec small">Base and element skills</h2><ul class="result-list">${baseHits
+              .slice(0, LIMIT)
+              .map(
+                ({ s, label, href }) => `<li><a href="${href}"><div class="r-top"><strong>${mark(s.name, query)}</strong>
+                  <span class="muted">${esc(label)}</span>${costCell(s)}</div>
+                  <p>${mark(s.description, query)}</p></a></li>`,
+              )
+              .join('')}</ul>${baseHits.length > LIMIT ? `<p class="muted">Showing the first ${LIMIT}; narrow the search to see more.</p>` : ''}`
+          : ''
+      }
+      ${
         skillHits.length
-          ? `<h2 class="sec small">Skills</h2><ul class="result-list">${skillHits
+          ? `<h2 class="sec small">Fusion skills</h2><ul class="result-list">${skillHits
               .slice(0, LIMIT)
               .map(
                 ({ k, r }) => `<li><a href="#/kit/${k.slug}/${baseSlug(r.base)}"><div class="r-top"><strong>${mark(r.skill, query)}</strong>
@@ -663,6 +871,6 @@ function renderSearch(query) {
               .join('')}</ul>${skillHits.length > LIMIT ? `<p class="muted">Showing the first ${LIMIT}; narrow the search to see more.</p>` : ''}`
           : ''
       }
-      ${!kitHits.length && !kwHits.length && !skillHits.length ? '<p class="muted">Nothing matches.</p>' : ''}
+      ${!kitHits.length && !kwHits.length && !termHits.length && !baseHits.length && !skillHits.length ?'<p class="muted">Nothing matches.</p>' : ''}
     </div>`;
 }

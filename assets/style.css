@@ -83,7 +83,7 @@ em { font-style: italic; }
 .topnav a {
   display: flex; align-items: center; padding: 0 14px; text-decoration: none;
   color: var(--muted); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-transform: uppercase;
-  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap;
 }
 .topnav a:hover { color: var(--text); }
 .topnav a.on { color: var(--text); border-bottom-color: var(--red); }
@@ -362,7 +362,39 @@ tr.hidden { display: none; }
 .glance-kw strong { color: var(--text); }
 .panel-kw { margin-bottom: 4px; padding: 0 12px; background: var(--ink-2); border: 2px solid var(--line); font-size: 14px; }
 
+/* ---------------------------------------------------------------- the game's terms in skill text, base skills, statuses */
+a.term { text-decoration: underline dotted var(--faint); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a.term:hover { color: var(--text); text-decoration-style: solid; text-decoration-color: var(--red); }
+.lead a, .tab-note a { color: var(--text); text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+.tabs { margin: 18px 0 14px; }
+a.chip { text-decoration: none; }
+a.chip[aria-current='page'] { color: #000; background: var(--text); border-color: var(--text); }
+.tab-note {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 12px; padding: 8px 12px;
+  background: var(--ink-2); border: 2px solid var(--line); border-left: 6px solid var(--c); color: #dcdcd6; font-size: 14px;
+}
+.tab-note a { margin-left: auto; font-weight: 700; font-size: 13px; }
+.base-rows .c-base a, .base-rows .c-skill a { text-decoration: none; }
+.base-rows .c-base a { color: var(--muted); }
+.base-rows .c-base a:hover, .base-rows .c-skill a:hover { color: var(--text); text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+.st-el { border-left: 6px solid var(--c); }
+.st-el h2 { justify-content: space-between; flex-wrap: wrap; }
+.st-el h2 .el-h::before { width: 12px; height: 12px; }
+.st-el h2 a.muted { font: 700 12px/1.2 var(--font-ui); letter-spacing: .08em; }
+.st-el .kw-note { margin-top: 6px; padding-top: 8px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.st-group-head[hidden] { display: none; }
+.kwdef.target { margin: 0 -12px; padding-left: 8px; padding-right: 8px; background: var(--ink-3); border-left: 4px solid var(--yellow); }
+.kind-neutral { border-color: var(--line-2); color: var(--muted); }
+
 /* ---------------------------------------------------------------- narrower screens: the panel and sidebar become drawers */
+@media (max-width: 1365px) {
+  .brand-sub { display: none; }
+}
+@media (max-width: 1099px) {
+  .topbar { gap: 12px; }
+  .topnav { margin-left: 0; }
+  .topnav a { padding: 0 9px; letter-spacing: .02em; }
+}
 @media (max-width: 1279px) {
   .layout, .layout[data-mode='plain'] { grid-template-columns: var(--side) minmax(0, 1fr); }
   .panel {
@@ -399,6 +431,8 @@ tr.hidden { display: none; }
   .kit-rows tr { grid-template-areas: 'skill cost' 'base base' 'effect effect'; }
   .fusion-rows tr { grid-template-areas: 'kit cost' 'skill skill' 'effect effect'; }
   .element-rows tr { grid-template-areas: 'el cost' 'skill skill' 'effect effect'; }
+  .base-rows tr { grid-template-areas: 'skill cost' 'base base' 'effect effect'; }
+  .base-rows.uninfused tr { grid-template-areas: 'skill cost' 'effect effect'; }
   .rows tr.hidden { display: none; }
   .rows tbody tr:last-child { border-bottom: 0; }
   .rows td { display: block; padding: 0; border: 0; min-width: 0; background: none !important; }
