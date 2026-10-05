@@ -1,45 +1,37 @@
 # Element Arena · Fusion Kits
 
-A browsable site for the first-pass kits of all 55 fusion elements: each fusion's core mechanics and all 30 of its skills, with every skill shown beside its base skill and its parent elements' versions.
+A player reference for Element Arena's 55 fusion elements: each fusion's keywords and all 30 of its skills, exactly as the game has them, with every skill shown beside its base skill and its parent elements' versions.
 
 Live at **https://ouroborean.github.io/element-arena-fusion-kits/**. It's a companion to the [Element Arena Codex](https://ouroborean.github.io/element-arena-codex/).
 
 ## What's where
 
-- **Overview:** the fusion matrix, a one-line summary of every kit, the rules all kits follow, the engine features they'd need, and open questions.
-- **Kit pages** (`#/kit/dragon`): a fusion's mechanics and its 30 skills. Click a skill to compare it with the base skill and its parents' versions. Links to a skill are shareable, for example `#/kit/night/stun`. Each skill's hook is one of the kit's core mechanics, Texture (new synergies for one parent's play style) or Unique (utility no other kit has).
+- **Overview:** how fusions work, the fusion matrix, and every fusion at a glance with its keywords.
+- **Kit pages** (`#/kit/dragon`): a fusion's keywords and passives, and its 30 skills. Filter the skills by the keyword they use, or click one to compare it with the base skill and its parents' versions. Links to a skill are shareable, for example `#/kit/night/stun`.
 - **Compare skills** (`#/skill/strike`): one base skill across all 10 elements and all 55 fusions, filterable by element.
-- **Keywords** (`#/keywords`): every new term, grouped by fusion.
-- **Ratings** (`#/ratings`): give any skill 1 to 3 stars with the stars beside it (click the current star again to clear it). This page lists what you've rated, filters by star count, and exports or imports ratings.
-- **Changes** (`#/changes`): every skill rewritten since the first pass, with its earlier version and why it changed. It filters by kind of problem and by element, and you can rate the new versions there. Revised skills also carry a Revised tag on the kit pages, which can filter to them, and the details panel shows each one's earlier version.
-- **Setup** (`#/setup`): skills that can't reach their full value on their own, because part of what they do needs a status, state, minion or resource from another skill. Counted by hand against the game's implemented skills (`data/dependencies.json`), with a per-element table and every dependent skill, what it needs, and whether that's a bonus or most of its value.
+- **Keywords** (`#/keywords`): every fusion keyword and passive, grouped by fusion.
 - **Search:** press `/` anywhere.
-
-Ratings are saved in the browser you rate in, so they survive reloads and restarts but don't follow you to another browser or device, and a site running from `localhost` keeps its own set. Export them to back them up or to send them to someone. Importing adds a file's ratings to yours; where both rate the same skill, the file wins, unless yours rates a newer version.
-
-When a skill you've rated is revised, your rating stays but is marked as given to the earlier version (dashed stars), and the skill counts as unrated until you rate the new text. The Ratings page's "Revised since rated" filter lists them.
 
 The site is public but asks search engines not to index it (`robots.txt` and a `noindex` tag), so it's only found through its link.
 
-## Updating the kits
+## Updating from the game
 
-The kit text lives in `content/`, one Markdown file per tab of the "Fusion Spec Kits" design doc. To change a kit, edit its file, keeping the doc's shape: a `## Name — Parent + Parent` heading, an italic tagline, keyword bullets, then the 30-row table. Then rebuild the data and commit both:
-
-```sh
-node scripts/build-data.mjs
-```
-
-A revision pass that rewrites many skills goes through `scripts/apply-revisions.mjs` instead, so the site can show what changed. It takes a pass file (`{ "id", "date", "title", "summary" }`) and one or more change files (`{ "revised": [{ kit, base, skill, cost, cd, hook, effect, problem, why }], "kept": [...] }`). It validates names, costs and hooks, then rewrites the table rows and logs each skill's before and after in `content/revisions.json`. Add `--check` to validate without writing. Running it again on the same pass is safe.
+Every skill (name, cost, cooldown, effect), keyword and passive comes from the game's content in the Custom Arena repo, so the site is updated by rebuilding its data from there:
 
 ```sh
-node scripts/apply-revisions.mjs pass.json changes.json --check
+node scripts/build-data.mjs "../Custom Arena"
 ```
 
-`data/reference.json` holds the game's own base and single-element skills. Rebuild it when those change, pointing at the Custom Arena repo:
+The argument is the path to the Custom Arena repo (`../Custom Arena` is the default). The build uses the game's own `yaml` package, so install the game's dependencies first. It reads `packages/content/data/`:
 
-```sh
-node scripts/build-reference.mjs "../Custom Arena"
-```
+- `elements/fusions.yaml`: the 55 fusions, their parent elements and their passives.
+- `fusions/<fusion>/skills.<fusion>.yaml`: each fusion's 30 skills (ids `<base skill>.<fusion>`, such as `strike.dragon`).
+- `fusions/<fusion>/glossary.<fusion>.yaml` and `statuses.<fusion>.yaml`: its keywords. A glossary entry has its own `text`, or names a status whose `description` is the text. Passives are statuses too.
+- `base/skills.yaml` and `<element>/skills.<element>.yaml`: the base skills and their single-element versions, shown beside each fusion skill.
+
+It writes `data/site.json` (the kits) and `data/reference.json` (base and single-element skills). If anything is missing, such as a fusion without all 30 skills or a glossary entry naming a status that doesn't exist, it lists the problems and writes nothing. Commit the rebuilt data.
+
+`content/` holds the site's own words, nothing mechanical: `overview.md` (the overview's intro and "How fusions work"), and one file per group of kits in the sidebar, each with the group's intro and, for every fusion, a `## Name — Element + Element` heading, an italic tagline, a `Plays like:` line and optional notes. Keep them consistent with the game when a fusion is reworked, and rebuild after editing them.
 
 ## Previewing locally
 
@@ -47,4 +39,4 @@ node scripts/build-reference.mjs "../Custom Arena"
 node scripts/serve.mjs
 ```
 
-Then open http://localhost:5190. There's no build step and there are no dependencies. GitHub Pages serves the repository root from `main`.
+Then open http://localhost:5190. There are no dependencies to install and nothing to build for the page itself. GitHub Pages serves the repository root from `main`.

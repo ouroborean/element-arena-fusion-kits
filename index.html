@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Fusion Kits · Element Arena</title>
-  <meta name="description" content="Working-draft kits for all 55 fusion elements: each one's core mechanics and all 30 of its skills.">
+  <meta name="description" content="A player reference for Element Arena's 55 fusion elements: each one's keywords and all 30 of its skills, as the game has them.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M0 0h24l8 8v24H0z' fill='%23e8112d'/%3E%3Cpath d='M9 8h13v4h-8v4h7v4h-7v8H9z' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,15 +20,12 @@
     </button>
     <a class="brand" href="#/">
       <span class="brand-mark">Fusion Kits</span>
-      <span class="brand-sub">Element Arena · working draft</span>
+      <span class="brand-sub">Element Arena · player reference</span>
     </a>
     <nav class="topnav" aria-label="Sections">
       <a href="#/" data-nav="overview">Overview</a>
       <a href="#/skill/strike" data-nav="skill">Compare skills</a>
       <a href="#/keywords" data-nav="keywords">Keywords</a>
-      <a href="#/ratings" data-nav="ratings">Ratings<span class="count" id="navRated" aria-label="skills rated"></span></a>
-      <a href="#/changes" data-nav="changes">Changes</a>
-      <a href="#/setup" data-nav="setup">Setup</a>
     </nav>
     <div class="search">
       <label class="sr-only" for="search">Search skills, keywords and kits</label>
@@ -40,8 +37,8 @@
     <nav class="sidebar" id="sidebar" aria-label="Kits"></nav>
     <main class="main" id="main" tabindex="-1"><p class="loading">Loading the kits…</p></main>
     <aside class="panel" id="panel" aria-label="Skill details"></aside>
+    <div class="scrim" id="scrim" hidden></div>
   </div>
-  <div class="scrim" id="scrim" hidden></div>
   <script type="module" src="assets/app.js"></script>
 </body>
 </html>

@@ -1,238 +1,247 @@
-// Builds data/site.json from the Markdown in content/ (the "Fusion Spec Kits" doc, one file per tab).
-// Usage: node scripts/build-data.mjs
+// Builds the site's data from the game. Every skill and keyword comes from the Custom Arena repo's
+// content YAML, exactly as the game has it; content/ adds only the site's own words (the overview,
+// the kit groups and each kit's tagline and "plays like" line).
+//
+//   data/site.json       the 55 fusion kits: keywords, passives and all 30 skills of each
+//   data/reference.json  the 30 base skills and their ten single-element versions
+//
+// Usage: node scripts/build-data.mjs [path to the Custom Arena repo]   (default: ../Custom Arena)
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const contentDir = path.join(root, 'content');
-// Hooks every kit may use besides its own keywords, listed after the kit's own.
-const SHARED_HOOKS = ['Texture', 'Unique'];
+const game = path.resolve(process.argv[2] ?? path.join(root, '..', 'Custom Arena'));
+const gameData = path.join(game, 'packages', 'content', 'data');
+if (!fs.existsSync(gameData)) {
+  console.error(`No game content at ${gameData}. Pass the Custom Arena repo's path: node scripts/build-data.mjs "../Custom Arena"`);
+  process.exit(1);
+}
+const YAML = createRequire(path.join(game, 'packages', 'content', 'package.json'))('yaml');
 
-export const ELEMENTS = ['Fire', 'Ice', 'Water', 'Lightning', 'Wind', 'Poison', 'Earth', 'Holy', 'Unholy', 'Shadow'];
-const GROUPS = [
-  'pure-fusions',
-  'fire-pairs',
-  'ice-pairs',
-  'water-pairs',
-  'lightning-pairs',
-  'wind-pairs',
-  'poison-earth-pairs',
-  'holy-unholy-pairs',
-];
+const ELEMENTS = ['Fire', 'Ice', 'Water', 'Lightning', 'Wind', 'Poison', 'Earth', 'Holy', 'Unholy', 'Shadow'];
+// The kit groups, in the order the site lists them (one file each in content/).
+const GROUPS = ['pure-fusions', 'fire-pairs', 'ice-pairs', 'water-pairs', 'lightning-pairs', 'wind-pairs', 'poison-earth-pairs', 'holy-unholy-pairs'];
 
-export const slugify = (s) =>
-  s
-    .toLowerCase()
-    .replace(/['’]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
+const problems = [];
+const fail = (msg) => problems.push(msg);
+
+// ---------------------------------------------------------------- Markdown (the site's own words)
 
 const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/** Inline Markdown used by the doc: **bold** and *italic*. */
-export function inline(s) {
+/** Inline Markdown: **bold** and *italic*. */
+function inline(s) {
   return escapeHtml(s)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*])\*([^*\s][^*]*?)\*(?!\*)/g, '$1<em>$2</em>');
 }
 
-const splitRow = (line) =>
-  line
-    .trim()
-    .replace(/^\|/, '')
-    .replace(/\|$/, '')
-    .split(' | ')
-    .map((c) => c.trim());
-
-/** Block Markdown used by the doc: paragraphs, bullet lists (nested by 4 spaces) and pipe tables. */
-export function blocks(md) {
-  const lines = md.replace(/\r/g, '').split('\n');
+/** Block Markdown: paragraphs and bullet lists. */
+function blocks(md) {
   const out = [];
+  const lines = md.split('\n');
   let i = 0;
   while (i < lines.length) {
-    const line = lines[i];
-    if (!line.trim()) {
+    if (!lines[i].trim()) {
       i++;
       continue;
     }
-    if (line.startsWith('|')) {
-      const rows = [];
-      while (i < lines.length && lines[i].startsWith('|')) rows.push(lines[i++]);
-      const [head, , ...body] = rows;
-      out.push(
-        '<div class="table-wrap"><table><thead><tr>' +
-          splitRow(head)
-            .map((c) => `<th>${inline(c)}</th>`)
-            .join('') +
-          '</tr></thead><tbody>' +
-          body.map((r) => '<tr>' + splitRow(r).map((c) => `<td>${inline(c)}</td>`).join('') + '</tr>').join('') +
-          '</tbody></table></div>',
-      );
-      continue;
-    }
-    if (/^\s*- /.test(line)) {
+    if (/^- /.test(lines[i])) {
       const items = [];
-      while (i < lines.length && /^\s*- /.test(lines[i])) {
-        const depth = lines[i].match(/^\s*/)[0].length >= 4 ? 1 : 0;
-        items.push({ depth, text: lines[i].replace(/^\s*- /, '') });
-        i++;
-      }
-      let html = '<ul>';
-      let open = false;
-      for (let k = 0; k < items.length; k++) {
-        const it = items[k];
-        if (it.depth === 0) {
-          if (open) html += '</ul></li>';
-          open = false;
-          const next = items[k + 1];
-          html += `<li>${inline(it.text)}`;
-          if (next && next.depth === 1) {
-            html += '<ul>';
-            open = true;
-          } else html += '</li>';
-        } else html += `<li>${inline(it.text)}</li>`;
-      }
-      if (open) html += '</ul></li>';
-      out.push(html + '</ul>');
+      while (i < lines.length && /^- /.test(lines[i])) items.push(lines[i++].slice(2));
+      out.push(`<ul>${items.map((t) => `<li>${inline(t)}</li>`).join('')}</ul>`);
       continue;
     }
     const para = [];
-    while (i < lines.length && lines[i].trim() && !lines[i].startsWith('|') && !/^\s*- /.test(lines[i])) para.push(lines[i++]);
+    while (i < lines.length && lines[i].trim() && !/^- /.test(lines[i])) para.push(lines[i++]);
     out.push(`<p>${inline(para.join(' '))}</p>`);
   }
   return out.join('\n');
 }
 
+/** Splits on "## " headings: the text before the first one, then [{ title, body }]. */
 function sections(md) {
-  // Splits on "## " headings: [{ title, body }] plus the text before the first one.
   const parts = md.split(/^## /m);
   const pre = parts.shift();
-  return { pre, sections: parts.map((p) => ({ title: p.split('\n')[0].trim(), body: p.slice(p.indexOf('\n') + 1) })) };
+  return { pre, sections: parts.map((p) => ({ title: p.split('\n')[0].trim(), body: p.slice(p.indexOf('\n') + 1).trim() })) };
 }
 
-function parseCost(s) {
-  const [cost, cd] = s.split('·').map((x) => x.trim());
-  return { cost, cd: Number(cd) };
-}
+const readText = (file) => fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+const titleOf = (pre) => pre.match(/^# (.+)$/m)[1].trim();
+const afterTitle = (pre) => pre.replace(/^# .+$/m, '').trim();
 
-function parseKit(title, body, group) {
-  const m = title.match(/^(.+?) — (\w+) \+ (\w+)$/);
-  if (!m) throw new Error(`bad kit heading: ${title}`);
-  const [, name, a, b] = m;
-  const tableAt = body.indexOf('\n| Base |');
-  const intro = body.slice(0, tableAt).trim();
-  const tableMd = body.slice(tableAt).trim();
-  const introLines = intro.split('\n');
-  const tagline = introLines[0].replace(/^\*|\*$/g, '');
-  const rest = introLines.slice(1).join('\n').trim();
-  // Each top-level bullet (with any nested bullets) defines a keyword; its first bold run names it.
-  const bullets = [];
-  let cur = null;
-  for (const line of rest.split('\n')) {
-    if (/^- /.test(line)) bullets.push((cur = [line]));
-    else if (cur && /^\s{4}- /.test(line)) cur.push(line);
-    else cur = null;
+// ---------------------------------------------------------------- the game's content
+
+const readYaml = (...parts) => {
+  const file = path.join(gameData, ...parts);
+  return fs.existsSync(file) ? (YAML.parse(fs.readFileSync(file, 'utf8')) ?? {}) : null;
+};
+const flat = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
+const skillEntry = (s) => ({ name: s.name, cost: String(s.cost ?? ''), cd: s.cooldown ?? 0, description: flat(s.description) });
+
+const baseDoc = readYaml('base', 'skills.yaml');
+// [id, archetype] for the 30 base skills, Strike to Titan.
+const archetypes = Object.entries(baseDoc).map(([id, s]) => [id, s.archetype]);
+if (archetypes.length !== 30) fail(`base/skills.yaml: ${archetypes.length} base skills, expected 30`);
+
+// Reference: each base skill and its ten single-element versions.
+const base = {};
+for (const [id, a] of archetypes) base[a] = skillEntry(baseDoc[id]);
+const byElement = {};
+for (const el of ELEMENTS) {
+  const lower = el.toLowerCase();
+  const doc = readYaml(lower, `skills.${lower}.yaml`) ?? {};
+  byElement[el] = {};
+  for (const [id, a] of archetypes) {
+    const s = doc[`${id}.${lower}`];
+    if (s) byElement[el][a] = skillEntry(s);
+    else fail(`${lower}/skills.${lower}.yaml: no ${id}.${lower}`);
   }
-  const keywords = bullets.map((lines) => ({
-    term: lines[0].match(/^- \*\*(.+?)\*\*/)?.[1] ?? '',
-    html: blocks(lines.join('\n')).replace(/^<ul><li>/, '').replace(/<\/li><\/ul>$/, ''),
-  }));
-  const rows = tableMd
-    .split('\n')
-    .slice(2)
-    .filter((l) => l.startsWith('|'))
-    .map((l) => {
-      const [base, skill, costCd, hook, effect] = splitRow(l);
-      return { base, skill, ...parseCost(costCd), hook, effect };
-    });
-  if (rows.length !== 30) throw new Error(`${name}: ${rows.length} rows`);
-  return {
-    slug: slugify(name),
-    name,
-    parents: [a, b],
-    group,
-    tagline,
-    taglineHtml: inline(tagline),
-    introHtml: blocks(rest),
-    keywords,
-    // Core hooks in order of appearance, then the hooks every kit shares.
-    hooks: [...new Set(rows.map((r) => r.hook))].sort((x, y) => SHARED_HOOKS.indexOf(x) - SHARED_HOOKS.indexOf(y)),
-    rows,
-  };
 }
+
+const fusions = readYaml('elements', 'fusions.yaml');
+
+/** A fusion's keywords, from its glossary: an entry has its own text, or names a status whose description is the text. */
+function keywordsOf(slug, statuses) {
+  const glossary = readYaml('fusions', slug, `glossary.${slug}.yaml`) ?? {};
+  const out = [];
+  for (const [id, g] of Object.entries(glossary)) {
+    const status = g.status ? statuses[g.status] : null;
+    if (g.status && !status) fail(`${slug}: glossary ${id} names status ${g.status}, which statuses.${slug}.yaml doesn't have`);
+    const term = g.name ?? status?.name;
+    const text = flat(g.text ?? status?.description);
+    if (!term || !text) {
+      fail(`${slug}: glossary ${id} has no name or text`);
+      continue;
+    }
+    out.push({ term, kind: status?.kind ?? '', text, forms: g.forms ?? [term] });
+  }
+  return out;
+}
+
+/** A fusion's passives: rules every character carrying one of its skills has. One named like a keyword marks that keyword instead. */
+function passivesOf(slug, f, statuses, keywords) {
+  const out = [];
+  for (const id of f.passives ?? []) {
+    const s = statuses[id];
+    if (!s) {
+      fail(`${slug}: passive ${id} isn't in statuses.${slug}.yaml`);
+      continue;
+    }
+    const kw = keywords.find((k) => k.term === s.name);
+    if (kw) kw.passive = true;
+    else out.push({ name: s.name, text: flat(s.description) });
+  }
+  return out;
+}
+
+function rowsOf(slug) {
+  const doc = readYaml('fusions', slug, `skills.${slug}.yaml`);
+  if (!doc) {
+    fail(`${slug}: no fusions/${slug}/skills.${slug}.yaml`);
+    return [];
+  }
+  const rows = [];
+  for (const [id, a] of archetypes) {
+    const s = doc[`${id}.${slug}`];
+    if (!s) {
+      fail(`${slug}: no ${id}.${slug}`);
+      continue;
+    }
+    const e = skillEntry(s);
+    rows.push({ base: a, skill: e.name, cost: e.cost, cd: e.cd, effect: e.description });
+  }
+  return rows;
+}
+
+// ---------------------------------------------------------------- kits: the game's kit, the site's flavor
 
 const groups = [];
 const kits = [];
-for (const slug of GROUPS) {
-  const md = fs.readFileSync(path.join(contentDir, `${slug}.md`), 'utf8').replace(/\r\n/g, '\n');
-  const { pre, sections: secs } = sections(md);
-  const title = pre.match(/^# (.+)$/m)[1].trim();
-  const lead = pre.replace(/^# .+$/m, '').trim();
-  const g = { slug, title, lead, leadHtml: inline(lead), kits: [] };
+const seen = new Set();
+const isTagline = (p) => /^\*[^*].*\*$/.test(p);
+const isPlaysLike = (p) => p.startsWith('Plays like:');
+for (const gslug of GROUPS) {
+  const { pre, sections: secs } = sections(readText(path.join(contentDir, `${gslug}.md`)));
+  const lead = afterTitle(pre);
+  const g = { slug: gslug, title: titleOf(pre), lead, leadHtml: inline(lead), kits: [] };
   for (const s of secs) {
-    const kit = parseKit(s.title, s.body, slug);
-    g.kits.push(kit.slug);
-    kits.push(kit);
+    const m = s.title.match(/^(.+?) — (\w+) \+ (\w+)$/);
+    if (!m) {
+      fail(`content/${gslug}.md: bad kit heading "${s.title}" (expected "Name — Element + Element")`);
+      continue;
+    }
+    const [, name, a, b] = m;
+    const slug = name.toLowerCase();
+    const f = fusions[slug];
+    if (!f) {
+      fail(`content/${gslug}.md: ${name} isn't a fusion in the game (elements/fusions.yaml)`);
+      continue;
+    }
+    if (f.name !== name || [a, b].sort().join() !== [...f.elements].sort().join())
+      fail(`content/${gslug}.md: "${s.title}" doesn't match the game's ${f.name} (${f.elements.join(' + ')})`);
+    if (seen.has(slug)) fail(`content: ${name} appears twice`);
+    seen.add(slug);
+
+    // Flavor: an italic tagline, a "Plays like:" line, then any notes.
+    const paras = s.body.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
+    const tagline = (paras.find(isTagline) ?? '').replace(/^\*|\*$/g, '');
+    const playsLike = (paras.find(isPlaysLike) ?? '').replace(/^Plays like:\s*/, '');
+    const notes = paras.filter((p) => !isTagline(p) && !isPlaysLike(p));
+    if (!tagline) fail(`content/${gslug}.md: ${name} has no tagline`);
+
+    const statuses = readYaml('fusions', slug, `statuses.${slug}.yaml`) ?? {};
+    const keywords = keywordsOf(slug, statuses);
+    const passives = passivesOf(slug, f, statuses, keywords);
+    g.kits.push(slug);
+    kits.push({
+      slug,
+      name: f.name,
+      parents: [...f.elements],
+      group: gslug,
+      tagline,
+      taglineHtml: inline(tagline),
+      playsLike,
+      notesHtml: notes.map((p) => `<p>${inline(p)}</p>`).join(''),
+      keywords,
+      passives,
+      rows: rowsOf(slug),
+    });
   }
   groups.push(g);
 }
+for (const slug of Object.keys(fusions)) if (!seen.has(slug)) fail(`content: no kit for the game's ${fusions[slug].name} (add it to a content/*.md group)`);
 
-// Overview: lead, the at-a-glance table, and the doc's other sections.
-const ov = sections(fs.readFileSync(path.join(contentDir, 'overview.md'), 'utf8').replace(/\r\n/g, '\n'));
-const ovTitle = ov.pre.match(/^# (.+)$/m)[1].trim();
-const ovPre = ov.pre.replace(/^# .+$/m, '').trim().split('\n\n');
-const date = ovPre[0].trim();
-const lead = ovPre.slice(1).join(' ').trim().replace('the Kits tabs hold every skill', 'each kit page holds every skill');
-const glance = ov.sections.find((s) => s.title === 'At a glance');
-const atAGlance = glance.body
-  .split('\n')
-  .filter((l) => l.startsWith('|'))
-  .slice(2)
-  .map((l) => {
-    const [fusion, parents, core, playsLike] = splitRow(l);
-    return { kit: slugify(fusion), fusion, parents: parents.split(' + '), coreHtml: inline(core), playsLike };
-  });
-const overviewSections = ov.sections
-  .filter((s) => !['At a glance', 'The kits'].includes(s.title))
-  .map((s) => ({ id: slugify(s.title), title: s.title, html: blocks(s.body) }));
+// ---------------------------------------------------------------- overview
 
-// Revision log (content/revisions.json, written by scripts/apply-revisions.mjs): each revised row carries its
-// earlier versions, newest first, and its version number is how many times it has been revised. A minor pass (such as
-// a cost-color change) is logged but doesn't count as a new version, so ratings given before it still stand.
-const logPath = path.join(contentDir, 'revisions.json');
-const log = fs.existsSync(logPath) ? JSON.parse(fs.readFileSync(logPath, 'utf8')) : { passes: [] };
-const kitBySlug = new Map(kits.map((k) => [k.slug, k]));
-const passes = log.passes.map((p) => {
-  let count = 0;
-  for (const c of p.changes) {
-    const row = kitBySlug.get(c.kit)?.rows.find((r) => r.base === c.base);
-    if (!row) {
-      console.warn(`revisions.json: no ${c.kit} ${c.base}`);
-      continue;
-    }
-    (row.history ??= []).unshift({ pass: p.id, date: p.date, problem: c.problem, why: c.why, before: c.before, ...(p.minor ? { minor: true } : {}) });
-    count++;
-  }
-  return { id: p.id, date: p.date, title: p.title, summary: p.summary, count, ...(p.minor ? { minor: true } : {}) };
-});
+const ov = sections(readText(path.join(contentDir, 'overview.md')));
+const lead = afterTitle(ov.pre);
+
+if (problems.length) {
+  console.error(`Nothing written: ${problems.length} problem${problems.length === 1 ? '' : 's'}\n  ${problems.join('\n  ')}`);
+  process.exit(1);
+}
 
 const site = {
-  title: ovTitle,
-  date,
+  title: titleOf(ov.pre),
   lead,
   leadHtml: inline(lead),
+  sections: ov.sections.map((s) => ({ id: s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-'), title: s.title, html: blocks(s.body) })),
   elements: ELEMENTS,
-  bases: kits[0].rows.map((r) => r.base),
+  bases: archetypes.map(([, a]) => a),
   groups,
   kits,
-  atAGlance,
-  overviewSections,
-  passes,
 };
 
 fs.mkdirSync(path.join(root, 'data'), { recursive: true });
 fs.writeFileSync(path.join(root, 'data', 'site.json'), JSON.stringify(site));
+fs.writeFileSync(path.join(root, 'data', 'reference.json'), JSON.stringify({ base, byElement }));
+const count = (f) => kits.reduce((n, k) => n + f(k), 0);
 console.log(
-  `data/site.json: ${groups.length} groups, ${kits.length} kits, ${kits.reduce((n, k) => n + k.rows.length, 0)} skills, ${passes.reduce((n, p) => n + p.count, 0)} logged revisions`,
+  `data/site.json: ${kits.length} kits, ${count((k) => k.rows.length)} skills, ${count((k) => k.keywords.length)} keywords, ` +
+    `${count((k) => k.passives.length + k.keywords.filter((x) => x.passive).length)} passives, from ${game}`,
 );
+console.log(`data/reference.json: ${archetypes.length} base skills and their ${ELEMENTS.length} single-element versions`);
